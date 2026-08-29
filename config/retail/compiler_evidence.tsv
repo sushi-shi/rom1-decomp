@@ -1,0 +1,11 @@
+fact	value	confidence	source
+retail_sha256	5ba821f37356d2da0e1eb907de28b2708714d6e2604b5caef3daf4284b9af7d3	EXACT	SHA-256
+pe_linker_version	5.02	EXACT	PE32 OptionalHeader MajorLinkerVersion/MinorLinkerVersion
+rich_header	absent	EXACT	PE header byte scan
+codeview	NB10 age 11 c:\\allods.102\\Hello__0\\Allods.pdb	EXACT	IMAGE_DEBUG_DIRECTORY
+fpo_records	4384	EXACT	IMAGE_DEBUG_TYPE_FPO
+reloc_sites	32454	EXACT	pinned local Vostok recovery generator
+vc5_rtm_linker	5.00.7022	EXACT	Microsoft KB170367
+vc5_sp1_linker	5.02.7132	EXACT	Microsoft KB170367
+vc5_sp2_linker	5.02.7132	EXACT	Microsoft KB170367
+vc5_sp3_linker	5.10.7303	EXACT	Microsoft KB170367

@@ -1,0 +1,5 @@
+candidate	service_level	target_pe_linker	expected_link	actual_link	payload	library_matched_fpo	library_unique_fpo	library_colliding_fpo	exclusive_fpo	state	evidence
+vc5-rtm	RTM	5.02	5.00.7022		missing	0	0	0	0	REJECTED-LINKER	PE linker stamp
+vc5-sp1	SP1	5.02	5.02.7132		missing	0	0	0	0	MISSING-PAYLOAD	
+vc5-sp2	SP2	5.02	5.02.7132		missing	0	0	0	0	MISSING-PAYLOAD	
+vc5-sp3	SP3	5.02	5.10.7303	5.10.0.7303	present	2171	1021	1150	0	REJECTED-LINKER	PE linker stamp

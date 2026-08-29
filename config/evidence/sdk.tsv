@@ -1,0 +1,10 @@
+component	identity	sha256	status	source
+directx5_outer	idx5sdk.exe	6cde9ba718866e21e8b197b599fc9193a9044b8159af8baddbefec16ae531b51	EXACT	https://archive.org/download/idx5sdk/idx5sdk.exe
+directx5_ddraw_header	cdrom/sdk/inc/ddraw.h	623ed553f6a52584cecf9280765c1807a5753836165da4acbac249094b5f063f	EXACT	idx5sdk.exe nested DX5SDK.EXE
+directx5_ddraw_lib	cdrom/sdk/lib/ddraw.lib	ff9b53803b300dfec1e9c3403acdc4614474bbb82c256d1a9c930c6d84ab783a	EXACT	idx5sdk.exe nested DX5SDK.EXE
+directx5_dsound_header	cdrom/sdk/inc/dsound.h	67f7c8a9f665e826bebbfae68cdace844201b0dbd33374e3c71e4e295edba098	EXACT	idx5sdk.exe nested DX5SDK.EXE
+directx5_dsound_lib	cdrom/sdk/lib/dsound.lib	d3fa26193425aa6f8036803b9b3d54844de0e818d3cd5127a4e82270eb076c82	EXACT	idx5sdk.exe nested DX5SDK.EXE
+smacker_header_orig	edgeforce/radtools@f42d146c:smack.h	1f7bc112b8a09a37c7635540a5aed516c65b891d2e45142b19952ad21961699b	CLOSEST	GitHub mirror; exact 16-import ABI verified separately
+smacker_rad_header_orig	edgeforce/radtools@f42d146c:rad.h	298e860962567d5af2556e6c7f8db42f43ee1ef328cf5deb1efd9a0b1941ad71	CLOSEST	GitHub mirror
+smacker_runtime	SMACKW32.DLL 3.1L	79ff40e84fd339930ad358768ad4408e6280074a67e3b1733434d2294b0f5bc5	EXACT	retail runtime
+bootstrap_release	rom1-bootstrap-vc50-sp3-dx5-r1.tar.xz	ca82aaafbef4cde8f0fa345311410c710934cf94c72d5cce1a1f371860596fd0	ANALYSIS-ONLY	Nix reproducible release artifact

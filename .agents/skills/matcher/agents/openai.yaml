@@ -1,0 +1,4 @@
+interface:
+  display_name: "Rom1 Matcher"
+  short_description: "Reconstruct and byte-match Rom1 C++"
+  default_prompt: "Use $matcher to reconstruct and verify a Rom1 function against retail."

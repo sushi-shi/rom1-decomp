@@ -1,0 +1,392 @@
+diff -ruN --exclude target a/src/main.rs b/src/main.rs
+--- a/src/main.rs	2026-07-16 11:35:13.000000000 +0000
++++ b/src/main.rs	2026-08-29 22:58:38.334955961 +0000
+@@ -6,6 +6,7 @@
+ mod object_files;
+ mod pdb_symbols;
+ mod reloc_alias_manifest;
++mod reloc_manifest;
+ mod relocs;
+ mod symbol_matcher;
+ mod utils;
+@@ -68,6 +69,11 @@
+     #[arg(long, value_hint = clap::ValueHint::FilePath)]
+     pub reloc_alias_manifest: Option<std::path::PathBuf>,
+ 
++    /// Reviewed absolute relocation sites (`site_rva`, `kind`) for a retail
++    /// image whose linker stripped the PE `.reloc` section.
++    #[arg(long, value_hint = clap::ValueHint::FilePath)]
++    pub reloc_manifest: Option<std::path::PathBuf>,
++
+     /// Compatibility-only storage ranges for legacy PDB fallback. Ignored by
+     /// the canonical candidate-manifest path.
+     #[arg(long, value_hint = clap::ValueHint::FilePath)]
+@@ -116,6 +122,7 @@
+         data_section_manifest,
+         contribution_manifest,
+         reloc_alias_manifest,
++        reloc_manifest,
+         unresolved_data_manifest,
+         recover_data_relocs_from_pdb,
+         coalesce_common_functions,
+@@ -146,6 +153,7 @@
+         data_section_manifest.as_deref(),
+         contribution_manifest.as_deref(),
+         reloc_alias_manifest.as_deref(),
++        reloc_manifest.as_deref(),
+         unresolved_data_manifest.as_deref(),
+         recover_data_relocs_from_pdb,
+         coalesce_common_functions,
+@@ -166,6 +174,7 @@
+     data_section_manifest_path: Option<&std::path::Path>,
+     contribution_manifest_path: Option<&std::path::Path>,
+     reloc_alias_manifest_path: Option<&std::path::Path>,
++    reloc_manifest_path: Option<&std::path::Path>,
+     unresolved_data_manifest_path: Option<&std::path::Path>,
+     recover_data_relocs_from_pdb: bool,
+     coalesce_common_functions: bool,
+@@ -180,6 +189,7 @@
+         contribution_manifest::ContributionManifest::load(contribution_manifest_path)?;
+     let reloc_alias_manifest =
+         reloc_alias_manifest::RelocAliasManifest::load(reloc_alias_manifest_path)?;
++    let reloc_manifest = reloc_manifest::RelocManifest::load(reloc_manifest_path)?;
+     reloc_alias_manifest.validate_site_membership(&pdb_symbols.functions)?;
+     let unresolved_data_manifest = if recover_data_relocs_from_pdb {
+         contribution_manifest::ContributionManifest::load(unresolved_data_manifest_path)?
+@@ -194,6 +204,7 @@
+         &data_manifest,
+         &contribution_manifest,
+         &reloc_alias_manifest,
++        reloc_manifest.as_ref(),
+         &unresolved_data_manifest,
+         recover_data_relocs_from_pdb,
+     )?;
+diff -ruN --exclude target a/src/reloc_manifest.rs b/src/reloc_manifest.rs
+--- a/src/reloc_manifest.rs	1970-01-01 00:00:00.000000000 +0000
++++ b/src/reloc_manifest.rs	2026-08-29 23:01:25.890375164 +0000
+@@ -0,0 +1,197 @@
++use std::collections::HashSet;
++use std::path::Path;
++
++const HEADER: &[u8] = b"site_rva\tkind";
++
++/// Reviewed list of absolute (`dir32`) relocation sites, for an image whose
++/// `.reloc` directory is missing. Each row names the RVA of a 4-byte field that
++/// holds a linked target address; the delinker reads and classifies the target
++/// (see `relocs::resolve_absolute_site`), so the manifest need only locate the
++/// sites the `.reloc` directory would have listed.
++#[derive(Debug)]
++pub struct RelocManifest {
++    sites: Vec<usize>,
++}
++
++impl RelocManifest {
++    pub fn load(path: Option<&Path>) -> anyhow::Result<Option<Self>> {
++        let Some(path) = path else {
++            return Ok(None);
++        };
++        Ok(Some(Self::parse(&std::fs::read(path)?, path)?))
++    }
++
++    fn parse(bytes: &[u8], path: &Path) -> anyhow::Result<Self> {
++        let mut sites = Vec::new();
++        let mut seen = HashSet::new();
++        let mut saw_header = false;
++
++        for (line_index, raw_line) in bytes.split(|byte| *byte == b'\n').enumerate() {
++            let line_number = line_index + 1;
++            let line = raw_line.strip_suffix(b"\r").unwrap_or(raw_line);
++            if line.contains(&b'\r') {
++                anyhow::bail!("{}:{}: invalid line ending", path.display(), line_number);
++            }
++            if line.is_empty() || line.starts_with(b"#") {
++                continue;
++            }
++            if !saw_header {
++                if line != HEADER {
++                    anyhow::bail!(
++                        "{}:{}: invalid reloc manifest header",
++                        path.display(),
++                        line_number
++                    );
++                }
++                saw_header = true;
++                continue;
++            }
++            if line == HEADER {
++                anyhow::bail!(
++                    "{}:{}: duplicate reloc manifest header",
++                    path.display(),
++                    line_number
++                );
++            }
++
++            let mut fields = line.split(|byte| *byte == b'\t');
++            let site_rva_field = fields.next().unwrap_or_default();
++            let kind = fields.next().ok_or_else(|| {
++                anyhow::anyhow!(
++                    "{}:{}: expected exactly two tab-separated columns",
++                    path.display(),
++                    line_number
++                )
++            })?;
++            if fields.next().is_some() {
++                anyhow::bail!(
++                    "{}:{}: expected exactly two tab-separated columns",
++                    path.display(),
++                    line_number
++                );
++            }
++            match kind {
++                b"dir32" => {}
++                value => anyhow::bail!(
++                    "{}:{}: unsupported kind {}",
++                    path.display(),
++                    line_number,
++                    String::from_utf8_lossy(value)
++                ),
++            }
++            let site_rva = parse_number(site_rva_field).ok_or_else(|| {
++                anyhow::anyhow!("{}:{}: invalid site_rva", path.display(), line_number)
++            })?;
++            if !seen.insert(site_rva) {
++                anyhow::bail!("{}:{}: duplicate site RVA", path.display(), line_number);
++            }
++            sites.push(site_rva);
++        }
++
++        if !saw_header {
++            anyhow::bail!("{}: missing reloc manifest header", path.display());
++        }
++        sites.sort_unstable();
++        Ok(Self { sites })
++    }
++
++    /// The reviewed site RVAs, ascending.
++    pub fn sites(&self) -> &[usize] {
++        &self.sites
++    }
++}
++
++fn parse_number(value: &[u8]) -> Option<usize> {
++    let value = std::str::from_utf8(value).ok()?;
++    match value
++        .strip_prefix("0x")
++        .or_else(|| value.strip_prefix("0X"))
++    {
++        Some(hex) => usize::from_str_radix(hex, 16).ok(),
++        None => value.parse().ok(),
++    }
++}
++
++#[cfg(test)]
++mod tests {
++    use super::*;
++
++    fn parse(body: &str) -> anyhow::Result<RelocManifest> {
++        RelocManifest::parse(body.as_bytes(), Path::new("test.tsv"))
++    }
++
++    #[test]
++    fn absent_manifest_is_none() {
++        assert!(RelocManifest::load(None).unwrap().is_none());
++    }
++
++    #[test]
++    fn parses_comments_crlf_and_sorts() {
++        let text = concat!(
++            "# reviewed relocations\r\n",
++            "site_rva\tkind\r\n",
++            "0x140\tdir32\r\n",
++            "\r\n",
++            "0X100\tdir32\r\n",
++            "288\tdir32\r\n",
++        );
++        assert_eq!(parse(text).unwrap().sites(), &[0x100, 0x120, 0x140]);
++    }
++
++    #[test]
++    fn rejects_missing_and_duplicate_headers() {
++        assert!(
++            parse("0x100\tdir32\n")
++                .unwrap_err()
++                .to_string()
++                .contains("invalid reloc manifest header")
++        );
++        assert!(
++            parse("# only a comment\n")
++                .unwrap_err()
++                .to_string()
++                .contains("missing")
++        );
++        assert!(
++            parse("site_rva\tkind\nsite_rva\tkind\n")
++                .unwrap_err()
++                .to_string()
++                .contains("duplicate reloc manifest header")
++        );
++    }
++
++    #[test]
++    fn rejects_wrong_columns_kind_and_duplicate_site() {
++        let hdr = "site_rva\tkind\n";
++        assert!(
++            parse(&format!("{hdr}0x100\n"))
++                .unwrap_err()
++                .to_string()
++                .contains("exactly two")
++        );
++        assert!(
++            parse(&format!("{hdr}0x100\tdir32\textra\n"))
++                .unwrap_err()
++                .to_string()
++                .contains("exactly two")
++        );
++        assert!(
++            parse(&format!("{hdr}0x100\trel32\n"))
++                .unwrap_err()
++                .to_string()
++                .contains("unsupported kind")
++        );
++        assert!(
++            parse(&format!("{hdr}zz\tdir32\n"))
++                .unwrap_err()
++                .to_string()
++                .contains("invalid site_rva")
++        );
++        assert!(
++            parse(&format!("{hdr}0x100\tdir32\n0x100\tdir32\n"))
++                .unwrap_err()
++                .to_string()
++                .contains("duplicate site RVA")
++        );
++    }
++}
+diff -ruN --exclude target a/src/relocs.rs b/src/relocs.rs
+--- a/src/relocs.rs	2026-08-29 23:02:40.852078103 +0000
++++ b/src/relocs.rs	2026-08-29 23:02:40.837028216 +0000
+@@ -3,6 +3,7 @@
+ use crate::data_manifest::{DataManifest, DataStorage};
+ use crate::pdb_symbols;
+ use crate::reloc_alias_manifest::{RelocAliasManifest, RelocAliasObservations};
++use crate::reloc_manifest::RelocManifest;
+ use crate::utils::ToUsize;
+ 
+ use pdb2::RawString;
+@@ -306,6 +307,42 @@
+     entry: u16,
+ }
+ 
++fn pe_relocation_sites(
++    exe: &'static object::read::pe::PeFile32<'static>,
++) -> anyhow::Result<Vec<usize>> {
++    let Some(reloc_sec) = exe.section_by_name(".reloc") else {
++        anyhow::bail!("Missing .reloc section and no --reloc-manifest was supplied");
++    };
++    let mut sites = Vec::new();
++    let mut pos = 0;
++    let reloc_data = reloc_sec.data()?;
++    while pos + HEADER_SIZE <= reloc_data.len() {
++        let RelocHeader {
++            page_rva,
++            block_size,
++        } = bytemuck::pod_read_unaligned::<RelocHeader>(&reloc_data[pos..pos + HEADER_SIZE]);
++        if block_size == 0 || block_size < 8 {
++            break;
++        }
++        let block_end = pos + block_size.to_usize();
++        if block_end > reloc_data.len() {
++            anyhow::bail!("truncated .reloc block at file-section offset {pos:#x}");
++        }
++        let entries: &[RelocEntry] =
++            bytemuck::cast_slice(&reloc_data[pos + HEADER_SIZE..block_end]);
++        pos = block_end;
++        for RelocEntry { entry } in entries {
++            const RELOC_TYP_HIGHLOW: u16 = 3;
++            if entry >> 12 == RELOC_TYP_HIGHLOW {
++                sites.push((page_rva + u32::from(entry & 0x0fff)).to_usize());
++            }
++        }
++    }
++    sites.sort_unstable();
++    sites.dedup();
++    Ok(sites)
++}
++
+ pub fn resolve_absolute_relocations<'s>(
+     env: &Env,
+     exe: &'static object::read::pe::PeFile32<'static>,
+@@ -313,6 +350,7 @@
+     data_manifest: &DataManifest,
+     contributions: &ContributionManifest,
+     reloc_aliases: &RelocAliasManifest,
++    reloc_manifest: Option<&RelocManifest>,
+     unresolved: &ContributionManifest,
+     recover_data_relocs_from_pdb: bool,
+ ) -> anyhow::Result<(
+@@ -320,8 +358,12 @@
+     BTreeMap<usize, RelocKind<'s>>,
+     RelocAliasObservations,
+ )> {
+-    let Some(reloc_sec) = exe.section_by_name(".reloc") else {
+-        anyhow::bail!("Missing .reloc section");
++    if reloc_manifest.is_some() && exe.section_by_name(".reloc").is_some() {
++        anyhow::bail!("--reloc-manifest and the PE .reloc section are mutually exclusive");
++    }
++    let relocation_sites = match reloc_manifest {
++        Some(manifest) => manifest.sites().to_vec(),
++        None => pe_relocation_sites(exe)?,
+     };
+ 
+     let exe_data = map_pe_image(exe);
+@@ -338,32 +380,7 @@
+         );
+     }
+ 
+-    let mut pos = 0;
+-    let reloc_data = reloc_sec.data()?;
+-    while pos + HEADER_SIZE <= reloc_data.len() {
+-        let RelocHeader {
+-            page_rva,
+-            block_size,
+-        } = bytemuck::pod_read_unaligned::<RelocHeader>(&reloc_data[pos..pos + HEADER_SIZE]);
+-
+-        if block_size == 0 || block_size < 8 {
+-            break;
+-        }
+-
+-        let entries: &[RelocEntry] =
+-            bytemuck::cast_slice(&reloc_data[pos + HEADER_SIZE..pos + block_size.to_usize()]);
+-        pos += block_size.to_usize();
+-
+-        for RelocEntry { entry } in entries {
+-            let reloc_type = entry >> 12;
+-            let reloc_offset = entry & 0x0FFF;
+-
+-            const RELOC_TYP_HIGHLOW: u16 = 3;
+-
+-            if reloc_type != RELOC_TYP_HIGHLOW {
+-                continue;
+-            }
+-
++        for reloc_rva in relocation_sites {
+             // .reloc        .text/.rdata/.data  .text/.rdata/.data
+             // [reloc_rva]   [target_va]         [target]
+             //   |              ^    |              ^
+@@ -372,8 +389,6 @@
+             //
+             // * `target_va` replaced with offset of the closest named symbol
+             //
+-            let reloc_rva = (page_rva + u32::from(reloc_offset)).to_usize();
+-
+             let target_va =
+                 bytemuck::pod_read_unaligned::<u32>(&exe_data[reloc_rva..reloc_rva + 4]);
+             let target_rva = (target_va - env.image_base).to_usize();
+@@ -700,7 +715,6 @@
+                 }
+                 () => (),
+             }
+-        }
+     }
+ 
+     Ok((coff_data, relocs_rva, observed_aliases))

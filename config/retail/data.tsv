@@ -1,0 +1,7 @@
+# Admitted retail data-section starts. This bootstrap admits the exact section
+# edges; finer rows are added only from executable-native evidence.
+rva	kind
+0x197000	
+0x1b8000	
+0x1cd600	
+0x232000	

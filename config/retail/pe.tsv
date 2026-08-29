@@ -1,0 +1,15 @@
+# retail_sha256=5ba821f37356d2da0e1eb907de28b2708714d6e2604b5caef3daf4284b9af7d3
+key	value	authority
+sha256	5ba821f37356d2da0e1eb907de28b2708714d6e2604b5caef3daf4284b9af7d3	retail PE
+file_size	1979392	retail PE
+machine	0x014c	retail PE
+coff_timestamp	0x35f66ce5	retail PE
+linker_version	5.02	retail PE
+image_base	0x00400000	retail PE
+entry_rva	0x156950	retail PE
+section_alignment	0x1000	retail PE
+file_alignment	0x200	retail PE
+image_size	0x239000	retail PE
+subsystem	2	retail PE
+reloc_directory_rva	0x0	retail PE
+reloc_directory_size	0x0	retail PE

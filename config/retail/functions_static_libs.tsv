@@ -1,0 +1,3 @@
+# Statically-linked library function providers. No servicing-level-dependent
+# rows are promoted until compiler-census selects an exact VC5 payload.
+rva	name	lib	confidence	source

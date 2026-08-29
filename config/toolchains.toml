@@ -1,0 +1,27 @@
+# Finite Visual C++ 5.0 servicing matrix. `compiler-census` must resolve the
+# two 5.02 candidates byte-for-byte; chronology is not evidence.
+
+[[candidate]]
+id = "vc5-rtm"
+service_level = "RTM"
+expected_link = "5.00.7022"
+env = "ROM1_VC5_RTM"
+
+[[candidate]]
+id = "vc5-sp1"
+service_level = "SP1"
+expected_link = "5.02.7132"
+env = "ROM1_VC5_SP1"
+
+[[candidate]]
+id = "vc5-sp2"
+service_level = "SP2"
+expected_link = "5.02.7132"
+env = "ROM1_VC5_SP2"
+
+[[candidate]]
+id = "vc5-sp3"
+service_level = "SP3"
+expected_link = "5.10.7303"
+env = "ROM1_VC5_SP3"
+bootstrap_env = "ROM1_TOOLCHAIN"

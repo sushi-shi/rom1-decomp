@@ -1,0 +1,5 @@
+status = "unresolved"
+target_pe_linker = "5.02"
+eligible_service_levels = ["SP1", "SP2"]
+bootstrap = "vc5-sp3"
+evidence = "PE OptionalHeader linker 5.02; VS97 KB170367 maps 5.02.7132 to SP1/SP2"

@@ -1,0 +1,29 @@
+candidate	service_level	role	path	size	version	sha256
+vc5-rtm	RTM	cl.exe				
+vc5-rtm	RTM	c1.dll				
+vc5-rtm	RTM	c1xx.dll				
+vc5-rtm	RTM	c2.exe				
+vc5-rtm	RTM	link.exe				
+vc5-rtm	RTM	cvtres.exe				
+vc5-rtm	RTM	mspdb50.dll				
+vc5-sp1	SP1	cl.exe				
+vc5-sp1	SP1	c1.dll				
+vc5-sp1	SP1	c1xx.dll				
+vc5-sp1	SP1	c2.exe				
+vc5-sp1	SP1	link.exe				
+vc5-sp1	SP1	cvtres.exe				
+vc5-sp1	SP1	mspdb50.dll				
+vc5-sp2	SP2	cl.exe				
+vc5-sp2	SP2	c1.dll				
+vc5-sp2	SP2	c1xx.dll				
+vc5-sp2	SP2	c2.exe				
+vc5-sp2	SP2	link.exe				
+vc5-sp2	SP2	cvtres.exe				
+vc5-sp2	SP2	mspdb50.dll				
+vc5-sp3	SP3	cl.exe	msvc/bin/CL.EXE	46080	11.0.0.7022	bf9f9c74f756fed96e13f7f9a4273495c7dde0a1fb968e3ef6d760ad6d73dfeb
+vc5-sp3	SP3	c1.dll	msvc/bin/c1.dll	565008	11.0.0.7113	7f12a4a889c5a0277f12c391ca462657dc81ef7be769faf629331bd117983d5d
+vc5-sp3	SP3	c1xx.dll	msvc/bin/c1xx.dll	1051408	11.0.0.7303	e27df3bb9a37058c85dad3fb7d1ed30b9e52d38fb6c0f66c8fdba0a11111d3d9
+vc5-sp3	SP3	c2.exe	msvc/bin/c2.exe	660240	11.0.0.7303	e75aecaf4073b0817ffb638cae5fff636b2e2d1a090daabf8f68dbc954515fae
+vc5-sp3	SP3	link.exe	msvc/bin/link.exe	464896	5.10.0.7303	04c892989f4cc8076ef45e033215eb7aefbdf1459cbee9b13a81f8ddb718b579
+vc5-sp3	SP3	cvtres.exe	msvc/bin/cvtres.exe	15120	5.0.1668.1	16a45886f9257d990a9478c32ee6c1cbf4ac1fbcf889e5755960539233962465
+vc5-sp3	SP3	mspdb50.dll	msvc/bin/MSPDB50.DLL	167424	5.0.0.7022	06aaaca9c928bdef790259c9c30328529e10d1ec2f77da09c4ff74de7734fe69

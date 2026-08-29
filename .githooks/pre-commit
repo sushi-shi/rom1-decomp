@@ -1,0 +1,20 @@
+#!/bin/sh
+# Auto-format staged src/+include/ C/C++ files before commit (whitespace-only =>
+# matching-neutral). vendor/ excluded here and via vendor/.clang-format. Needs
+# clang-format (Nix dev shell); skips if absent. Re-stages whole files, so
+# partial staging isn't preserved. See docs/build-system.md.
+set -eu
+
+command -v clang-format >/dev/null 2>&1 || {
+    echo "pre-commit: clang-format not on PATH - skipping format (enter 'nix develop')." >&2
+    exit 0
+}
+
+# Staged, still-present (ACMR) C/C++ files under src/ or include/.
+files=$(git diff --cached --name-only --diff-filter=ACMR \
+        | grep -E '^(src|include)/.*\.(cpp|h|cc|cxx|hpp|hh|c)$' || true)
+[ -z "$files" ] && exit 0
+
+printf '%s\n' "$files" | xargs clang-format --style=file -i
+printf '%s\n' "$files" | xargs git add
+exit 0
