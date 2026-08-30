@@ -26,9 +26,35 @@ RVA_COMPGEN(0x0004ac50, 0x47, ?ConstructElements@@YGXPAPAVCStringTriple@@H@Z)
 RVA_COMPGEN(0x0004aca0, 0x50, ?ConstructElements@@YGXPAU_WIN32_FIND_DATAA@@H@Z)
 RVA_COMPGEN(0x0004acf0, 0x47, ?ConstructElements@@YGXPAPAXH@Z)
 
-RVA_COMPGEN(0x00121f20, 0x3b, ?SerializeElements@@YGXAAVCArchive@@PAUCLinkedCollectionValue@@H@Z)
+// clang-format off
+RVA_COMPGEN(0x000ce250, 0x136, ?SetSize@?$CArray@HH@@QAEXHH@Z)
+RVA_COMPGEN(0x00118360, 0x9d, ?Serialize@?$CList@PAVEffect@@PAV1@@@UAEXAAVCArchive@@@Z)
+RVA_COMPGEN(0x00118680, 0x57, ?AddTail@?$CList@PAVItem@@PAV1@@@QAEPAU__POSITION@@PAVItem@@@Z)
+RVA_COMPGEN(0x00118810, 0x9d, ?Serialize@?$CList@PAVItem@@PAV1@@@UAEXAAVCArchive@@@Z)
+RVA_COMPGEN(0x00118b50, 0x68, ?Serialize@?$CArray@HH@@UAEXAAVCArchive@@@Z)
+RVA_COMPGEN(0x00118c30, 0x220, ?SetSize@?$CArray@UCLargeCollectionRecord@@AAU1@@@QAEXHH@Z)
+RVA_COMPGEN(0x00118ef0, 0x68, ?Serialize@?$CArray@UCLargeCollectionRecord@@AAU1@@@UAEXAAVCArchive@@@Z)
+RVA_COMPGEN(0x00118ff0, 0x220, ?SetSize@?$CArray@UCNamedCollectionRecord@@AAU1@@@QAEXHH@Z)
+RVA_COMPGEN(0x001192b0, 0x68, ?Serialize@?$CArray@UCNamedCollectionRecord@@AAU1@@@UAEXAAVCArchive@@@Z)
+RVA_COMPGEN(0x00119390, 0x220, ?SetSize@?$CArray@UCFixedCollectionRecord@@AAU1@@@QAEXHH@Z)
+RVA_COMPGEN(0x00119650, 0x68, ?Serialize@?$CArray@UCFixedCollectionRecord@@AAU1@@@UAEXAAVCArchive@@@Z)
+RVA_COMPGEN(0x00119750, 0x220, ?SetSize@?$CArray@UCCompactCollectionRecord@@AAU1@@@QAEXHH@Z)
+RVA_COMPGEN(0x00119a10, 0x68, ?Serialize@?$CArray@UCCompactCollectionRecord@@AAU1@@@UAEXAAVCArchive@@@Z)
+RVA_COMPGEN(0x00119af0, 0x220, ?SetSize@?$CArray@UCPrimaryStateRecord@@AAU1@@@QAEXHH@Z)
+RVA_COMPGEN(0x00119db0, 0x68, ?Serialize@?$CArray@UCPrimaryStateRecord@@AAU1@@@UAEXAAVCArchive@@@Z)
+RVA_COMPGEN(0x00119e90, 0x220, ?SetSize@?$CArray@UCSecondaryStateRecord@@AAU1@@@QAEXHH@Z)
+RVA_COMPGEN(0x0011a170, 0x68, ?Serialize@?$CArray@UCSecondaryStateRecord@@AAU1@@@UAEXAAVCArchive@@@Z)
+RVA_COMPGEN(0x0011a270, 0x220, ?SetSize@?$CArray@UCTertiaryStateRecord@@AAU1@@@QAEXHH@Z)
+RVA_COMPGEN(0x0011a530, 0x68, ?Serialize@?$CArray@UCTertiaryStateRecord@@AAU1@@@UAEXAAVCArchive@@@Z)
+RVA_COMPGEN(0x0011a610, 0x220, ?SetSize@?$CArray@UCSpellDefinition@@AAU1@@@QAEXHH@Z)
+RVA_COMPGEN(0x0011a8d0, 0x68, ?Serialize@?$CArray@UCSpellDefinition@@AAU1@@@UAEXAAVCArchive@@@Z)
+RVA_COMPGEN(0x0011ac70, 0x68, ?Serialize@?$CArray@PAVSpell@@PAV1@@@UAEXAAVCArchive@@@Z)
+RVA_COMPGEN(0x00121dc0, 0x57, ?AddTail@?$CList@PAVEffect@@PAV1@@@QAEPAU__POSITION@@PAVEffect@@@Z)
+// clang-format on
+
+RVA_COMPGEN(0x00121f20, 0x3b, ?SerializeElements@@YGXAAVCArchive@@PAPAVEffect@@H@Z)
 RVA_COMPGEN(0x001222e0, 0x3b, ?SerializeElements@@YGXAAVCArchive@@PAUCQueuedCollectionValue@@H@Z)
-RVA_COMPGEN(0x00122670, 0x3b, ?SerializeElements@@YGXAAVCArchive@@PAUCSharedCollectionValue@@H@Z)
+RVA_COMPGEN(0x00122670, 0x3b, ?SerializeElements@@YGXAAVCArchive@@PAPAVItem@@H@Z)
 RVA_COMPGEN(0x001227a0, 0x3b, ?SerializeElements@@YGXAAVCArchive@@PAHH@Z)
 RVA_COMPGEN(0x00122920, 0x3b, ?SerializeElements@@YGXAAVCArchive@@PAUCLargeCollectionRecord@@H@Z)
 RVA_COMPGEN(0x00122b30, 0x3b, ?SerializeElements@@YGXAAVCArchive@@PAUCNamedCollectionRecord@@H@Z)
@@ -52,21 +78,27 @@ template class CArray<CStringTriple*, CStringTriple*>;
 template class CArray<WIN32_FIND_DATA, WIN32_FIND_DATA>;
 template class CArray<void*, void*>;
 
-template void AFXAPI SerializeElements<CLinkedCollectionValue>(
-    CArchive& archive,
-    CLinkedCollectionValue* elements,
-    int count
-);
+template void CList<Effect*, Effect*>::Serialize(CArchive& archive);
+template void CList<Item*, Item*>::Serialize(CArchive& archive);
+template void CArray<int, int>::Serialize(CArchive& archive);
+template void CArray<CLargeCollectionRecord, CLargeCollectionRecord&>::Serialize(CArchive& archive);
+template void CArray<CNamedCollectionRecord, CNamedCollectionRecord&>::Serialize(CArchive& archive);
+template void CArray<CFixedCollectionRecord, CFixedCollectionRecord&>::Serialize(CArchive& archive);
+template void
+CArray<CCompactCollectionRecord, CCompactCollectionRecord&>::Serialize(CArchive& archive);
+template void CArray<CPrimaryStateRecord, CPrimaryStateRecord&>::Serialize(CArchive& archive);
+template void CArray<CSecondaryStateRecord, CSecondaryStateRecord&>::Serialize(CArchive& archive);
+template void CArray<CTertiaryStateRecord, CTertiaryStateRecord&>::Serialize(CArchive& archive);
+template void CArray<CSpellDefinition, CSpellDefinition&>::Serialize(CArchive& archive);
+template void CArray<Spell*, Spell*>::Serialize(CArchive& archive);
+
+template void AFXAPI SerializeElements<Effect*>(CArchive& archive, Effect** elements, int count);
 template void AFXAPI SerializeElements<CQueuedCollectionValue>(
     CArchive& archive,
     CQueuedCollectionValue* elements,
     int count
 );
-template void AFXAPI SerializeElements<CSharedCollectionValue>(
-    CArchive& archive,
-    CSharedCollectionValue* elements,
-    int count
-);
+template void AFXAPI SerializeElements<Item*>(CArchive& archive, Item** elements, int count);
 template void AFXAPI SerializeElements<int>(CArchive& archive, int* elements, int count);
 template void AFXAPI SerializeElements<CLargeCollectionRecord>(
     CArchive& archive,

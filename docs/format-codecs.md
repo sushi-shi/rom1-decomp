@@ -396,6 +396,16 @@ game record names do not survive, so their canonical declarations retain
 opaque storage and explicit identity TODOs rather than borrowing vendor code
 or inventing fields. All twenty move from the target wall to reconstructed.
 
+The corresponding container band at `0x118360`-`0x11ac70` is also byte-exact:
+two `CList` serializers and ten `CArray` serializers. `Token+0x20`, the typed
+reader at `0x101148`, and the shared element serializer at `0x121f20` prove the
+first list as `CList<Effect*, Effect*>`; the reader at `0x107f85`, Item's
+runtime-class record at `0x1c3360`, and `0x122670` prove the second as
+`CList<Item*, Item*>`. The arrays preserve the exact element widths and shared
+identities described above, including `CSpellDefinition` and `Spell*`. These
+are pinned-header MFC template emissions from game-owned declarations, not
+reconstructions of vendor library bodies.
+
 ## Complete first-pass candidate wall
 
 The first-pass retail census is reproducible from two stronger signals than

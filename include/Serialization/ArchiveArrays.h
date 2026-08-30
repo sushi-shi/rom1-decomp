@@ -11,15 +11,7 @@
 // canonical declaration for every distinct recovered identity until stronger
 // field-use evidence supplies semantic names.
 // @identity-TODO: recover the original record names and fields.
-struct CLinkedCollectionValue {
-    BYTE m_bytes[4];
-};
-
 struct CQueuedCollectionValue {
-    BYTE m_bytes[4];
-};
-
-struct CSharedCollectionValue {
     BYTE m_bytes[4];
 };
 
@@ -91,5 +83,21 @@ typedef CArray<WIN32_FIND_DATA, WIN32_FIND_DATA> Win32FindDataArray;
 // @identity-TODO: element use proves pointers, but the pointee identity and
 // complete layout do not survive in the current executable evidence.
 typedef CArray<void*, void*> OpaquePointerArray;
+
+class Effect;
+class Item;
+class Spell;
+struct CSpellDefinition;
+
+typedef CArray<int, int> CSignedIndexArray;
+typedef CArray<CLargeCollectionRecord, CLargeCollectionRecord&> CLargeCollectionRecordArray;
+typedef CArray<CNamedCollectionRecord, CNamedCollectionRecord&> CNamedCollectionRecordArray;
+typedef CArray<CFixedCollectionRecord, CFixedCollectionRecord&> CFixedCollectionRecordArray;
+typedef CArray<CCompactCollectionRecord, CCompactCollectionRecord&> CCompactCollectionRecordArray;
+typedef CArray<CPrimaryStateRecord, CPrimaryStateRecord&> CPrimaryStateRecordArray;
+typedef CArray<CSecondaryStateRecord, CSecondaryStateRecord&> CSecondaryStateRecordArray;
+typedef CArray<CTertiaryStateRecord, CTertiaryStateRecord&> CTertiaryStateRecordArray;
+typedef CArray<CSpellDefinition, CSpellDefinition&> CSpellDefinitionRecordArray;
+typedef CArray<Spell*, Spell*> CSpellPointerArray;
 
 #endif // ROM1_SERIALIZATION_ARCHIVEARRAYS_H

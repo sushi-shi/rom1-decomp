@@ -20,6 +20,7 @@ class Humanoid;
 class Diary;
 class Human;
 class Player;
+class Item;
 struct CTertiaryStateRecord;
 
 void ResolveEffectReference(UINT* value);
@@ -68,6 +69,10 @@ struct CSpellDefinition {
 };
 
 typedef CArray<CSpellDefinition, CSpellDefinition&> CSpellDefinitionArray;
+// Typed archive readers prove the element identities for both four-byte list
+// instantiations in the retail container band.
+typedef CList<Effect*, Effect*> CEffectPointerList;
+typedef CList<Item*, Item*> CItemPointerList;
 
 class Token : public CObject {
 public:
@@ -87,7 +92,7 @@ protected:
     WORD m_value18;
     WORD m_reserved1a;
     UINT m_value1c;
-    BYTE m_reserved20[0x1c];
+    CEffectPointerList m_effects;
 };
 
 // Runtime-class records prove these inheritance edges and complete sizes.
@@ -102,6 +107,19 @@ public:
 
 private:
     BYTE m_state3c[0x08];
+};
+
+// Runtime-class record 0x1c3360 fixes Token as the base and the complete
+// 0x50-byte size. The fields beyond Token remain unrecovered.
+class Item : public Token {
+public:
+    static AFX_DATA CRuntimeClass classItem;
+    virtual void Serialize(CArchive& archive);
+
+    friend CArchive& AFXAPI operator>>(CArchive& archive, Item*& value);
+
+protected:
+    BYTE m_state3c[0x14];
 };
 
 class Unit : public Token {
@@ -326,17 +344,6 @@ public:
 
 private:
     BYTE m_state04[0x94];
-};
-
-class Item : public Token {
-public:
-    static AFX_DATA CRuntimeClass classItem;
-    virtual void Serialize(CArchive& archive);
-
-    friend CArchive& AFXAPI operator>>(CArchive& archive, Item*& value);
-
-protected:
-    BYTE m_state3c[0x14];
 };
 
 class Armor : public Item {

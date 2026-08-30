@@ -156,18 +156,18 @@ rva	signals	status	note
 0x111b35	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Armor
 0x111ba2	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=VirtualCaster
 0x114520	archive-write	reconstructed	exact VC5 SP2 CArchive const-CObject insertion COMDAT emitted by Spell serializer TU
-0x118360	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x118810	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x118b50	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x118ef0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x1192b0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x119650	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x119a10	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x119db0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x11a170	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x11a530	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x11a8d0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x11ac70	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x118360	archive-read,archive-vslot2,archive-write	reconstructed	exact CList<Effect*, Effect*> serializer; Token+0x20 owner and typed Effect archive reader; 100%
+0x118810	archive-read,archive-vslot2,archive-write	reconstructed	exact CList<Item*, Item*> serializer; typed Item archive reader and CRuntimeClass record; 100%
+0x118b50	archive-read,archive-vslot2,archive-write	reconstructed	exact signed-index CArray serializer; 100%
+0x118ef0	archive-read,archive-vslot2,archive-write	reconstructed	exact 0x68-record CArray serializer; 100%
+0x1192b0	archive-read,archive-vslot2,archive-write	reconstructed	exact 0x3c-record CArray serializer; 100%
+0x119650	archive-read,archive-vslot2,archive-write	reconstructed	exact 0x40-record CArray serializer; 100%
+0x119a10	archive-read,archive-vslot2,archive-write	reconstructed	exact primary 0x1c-record CArray serializer; 100%
+0x119db0	archive-read,archive-vslot2,archive-write	reconstructed	exact primary 0x30-record CArray serializer; 100%
+0x11a170	archive-read,archive-vslot2,archive-write	reconstructed	exact secondary 0x30-record CArray serializer; 100%
+0x11a530	archive-read,archive-vslot2,archive-write	reconstructed	exact tertiary 0x1c-record CArray serializer; 100%
+0x11a8d0	archive-read,archive-vslot2,archive-write	reconstructed	exact CSpellDefinition CArray serializer; 100%
+0x11ac70	archive-read,archive-vslot2,archive-write	reconstructed	exact Spell-pointer CArray serializer; 100%
 0x11ae60	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x11b090	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x11b240	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject

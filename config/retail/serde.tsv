@@ -104,9 +104,21 @@ archive-array	0x04a2c0	CStringArray-pointer element serializer	exact	100%; exact
 archive-array	0x04a5b0	three-CString-record-pointer element serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation
 archive-array	0x04a950	WIN32_FIND_DATA element serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation
 archive-array	0x04ac10	opaque-pointer element serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation
-archive-array	0x121f20	linked-collection element serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation, four-byte opaque value
+archive-container	0x118360	Effect-pointer CList serializer	exact	100%; Token+0x20 owner, typed Effect reader, and exact count/element topology
+archive-container	0x118810	Item-pointer CList serializer	exact	100%; typed Item reader, runtime-class record, and exact count/element topology
+archive-array	0x118b50	signed-index CArray serializer	exact	100%; exact count, resize, and raw int element topology
+archive-array	0x118ef0	0x68-record CArray serializer	exact	100%; exact count, resize, and raw record topology
+archive-array	0x1192b0	0x3c-record CArray serializer	exact	100%; exact count, resize, and raw record topology
+archive-array	0x119650	0x40-record CArray serializer	exact	100%; exact count, resize, and raw record topology
+archive-array	0x119a10	primary 0x1c-record CArray serializer	exact	100%; exact count, resize, and raw record topology
+archive-array	0x119db0	primary 0x30-record CArray serializer	exact	100%; exact count, resize, and raw record topology
+archive-array	0x11a170	secondary 0x30-record CArray serializer	exact	100%; exact count, resize, and raw record topology
+archive-array	0x11a530	tertiary 0x1c-record CArray serializer	exact	100%; exact count, resize, and raw record topology
+archive-array	0x11a8d0	CSpellDefinition CArray serializer	exact	100%; exact count, resize, and raw 0x20-byte record topology
+archive-array	0x11ac70	Spell-pointer CArray serializer	exact	100%; exact count, resize, and raw pointer topology
+archive-array	0x121f20	Effect-pointer element serializer	exact	100%; parent list and typed Effect reader prove the four-byte pointer identity
 archive-array	0x1222e0	queued-collection element serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation, four-byte opaque value
-archive-array	0x122670	list/array-shared element serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation, four-byte opaque value
+archive-array	0x122670	Item-pointer element serializer	exact	100%; parent list and Item runtime-class reader prove the four-byte pointer identity
 archive-array	0x1227a0	shared signed-index serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H int instantiation
 archive-array	0x122920	large collection-record serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation, 0x68-byte stride
 archive-array	0x122b30	named collection-record serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation, 0x3c-byte stride
