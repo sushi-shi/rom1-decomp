@@ -51,7 +51,7 @@ referencesnapshot	1	1
 referenceworld	18	17
 resourcefile	6	3
 scenarioconfig	1	1
-scenarioobjectmap	1	0
+scenarioobjectmap	9	3
 scenariosupport	41	12
 smackerplayer	7	7
 spellobjects	65	62
@@ -342,7 +342,15 @@ resourcefile	?DisableResource@CResourceManager@@QAEXPAD@Z	100.0000	100.0000	1	02
 resourcefile	?ReadUpdateList@@YAXPBD@Z	100.0000	100.0000	1	dd1440e618b6	0xc99f0	100.0000	
 resourcefile	?Release@CResourceManager@@QAEXPAVCObject@@@Z	98.1579	98.1579	1	286b758a1453	0xc9d80	98.1579	
 scenarioconfig	?GetMissionObjectCount@@YGHH@Z	100.0000	100.0000	2	611c81017e31	0x878a0	100.0000	
+scenarioobjectmap	??0CMissionDescriptionSection@@QAE@ABVCString@@@Z	99.7000	99.7000	1	27b0d15bc40d	0xe077d	99.7000	
+scenarioobjectmap	??1CMissionDescriptionSection@@UAE@XZ	99.8000	99.8000	1	cpp:c10100751d23	0x1154b0	99.8000	
+scenarioobjectmap	??_GCMissionDescriptionSection@@UAEPAXI@Z	99.7059	99.7059	1	cpp:c10100751d23	0x115480	99.7059	
+scenarioobjectmap	?AddLine@CMissionDescriptionSection@@QAEXABVCString@@@Z	100.0000	100.0000	1	43c26556cbdf	0x115550	100.0000	
+scenarioobjectmap	?GetAt@CString@@QBEDH@Z	100.0000	100.0000	1	cpp:c10100751d23	0xc7ec0	100.0000	
+scenarioobjectmap	?GetSize@CStringArray@@QBEHXZ	100.0000	100.0000	1	cpp:c10100751d23	0x479b0	100.0000	
+scenarioobjectmap	?LoadMissionDescriptions@CScenarioObjectMap@@QAEHABVCString@@@Z	99.4332	99.4332	1	585140edbc28	0xe0b06	99.4332	
 scenarioobjectmap	?Rebuild@CScenarioObjectMap@@QAEXPAVCScenarioResource@@H@Z	0.4425	0.4425	2	88343f55c8ae	0xe358b	0.4425	
+scenarioobjectmap	?SetAt@CMapStringToPtr@@QAEXPBDPAX@Z	99.6154	99.6154	1	cpp:c10100751d23	0x115530	99.6154	
 scenariosupport	??0CScenarioPrimary@@QAE@XZ	79.5000	79.5000	2	36308379d4b2	0x11005d	79.5000	
 scenariosupport	??0CScenarioResource@@QAE@PBD@Z	0.4616	0.4616	1	1ed37a3f8128	0x1123c8	0.4616	
 scenariosupport	??0CScenarioSecondary@@QAE@XZ	76.1539	76.1539	2	d77d23e16676	0x110216	76.1539	

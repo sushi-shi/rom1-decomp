@@ -207,12 +207,30 @@ private:
     BYTE m_reservedc2ac[0x0074];
 };
 
+// A mission-description section owns the bracketed section name and the
+// non-comment lines that follow it.  The CObject base and member offsets are
+// fixed by the constructor/destructor and collection calls in retail.
+class CMissionDescriptionSection : public CObject {
+public:
+    CMissionDescriptionSection(const CString& heading);
+
+    void AddLine(const CString& line);
+
+    CString m_name;
+
+private:
+    CStringArray m_lines;
+};
+
 class CScenarioObjectMap {
 public:
+    int LoadMissionDescriptions(const CString& path);
     void Rebuild(CScenarioResource* resource, BOOL preserveState);
 
 private:
-    BYTE m_state[0x3c];
+    BYTE m_reserved00[4];
+    CMapStringToPtr m_descriptions;
+    BYTE m_reserved20[0x1c];
 };
 
 class CReferenceSnapshot {
@@ -254,7 +272,8 @@ public:
     UINT m_value140;
     UINT m_value144;
     UINT m_value148;
-    BYTE m_reserved14c[0x24];
+    BOOL m_descriptionNeedsDefaults;
+    BYTE m_reserved150[0x20];
     CString m_serverStateLine;
 };
 

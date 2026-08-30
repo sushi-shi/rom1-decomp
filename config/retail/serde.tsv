@@ -31,6 +31,7 @@ bitmap	0x0296f0	write CBmp64k pixels and optional plane	exact	100%; raw BMP head
 scenario	0x0d0c97	bidirectional CArchive serializer	exact	100%; exact 0x94b extent + 112 ordered relocations + save/load wrapper calls
 server-state	0x0d15e2	write configured state file	exact	100%; writes the saved state line followed by the unattached-world-object count
 string-record-file	0x0d1783	read four-line text records	reconstructed	99.63%; joins the first two lines with byte 0x01 and discards the next two; sole residual is the ambiguous exact CRT strcpy provider label
+mission-description	0x0e0b06	read bracketed description sections	reconstructed	99.43%; skips blank/comment lines, maps bracketed section names to ordered text lines, and retains exact retail error returns
 scenario	0x13e840	raw 0x190-byte snapshot serializer	exact	100%; exact CArchive Read/Write branches reached by the scenario serializer tail
 world-map	0x141c90	tile-digit table loader	near-exact	99.98%; source-complete CFile load and 256-byte-row update loops, sole two-load scheduling residue
 dib-bmp	0x04add0	typed CDib archive reader	exact	100%; IMPLEMENT_SERIAL runtime-class record + CArchive::ReadObject

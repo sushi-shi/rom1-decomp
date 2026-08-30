@@ -702,6 +702,18 @@ resolve to the exact retail CRT body at `0x154650`, whose `_strcpy` and
 `_mbscpy` identities collide. The static-library ledger therefore preserves
 that ambiguity instead of promoting either name, and no CRT body is copied.
 
+The game-owned mission-description reader at `0x0e0b06` opens its input as
+deny-write text, scans to the first bracketed heading, and stores each heading
+without its brackets. Lines shorter than two characters and lines beginning
+with `;` are ignored; every other line is appended in order to the current
+section. A file-open failure returns zero, EOF before the first heading returns
+one, and normal completion returns zero after logging the loaded path. The
+recovered body has the retail 187 instructions, 31 calls, 18 branches, and 35
+ordered relocations. Its 99.43% residual consists of two interchangeable local
+slots and intentionally unclaimed executable labels for `CObject` allocation
+and the existing game logger. The pinned-header CString/CStringArray accessors
+emitted by this game TU are exact; no MFC implementation body is reproduced.
+
 The world-map serializer at `0x144aa0` is source-complete at 84.81%. Its store
 arm scans tile indices `0x0807` through `0xeded`, packs exceptional high-byte
 tiles as index/high/low DWORDs, then serializes the list, an embedded
