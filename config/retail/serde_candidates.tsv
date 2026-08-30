@@ -64,8 +64,8 @@ rva	signals	status	note
 0x0998c0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x099c20	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x09e710	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x0ae2e0	archive-read,archive-write	target	initial retail call/vtable census
-0x0ae3b0	archive-read,archive-write	target	initial retail call/vtable census
+0x0ae2e0	archive-read,archive-write	reconstructed	exact four-byte raw SerializeElements instantiation for first neighboring CArray cluster; 100%
+0x0ae3b0	archive-read,archive-write	reconstructed	exact four-byte raw SerializeElements instantiation for second neighboring CArray cluster; 100%
 0x0b0010	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x0b39b0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x0c6047	stdio-read	target	initial retail call/vtable census

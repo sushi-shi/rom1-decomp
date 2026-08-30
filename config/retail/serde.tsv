@@ -81,6 +81,8 @@ bute-resource	0x0878a0	read mission map-object count	exact	100%; Scenario\\Globa
 bute-resource	0x08a330	read mission map picture metadata	located	Scenario\\GlobalMap.reg + MapObject%d Picture/PictureOffset field reads
 archive-primitive	0x049770	CArchive IsStoring predicate	exact	100%; exact VC5 SP2 AFX.INL COMDAT instruction extent
 archive-primitive	0x114520	CArchive const-CObject insertion operator	exact	100%; exact VC5 SP2 AFX.INL COMDAT emitted by Spell serializer TU
+archive-element	0x0ae2e0	first opaque four-byte element serializer	exact	100%; exact pinned-header SerializeElements instantiation
+archive-element	0x0ae3b0	second opaque four-byte element serializer	exact	100%; exact pinned-header SerializeElements instantiation
 archive-array	0x049700	CStringArray-pointer CArray serializer	exact	100%; WriteCount/ReadCount + SetSize + raw pointer words
 archive-array	0x0498d0	three-CString-record-pointer CArray serializer	exact	100%; WriteCount/ReadCount + SetSize + raw pointer words
 archive-array	0x049ba0	WIN32_FIND_DATA CArray serializer	exact	100%; WriteCount/ReadCount + SetSize + raw 0x140-byte records

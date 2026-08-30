@@ -380,6 +380,12 @@ array persists complete records. All 21 emitted bodies in the recovered array
 unit, including resize, construction, destruction, and placement-`new`
 support, are byte-exact.
 
+Two additional `SerializeElements` bodies at `0x0ae2e0` and `0x0ae3b0` are
+also byte-exact. Neighboring `CArray` methods prove distinct four-byte element
+types but preserve neither original name nor member identity, so the source
+models two evidence-neutral four-byte records. These are natural template
+instantiations from the pinned MFC header, not reconstructed library bodies.
+
 ## Complete first-pass candidate wall
 
 The first-pass retail census is reproducible from two stronger signals than

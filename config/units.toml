@@ -89,6 +89,11 @@ source = "src/Serialization/ArchiveArrays.cpp"
 flags = "cpp-od"
 
 [[unit]]
+unit = "archiveelements"
+source = "src/Serialization/ArchiveElements.cpp"
+flags = "cpp-od"
+
+[[unit]]
 unit = "spellobjects"
 source = "src/Serialization/SpellObjects.cpp"
 flags = "cpp-od"

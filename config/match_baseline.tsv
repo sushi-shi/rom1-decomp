@@ -33,6 +33,7 @@
 # Query: python3 -m rom1.verify status | check | bank
 # [units]	unit	n_functions	matched
 archivearrays	21	21
+archiveelements	2	2
 archiveobjects	12	12
 butemgr	14	11
 bytehuffman	16	15
@@ -78,6 +79,8 @@ archivearrays	?SetSize@?$CArray@PAVCStringArray@@PAV1@@@QAEXHH@Z	100.0000	100.00
 archivearrays	?SetSize@?$CArray@PAVCStringTriple@@PAV1@@@QAEXHH@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4a300	100.0000	
 archivearrays	?SetSize@?$CArray@PAXPAX@@QAEXHH@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4a9a0	100.0000	
 archivearrays	?SetSize@?$CArray@U_WIN32_FIND_DATAA@@U1@@@QAEXHH@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4a670	100.0000	
+archiveelements	?SerializeElements@@YGXAAVCArchive@@PAUCArchiveElement4Primary@@H@Z	100.0000	100.0000	1	cpp:39e510a4ede1	0xae2e0	100.0000	
+archiveelements	?SerializeElements@@YGXAAVCArchive@@PAUCArchiveElement4Secondary@@H@Z	100.0000	100.0000	1	cpp:39e510a4ede1	0xae3b0	100.0000	
 archiveobjects	??ACStringArray@@QAEAAVCString@@H@Z	100.0000	100.0000	1	cpp:2746b765bc49	0x47a80	100.0000	
 archiveobjects	?ElementAt@CStringArray@@QAEAAVCString@@H@Z	100.0000	100.0000	1	cpp:2746b765bc49	0x47aa0	100.0000	
 archiveobjects	?IsStoring@CArchive@@QBEHXZ	100.0000	100.0000	1	cpp:0fc8afb2c768	0x49770	100.0000	
