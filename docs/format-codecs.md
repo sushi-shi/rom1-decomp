@@ -386,6 +386,16 @@ types but preserve neither original name nor member identity, so the source
 models two evidence-neutral four-byte records. These are natural template
 instantiations from the pinned MFC header, not reconstructed library bodies.
 
+Twenty additional game-owned `SerializeElements` instantiations at
+`0x121f20`-`0x1247a0` are byte-exact under the same pinned header. Their raw
+strides are independently fixed by retail as 2, 4, 0x1c, 0x20, 0x30, 0x3c,
+0x40, or 0x68 bytes, and every body has the exact ordered `IsStoring`, `Write`,
+and `Read` referents. Container sharing and existing source usage recover
+`int`, `WORD`, `CSpellDefinition`, and `Spell*` identities. The remaining
+game record names do not survive, so their canonical declarations retain
+opaque storage and explicit identity TODOs rather than borrowing vendor code
+or inventing fields. All twenty move from the target wall to reconstructed.
+
 ## Complete first-pass candidate wall
 
 The first-pass retail census is reproducible from two stronger signals than

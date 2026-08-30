@@ -104,6 +104,26 @@ archive-array	0x04a2c0	CStringArray-pointer element serializer	exact	100%; exact
 archive-array	0x04a5b0	three-CString-record-pointer element serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation
 archive-array	0x04a950	WIN32_FIND_DATA element serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation
 archive-array	0x04ac10	opaque-pointer element serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation
+archive-array	0x121f20	linked-collection element serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation, four-byte opaque value
+archive-array	0x1222e0	queued-collection element serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation, four-byte opaque value
+archive-array	0x122670	list/array-shared element serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation, four-byte opaque value
+archive-array	0x1227a0	shared signed-index serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H int instantiation
+archive-array	0x122920	large collection-record serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation, 0x68-byte stride
+archive-array	0x122b30	named collection-record serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation, 0x3c-byte stride
+archive-array	0x122d90	fixed collection-record serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation, 0x40-byte stride
+archive-array	0x122f10	compact collection-record serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation, 0x1c-byte stride
+archive-array	0x123110	primary state-record serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation, 0x30-byte stride
+archive-array	0x123310	secondary state-record serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation, 0x30-byte stride
+archive-array	0x123490	tertiary state-record serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation, 0x1c-byte stride
+archive-array	0x123680	CSpellDefinition element serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation, 0x20-byte stride
+archive-array	0x123760	Spell-pointer element serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation, raw pointer words
+archive-array	0x123a50	collection-handle element serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation, four-byte opaque value
+archive-array	0x123ba0	WORD element serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation, two-byte stride
+archive-array	0x123e00	shared map-value serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation, four-byte opaque value
+archive-array	0x1240e0	map-object serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation, four-byte opaque value
+archive-array	0x124440	map-record serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation, four-byte opaque value
+archive-array	0x1245e0	map-family-shared serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation, four-byte opaque value
+archive-array	0x1247a0	map-tail serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation, four-byte opaque value
 archive-object	0x0df278	TableLine CString and nested-object serializer	exact	100%; runtime class + vtable slot 2 + exact archive operator call topology
 archive-object	0x0df2c6	TableLine five-WORD block and nested CStringArray serializer	exact	100%; constructor offsets + raw 10-byte archive calls + nested virtual dispatch
 archive-object	0x0df322	TableLine-named raw 72-byte block serializer	exact	100%; CString at +0x04 + exact 0x48-byte archive extent at +0x20

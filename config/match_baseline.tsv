@@ -32,7 +32,7 @@
 #              emitter resumes from it instead of forgetting proven work).
 # Query: python3 -m rom1.verify status | check | bank
 # [units]	unit	n_functions	matched
-archivearrays	21	21
+archivearrays	41	41
 archiveelements	2	2
 archiveobjects	12	12
 butemgr	14	11
@@ -71,9 +71,29 @@ archivearrays	?Serialize@?$CArray@PAVCStringArray@@PAV1@@@UAEXAAVCArchive@@@Z	10
 archivearrays	?Serialize@?$CArray@PAVCStringTriple@@PAV1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:1de664a95104	0x498d0	100.0000	
 archivearrays	?Serialize@?$CArray@PAXPAX@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:1de664a95104	0x49ca0	100.0000	
 archivearrays	?Serialize@?$CArray@U_WIN32_FIND_DATAA@@U1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:1de664a95104	0x49ba0	100.0000	
+archivearrays	?SerializeElements@@YGXAAVCArchive@@PAGH@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x123ba0	100.0000	
+archivearrays	?SerializeElements@@YGXAAVCArchive@@PAHH@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x1227a0	100.0000	
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAPAVCStringArray@@H@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4a2c0	100.0000	
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAPAVCStringTriple@@H@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4a5b0	100.0000	
+archivearrays	?SerializeElements@@YGXAAVCArchive@@PAPAVSpell@@H@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x123760	100.0000	
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAPAXH@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4ac10	100.0000	
+archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCCollectionHandle@@H@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x123a50	100.0000	
+archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCCompactCollectionRecord@@H@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x122f10	100.0000	
+archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCFixedCollectionRecord@@H@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x122d90	100.0000	
+archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCLargeCollectionRecord@@H@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x122920	100.0000	
+archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCLinkedCollectionValue@@H@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x121f20	100.0000	
+archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCMapObjectHandle@@H@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x1240e0	100.0000	
+archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCMapRecordHandle@@H@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x124440	100.0000	
+archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCMapTailHandle@@H@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x1247a0	100.0000	
+archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCMapValueHandle@@H@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x123e00	100.0000	
+archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCNamedCollectionRecord@@H@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x122b30	100.0000	
+archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCPrimaryStateRecord@@H@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x123110	100.0000	
+archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCQueuedCollectionValue@@H@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x1222e0	100.0000	
+archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCSecondaryStateRecord@@H@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x123310	100.0000	
+archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCSharedCollectionValue@@H@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x122670	100.0000	
+archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCSharedMapHandle@@H@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x1245e0	100.0000	
+archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCSpellDefinition@@H@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x123680	100.0000	
+archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCTertiaryStateRecord@@H@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x123490	100.0000	
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAU_WIN32_FIND_DATAA@@H@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4a950	100.0000	
 archivearrays	?SetSize@?$CArray@PAVCStringArray@@PAV1@@@QAEXHH@Z	100.0000	100.0000	1	cpp:1de664a95104	0x49420	100.0000	
 archivearrays	?SetSize@?$CArray@PAVCStringTriple@@PAV1@@@QAEXHH@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4a300	100.0000	

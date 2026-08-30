@@ -200,27 +200,27 @@ rva	signals	status	note
 0x120540	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x120870	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x121350	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x121f20	archive-read,archive-write	target	initial retail call/vtable census
+0x121f20	archive-read,archive-write	reconstructed	exact linked-collection element SerializeElements instantiation
 0x122020	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x1222e0	archive-read,archive-write	target	initial retail call/vtable census
-0x122670	archive-read,archive-write	target	initial retail call/vtable census
-0x1227a0	archive-read,archive-write	target	initial retail call/vtable census
-0x122920	archive-read,archive-write	target	initial retail call/vtable census
-0x122b30	archive-read,archive-write	target	initial retail call/vtable census
-0x122d90	archive-read,archive-write	target	initial retail call/vtable census
-0x122f10	archive-read,archive-write	target	initial retail call/vtable census
-0x123110	archive-read,archive-write	target	initial retail call/vtable census
-0x123310	archive-read,archive-write	target	initial retail call/vtable census
-0x123490	archive-read,archive-write	target	initial retail call/vtable census
-0x123680	archive-read,archive-write	target	initial retail call/vtable census
-0x123760	archive-read,archive-write	target	initial retail call/vtable census
-0x123a50	archive-read,archive-write	target	initial retail call/vtable census
-0x123ba0	archive-read,archive-write	target	initial retail call/vtable census
-0x123e00	archive-read,archive-write	target	initial retail call/vtable census
-0x1240e0	archive-read,archive-write	target	initial retail call/vtable census
-0x124440	archive-read,archive-write	target	initial retail call/vtable census
-0x1245e0	archive-read,archive-write	target	initial retail call/vtable census
-0x1247a0	archive-read,archive-write	target	initial retail call/vtable census
+0x1222e0	archive-read,archive-write	reconstructed	exact queued-collection element SerializeElements instantiation
+0x122670	archive-read,archive-write	reconstructed	exact list/array-shared element SerializeElements instantiation
+0x1227a0	archive-read,archive-write	reconstructed	exact shared signed-index SerializeElements instantiation
+0x122920	archive-read,archive-write	reconstructed	exact 0x68-byte record SerializeElements instantiation
+0x122b30	archive-read,archive-write	reconstructed	exact 0x3c-byte record SerializeElements instantiation
+0x122d90	archive-read,archive-write	reconstructed	exact 0x40-byte record SerializeElements instantiation
+0x122f10	archive-read,archive-write	reconstructed	exact 0x1c-byte record SerializeElements instantiation
+0x123110	archive-read,archive-write	reconstructed	exact primary 0x30-byte record SerializeElements instantiation
+0x123310	archive-read,archive-write	reconstructed	exact secondary 0x30-byte record SerializeElements instantiation
+0x123490	archive-read,archive-write	reconstructed	exact tertiary 0x1c-byte record SerializeElements instantiation
+0x123680	archive-read,archive-write	reconstructed	exact CSpellDefinition SerializeElements instantiation
+0x123760	archive-read,archive-write	reconstructed	exact Spell-pointer SerializeElements instantiation
+0x123a50	archive-read,archive-write	reconstructed	exact collection-handle SerializeElements instantiation
+0x123ba0	archive-read,archive-write	reconstructed	exact WORD SerializeElements instantiation
+0x123e00	archive-read,archive-write	reconstructed	exact shared map-value SerializeElements instantiation
+0x1240e0	archive-read,archive-write	reconstructed	exact map-object SerializeElements instantiation
+0x124440	archive-read,archive-write	reconstructed	exact map-record SerializeElements instantiation
+0x1245e0	archive-read,archive-write	reconstructed	exact map-family-shared SerializeElements instantiation
+0x1247a0	archive-read,archive-write	reconstructed	exact map-tail SerializeElements instantiation
 0x124bc0	archive-read,archive-write	reconstructed	source-owned MFC SerializeElements<DWORD> instantiation; 40.57% compiler-context residual
 0x124c00	archive-read,archive-write	target	initial retail call/vtable census
 0x1250a0	archive-read,archive-write	target	initial retail call/vtable census
