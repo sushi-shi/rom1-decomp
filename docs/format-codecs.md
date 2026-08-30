@@ -476,6 +476,17 @@ the remaining `Effect_DirectDamage` overload. Every function is the same
 referent. The opaque class tails preserve only the proven layouts until their
 serializers recover individual fields.
 
+The `0x8a8`-byte `Unit::Serialize` body at `0x110577` is now source-complete.
+Its 661 instructions, 117 calls, 12 branches, and 114 ordered relocations all
+agree with retail, and relocation-masked bytes are identical. The reported
+99.99% residual is only the unresolved name of the allocation target at
+`0x231d0`: source emits `CObject::operator new`, while retail retains an
+unclaimed function identity. No vendor body or static-library attribution is
+admitted from that call alone. The reconstruction preserves the exact
+`Humanoid::Serialize` derived body and adds the exact game-owned Unit item-list
+serializer; the paired Effect*/Item* archive-list template instantiations are
+source-complete with only their still-unclaimed MFC helper referents remaining.
+
 `Building::Serialize` and its `Tavern` and `Shop` overrides are byte-exact.
 The base preserves the existing Token stream, a shared 22-byte embedded
 record, byte/short/DWORD fields, and a load-time pointer into the retail-proven

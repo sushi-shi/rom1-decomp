@@ -11,6 +11,7 @@
 #include <afxtempl.h>
 
 class Spell;
+class Spellbook;
 class SpellEffect;
 class PointEffect;
 class AreaEffect;
@@ -22,6 +23,9 @@ class Diary;
 class Human;
 class Player;
 class Item;
+class CUnitRawArchiveRecord;
+class CWordListRecordLarge;
+struct CPrimaryStateRecord;
 struct CTertiaryStateRecord;
 
 void ResolveEffectReference(UINT* value);
@@ -75,10 +79,50 @@ typedef CArray<CSpellDefinition, CSpellDefinition&> CSpellDefinitionArray;
 typedef CList<Effect*, Effect*> CEffectPointerList;
 typedef CList<Item*, Item*> CItemPointerList;
 
+// The game-owned pointer-list wrapper is a template: the Effect* and Item*
+// instantiations have identical storage, control flow, and paired compiler
+// helper emissions in retail.  Its original identifier has not survived.
+template<class TYPE> class CArchivePointerList {
+public:
+    void Serialize(CArchive& archive);
+
+private:
+    CList<TYPE, TYPE> m_items;
+};
+
+typedef CArchivePointerList<Effect*> CEffectArchiveList;
+typedef CArchivePointerList<Item*> CItemArchiveList;
+
+// Unit owns this separately allocated extension of the item archive list.
+// Its constructor and serializer fix the 0x24-byte allocation and trailing
+// two DWORDs; no original class name survives.
+class CUnitItemList {
+public:
+    void Serialize(CArchive& archive);
+
+private:
+    CItemArchiveList m_items;
+    UINT m_value1c;
+    UINT m_value20;
+};
+
 class Token : public CObject {
 public:
     static AFX_DATA CRuntimeClass classToken;
     virtual void Serialize(CArchive& archive);
+
+    // Token's retail vtable introduces slots 5-13.  Their semantic names and
+    // all but slot 12's return type remain unidentified; retain neutral names
+    // so calls through the proven slot keep the recovered class shape.
+    virtual void TokenVirtual05();
+    virtual void TokenVirtual06();
+    virtual void TokenVirtual07();
+    virtual void TokenVirtual08();
+    virtual void TokenVirtual09();
+    virtual void TokenVirtual10();
+    virtual void TokenVirtual11();
+    virtual BOOL TokenVirtual12();
+    virtual void TokenVirtual13();
 
     friend CArchive& AFXAPI operator>>(CArchive& archive, Token*& value);
 
@@ -93,7 +137,7 @@ protected:
     WORD m_value18;
     WORD m_reserved1a;
     UINT m_value1c;
-    CEffectPointerList m_effects;
+    CEffectArchiveList m_effects;
 };
 
 // Runtime-class records prove these inheritance edges and complete sizes.
@@ -129,11 +173,76 @@ class Unit : public Token {
 public:
     static AFX_DATA CRuntimeClass classUnit;
     virtual void Serialize(CArchive& archive);
+    virtual BOOL TokenVirtual12();
 
     friend CArchive& AFXAPI operator>>(CArchive& archive, Unit*& value);
 
 protected:
-    BYTE m_state3c[0x15c];
+    CPrimaryStateRecord* m_state3c;
+    UINT m_reference40;
+    UINT m_reference44;
+    char m_value48;
+    BYTE m_values49[4];
+    BYTE m_reserved4d[3];
+    BYTE m_raw50[4];
+    BYTE m_raw54[4];
+    BYTE m_raw58[4];
+    UINT m_reference5c;
+    BYTE m_value60;
+    BYTE m_value61;
+    BYTE m_reserved62[2];
+    UINT m_reference64;
+    Item* m_item68;
+    char m_value6c;
+    BYTE m_reserved6d[3];
+    UINT m_value70;
+    Item* m_item74;
+    Item* m_item78;
+    CUnitItemList* m_itemList7c;
+    CString m_value80;
+    short m_value84;
+    short m_value86;
+    short m_value88;
+    short m_value8a;
+    short m_value8c;
+    short m_value8e;
+    short m_value90;
+    short m_value92;
+    short m_value94;
+    short m_value96;
+    short m_value98;
+    short m_value9a;
+    short m_value9c;
+    short m_value9e;
+    short m_valuea0;
+    BYTE m_valuea2;
+    BYTE m_valuea3;
+    WORD m_valuea4;
+    CDirectDamagePayload m_damagea6;
+    CSharedArchiveBlock m_sharedbe;
+    CUnitArchiveBlock m_blockd4;
+    CDirectDamagePayload m_damage114;
+    BYTE m_value12c;
+    BYTE m_reserved12d[3];
+    UINT m_value130;
+    BYTE m_value134;
+    BYTE m_value135;
+    BYTE m_value136;
+    BYTE m_reserved137;
+    UINT m_value138;
+    BYTE m_value13c;
+    BYTE m_reserved13d[3];
+    Spellbook* m_spellbook140;
+    UINT m_value144;
+    UINT m_value148;
+    BYTE m_value14c;
+    BYTE m_reserved14d[3];
+    UINT m_value150;
+    CUnitRawArchiveRecord* m_raw154;
+    CWordListRecordLarge* m_words158;
+    CList<WORD, WORD> m_words15c;
+    CList<WORD, WORD> m_words178;
+    UINT m_value194;
 };
 
 class Humanoid : public Unit {
@@ -421,6 +530,7 @@ private:
 class Spellbook : public CObject {
 public:
     static AFX_DATA CRuntimeClass classSpellbook;
+    Spellbook();
     virtual void Serialize(CArchive& archive);
 
     friend CArchive& AFXAPI operator>>(CArchive& archive, Spellbook*& value);
@@ -429,5 +539,25 @@ private:
     CArray<Spell*, Spell*> m_spells;
     UINT m_value18;
 };
+
+template<class TYPE> void CArchivePointerList<TYPE>::Serialize(CArchive& archive) {
+    if (archive.IsStoring()) {
+        POSITION position = m_items.GetHeadPosition();
+        archive << static_cast<UINT>(m_items.GetCount());
+        while (position != 0) {
+            TYPE value = m_items.GetNext(position);
+            archive << value;
+        }
+    } else {
+        m_items.RemoveAll();
+        UINT count;
+        archive >> count;
+        for (int i = 0; i < static_cast<int>(count); i++) {
+            TYPE value = 0;
+            archive >> value;
+            m_items.AddTail(value);
+        }
+    }
+}
 
 #endif // ROM1_SERIALIZATION_SPELLOBJECTS_H

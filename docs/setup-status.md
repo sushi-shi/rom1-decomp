@@ -90,6 +90,13 @@ three VC5 archive/array COMDAT seams required by those source forms. A mapped
 retail oracle validates all six distinct derived layouts in both archive modes,
 and an independent `no_std` Rust codec preserves the bounded field grammar.
 
+The large game-owned `Unit::Serialize` campaign is also source-complete:
+retail and source agree on its full `0x8a8`-byte extent, instruction/call/
+branch counts, ordered relocation count, and all relocation-masked bytes. Its
+99.99% score is a single referent-name residual for the unclaimed retail
+`CObject::operator new` target, which is deliberately not promoted as vendor
+code without archive authority. `Humanoid::Serialize` remains exact.
+
 The vtable catalog joins two independent executable witnesses: 417 tables from
 relocated text-pointer runs split by RTTI/code vptr references, plus eight
 `GetRuntimeClass` tables whose first relocation site was absent from the

@@ -48,7 +48,7 @@ referenceworld	4	4
 resourcefile	6	3
 scenarioconfig	1	1
 scenarioobjectmap	1	0
-scenariosupport	17	4
+scenariosupport	24	5
 smackerplayer	7	7
 spellobjects	64	61
 tokenpayload	16	9
@@ -296,17 +296,24 @@ scenariosupport	??0CScenarioPrimary@@QAE@XZ	79.5000	79.5000	2	36308379d4b2	0x110
 scenariosupport	??0CScenarioResource@@QAE@PBD@Z	0.4616	0.4616	1	1ed37a3f8128	0x1123c8	0.4616	
 scenariosupport	??0CScenarioSecondary@@QAE@XZ	76.1539	76.1539	2	d77d23e16676	0x110216	76.1539	
 scenariosupport	??0CScenarioTertiary@@QAE@XZ	39.7500	39.7500	2	ad8806bb268c	0x114570	39.7500	
+scenariosupport	??0Spellbook@@QAE@XZ	72.4242	72.4242	1	2f056b88659b	0x1149c0	72.4242	
 scenariosupport	??1CScenarioResource@@QAE@XZ	2.2821	2.2821	2	4fb6f36473ce	0x11396f	2.2821	
+scenariosupport	??5CArchive@@QAEAAV0@AAD@Z	61.1111	61.1111	1	cpp:2cfd4c1e83a4	0x118060	61.1111	
+scenariosupport	??6CArchive@@QAEAAV0@D@Z	61.1111	61.1111	1	cpp:2cfd4c1e83a4	0x118040	61.1111	
+scenariosupport	??A?$CArray@UCPrimaryStateRecord@@AAU1@@@QAEAAUCPrimaryStateRecord@@H@Z	60.8333	60.8333	1	cpp:2cfd4c1e83a4	0x119d10	60.8333	
 scenariosupport	?Activate@CScenarioSecondary@@UAEXXZ	20.6452	20.6452	2	e6039319b895	0x111531	20.6452	
 scenariosupport	?MarkTokenIdSeen@@YAXG@Z	100.0000	100.0000	1	2f6888bc142d	0xd9f67	100.0000	
 scenariosupport	?Remove@CWorldItemManager@@QAEXPAVCWorldItem@@@Z	53.3333	53.3333	1	a4e6cc213226	0x10fc4d	53.3333	
+scenariosupport	?Serialize@?$CArchivePointerList@PAVEffect@@@@QAEXAAVCArchive@@@Z	97.9000	97.9000	1	cpp:2cfd4c1e83a4	0x118520	97.9000	
+scenariosupport	?Serialize@?$CArchivePointerList@PAVItem@@@@QAEXAAVCArchive@@@Z	97.9000	97.9000	1	cpp:2cfd4c1e83a4	0x118990	97.9000	
 scenariosupport	?Serialize@CScenarioPrimary@@QAEXAAVCArchive@@@Z	58.1818	58.1818	1	4f5d3fde45db	0x11033a	58.1818	
 scenariosupport	?Serialize@CScenarioSecondary@@QAEXAAVCArchive@@@Z	53.3333	53.3333	1	4449a1baaa1a	0x111515	53.3333	
 scenariosupport	?Serialize@CScenarioTertiary@@QAEXAAVCArchive@@@Z	58.1818	58.1818	1	4c3b0f9b6743	0x1114fc	58.1818	
+scenariosupport	?Serialize@CUnitItemList@@QAEXAAVCArchive@@@Z	100.0000	100.0000	1	2b68f7dbd31e	0x111ab2	100.0000	
 scenariosupport	?Serialize@CWorldObjectRegistry@@QAEXAAVCArchive@@@Z	20.6452	20.6452	1	85bbffd1a3d9	0x11108e	20.6452	
 scenariosupport	?Serialize@Humanoid@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	ef7c4d6ee13b	0x1117bf	100.0000	
 scenariosupport	?Serialize@Token@@UAEXAAVCArchive@@@Z	100.0000	100.0000	2	73b4128adc42	0x110ebb	100.0000	
-scenariosupport	?Serialize@Unit@@UAEXAAVCArchive@@@Z	0.9667	0.9667	1	40fda284bf09	0x110577	0.9667	
+scenariosupport	?Serialize@Unit@@UAEXAAVCArchive@@@Z	99.9924	99.9924	2	385c1e222137	0x110577	99.9924	
 scenariosupport	?Serialize@VirtualCaster@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	6e970736e41c	0x111ba2	100.0000	
 scenariosupport	?SetAt@CMapPtrToPtr@@QAEXPAX0@Z	95.3846	95.3846	1	cpp:bdc9cc63cdd1	0x1176a0	95.3846	
 smackerplayer	??0CSmackerBuffers@@QAE@XZ	100.0000	100.0000	1	95153d343e47	0xae650	100.0000	
