@@ -269,7 +269,7 @@ rva	signals	status	note
 0x14fa40	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x14ffb0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x1501d0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x1503e0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x1503e0	archive-read,archive-vslot2,archive-write	reconstructed	exact CList<DWORD, DWORD> count and DWORD element serializer; 100%
 0x1536b5	archive-read	static-library	initial retail call/vtable census; CArchiveStream::Read
 0x15370d	archive-write	static-library	initial retail call/vtable census; CArchiveStream::Write
 0x17048a	archive-vslot2	static-library	initial retail call/vtable census; slot-2 class=CStringArray; CStringArray::Serialize

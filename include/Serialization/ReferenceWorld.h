@@ -7,6 +7,8 @@
 
 #include <Enums.h>
 
+#include <afxtempl.h>
+
 class CWorldItem;
 class CWorldObjectRegistry;
 
@@ -142,6 +144,14 @@ private:
     BYTE m_state[0x32c];
 };
 
+// The embedded MFC map serializes a raw WORD key followed by this 52-byte
+// value.  No game-owned name survives for the value type.
+struct CWorldMapRecord {
+    BYTE m_bytes[0x34];
+};
+
+typedef CMap<WORD, WORD, CWorldMapRecord, CWorldMapRecord&> CWorldMapRecordMap;
+
 class CWorldMapData {
 public:
     CWorldMapData(CScenarioResource* resource, CWorldItemManager* itemManager);
@@ -149,7 +159,12 @@ public:
     void Activate();
 
 private:
-    BYTE m_state[0xa4558];
+    BYTE m_reserved00000[0x10000];
+    BYTE m_lowTileCodes[0x10000];
+    BYTE m_highTileCodes[0x10000];
+    BYTE m_reserved30000[0x240b4];
+    CWorldMapRecordMap m_records;
+    BYTE m_reserved540d0[0x50488];
 };
 
 class CWorldRuntime {

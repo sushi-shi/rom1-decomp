@@ -48,7 +48,7 @@ scenarioobjectmap	1	0
 scenariosupport	14	2
 smackerplayer	7	7
 spellobjects	31	28
-tokenpayload	4	1
+tokenpayload	13	6
 wordrle	2	2
 wordrletokens	4	4
 worlditemiterator	3	0
@@ -192,10 +192,19 @@ spellobjects	?Serialize@SpellEffect@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	af6
 spellobjects	?Serialize@SpellTransport@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	a9ffee3cd700	0x100e2f	100.0000	
 spellobjects	?Serialize@Spellbook@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	d92e7e7159aa	0x100c1d	100.0000	
 spellobjects	?SetSize@?$CArray@PAVSpell@@PAV1@@@QAEXHH@Z	99.8611	99.8611	1	cpp:bdc9cc63cdd1	0x11a9b0	99.8611	
-tokenpayload	??0CWorldMapData@@QAE@PAVCScenarioResource@@PAVCWorldItemManager@@@Z	0.8861	0.8861	2	f8eb8a0d59ad	0x141830	0.8861	
+tokenpayload	??0CWorldMapData@@QAE@PAVCScenarioResource@@PAVCWorldItemManager@@@Z	4.5000	4.5000	2	f8eb8a0d59ad	0x141830	4.5000	
+tokenpayload	??1?$CList@KK@@UAE@XZ	99.6970	99.6970	1	cpp:1a394f34b136	0x150370	99.6970	
+tokenpayload	??1?$CMap@GGUCWorldMapRecord@@AAU1@@@UAE@XZ	99.7917	99.7917	1	cpp:1a394f34b136	0x14ff20	99.7917	
+tokenpayload	??_G?$CList@KK@@UAEPAXI@Z	100.0000	100.0000	1	cpp:1a394f34b136	0x150560	100.0000	
+tokenpayload	??_G?$CMap@GGUCWorldMapRecord@@AAU1@@@UAEPAXI@Z	100.0000	100.0000	1	cpp:1a394f34b136	0x150520	100.0000	
 tokenpayload	?Activate@CWorldMapData@@QAEXXZ	0.8475	0.8475	2	9d30eff0cf8d	0x14d530	0.8475	
+tokenpayload	?AddTail@?$CList@KK@@QAEPAU__POSITION@@K@Z	100.0000	100.0000	1	cpp:1a394f34b136	0x1502f0	100.0000	
+tokenpayload	?NewNode@?$CList@KK@@IAEPAUCNode@1@PAU21@0@Z	100.0000	100.0000	1	cpp:1a394f34b136	0x150780	100.0000	
+tokenpayload	?Serialize@?$CList@KK@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:1a394f34b136	0x1503e0	100.0000	
+tokenpayload	?Serialize@?$CMap@GGUCWorldMapRecord@@AAU1@@@UAEXAAVCArchive@@@Z	32.3986	32.3986	1	cpp:1a394f34b136	0x14ffb0	32.3986	
 tokenpayload	?Serialize@CTokenPayload@@QAEXAAVCArchive@@@Z	100.0000	100.0000	1	f8ba19affff0	0x144a70	100.0000	
-tokenpayload	?Serialize@CWorldMapData@@QAEXAAVCArchive@@@Z	0.4566	0.4566	1	c7a9fb249cfb	0x144aa0	0.4566	
+tokenpayload	?Serialize@CWorldMapData@@QAEXAAVCArchive@@@Z	84.8128	84.8128	2	d7259a762d92	0x144aa0	84.8128	
+tokenpayload	?SerializeElements@@YGXAAVCArchive@@PAKH@Z	40.5714	40.5714	1	cpp:1a394f34b136	0x124bc0	40.5714	
 wordrle	?DecodeWordRle@@YAXTByteIntPointer@@HPAPAGPAH@Z	100.0000	100.0000	1	7de0bd6e7163	0x11f1e0	100.0000	
 wordrle	?EncodeWordRle@@YAXPAGHPATByteIntPointer@@PAH@Z	100.0000	100.0000	1	ade872e200bc	0x11f130	100.0000	
 wordrletokens	?DecodeWordRleLiteral@@YAHPATByteWordPointer@@PAPAG@Z	100.0000	100.0000	1	17976cccb2ed	0x127290	100.0000	

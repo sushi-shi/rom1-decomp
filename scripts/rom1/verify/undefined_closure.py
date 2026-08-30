@@ -37,7 +37,7 @@ LIB_CACHE = BUILD / "gen/lib_symbols.txt"
 
 LIBRARY_CLASSES = {
     "CString", "CObject", "CWnd", "CDialog", "CDC", "CGdiObject", "CFile",
-    "CArchive", "CException", "CMemoryException", "CFileException",
+    "CArchive", "CException", "CMemoryException", "CFileException", "CPlex",
     "CNotSupportedException", "CPtrList", "CObList", "CObArray", "CStringList",
     "CPtrArray", "CByteArray", "CDWordArray", "CMapStringToOb",
     "CMapStringToPtr", "CMapPtrToPtr", "CList", "CMap", "CArray", "CRgn",

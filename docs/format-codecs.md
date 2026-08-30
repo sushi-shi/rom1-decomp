@@ -414,5 +414,16 @@ the ownership and call identities of its support objects. Its tail reaches the
 separately exact `CReferenceSnapshot::Serialize` at `0x13e840`, whose store and
 load branches transfer one raw `0x190`-byte snapshot.
 
+The world-map serializer at `0x144aa0` is source-complete at 84.81%. Its store
+arm scans tile indices `0x0807` through `0xeded`, packs exceptional high-byte
+tiles as index/high/low DWORDs, then serializes the list, an embedded
+`CMap<WORD, WORD, CWorldMapRecord, CWorldMapRecord&>`, and the raw process
+pointer identity. Its load arm restores that pointer through `CReferenceWorld`
+and unpacks the tile list. The emitted `CList<DWORD, DWORD>::Serialize` body at
+`0x1503e0` is independently byte-exact. The parent remains on the candidate
+wall because VC5 expands a different pair of archive primitives; diagnosis and
+two bounded permutation campaigns identify TU inline context, rather than a
+source-semantic discrepancy, as the remaining lever.
+
 The remaining DIB/BMP paths are the mapped-file wrapper at `0x04afd0` and VFW
 compression at `0x04b4e0`.
