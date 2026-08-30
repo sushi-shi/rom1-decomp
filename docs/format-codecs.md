@@ -406,6 +406,24 @@ identities described above, including `CSpellDefinition` and `Spell*`. These
 are pinned-header MFC template emissions from game-owned declarations, not
 reconstructions of vendor library bodies.
 
+The following container band at `0x11d640`-`0x11edf0` is drained as twelve
+more byte-exact serializers, together with its twelve byte-exact
+`SerializeElements` parents at `0x125230`-`0x126f70`. Owner construction and
+member-use sites fix an eight-byte, four-`short` Outpost record at `+0x6c`;
+the `CScenarioSubsystems+0x10` `VirtualCaster*` list; the world-item manager's
+`CWorldItem*` list; and the `CScenarioSecondary+0x04` `SpellEffect*` list.
+`CMultiShopTemplate+0x7c` is independently a `CMultiShopInstance*` array from
+the typed allocation and destruction paths. `CScenarioResource` supplies the
+remaining parents at `+0x28`, `+0x40`/`+0x5c`, `+0x78`, `+0x2dc`, `+0x2f0`,
+`+0x304`, and `+0x318`: respectively six-byte records, 0x31c-byte-entry
+pointers, 0xb8-byte records, and four distinct pointer-reference domains
+proved by downstream dereferences and the building/unit resolution strings.
+Original names for those private scenario records and pointees do not survive,
+so declarations preserve only the proven roles, sizes, and domain separation.
+Every element body is the natural pinned-header emission selected by its
+game-owned parent collection; no static-library or other vendor body is
+reconstructed.
+
 ## Complete first-pass candidate wall
 
 The first-pass retail census is reproducible from two stronger signals than

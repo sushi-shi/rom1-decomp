@@ -128,6 +128,18 @@ archive-array	0x11a170	secondary 0x30-record CArray serializer	exact	100%; exact
 archive-array	0x11a530	tertiary 0x1c-record CArray serializer	exact	100%; exact count, resize, and raw record topology
 archive-array	0x11a8d0	CSpellDefinition CArray serializer	exact	100%; exact count, resize, and raw 0x20-byte record topology
 archive-array	0x11ac70	Spell-pointer CArray serializer	exact	100%; exact count, resize, and raw pointer topology
+archive-array	0x11d640	Outpost placement-record CArray serializer	exact	100%; Outpost+0x6c parent and four signed-short field uses prove the eight-byte element
+archive-array	0x11d710	VirtualCaster-pointer CList serializer	exact	100%; CScenarioSubsystems+0x10 parent plus typed construction/add-tail path
+archive-array	0x11d8e0	CWorldItem-pointer CList serializer	exact	100%; world-item manager add/remove parents prove the pointee domain
+archive-array	0x11dc60	scenario-index-record CArray serializer	exact	100%; CScenarioResource+0x28 parent constructor/accessors prove the six-byte element
+archive-array	0x11df80	scenario-entry-pointer CList serializer	exact	100%; CScenarioResource+0x40/+0x5c parents and 0x31c entry allocation path
+archive-array	0x11e390	large scenario-record CArray serializer	exact	100%; CScenarioResource+0x78 parent raw-read loop proves the 0xb8-byte element
+archive-array	0x11e560	building-collection reference CArray serializer	exact	100%; CScenarioResource+0x2dc parent and pointer dereference callsites
+archive-array	0x11e730	building-caster reference CArray serializer	exact	100%; CScenarioResource+0x2f0 parent and building-caster resolution callsites
+archive-array	0x11e900	building-record reference CArray serializer	exact	100%; CScenarioResource+0x304 parent and building-owner load callsites
+archive-array	0x11ead0	unit-record reference CArray serializer	exact	100%; CScenarioResource+0x318 parent and player/unit resolution callsites
+archive-array	0x11ed20	CMultiShopInstance-pointer CArray serializer	exact	100%; CMultiShopTemplate+0x7c parent plus typed allocation/destruction paths
+archive-array	0x11edf0	SpellEffect-pointer CList serializer	exact	100%; CScenarioSecondary+0x04 parent plus SpellEffect-derived add-tail callsites
 archive-array	0x121f20	Effect-pointer element serializer	exact	100%; parent list and typed Effect reader prove the four-byte pointer identity
 archive-array	0x1222e0	queued-collection element serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation, four-byte opaque value
 archive-array	0x122670	Item-pointer element serializer	exact	100%; parent list and Item runtime-class reader prove the four-byte pointer identity
@@ -148,6 +160,18 @@ archive-array	0x1240e0	map-object serializer	exact	100%; exact VC5 SP2 AFXTEMPL.
 archive-array	0x124440	map-record serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation, four-byte opaque value
 archive-array	0x1245e0	map-family-shared serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation, four-byte opaque value
 archive-array	0x1247a0	map-tail serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation, four-byte opaque value
+archive-array	0x125230	Outpost placement-record element serializer	exact	100%; exact pinned-header instantiation selected by parent 0x11d640
+archive-array	0x125400	VirtualCaster-pointer element serializer	exact	100%; exact pinned-header instantiation selected by parent 0x11d710
+archive-array	0x125770	CWorldItem-pointer element serializer	exact	100%; exact pinned-header instantiation selected by parent 0x11d8e0
+archive-array	0x125b10	scenario-index-record element serializer	exact	100%; exact pinned-header six-byte instantiation selected by parent 0x11dc60
+archive-array	0x125db0	scenario-entry-pointer element serializer	exact	100%; exact pinned-header instantiation selected by parent 0x11df80
+archive-array	0x125e90	large scenario-record element serializer	exact	100%; exact pinned-header 0xb8-byte instantiation selected by parent 0x11e390
+archive-array	0x126190	building-collection reference element serializer	exact	100%; exact pinned-header instantiation selected by parent 0x11e560
+archive-array	0x126480	building-caster reference element serializer	exact	100%; exact pinned-header instantiation selected by parent 0x11e730
+archive-array	0x126770	building-record reference element serializer	exact	100%; exact pinned-header instantiation selected by parent 0x11e900
+archive-array	0x126a60	unit-record reference element serializer	exact	100%; exact pinned-header instantiation selected by parent 0x11ead0
+archive-array	0x126d50	CMultiShopInstance-pointer element serializer	exact	100%; exact pinned-header instantiation selected by parent 0x11ed20
+archive-array	0x126f70	SpellEffect-pointer element serializer	exact	100%; exact pinned-header instantiation selected by parent 0x11edf0
 archive-object	0x0df278	TableLine CString and nested-object serializer	exact	100%; runtime class + vtable slot 2 + exact archive operator call topology
 archive-object	0x0df2c6	TableLine five-WORD block and nested CStringArray serializer	exact	100%; constructor offsets + raw 10-byte archive calls + nested virtual dispatch
 archive-object	0x0df322	TableLine-named raw 72-byte block serializer	exact	100%; CString at +0x04 + exact 0x48-byte archive extent at +0x20

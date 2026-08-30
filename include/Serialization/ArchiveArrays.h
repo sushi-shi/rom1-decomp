@@ -79,6 +79,24 @@ struct CDeferredCollectionHandle {
     BYTE m_bytes[4];
 };
 
+// Four signed half-words are read and written independently at the recovered
+// Outpost element-use sites.  The embedded CArray preserves their eight-byte
+// aggregate identity.
+struct COutpostPlacementRecord {
+    short m_values[4];
+};
+
+// The scenario-resource constructor and collection accessors preserve these
+// two raw record extents.  No address-bearing evidence retains their original
+// source names or internal fields.
+struct CScenarioResourceIndexRecord {
+    BYTE m_bytes[6];
+};
+
+struct CScenarioResourceLargeRecord {
+    BYTE m_bytes[0xb8];
+};
+
 // Retail construction/destruction and member-use sites prove a 12-byte record
 // made from exactly three CStrings.  No surviving runtime-class or
 // address-bearing string preserves the record's original source name.
@@ -99,7 +117,41 @@ typedef CArray<void*, void*> OpaquePointerArray;
 class Effect;
 class Item;
 class Spell;
+class SpellEffect;
+class VirtualCaster;
+class CWorldItem;
+class CScenarioBuildingCollection;
+class CScenarioBuildingCaster;
+class CScenarioBuildingRecord;
+class CScenarioUnitRecord;
+class CMultiShopInstance;
 struct CSpellDefinition;
+
+// Construction at 0x113d2a and the two owning lists prove a 0x31c-byte,
+// non-polymorphic scenario-resource entry.  Its fields remain separate work.
+class CScenarioResourceEntry {
+private:
+    BYTE m_state[0x31c];
+};
+
+// The four scenario arrays contain distinct pointer domains, but no retained
+// symbol identifies the pointee classes.  Preserve the observed pointer word
+// and domain separation without inventing complete pointee layouts.
+struct CScenarioBuildingCollectionReference {
+    CScenarioBuildingCollection* m_value;
+};
+
+struct CScenarioBuildingCasterReference {
+    CScenarioBuildingCaster* m_value;
+};
+
+struct CScenarioBuildingRecordReference {
+    CScenarioBuildingRecord* m_value;
+};
+
+struct CScenarioUnitRecordReference {
+    CScenarioUnitRecord* m_value;
+};
 
 typedef CArray<int, int> CSignedIndexArray;
 typedef CArray<CLargeCollectionRecord, CLargeCollectionRecord&> CLargeCollectionRecordArray;
@@ -111,5 +163,19 @@ typedef CArray<CSecondaryStateRecord, CSecondaryStateRecord&> CSecondaryStateRec
 typedef CArray<CTertiaryStateRecord, CTertiaryStateRecord&> CTertiaryStateRecordArray;
 typedef CArray<CSpellDefinition, CSpellDefinition&> CSpellDefinitionRecordArray;
 typedef CArray<Spell*, Spell*> CSpellPointerArray;
+typedef CArray<COutpostPlacementRecord, COutpostPlacementRecord&> COutpostPlacementRecordArray;
+typedef CArray<CScenarioResourceIndexRecord, CScenarioResourceIndexRecord&>
+    CScenarioResourceIndexRecordArray;
+typedef CArray<CScenarioResourceLargeRecord, CScenarioResourceLargeRecord&>
+    CScenarioResourceLargeRecordArray;
+typedef CArray<CScenarioBuildingCollectionReference, CScenarioBuildingCollectionReference&>
+    CScenarioBuildingCollectionPointerArray;
+typedef CArray<CScenarioBuildingCasterReference, CScenarioBuildingCasterReference&>
+    CScenarioBuildingCasterPointerArray;
+typedef CArray<CScenarioBuildingRecordReference, CScenarioBuildingRecordReference&>
+    CScenarioBuildingRecordPointerArray;
+typedef CArray<CScenarioUnitRecordReference, CScenarioUnitRecordReference&>
+    CScenarioUnitRecordPointerArray;
+typedef CArray<CMultiShopInstance*, CMultiShopInstance*> CMultiShopInstancePointerArray;
 
 #endif // ROM1_SERIALIZATION_ARCHIVEARRAYS_H

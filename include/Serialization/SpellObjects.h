@@ -5,6 +5,7 @@
 
 #include <MfcNoInline.h>
 
+#include <Serialization/ArchiveArrays.h>
 #include <Serialization/ReferenceWorld.h>
 
 #include <afxtempl.h>
@@ -293,7 +294,12 @@ public:
     friend CArchive& AFXAPI operator>>(CArchive& archive, Outpost*& value);
 
 private:
-    BYTE m_state6c[0x40];
+    COutpostPlacementRecordArray m_placements;
+    UINT m_value80;
+    UINT m_value84;
+    UINT m_value88;
+    UINT m_value8c;
+    BYTE m_state90[0x1c];
 };
 
 class Tavern : public Building {
@@ -347,7 +353,10 @@ public:
     friend CArchive& AFXAPI operator>>(CArchive& archive, CMultiShopTemplate*& value);
 
 private:
-    BYTE m_state04[0x94];
+    BYTE m_state04[0x78];
+    CMultiShopInstancePointerArray m_instances;
+    UINT m_value90;
+    UINT m_value94;
 };
 
 class Armor : public Item {
