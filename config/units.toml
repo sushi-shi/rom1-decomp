@@ -57,3 +57,13 @@ flags = "cpp-od-noeh"
 unit = "dib"
 source = "src/Graphics/Dib.cpp"
 flags = "cpp"
+
+[[unit]]
+unit = "pixmap"
+source = "src/Graphics/PixMap.cpp"
+flags = "cpp"
+
+[[unit]]
+unit = "directxexception"
+source = "src/DirectX/DirectXException.cpp"
+flags = "cpp"

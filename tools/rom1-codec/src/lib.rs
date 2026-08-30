@@ -9,6 +9,7 @@
 
 pub mod bmp;
 pub mod byte_huffman;
+pub mod ppm;
 pub mod word_rle;
 
 pub(crate) enum Sink<'a> {

@@ -66,14 +66,18 @@ stamp, all seven compiler/linker roles are present, and the complete tool and
 archive aggregates are pinned in `compiler.toml`. Compile and link refuse any
 active payload whose linker version or hashes differ.
 
-The first campaign slice is live. Smacker codec/string-xref reconstruction has
-seven ordinary functions exact (nine source-associated bodies including `/GX`
-helpers); `GetMissionObjectCount` is exact through the Bute config-serde calls
-and the retail strings `Scenario\\GlobalMap.reg`, `Mission%d`, and
-`MissionObjects`; and `lpDD` is an exact ordinary BSS identity. The three Bute
-callee bodies are deliberately located stubs and remain work, not claimed
-matches. The ported verification harness passes all 431 controls in the pinned
-shell (five environment-dependent controls skip).
+The first campaign slices are live. Smacker codec/string-xref reconstruction
+has seven ordinary functions exact (nine source-associated bodies including
+`/GX` helpers); `GetMissionObjectCount` is exact through the Bute config-serde
+calls and the retail strings `Scenario\\GlobalMap.reg`, `Mission%d`, and
+`MissionObjects`; and `lpDD` is an exact ordinary BSS identity. Word RLE,
+network byte Huffman, BMP/DIB, and P3/P6 PPM now have reconstructed C++,
+independent `no_std` Rust implementations, and mapped-retail oracles. The PPM
+slice contributes six exact `CPixMap` methods and three instruction-aligned
+near-exact methods, plus its required near-exact DirectX exception constructor.
+The three Bute callee bodies are deliberately located stubs and remain work,
+not claimed matches. The ported verification harness passes all 434 controls
+in the pinned shell (five environment-dependent controls skip).
 
 The vtable catalog joins two independent executable witnesses: 417 tables from
 relocated text-pointer runs split by RTTI/code vptr references, plus eight

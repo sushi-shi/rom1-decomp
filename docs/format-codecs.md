@@ -105,6 +105,48 @@ both reader modes and writes the retail packed wrapper; its tests cover offset
 gaps, the mapped-reader quirk, palette rules, DWORD row alignment, exact DIB
 byte preservation, and malformed bounds.
 
+## CPixMap P3/P6 PPM
+
+The 36-byte `CPixMap` family at `0x08d1e0`–`0x08d5e0` detects `.pcx`, `.ppm`,
+`.bmp`, and `.dib` with case-sensitive `CString::Find` calls. Its dispatcher
+throws a pointer to an 8-byte `CDirectXException` for an unknown type. The BMP
+and PCX loader arms are deliberate `TRUE` stubs; only the PPM arm contains a
+parser.
+
+Retail accepts the ASCII P3 and binary P6 magic prefixes and always configures
+24-bit pixels with three 8-bit components. Its grammar is narrower than a
+general Netpbm reader:
+
+```text
+P3 or P6, inspected as the first two bytes of one 100-byte fgets buffer
+zero or more lines beginning with '#' in column zero
+width and height as two signed decimal ints on one line
+one complete max-value line, read and discarded without parsing
+width * height * 3 components
+```
+
+P6 copies the component bytes verbatim. P3 scans signed decimal `int` values
+and stores each low byte, so negative and greater-than-255 components truncate
+rather than scale or clamp. Comments are recognized only in the one header
+position above; leading whitespace prevents comment recognition. Unknown
+magic returns `TRUE` without pixels, and neither the max value nor trailing
+bytes are validated.
+
+Six of the nine ordinary `CPixMap` methods are byte-exact: both constructors,
+destruction/cleanup, and the BMP/PCX success stubs. File-type detection is
+99.32%, dispatch is 99.87%, and PPM loading is 99.83%; their instruction
+streams align with retail, while pooled-string, throw-metadata, and generic CRT
+referent identities keep the object comparison below 100%. The required
+`CDirectXException` constructor is 99.77% for the same referent-only reason.
+
+The mapped-retail oracle redirects only allocation and stdio call edges into
+the harness, then executes both parser bodies on 512 P3 and 512 P6 files. It
+reports zero disagreements over 9,216 result/field comparisons and 56,156
+decoded-byte comparisons. The allocator-free Rust API preserves the retail
+grammar and successful unknown-magic no-op while rejecting truncated input,
+invalid dimensions, 32-bit allocation overflow, and undersized output that
+would make the original consume or expose unsafe memory.
+
 ## Located next families
 
 The campaign roster in `config/retail/serde.tsv` records high-confidence

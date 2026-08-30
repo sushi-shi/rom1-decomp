@@ -44,6 +44,15 @@ recomp/harness/build.sh dibmetricsrun dib
 wine recomp/harness/dibmetricsrun.exe "$ROM1_EXE" config/retail/relocs.tsv
 ```
 
+The PPM harness performs both ASCII P3 and binary P6 loads through retail and
+the reconstruction, then compares parser state and every decoded byte:
+
+```sh
+rom1 build
+recomp/harness/build.sh pixmaprun pixmap directxexception
+wine recomp/harness/pixmaprun.exe "$ROM1_EXE" config/retail/relocs.tsv
+```
+
 It compares null and randomized dimensions, all supported palette bit depths
 plus invalid defaults, explicit `biClrUsed` overrides, DWORD-aligned scanline
 sizes, explicit `biSizeImage` overrides, and the derived palette offset. The

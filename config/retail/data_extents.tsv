@@ -1988,9 +1988,6 @@ rva	size	source	evidence
 0x1adaa0	0x8	UnwindMap	maxState * sizeof(UnwindMapEntry)
 0x1adaa8	0x20	FuncInfo	VC5 FuncInfo fixed record
 0x1adac8	0x8	UnwindMap	maxState * sizeof(UnwindMapEntry)
-0x1adad0	0x20	CatchableType	VC5 CatchableType record plus linker alignment padding
-0x1adaf0	0x8	CatchableTypeArray	one catchable type pointer
-0x1adaf8	0x10	ThrowInfo	VC5 ThrowInfo fixed record
 0x1adb08	0x20	FuncInfo	VC5 FuncInfo fixed record
 0x1adb28	0x28	UnwindMap	maxState * sizeof(UnwindMapEntry)
 0x1adb50	0x20	FuncInfo	VC5 FuncInfo fixed record
@@ -3469,7 +3466,6 @@ rva	size	source	evidence
 0x1bca0c	0xc	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
 0x1be13c	0xc	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
 0x1bf31c	0x8	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
-0x1c1f48	0x1c	TypeDescriptor	VC5 type_info header plus decorated class name
 0x1c2368	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x1c2440	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x1c2458	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record

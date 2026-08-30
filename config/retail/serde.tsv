@@ -37,3 +37,13 @@ dib-bmp	0x04b990	derive palette entry count	near-exact	93.85%; instructions exac
 dib-bmp	0x04ba20	derive image size and palette offset	exact	retail body + mapped oracle
 dib-bmp	0x04ba60	release DIB ownership	exact	retail body + allocation/Win32 ownership states
 dib-bmp	0x04bb00	detach mapped BMP file	exact	retail body + mapped view/handle release order
+pixmap-ppm	0x054860	construct format exception	near-exact	99.77%; instructions align, external CString referent remains generic
+pixmap-ppm	0x08d1e0	initialize parser state	exact	retail body + exact FPO extent
+pixmap-ppm	0x08d210	initialize and load filename	exact	retail body + exact FPO extent
+pixmap-ppm	0x08d250	release parser state	exact	tail jump to Empty
+pixmap-ppm	0x08d260	release pixels and palette	exact	retail body + allocation callsites
+pixmap-ppm	0x08d2b0	detect PCX/PPM/BMP/DIB filename type	near-exact	99.32%; instructions align, pooled .bmp referent remains a gap identity
+pixmap-ppm	0x08d330	dispatch format loader	near-exact	99.87%; instructions align, throw metadata remains generic
+pixmap-ppm	0x08d430	parse P3/P6 PPM pixels	near-exact	99.83%; instructions align + mapped oracle agrees
+pixmap-ppm	0x08d5d0	PCX loader success stub	exact	retail body + dispatcher arm
+pixmap-ppm	0x08d5e0	BMP loader success stub	exact	retail body + dispatcher arm
