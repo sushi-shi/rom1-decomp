@@ -50,7 +50,7 @@ scenarioconfig	1	1
 scenarioobjectmap	1	0
 scenariosupport	14	2
 smackerplayer	7	7
-spellobjects	57	54
+spellobjects	64	61
 tokenpayload	13	6
 wordrle	2	2
 wordrletokens	4	4
@@ -235,62 +235,69 @@ smackerplayer	?ApplyPan@CSmackerPlayer@@QAEXXZ	100.0000	100.0000	1	b4334841a281	
 smackerplayer	?GetBufferFormat@CSmackerPlayer@@QAEKPAUIDirectDrawSurface@@@Z	100.0000	100.0000	2	c38d404f6192	0xae7f0	100.0000	
 smackerplayer	?GetMovieSize@CSmackerPlayer@@QBE?AUSmackerSize@@XZ	100.0000	100.0000	1	dc8a04dd8976	0xaedd0	100.0000	
 smackerplayer	?SetDestinationSize@CSmackerPlayer@@QAEXHH@Z	100.0000	100.0000	1	508dfc90a7f1	0xaee00	100.0000	
-spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVAreaEffect@@@Z	100.0000	100.0000	4	38d91f4699f8	0xfc8d7	100.0000	
-spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVArmor@@@Z	100.0000	100.0000	1	38d91f4699f8	0x10c2c1	100.0000	
-spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVBuilding@@@Z	100.0000	100.0000	1	38d91f4699f8	0x10418a	100.0000	
-spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVCMultiShopInstance@@@Z	100.0000	100.0000	1	38d91f4699f8	0x1061bf	100.0000	
-spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVCMultiShopShelf@@@Z	100.0000	100.0000	1	38d91f4699f8	0x106108	100.0000	
-spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVCMultiShopTemplate@@@Z	100.0000	100.0000	1	38d91f4699f8	0x106276	100.0000	
-spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVDiary@@@Z	100.0000	100.0000	2	38d91f4699f8	0xf8a4f	100.0000	
-spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVEffect@@@Z	100.0000	100.0000	4	38d91f4699f8	0x101148	100.0000	
-spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVEffect_DirectDamage@@@Z	100.0000	100.0000	1	38d91f4699f8	0x102b3e	100.0000	
-spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVHuman@@@Z	100.0000	100.0000	2	38d91f4699f8	0xf8e4e	100.0000	
-spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVHumanoid@@@Z	100.0000	100.0000	2	38d91f4699f8	0xf6d82	100.0000	
-spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVItem@@@Z	100.0000	100.0000	1	38d91f4699f8	0x107f85	100.0000	
-spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVOutpost@@@Z	100.0000	100.0000	1	38d91f4699f8	0x104a3f	100.0000	
-spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVPlayer@@@Z	100.0000	100.0000	2	38d91f4699f8	0xfaac4	100.0000	
-spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVPointEffect@@@Z	100.0000	100.0000	4	38d91f4699f8	0xfc59a	100.0000	
-spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVSack@@@Z	100.0000	100.0000	1	38d91f4699f8	0x10f275	100.0000	
-spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVShield@@@Z	100.0000	100.0000	1	38d91f4699f8	0x10ccb0	100.0000	
-spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVShop@@@Z	100.0000	100.0000	1	38d91f4699f8	0x105bc6	100.0000	
-spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVSpell@@@Z	100.0000	100.0000	4	38d91f4699f8	0xfdda2	100.0000	
-spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVSpellEffect@@@Z	100.0000	100.0000	4	38d91f4699f8	0xfc448	100.0000	
-spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVSpellTransport@@@Z	100.0000	100.0000	4	38d91f4699f8	0xfda57	100.0000	
-spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVSpellbook@@@Z	100.0000	100.0000	2	38d91f4699f8	0x1008ba	100.0000	
-spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVTavern@@@Z	100.0000	100.0000	1	38d91f4699f8	0x105131	100.0000	
-spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVToken@@@Z	100.0000	100.0000	2	38d91f4699f8	0xf2461	100.0000	
-spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVUnit@@@Z	100.0000	100.0000	2	38d91f4699f8	0xf2bf7	100.0000	
-spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVVirtualCaster@@@Z	100.0000	100.0000	2	38d91f4699f8	0xf2a24	100.0000	
-spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVWeapon@@@Z	100.0000	100.0000	1	38d91f4699f8	0x10d617	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVAreaEffect@@@Z	100.0000	100.0000	5	c3af57383866	0xfc8d7	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVArmor@@@Z	100.0000	100.0000	2	c3af57383866	0x10c2c1	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVBuilding@@@Z	100.0000	100.0000	2	c3af57383866	0x10418a	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVCMultiShopInstance@@@Z	100.0000	100.0000	2	c3af57383866	0x1061bf	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVCMultiShopShelf@@@Z	100.0000	100.0000	2	c3af57383866	0x106108	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVCMultiShopTemplate@@@Z	100.0000	100.0000	2	c3af57383866	0x106276	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVDiary@@@Z	100.0000	100.0000	3	c3af57383866	0xf8a4f	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVEffect@@@Z	100.0000	100.0000	5	c3af57383866	0x101148	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVEffect_DirectDamage@@@Z	100.0000	100.0000	2	c3af57383866	0x102b3e	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVHuman@@@Z	100.0000	100.0000	3	c3af57383866	0xf8e4e	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVHumanoid@@@Z	100.0000	100.0000	3	c3af57383866	0xf6d82	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVItem@@@Z	100.0000	100.0000	2	c3af57383866	0x107f85	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVOutpost@@@Z	100.0000	100.0000	2	c3af57383866	0x104a3f	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVPlayer@@@Z	100.0000	100.0000	3	c3af57383866	0xfaac4	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVPointEffect@@@Z	100.0000	100.0000	5	c3af57383866	0xfc59a	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVSack@@@Z	100.0000	100.0000	2	c3af57383866	0x10f275	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVShield@@@Z	100.0000	100.0000	2	c3af57383866	0x10ccb0	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVShop@@@Z	100.0000	100.0000	2	c3af57383866	0x105bc6	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVSpell@@@Z	100.0000	100.0000	5	c3af57383866	0xfdda2	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVSpellEffect@@@Z	100.0000	100.0000	5	c3af57383866	0xfc448	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVSpellTransport@@@Z	100.0000	100.0000	5	c3af57383866	0xfda57	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVSpellbook@@@Z	100.0000	100.0000	3	c3af57383866	0x1008ba	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVTavern@@@Z	100.0000	100.0000	2	c3af57383866	0x105131	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVToken@@@Z	100.0000	100.0000	3	c3af57383866	0xf2461	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVUnit@@@Z	100.0000	100.0000	3	c3af57383866	0xf2bf7	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVVirtualCaster@@@Z	100.0000	100.0000	3	c3af57383866	0xf2a24	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVWeapon@@@Z	100.0000	100.0000	2	c3af57383866	0x10d617	100.0000	
 spellobjects	??5CArchive@@QAEAAV0@AAE@Z	98.1818	98.1818	1	cpp:bdc9cc63cdd1	0x1147c0	98.1818	
 spellobjects	??5CArchive@@QAEAAV0@AAF@Z	100.0000	100.0000	1	cpp:bdc9cc63cdd1	0x117730	100.0000	
 spellobjects	??5CArchive@@QAEAAV0@AAG@Z	100.0000	100.0000	1	cpp:bdc9cc63cdd1	0x117750	100.0000	
 spellobjects	??5CArchive@@QAEAAV0@AAI@Z	100.0000	100.0000	1	cpp:bdc9cc63cdd1	0x1147a0	100.0000	
 spellobjects	??5CArchive@@QAEAAV0@AAJ@Z	98.1818	98.1818	1	cpp:bdc9cc63cdd1	0x114820	98.1818	
+spellobjects	??5CArchive@@QAEAAV0@AAK@Z	100.0000	100.0000	1	cpp:7ef3decd0df2	0x1178b0	100.0000	
 spellobjects	??6@YGAAVCArchive@@AAV0@PBVCObject@@@Z	100.0000	100.0000	1	cpp:bdc9cc63cdd1	0x114520	100.0000	
 spellobjects	??6CArchive@@QAEAAV0@E@Z	100.0000	100.0000	1	cpp:bdc9cc63cdd1	0x114700	100.0000	
 spellobjects	??6CArchive@@QAEAAV0@F@Z	100.0000	100.0000	1	cpp:bdc9cc63cdd1	0x1176c0	100.0000	
 spellobjects	??6CArchive@@QAEAAV0@G@Z	100.0000	100.0000	1	cpp:bdc9cc63cdd1	0x1176e0	100.0000	
 spellobjects	??6CArchive@@QAEAAV0@I@Z	100.0000	100.0000	1	cpp:bdc9cc63cdd1	0x1146e0	100.0000	
 spellobjects	??6CArchive@@QAEAAV0@J@Z	100.0000	100.0000	1	cpp:bdc9cc63cdd1	0x114750	100.0000	
+spellobjects	??6CArchive@@QAEAAV0@K@Z	100.0000	100.0000	1	cpp:7ef3decd0df2	0x117860	100.0000	
 spellobjects	??A?$CArray@PAVSpell@@PAV1@@@QAEAAPAVSpell@@H@Z	100.0000	100.0000	1	cpp:bdc9cc63cdd1	0x11abd0	100.0000	
 spellobjects	??A?$CArray@UCSpellDefinition@@AAU1@@@QAEAAUCSpellDefinition@@H@Z	100.0000	100.0000	1	cpp:5e1101187e2e	0x11a830	100.0000	
+spellobjects	??A?$CArray@UCTertiaryStateRecord@@AAU1@@@QAEAAUCTertiaryStateRecord@@H@Z	100.0000	100.0000	1	cpp:7ef3decd0df2	0x11a490	100.0000	
 spellobjects	?ElementAt@?$CArray@PAVSpell@@PAV1@@@QAEAAPAVSpell@@H@Z	100.0000	100.0000	1	cpp:bdc9cc63cdd1	0x1236c0	100.0000	
 spellobjects	?ElementAt@?$CArray@UCSpellDefinition@@AAU1@@@QAEAAUCSpellDefinition@@H@Z	100.0000	100.0000	1	cpp:5e1101187e2e	0x1234d0	100.0000	
+spellobjects	?ElementAt@?$CArray@UCTertiaryStateRecord@@AAU1@@@QAEAAUCTertiaryStateRecord@@H@Z	100.0000	100.0000	1	cpp:7ef3decd0df2	0x123350	100.0000	
 spellobjects	?GetSize@?$CArray@PAVSpell@@PAV1@@@QBEHXZ	100.0000	100.0000	1	cpp:bdc9cc63cdd1	0x11a990	100.0000	
 spellobjects	?ResolveEffectReference@@YAXPAI@Z	100.0000	100.0000	2	28536a4395f8	0x120eb0	100.0000	
 spellobjects	?ResolveTokenReference@@YAXPAI@Z	100.0000	100.0000	2	29b0544ed466	0x121440	100.0000	
 spellobjects	?Serialize@AreaEffect@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	2180cbe88794	0x100fa5	100.0000	
+spellobjects	?Serialize@Building@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	e888293a914d	0x104825	100.0000	
 spellobjects	?Serialize@CDirectDamagePayload@@QAEXAAVCArchive@@@Z	100.0000	100.0000	1	1c7254b5e9aa	0xfa9f5	100.0000	
 spellobjects	?Serialize@CSharedArchiveBlock@@QAEXAAVCArchive@@@Z	100.0000	100.0000	1	1ffeb00d65a5	0xfa69a	100.0000	
 spellobjects	?Serialize@CUnitArchiveBlock@@QAEXAAVCArchive@@@Z	100.0000	100.0000	1	5781bb24f874	0xf562c	100.0000	
 spellobjects	?Serialize@Effect@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	81bd60bc1333	0x100d05	100.0000	
 spellobjects	?Serialize@Effect_DirectDamage@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	7cf20c3ca76f	0x100da4	100.0000	
 spellobjects	?Serialize@PointEffect@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	793d9f102ce7	0x100efc	100.0000	
+spellobjects	?Serialize@Shop@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	5ed2597d560c	0x10602b	100.0000	
 spellobjects	?Serialize@Spell@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	9dd1077633c8	0x100742	100.0000	
 spellobjects	?Serialize@SpellEffect@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	af653de1175b	0x100dcc	100.0000	
 spellobjects	?Serialize@SpellTransport@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	a9ffee3cd700	0x100e2f	100.0000	
 spellobjects	?Serialize@Spellbook@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	d92e7e7159aa	0x100c1d	100.0000	
+spellobjects	?Serialize@Tavern@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	b8738a952eaa	0x105ae4	100.0000	
 spellobjects	?SetSize@?$CArray@PAVSpell@@PAV1@@@QAEXHH@Z	99.8611	99.8611	1	cpp:bdc9cc63cdd1	0x11a9b0	99.8611	
 tokenpayload	??0CWorldMapData@@QAE@PAVCScenarioResource@@PAVCWorldItemManager@@@Z	4.5000	4.5000	2	f8eb8a0d59ad	0x141830	4.5000	
 tokenpayload	??1?$CList@KK@@UAE@XZ	99.6970	99.6970	1	cpp:1a394f34b136	0x150370	99.6970	

@@ -2,6 +2,8 @@
 
 #include <Serialization/SpellObjects.h>
 
+#include <Serialization/ArchiveArrays.h>
+
 DATA(0x001cd6b0)
 CReferenceWorld* g_referenceWorld;
 
@@ -12,6 +14,14 @@ UINT g_seenTokenIds[0x800];
 // bind the retail global without defining duplicate CArray storage in this TU.
 // clang-format off
 DATA(0x00209b4c) extern CSpellDefinitionArray g_spellDefinitions;
+// clang-format on
+
+typedef CArray<CTertiaryStateRecord, CTertiaryStateRecord&> CBuildingDefinitionArray;
+
+// The 28-byte CArray element stride and the shared template bodies prove this
+// definition-record identity; no original source name survives.
+// clang-format off
+DATA(0x00209b38) extern CBuildingDefinitionArray g_buildingDefinitions;
 // clang-format on
 
 // @dead-code
@@ -280,6 +290,38 @@ CArchive& AFXAPI operator>>(CArchive& archive, Building*& value) {
     return archive;
 }
 
+RVA(0x00104825, 0x17f)
+void Building::Serialize(CArchive& archive) {
+    Token::Serialize(archive);
+    m_values4a.Serialize(archive);
+    if (archive.IsStoring()) {
+        archive << m_value40;
+        archive << m_value42;
+        archive << m_value44;
+        archive << m_value46;
+        archive << m_value48;
+        archive << m_value60;
+        archive << m_value61;
+        archive << m_value64;
+        archive << m_value68;
+    } else {
+        archive >> m_value40;
+        archive >> m_value42;
+        archive >> m_value44;
+        archive >> m_value46;
+        archive >> m_value48;
+        archive >> m_value60;
+        archive >> m_value61;
+        archive >> m_value64;
+        archive >> m_value68;
+        if (m_value40 == 0) {
+            m_definition = 0;
+        } else {
+            m_definition = &g_buildingDefinitions[m_value40];
+        }
+    }
+}
+
 // @dead-code
 // Zero-ref: no direct callers, relocated references, or live ILT forwarders in retail.
 RVA(0x00104a3f, 0x1c)
@@ -296,12 +338,32 @@ CArchive& AFXAPI operator>>(CArchive& archive, Tavern*& value) {
     return archive;
 }
 
+RVA(0x00105ae4, 0x4a)
+void Tavern::Serialize(CArchive& archive) {
+    Building::Serialize(archive);
+    if (archive.IsStoring()) {
+        archive << m_value9c;
+    } else {
+        archive >> m_value9c;
+    }
+}
+
 // @dead-code
 // Zero-ref: no direct callers, relocated references, or live ILT forwarders in retail.
 RVA(0x00105bc6, 0x1c)
 CArchive& AFXAPI operator>>(CArchive& archive, Shop*& value) {
     value = static_cast<Shop*>(archive.ReadObject(&Shop::classShop));
     return archive;
+}
+
+RVA(0x0010602b, 0x45)
+void Shop::Serialize(CArchive& archive) {
+    Building::Serialize(archive);
+    if (archive.IsStoring()) {
+        archive << m_value70;
+    } else {
+        archive >> m_value70;
+    }
 }
 
 // @dead-code
@@ -383,6 +445,11 @@ RVA_COMPGEN(0x001176e0, 0x45, ??6CArchive@@QAEAAV0@G@Z)
 RVA_COMPGEN(0x00117730, 0x19, ??5CArchive@@QAEAAV0@AAF@Z)
 RVA_COMPGEN(0x00117750, 0x5b, ??5CArchive@@QAEAAV0@AAG@Z)
 
+RVA_COMPGEN(0x00117860, 0x43, ??6CArchive@@QAEAAV0@K@Z)
+RVA_COMPGEN(0x001178b0, 0x59, ??5CArchive@@QAEAAV0@AAK@Z)
+
+RVA_COMPGEN(0x0011a490, 0x19, ??A?$CArray@UCTertiaryStateRecord@@AAU1@@@QAEAAUCTertiaryStateRecord@@H@Z)
+
 RVA_COMPGEN(0x0011a830, 0x19, ??A?$CArray@UCSpellDefinition@@AAU1@@@QAEAAUCSpellDefinition@@H@Z)
 
 RVA_COMPGEN(0x0011a990, 0x11, ?GetSize@?$CArray@PAVSpell@@PAV1@@@QBEHXZ)
@@ -411,5 +478,6 @@ void ResolveTokenReference(UINT* value) {
     }
 }
 
+RVA_COMPGEN(0x00123350, 0x1b, ?ElementAt@?$CArray@UCTertiaryStateRecord@@AAU1@@@QAEAAUCTertiaryStateRecord@@H@Z)
 RVA_COMPGEN(0x001234d0, 0x1b, ?ElementAt@?$CArray@UCSpellDefinition@@AAU1@@@QAEAAUCSpellDefinition@@H@Z)
 RVA_COMPGEN(0x001236c0, 0x19, ?ElementAt@?$CArray@PAVSpell@@PAV1@@@QAEAAPAVSpell@@H@Z)

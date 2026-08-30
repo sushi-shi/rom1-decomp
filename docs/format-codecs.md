@@ -447,6 +447,13 @@ the remaining `Effect_DirectDamage` overload. Every function is the same
 referent. The opaque class tails preserve only the proven layouts until their
 serializers recover individual fields.
 
+`Building::Serialize` and its `Tavern` and `Shop` overrides are byte-exact.
+The base preserves the existing Token stream, a shared 22-byte embedded
+record, byte/short/DWORD fields, and a load-time pointer into the retail-proven
+20-byte global `CArray` of 28-byte definition records. The two overrides each
+add one `UINT`. The four array/archive helpers selected naturally by these
+source forms are exact pinned-header emissions, not copied vendor bodies.
+
 The four raw-record serializers at `0x13db00`, `0x13dbc0`, `0x13dc80`, and
 `0x13dcc0` are also exact. The first three apply the same bidirectional
 complete-object archive operation to 0x50-, 0x48-, and 0x0c-byte records. The

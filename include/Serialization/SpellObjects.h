@@ -20,6 +20,7 @@ class Humanoid;
 class Diary;
 class Human;
 class Player;
+struct CTertiaryStateRecord;
 
 void ResolveEffectReference(UINT* value);
 void ResolveTokenReference(UINT* value);
@@ -246,7 +247,20 @@ public:
     friend CArchive& AFXAPI operator>>(CArchive& archive, Building*& value);
 
 protected:
-    BYTE m_state3c[0x30];
+    CTertiaryStateRecord* m_definition;
+    BYTE m_value40;
+    BYTE m_reserved41;
+    short m_value42;
+    short m_value44;
+    short m_value46;
+    BYTE m_value48;
+    BYTE m_reserved49;
+    CSharedArchiveBlock m_values4a;
+    BYTE m_value60;
+    BYTE m_value61;
+    WORD m_reserved62;
+    DWORD m_value64;
+    DWORD m_value68;
 };
 
 class Outpost : public Building {
@@ -268,7 +282,8 @@ public:
     friend CArchive& AFXAPI operator>>(CArchive& archive, Tavern*& value);
 
 private:
-    BYTE m_state6c[0x34];
+    BYTE m_reserved6c[0x30];
+    UINT m_value9c;
 };
 
 class Shop : public Building {
@@ -279,7 +294,8 @@ public:
     friend CArchive& AFXAPI operator>>(CArchive& archive, Shop*& value);
 
 private:
-    BYTE m_state6c[0x08];
+    UINT m_reserved6c;
+    UINT m_value70;
 };
 
 class CMultiShopShelf : public CObject {

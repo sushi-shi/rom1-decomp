@@ -160,9 +160,12 @@ spell-effect	0x100fa5	AreaEffect serializer	exact	100%; four BYTE, WORD, and obj
 spell-effect	0x101148	Effect typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
 spell-effect	0x102b3e	Effect_DirectDamage typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
 spell-effect	0x10418a	Building typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
+spell-effect	0x104825	Building serializer	exact	100%; Token base, embedded record, scalar fields, and definition-array resolution
 spell-effect	0x104a3f	Outpost typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
 spell-effect	0x105131	Tavern typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
+spell-effect	0x105ae4	Tavern serializer	exact	100%; Building base plus one UINT field
 spell-effect	0x105bc6	Shop typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
+spell-effect	0x10602b	Shop serializer	exact	100%; Building base plus one UINT field
 spell-effect	0x106108	CMultiShopShelf typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
 spell-effect	0x1061bf	CMultiShopInstance typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
 spell-effect	0x106276	CMultiShopTemplate typed object reader	exact	100%; runtime-class record + CArchive::ReadObject

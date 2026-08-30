@@ -20,7 +20,7 @@ upstream_path	local_path	class	upstream_sha256	local_sha256	reason	proof
 AGENTS.md	AGENTS.md	target	757ac527ef095a567115d5d56b8d91a4f68b9a206659d21bd09560785987e77e	5d089b0915f9e57a2508a65342a78dc0cf531adfafbc5372af0d920c6b4ba16d	same surface, RoM1 executable evidence/doctrine	tracked local sha256
 CLAUDE.md	CLAUDE.md	excluded	94ab034d88bb705fe256ffb934e0ab010ca115c96c62c9b979a1df77914a37b8		Gruntz game source/evidence or adjunct not imported	local path absent
 LICENSE	LICENSE	exact	a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499	a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499	byte-identical infrastructure	sha256 equal
-README.md	README.md	target	cf10b4a0984965ea89b8b9395fb97a5e1956bf6b6aaf7fd17ddcc60daea4a1d9	503724a58bad9633ef4ce1cc0dcba8736262b99f0f8c18059fcb478224b2063f	same surface, RoM1 executable evidence/doctrine	tracked local sha256
+README.md	README.md	target	cf10b4a0984965ea89b8b9395fb97a5e1956bf6b6aaf7fd17ddcc60daea4a1d9	5129249dc038d580e7db8cf6672f08e1a2830345af89ccee761b2b9e579b0662	same surface, RoM1 executable evidence/doctrine	tracked local sha256
 config/README.md	config/README.md	target	bdc2b4a4657325e676cce01a8dc46717c2a5d125af5806cce134d5163e7ee694	9df564ed11c7d45b5ceaf4d688192c171860ea3939bfb0c89f5109dc0ee4bc0e	same surface, RoM1 executable evidence/doctrine	tracked local sha256
 config/cleanliness/bare-constants-baseline.tsv	config/cleanliness/bare-constants-baseline.tsv	excluded	5642aa8b144066078db53f773f96ef213bfb4afa22bc9dca2a5c55c9e676714b		Gruntz game source/evidence or adjunct not imported	local path absent
 config/cleanliness/cleanliness-semantic-baseline.tsv	config/cleanliness/cleanliness-semantic-baseline.tsv	target	69b7f8359b81d160ba8b74167162bda9c5cdc4033840de5d7cf9c267bc77bb18	c93c75a4b7bfcceb99cb2f69c8e96a930686299b7c252bdfc185f861569f3115	same surface, RoM1 executable evidence/doctrine	tracked local sha256
@@ -33,8 +33,8 @@ config/cleanliness/single-view-baseline.tsv	config/cleanliness/single-view-basel
 config/cleanliness/tu-order-baseline.tsv	config/cleanliness/tu-order-baseline.tsv	target	b5ffcf184bde499480f08506c6f99d7e18d282b8af359eab670e6b53a740f044	53243b3c29498675d15eaf325c4593b79409221b056fc476193b20fe5f87913a	same surface, RoM1 executable evidence/doctrine	tracked local sha256
 config/codex_wall_reviews.tsv	config/codex_wall_reviews.tsv	excluded	009defca06a045764a56f8b419ee89aedb7a1302c09608355227d56f619fcb74		Gruntz game source/evidence or adjunct not imported	local path absent
 config/lithtech_lineage.tsv	config/lithtech_lineage.tsv	excluded	2dea14431bfe4e17ed4687f8c9e7581dcf73e331131cf251db94b47d6e4db996		Gruntz game source/evidence or adjunct not imported	local path absent
-config/match_baseline.tsv	config/match_baseline.tsv	target	7bbfe8e4fccf86602befea946b115fb34317347931102d5bffb240c469f57de8	2c8867b2da01c2c9548955ecf4e08c1f514c2b5164bc5d5bb0ddfacf9a74f34a	same surface, RoM1 executable evidence/doctrine	tracked local sha256
-config/retail/data.tsv	config/retail/data.tsv	target	bd69269e7dab33ed423007540b6e2f7b7101cad751b5ab27e2dcf5b932161af0	deeaa7f09b17698893f6a8ebe60938ee0c26e9e0e48193b2770b21a85260ef7a	same surface, RoM1 executable evidence/doctrine	tracked local sha256
+config/match_baseline.tsv	config/match_baseline.tsv	target	7bbfe8e4fccf86602befea946b115fb34317347931102d5bffb240c469f57de8	40c0310e1298c3220adaf2d6bf3122b85ba6ebdc339ef140a38702d524e15947	same surface, RoM1 executable evidence/doctrine	tracked local sha256
+config/retail/data.tsv	config/retail/data.tsv	target	bd69269e7dab33ed423007540b6e2f7b7101cad751b5ab27e2dcf5b932161af0	d631685e9e00b2844e4a4f52da7325741a0b70617dd9d7adf4b101b494294315	same surface, RoM1 executable evidence/doctrine	tracked local sha256
 config/retail/data_compgen.tsv	config/retail/data_compgen.tsv	target	97768bfdf520f02b2253179629827b6f5cf024bfefca73f2a573fc20acc377a0	baefc3732c4c1888e08abe5b9b116acc53ee5b2e25847f8ace2ca8963411f0f4	same surface, RoM1 executable evidence/doctrine	tracked local sha256
 config/retail/data_static_libs.tsv	config/retail/data_static_libs.tsv	target	6192456df81f5324b97f5268f4f7231c9a33fcc531a3f8f902fab71970af751d	564903795b1f4c3d6d6384af797b78cdedff6556f70480a180a9c19b849078f5	same surface, RoM1 executable evidence/doctrine	tracked local sha256
 config/retail/data_vtables.tsv	config/retail/data_vtables.tsv	target	aee355db303c13becfa91de6fa06c4943b736b43954d73f6b09b4222cb041183	4bfb7b4d66ec90b4042183a185e369df9548ab45a217e137a73fc7914ace3ddf	same surface, RoM1 executable evidence/doctrine	tracked local sha256
@@ -2182,14 +2182,14 @@ vendor/zlib-1.0.4/zutil.h	vendor/zlib-1.0.4/zutil.h	excluded	b1c8b410d0fd4b66fca
 -	config/retail/relocs.tsv	target		6080243236d478ba0df2b5b2b0dced13874f1d6f3b02a03bae6db6062ba5c3e7	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	config/retail/runtime_classes.tsv	target		a44211505542d5171cc12d1b77fdb834811f67752c2ecc48df67dd55a672de37	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	config/retail/sections.tsv	target		e7a74e5ddb7a8d37998e390a6d9a25a027e000095f09fdabfc2b4b6f2e19b263	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
--	config/retail/serde.tsv	target		97c5a9931d7dac421d848895b014850b572493e846b97715253421d7b0718f6a	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
--	config/retail/serde_candidates.tsv	target		891a091b40cbefb7f72336ca2483bf5890fe6eb324add5268634bdcd8ce83d86	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
+-	config/retail/serde.tsv	target		97177ff049e0ccbf01c587613fb616f5fc65610b0204f58945c064c3a983f8e8	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
+-	config/retail/serde_candidates.tsv	target		5a7c1ead6df49b7870b118b2a05f64d421535792b922a5457d2924ed730488cd	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	config/retail/serde_roots.tsv	target		b146594bdadda754f97c0cf1a6219d1cc0d45239547965532d341801009d4d31	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	config/retail/strings.tsv	target		2f9f82d54587b11250c0a6fc0cc6c65e620fee0dbdec6cb947f9e0cf506787e8	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	config/retail/thunks.tsv	target		df23413c9e4bdf212b56b52b84f16c9623bb96ff18b2746d83bcf697094c84d8	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	config/retail/vtables.tsv	target		22fde806f40598dbe0cabc7f4b03145188fe40e14e266a2f12ec4178f8f4e5a9	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	config/toolchains.toml	target		45663975c75fa6caf42c08d0050b5b0e5dc4e89254f6d36e3184a542f9c6f020	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
--	docs/format-codecs.md	target		807f45ed4540b2424ef12ae96e8d47d8f4edccd2baedda8a18859072e861ed70	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
+-	docs/format-codecs.md	target		e385bbdd4998a9594945806868081f7314554c5ebe6c52926de7320a0123140f	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	docs/gruntz-parity-contract.md	target		5a6ff883d17f3af1bd5c4f5cd7dbdaf21a0e3e9cae67e1be6ad08a63463c06ff	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	docs/releases/toolchain-vc50-sp2-dx5-r1.md	target		60a4f5d140e20da7610478473bfdc606e825e511d055908996e09098645139fd	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	docs/releases/toolchain-vc50-sp2-dx5-r2.md	target		1ba27cfe1f020f297b46b22dfbcc35d49571adaa93fd218be3c679e90e8c561b	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
@@ -2210,7 +2210,7 @@ vendor/zlib-1.0.4/zutil.h	vendor/zlib-1.0.4/zutil.h	excluded	b1c8b410d0fd4b66fca
 -	include/Serialization/ArchiveObjects.h	target		9fd414ef840cbc0e68ed862c01d8379786c236e99480baa8919ecb0fdf920f39	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	include/Serialization/ReferenceRecords.h	target		125dab9d3e5761955fd36e36a2c52e1596d18c014f712815fdbb99c60002a9c0	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	include/Serialization/ReferenceWorld.h	target		da4a622fcdb1ee684453d4a5b747870333655589486e637d4cd8bc519505e65a	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
--	include/Serialization/SpellObjects.h	target		1f36fa22eb924164b5d613edbe9dbaa8c2c422d313bd81cfd663b6effb4838f9	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
+-	include/Serialization/SpellObjects.h	target		4a04bf924fa5fd1fcd9a396b146e873b68cae7043c54da4b4471cda710e22f92	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	include/Serialization/WorldRuntimeRecords.h	target		8056a1b8d33a87c3f9259ad31ccf02bebb6d348423534f87f20d2864fa1dad8f	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	include/Text/ItemNames.h	target		8c0536fe4a8a7750c9143f1b202d53dfe69085bdea9665fb43c7bbe92648eab2	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	include/Video/SmackerPlayer.h	target		456a0cce7e454e175b1d50caa5bcd62a803b01cb0d4dc45f6be9ac7db33a0725	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
@@ -2260,7 +2260,7 @@ vendor/zlib-1.0.4/zutil.h	vendor/zlib-1.0.4/zutil.h	excluded	b1c8b410d0fd4b66fca
 -	src/Serialization/ReferenceWorld.cpp	target		66e3f540a8d3cf6770b1febfd7810c806dcb0b7383c7834cebea2c3f3d0b797e	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	src/Serialization/ScenarioObjectMap.cpp	target		7c1ee8693209cd461d284081b52c0f69fadea806b23011bd2ee0e95458e90f61	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	src/Serialization/ScenarioSupport.cpp	target		fe805f608209f3076c6fa164d058f0e80e75aebab04fb104c40603cf391646fd	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
--	src/Serialization/SpellObjects.cpp	target		76015e0310a855c7d08c51d2e1a62dab6756d65bf7d6fface3222a60c82ddf46	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
+-	src/Serialization/SpellObjects.cpp	target		b4f75af9bea08080fabddb1e8ba108b0f286d1dbd974879701aa8babb2834e0f	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	src/Serialization/TokenPayload.cpp	target		eff36f665a72af302ef09027484e995ef7b207fd067d64db1c207e581f8ae4b5	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	src/Serialization/WorldItemIterator.cpp	target		0dc8eb2ffb7d028fb73ea6e4ee3f6b85dc4e7016b062ec8db279fbc9f369a233	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	src/Serialization/WorldObjectIterator.cpp	target		68c71acf73da8201993a3d1bc3c38a94a3abd892279023b5d09fdfaf7db43073	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256

@@ -127,12 +127,12 @@ rva	signals	status	note
 0x102b3e	archive-read	reconstructed	exact IMPLEMENT_SERIAL Effect_DirectDamage typed reader
 0x10385d	stdio-read	target	initial retail call/vtable census
 0x10418a	archive-read	reconstructed	exact IMPLEMENT_SERIAL Building typed reader
-0x104825	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Building
+0x104825	archive-vslot2	reconstructed	exact Token-derived Building definition/scalar serializer; slot-2 class=Building
 0x104a3f	archive-read	reconstructed	exact IMPLEMENT_SERIAL Outpost typed reader
 0x105131	archive-read	reconstructed	exact IMPLEMENT_SERIAL Tavern typed reader
-0x105ae4	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Tavern
+0x105ae4	archive-vslot2	reconstructed	exact Building-derived UINT serializer; slot-2 class=Tavern
 0x105bc6	archive-read	reconstructed	exact IMPLEMENT_SERIAL Shop typed reader
-0x10602b	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Shop
+0x10602b	archive-vslot2	reconstructed	exact Building-derived UINT serializer; slot-2 class=Shop
 0x106108	archive-read	reconstructed	exact IMPLEMENT_SERIAL CMultiShopShelf typed reader
 0x1061bf	archive-read	reconstructed	exact IMPLEMENT_SERIAL CMultiShopInstance typed reader
 0x106276	archive-read	reconstructed	exact IMPLEMENT_SERIAL CMultiShopTemplate typed reader
