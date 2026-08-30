@@ -525,6 +525,13 @@ the by-value and by-reference list arguments, while the map passes both its
 DWORD key and distinct four-byte mapped value by reference.  No MFC or other
 vendor body is reconstructed in source.
 
+The two resource-subsystem arrays at `0x0c8600` and `0x0c8a40` and their
+element helpers at `0x0c8ee0` and `0x0c8fe0` are byte-exact natural MFC
+template emissions. Append and indexed-set callsites prove distinct arrays of
+four-byte raw pointer handles passed by value, but not the pointee layouts or
+original class names. The neutral handle declarations retain exactly that
+evidence and do not reconstruct either pointee or an MFC body.
+
 The neighboring records at `0x139100` and `0x139210` serialize raw 0x94- and
 0x50-byte owners followed by the same separately allocated
 `CList<WORD, WORD>`. On load they delete the stale list, read the raw owner,

@@ -108,6 +108,10 @@ archive-primitive	0x049770	CArchive IsStoring predicate	exact	100%; exact VC5 SP
 archive-primitive	0x114520	CArchive const-CObject insertion operator	exact	100%; exact VC5 SP2 AFX.INL COMDAT emitted by Spell serializer TU
 archive-element	0x0ae2e0	first opaque four-byte element serializer	exact	100%; exact pinned-header SerializeElements instantiation
 archive-element	0x0ae3b0	second opaque four-byte element serializer	exact	100%; exact pinned-header SerializeElements instantiation
+archive-array	0x0c8600	resource-owned pointer-handle CArray serializer	exact	100%; exact pinned-header emission and append-owner callsites
+archive-array	0x0c8a40	resource-indexed pointer-handle CArray serializer	exact	100%; exact pinned-header emission and three indexed owner arrays
+archive-array	0x0c8ee0	resource-owned pointer-handle element serializer	exact	100%; exact pinned-header raw pointer-word instantiation
+archive-array	0x0c8fe0	resource-indexed pointer-handle element serializer	exact	100%; exact pinned-header raw pointer-word instantiation
 archive-array	0x049700	CStringArray-pointer CArray serializer	exact	100%; WriteCount/ReadCount + SetSize + raw pointer words
 archive-array	0x0498d0	three-CString-record-pointer CArray serializer	exact	100%; WriteCount/ReadCount + SetSize + raw pointer words
 archive-array	0x049ba0	WIN32_FIND_DATA CArray serializer	exact	100%; WriteCount/ReadCount + SetSize + raw 0x140-byte records

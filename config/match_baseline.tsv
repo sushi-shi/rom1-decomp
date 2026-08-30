@@ -33,7 +33,7 @@
 # Query: python3 -m rom1.verify status | check | bank
 # [units]	unit	n_functions	matched
 archivearrays	112	77
-archiveelements	2	2
+archiveelements	8	6
 archiveobjects	12	12
 butemgr	14	11
 bytehuffman	16	15
@@ -170,8 +170,14 @@ archivearrays	?SetSize@?$CArray@UCSecondaryStateRecord@@AAU1@@@QAEXHH@Z	99.8634	
 archivearrays	?SetSize@?$CArray@UCSpellDefinition@@AAU1@@@QAEXHH@Z	99.8634	99.8634	1	cpp:b7fb239e56b8	0x11a610	99.8634	
 archivearrays	?SetSize@?$CArray@UCTertiaryStateRecord@@AAU1@@@QAEXHH@Z	99.8634	99.8634	1	cpp:b7fb239e56b8	0x11a270	99.8634	
 archivearrays	?SetSize@?$CArray@U_WIN32_FIND_DATAA@@U1@@@QAEXHH@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4a670	100.0000	
+archiveelements	?Serialize@?$CArray@UCResourceIndexedObjectHandle@@U1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:8f8beaf1a12b	0xc8a40	100.0000	
+archiveelements	?Serialize@?$CArray@UCResourceOwnedObjectHandle@@U1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:8f8beaf1a12b	0xc8600	100.0000	
 archiveelements	?SerializeElements@@YGXAAVCArchive@@PAUCArchiveElement4Primary@@H@Z	100.0000	100.0000	1	cpp:39e510a4ede1	0xae2e0	100.0000	
 archiveelements	?SerializeElements@@YGXAAVCArchive@@PAUCArchiveElement4Secondary@@H@Z	100.0000	100.0000	1	cpp:39e510a4ede1	0xae3b0	100.0000	
+archiveelements	?SerializeElements@@YGXAAVCArchive@@PAUCResourceIndexedObjectHandle@@H@Z	100.0000	100.0000	1	cpp:8f8beaf1a12b	0xc8fe0	100.0000	
+archiveelements	?SerializeElements@@YGXAAVCArchive@@PAUCResourceOwnedObjectHandle@@H@Z	100.0000	100.0000	1	cpp:8f8beaf1a12b	0xc8ee0	100.0000	
+archiveelements	?SetSize@?$CArray@UCResourceIndexedObjectHandle@@U1@@@QAEXHH@Z	99.8611	99.8611	1	cpp:8f8beaf1a12b	0xc8720	99.8611	
+archiveelements	?SetSize@?$CArray@UCResourceOwnedObjectHandle@@U1@@@QAEXHH@Z	99.8611	99.8611	1	cpp:8f8beaf1a12b	0xc8c30	99.8611	
 archiveobjects	??ACStringArray@@QAEAAVCString@@H@Z	100.0000	100.0000	1	cpp:2746b765bc49	0x47a80	100.0000	
 archiveobjects	?ElementAt@CStringArray@@QAEAAVCString@@H@Z	100.0000	100.0000	1	cpp:2746b765bc49	0x47aa0	100.0000	
 archiveobjects	?IsStoring@CArchive@@QBEHXZ	100.0000	100.0000	1	cpp:0fc8afb2c768	0x49770	100.0000	

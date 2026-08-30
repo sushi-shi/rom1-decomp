@@ -69,10 +69,10 @@ rva	signals	status	note
 0x0b0010	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x0b39b0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x0c6047	stdio-read	target	initial retail call/vtable census
-0x0c8600	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x0c8a40	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x0c8ee0	archive-read,archive-write	target	initial retail call/vtable census
-0x0c8fe0	archive-read,archive-write	target	initial retail call/vtable census
+0x0c8600	archive-read,archive-vslot2,archive-write	reconstructed	exact resource-owned pointer-handle CArray serializer; 100%
+0x0c8a40	archive-read,archive-vslot2,archive-write	reconstructed	exact resource-indexed pointer-handle CArray serializer; 100%
+0x0c8ee0	archive-read,archive-write	reconstructed	exact resource-owned pointer-handle SerializeElements instantiation; 100%
+0x0c8fe0	archive-read,archive-write	reconstructed	exact resource-indexed pointer-handle SerializeElements instantiation; 100%
 0x0c99f0	stdio-read	reconstructed	exact update.lst line reader; char-pointer fopen callsite also resolves the CRT provider
 0x0ca430	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x0ca690	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
