@@ -12,4 +12,5 @@ tracked table consumed by the same gates as the Gruntz workflow.
 it is seeded once and manually maintained thereafter. `retail-partition`
 validates the required executable-native subset and regenerates its companion
 extent/EH/initializer/thunk/data tables. Candidate FID and compiler results
-remain under `evidence/` until exact SP1/SP2 selection permits promotion.
+remain under `evidence/`; only globally unique exact providers from the
+hash-selected SP2 archive set are promoted to `functions_static_libs.tsv`.

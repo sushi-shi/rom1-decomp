@@ -152,28 +152,31 @@ hooks, starts the same persistent Wine arrangement, cleans it up on interactive
 shell exit, and automatically runs `rom1 init` unless the mechanically renamed
 skip variable is set. The `play` shell uses a distinct runtime prefix.
 
-The audited Gruntz VC5 package is the first compiler candidate. Its important
-binary hashes are retained in the environment manifest:
+The selected RoM1 VC5 SP2 package changes only the compiler payload at the
+declared target seam. Its required role hashes are retained in the environment
+manifest and selection gate:
 
 | Binary | SHA-256 |
 | --- | --- |
 | `CL.EXE` | `bf9f9c74f756fed96e13f7f9a4273495c7dde0a1fb968e3ef6d760ad6d73dfeb` |
 | `c1.dll` | `7f12a4a889c5a0277f12c391ca462657dc81ef7be769faf629331bd117983d5d` |
-| `c1xx.dll` | `e27df3bb9a37058c85dad3fb7d1ed30b9e52d38fb6c0f66c8fdba0a11111d3d9` |
-| `c2.exe` | `e75aecaf4073b0817ffb638cae5fff636b2e2d1a090daabf8f68dbc954515fae` |
-| `link.exe` | `04c892989f4cc8076ef45e033215eb7aefbdf1459cbee9b13a81f8ddb718b579` |
-| `cvtres.exe` | `16a45886f9257d990a9478c32ee6c1cbf4ac1fbcf889e5755960539233962465` |
+| `c1xx.dll` | `8b66d3f14035bfa228e79d45481318457594f65ed91f87319d23932372857d8b` |
+| `c2.exe` | `592c65eea2e159a8b7bf61fb20ed12fc0dfdb3c5b7179267d34634aa7a2dc6e4` |
+| `link.exe` | `e28424d3eefcdd96ecc8c3fe38d0fad3d33077c62026f7774eda90784d0eb4d9` |
+| `cvtres.exe` | `0f82167cd888105224463feef5cadebaef970c12932597919e3033d77ed3de6c` |
+| `mspdb50.dll` | `730497a2cc447ad0ea91c52ed9aa1b9d21572f4ca37ce686937946c5a98f7f8c` |
 
-That package was produced by Gruntz's reproducible toolchain-release script:
-VS97 Disc 3, English SP3 overlays, required PDB/runtime/resource tools, and
-Ninja, packed with fixed metadata. RoM1 replaces only its SDK layer with the
-exact DirectX 5 distribution.
+The package is produced by RoM1's parallel reproducible release script: exact
+VS97 Professional Disc 3 RTM, official English and language-neutral SP2
+overlays, required PDB/runtime/resource tools, complete VC/MFC/ATL sources and
+libraries, exact DirectX 5, and Ninja, packed with fixed metadata.
 
-RoM1's PE header reports linker 5.02 and contains no Rich header, while the
-Gruntz target proved its SP3 tool identities. RoM1's linker stamp hard-rejects
-SP3 and retains SP1/SP2. Compile/link operations remain gated until a complete
-byte-level witness panel selects and hashes one of those payloads. Shell
-construction and path behavior remain the same.
+RoM1's PE header reports linker 5.02 and contains no Rich header. SP2
+`LINK.EXE` 5.2.0.7132 and the complete seven-role tool set are hash-pinned;
+the archive census provides 1,010 bijective exact FPO witnesses. Compile/link
+operations verify both aggregate hashes. SP1 is acquired only if the SP2 panel
+later fails a concrete witness. Shell construction and path behavior remain
+the same; SP3 stays available as a rejected control.
 
 ## Command contract
 
@@ -375,8 +378,8 @@ and verification. Parallel hand-maintained maps are not introduced.
 
 ## Target-specific compatibility seams
 
-Initially there is one small proven Vostok-input seam and one conditional
-compiler seam.
+There is one small proven Vostok-input seam and one selected compiler-payload
+seam.
 
 ### Required: Vostok-native relocation manifest
 
@@ -422,13 +425,13 @@ of the generic rules, not a requirement to copy another executable's sites.
 Vostok then reads the unchanged retail PE together with
 `--reloc-manifest config/retail/relocs.tsv`.
 
-### Conditional: compiler payload
+### Selected: compiler payload
 
-The shell and release construction stay exact. Only the compiler payload may
-differ if a representative witness panel proves that the pinned Gruntz VC5 SP3
-payload cannot reproduce RoM1 and another exact, redistributable payload can.
-Such a change records binary hashes, provenance, version witnesses, comparison
-results, and a negative control.
+The shell and release construction stay exact. The pinned Gruntz VC5 SP3
+payload cannot match RoM1's 5.02 linker identity; official SP2 is selected and
+records source-media identities, per-file hashes, tool versions, archive/FPO
+results, a clean compile/link probe, and the rejected SP3 control. SP1 is the
+explicit fallback only if this panel later fails.
 
 ## Explicitly forbidden drift
 

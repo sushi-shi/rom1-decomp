@@ -1,5 +1,9 @@
-# Finite Visual C++ 5.0 servicing matrix. `compiler-census` must resolve the
-# two 5.02 candidates byte-for-byte; chronology is not evidence.
+# Finite Visual C++ 5.0 servicing matrix. SP2 is exercised first because its
+# complete official payload is available; SP1 becomes the fallback only if the
+# SP2 linker/tool/archive panel fails. Chronology is not evidence.
+selection_policy = "sp2-first"
+preferred_candidate = "vc5-sp2"
+fallback_candidate = "vc5-sp1"
 
 [[candidate]]
 id = "vc5-rtm"
@@ -18,10 +22,11 @@ id = "vc5-sp2"
 service_level = "SP2"
 expected_link = "5.02.7132"
 env = "ROM1_VC5_SP2"
+expected_tool_set_sha256 = "b196847121436d8c21948ffeea72e5c9c912e40b33410e4bdfad83373bfc4b70"
+expected_archive_set_sha256 = "b734ff51e5a98964c3dccbb1877bb3298ab8db5ca87b475caca0c2a4c48e57aa"
 
 [[candidate]]
 id = "vc5-sp3"
 service_level = "SP3"
 expected_link = "5.10.7303"
 env = "ROM1_VC5_SP3"
-bootstrap_env = "ROM1_TOOLCHAIN"

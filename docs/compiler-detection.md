@@ -13,8 +13,9 @@ Microsoft KB170367 maps the VC5 linkers as follows:
 | SP3 | 5.10.7303 |
 
 The PE stamp hard-rejects RTM and SP3. It does not distinguish SP1 from SP2.
-Chronology, file dates, another game's compiler, and a close aggregate score
-are not sufficient.
+The complete official SP2 payload is available, so the tracked policy tests it
+first and acquires SP1 only if SP2 fails. Chronology and file dates are not
+substitutes for the executable/archive panel.
 
 `rom1 tool compiler-census` implements the finite decision:
 
@@ -22,18 +23,21 @@ are not sufficient.
 2. reject candidates incompatible with the PE linker stamp;
 3. compare every one of the 4,384 exact FPO extents against every relevant
    archive member, masking the union of retail and COFF relocation operands;
-4. preserve collisions and calculate candidate-exclusive exact witnesses;
-5. select only when every surviving payload is present and one candidate has a
-   unique decisive witness panel.
+4. preserve every collision rather than turning it into a provider claim;
+5. select SP2 only if its complete tool panel, actual linker version, and a
+   non-empty bijective exact archive witness set all pass;
+6. acquire and test SP1 only if that SP2-first panel fails.
 
-The Gruntz SP3 bootstrap remains useful for parser and archive calibration. Its
-conservative FPO scan has 1,001 bijective and 1,170 ambiguous matches. The
-companion Gruntz-style masked FID over all 12,563 manual starts has 1,336 HIGH
-providers (851 `NAFXCW`, 413 `LIBCMT`, 72 `LIBCIMT`) and currently no off-start
-residuals. Both reports are tracked under `config/evidence/`, but SP3's rejected
-linker means none may enter `functions_static_libs.tsv`. `fid-census --write`
-uses the same exact-toolchain gate and therefore fails closed while selection
-is unresolved.
+SP2 passes. `LINK.EXE` is 5.2.0.7132; the FPO panel has 1,010 bijective and
+1,170 ambiguous matches. The full 12,563-start FID has 1,354 HIGH providers
+(861 `NAFXCW`, 421 `LIBCMT`, 72 `LIBCIMT`) and no off-start candidates. Those
+HIGH rows are promoted to `functions_static_libs.tsv`. The active tools and
+archives are checked against their aggregate hashes before compile, link, or
+provider promotion.
+
+The rejected SP3 control has 1,001 bijective plus the same 1,170 ambiguous FPO
+matches. Its nine-witness deficit is useful corroboration, but its incompatible
+5.10 linker is already decisive.
 
 Sources: [Microsoft KB170367](https://ftp.zx.net.nz/pub/mirror/ftp.microsoft.com/MISC/KB/en-us/170/367.HTM)
 and [Microsoft SP2 notes](https://ftp.zx.net.nz/pub/mirror/ftp.microsoft.com/MISC/KB/en-us/172/610.HTM).

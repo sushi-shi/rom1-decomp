@@ -2,8 +2,10 @@
 
 The PE linker stamp is a hard rejection gate.  Surviving candidates are then
 compared using relocation-masked exact static-library member matches over all
-4,384 FPO extents.  No candidate is selected until every surviving servicing
-level is present and at least one byte witness discriminates the winner.
+4,384 FPO extents.  The tracked matrix may name a preferred candidate to test
+first; its complete tool panel, compatible linker, and non-empty exact archive
+panel must all pass before selection.  The fallback is acquired only if that
+preferred payload fails.
 """
 
 from __future__ import annotations
@@ -83,6 +85,13 @@ def candidates(overrides: list[str]) -> list[dict]:
     return result
 
 
+def matrix_policy() -> dict:
+    data = tomllib.loads(MATRIX.read_text())
+    return {key: data[key] for key in
+            ("selection_policy", "preferred_candidate", "fallback_candidate")
+            if key in data}
+
+
 def tool_rows(matrix: list[dict]) -> list[dict[str, str]]:
     rows = []
     for candidate in matrix:
@@ -128,7 +137,20 @@ def _prefix(version: str) -> str:
     return ".".join(fields[:2]) if len(fields) >= 2 else version
 
 
-def census(args, matrix: list[dict], tools: list[dict[str, str]]) -> tuple[list[dict], str | None]:
+def _numeric_prefix(version: str) -> tuple[int, int] | None:
+    try:
+        fields = version.split(".")
+        return int(fields[0]), int(fields[1])
+    except (IndexError, ValueError):
+        return None
+
+
+def _aggregate(hashes) -> str:
+    return hashlib.sha256("".join(sorted(hashes)).encode()).hexdigest()
+
+
+def census(args, matrix: list[dict], tools: list[dict[str, str]],
+           archives: list[dict[str, str]]) -> tuple[list[dict], str | None]:
     link_major, link_minor = Pe(args.exe).linker_version
     target_link = f"{link_major}.{link_minor:02d}"
     tool_by = {(row["candidate"], row["role"].lower()): row for row in tools}
@@ -148,6 +170,24 @@ def census(args, matrix: list[dict], tools: list[dict[str, str]]) -> tuple[list[
             exact = sum(row["confidence"] == "HIGH" for row in report)
             ambiguous = sum(row["confidence"] == "AMBIG" for row in report)
             matched = exact + ambiguous
+            missing_roles = [role for role in ROLES
+                             if not tool_by[(candidate["id"], role)]["path"]]
+            tool_set = _aggregate(
+                tool_by[(candidate["id"], role)]["sha256"] for role in ROLES)
+            archive_set = _aggregate(
+                row["sha256"] for row in archives
+                if row["candidate"] == candidate["id"])
+            if stamp_compatible and missing_roles:
+                state = "INCOMPLETE-PAYLOAD"
+            elif (stamp_compatible and
+                  _numeric_prefix(actual_link) != (link_major, link_minor)):
+                state = "REJECTED-ACTUAL-LINKER"
+            elif (stamp_compatible and candidate.get("expected_tool_set_sha256")
+                  and tool_set != candidate["expected_tool_set_sha256"]):
+                state = "REJECTED-TOOL-SET"
+            elif (stamp_compatible and candidate.get("expected_archive_set_sha256")
+                  and archive_set != candidate["expected_archive_set_sha256"]):
+                state = "REJECTED-ARCHIVE-SET"
         elif stamp_compatible:
             state = "MISSING-PAYLOAD"
         summaries.append({
@@ -165,36 +205,66 @@ def census(args, matrix: list[dict], tools: list[dict[str, str]]) -> tuple[list[
             "evidence": "PE linker stamp" if not stamp_compatible else "",
         })
 
-    survivors = [row for row in summaries if row["state"] != "REJECTED-LINKER"]
-    present = [row for row in survivors if row["payload"] == "present"]
-    if len(present) >= 2 and len(present) == len(survivors):
-        hitsets = {key: {row["rva"] for row in report if row["confidence"]}
-                   for key, report in reports.items()}
-        for summary in present:
-            mine = hitsets[summary["candidate"]]
-            others = set().union(*(hits for key, hits in hitsets.items()
-                                   if key != summary["candidate"]))
-            summary["exclusive_fpo"] = str(len(mine - others))
-        winners = [row for row in present if int(row["exclusive_fpo"]) > 0
-                   and int(row["library_matched_fpo"]) == max(
-                       int(other["library_matched_fpo"]) for other in present)]
-        selected = winners[0]["candidate"] if len(winners) == 1 else None
+    policy = matrix_policy()
+    preferred = policy.get("preferred_candidate")
+    preferred_row = next((row for row in summaries
+                          if row["candidate"] == preferred), None)
+    if preferred_row is not None:
+        if (preferred_row["state"] == "CANDIDATE" and
+                int(preferred_row["library_unique_fpo"]) > 0):
+            preferred_row["state"] = "PREFERRED-PASS"
+            preferred_row["evidence"] = (
+                f'{policy.get("selection_policy", "preferred-first")}; '
+                f'PE linker stamp; {preferred_row["library_unique_fpo"]} '
+                "bijective exact FPO archive witnesses")
+            selected = preferred
+        else:
+            preferred_row["evidence"] = (
+                preferred_row["evidence"] or
+                f'{policy.get("selection_policy", "preferred-first")} failed; '
+                f'acquire {policy.get("fallback_candidate", "fallback")}'
+            )
+            selected = None
     else:
-        selected = None
+        survivors = [row for row in summaries
+                     if row["state"] != "REJECTED-LINKER"]
+        present = [row for row in survivors if row["payload"] == "present"]
+        if len(present) >= 2 and len(present) == len(survivors):
+            hitsets = {key: {row["rva"] for row in report if row["confidence"]}
+                       for key, report in reports.items()}
+            for summary in present:
+                mine = hitsets[summary["candidate"]]
+                others = set().union(*(hits for key, hits in hitsets.items()
+                                       if key != summary["candidate"]))
+                summary["exclusive_fpo"] = str(len(mine - others))
+            winners = [row for row in present if int(row["exclusive_fpo"]) > 0
+                       and int(row["library_matched_fpo"]) == max(
+                           int(other["library_matched_fpo"]) for other in present)]
+            selected = winners[0]["candidate"] if len(winners) == 1 else None
+        else:
+            selected = None
     return summaries, selected
 
 
-def write_selection(selected: str, summaries: list[dict], archives: list[dict]) -> None:
+def write_selection(selected: str, summaries: list[dict], archives: list[dict],
+                    tools: list[dict]) -> None:
     row = next(row for row in summaries if row["candidate"] == selected)
-    hashes = sorted(item["sha256"] for item in archives if item["candidate"] == selected)
+    hashes = [item["sha256"] for item in archives if item["candidate"] == selected]
+    tool_hashes = [item["sha256"] for item in tools
+                   if item["candidate"] == selected and item["sha256"]]
+    policy = matrix_policy()
+    selection_policy = policy.get("selection_policy", "matrix")
     SELECTION.write_text(
         'status = "selected"\n'
         f'candidate = "{selected}"\n'
         f'service_level = "{row["service_level"]}"\n'
+        f'selection_policy = "{selection_policy}"\n'
+        f'fallback_candidate = "{policy.get("fallback_candidate", "")}"\n'
         f'target_pe_linker = "{row["target_pe_linker"]}"\n'
         f'linker_file_version = "{row["actual_link"]}"\n'
-        f'archive_set_sha256 = "{hashlib.sha256("".join(hashes).encode()).hexdigest()}"\n'
-        f'evidence = "complete servicing matrix plus {row["exclusive_fpo"]} exclusive exact FPO archive witnesses"\n')
+        f'tool_set_sha256 = "{_aggregate(tool_hashes)}"\n'
+        f'archive_set_sha256 = "{_aggregate(hashes)}"\n'
+        f'evidence = "{row["evidence"]}"\n')
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -204,7 +274,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--relocs", type=Path, default=RETAIL / "relocs.tsv")
     parser.add_argument("--candidate", action="append", default=[], metavar="ID=PATH")
     parser.add_argument("--write", action="store_true",
-                        help="commit a selection only after the complete matrix discriminates it")
+                        help="commit the preferred candidate only after its exact panel passes")
     parser.add_argument("--write-evidence", action="store_true",
                         help="refresh the tracked diagnostic matrix (does not select a compiler)")
     args = parser.parse_args(argv)
@@ -214,7 +284,7 @@ def main(argv: list[str] | None = None) -> int:
         parser.error(str(error))
     tools = tool_rows(matrix)
     archives = archive_rows(matrix)
-    summary, selected = census(args, matrix, tools)
+    summary, selected = census(args, matrix, tools, archives)
     _write(TOOLS, ("candidate", "service_level", "role", "path", "size",
                    "version", "sha256"), tools)
     _write(ARCHIVES, ("candidate", "service_level", "archive", "size", "sha256"), archives)
@@ -240,11 +310,16 @@ def main(argv: list[str] | None = None) -> int:
     if selected:
         print(f"[compiler-census] selected {selected}")
         if args.write:
-            write_selection(selected, summary, archives)
+            write_selection(selected, summary, archives, tools)
             print(f"[compiler-census] wrote {SELECTION.relative_to(REPO)}")
         return 0
-    print("[compiler-census] unresolved: both SP1 and SP2 payloads are required "
-          "for a servicing-level decision")
+    policy = matrix_policy()
+    if policy.get("preferred_candidate"):
+        print(f"[compiler-census] unresolved: {policy['preferred_candidate']} failed; "
+              f"acquire {policy.get('fallback_candidate', 'the fallback')}")
+    else:
+        print("[compiler-census] unresolved: complete surviving payload matrix "
+              "is required for a servicing-level decision")
     return 1 if args.write else 0
 
 

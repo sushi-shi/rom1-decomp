@@ -323,8 +323,8 @@ def selected_toolchain(archives: list[Path]) -> str:
     """Return the selected candidate id, refusing an unproven archive set."""
     config = tomllib.loads(COMPILER.read_text()) if COMPILER.is_file() else {}
     if config.get("status") != "selected":
-        raise ValueError("compiler servicing level is unresolved; run the complete "
-                         "`rom1 tool compiler-census --write` matrix first")
+        raise ValueError("compiler servicing level is unresolved; run the tracked "
+                         "SP2-first `rom1 tool compiler-census --write` panel")
     hashes = sorted(sha256(path.read_bytes()) for path in archives)
     actual = hashlib.sha256("".join(hashes).encode()).hexdigest()
     if actual != config.get("archive_set_sha256"):

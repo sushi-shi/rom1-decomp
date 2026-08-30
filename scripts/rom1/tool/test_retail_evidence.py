@@ -56,7 +56,17 @@ class RetailEvidenceTest(unittest.TestCase):
             self.assertEqual(selection["eligible_service_levels"], ["SP1", "SP2"])
         else:
             self.assertIn(selection["service_level"], ("SP1", "SP2"))
+            self.assertEqual(selection["selection_policy"], "sp2-first")
+            self.assertEqual(selection["fallback_candidate"], "vc5-sp1")
+            self.assertRegex(selection["tool_set_sha256"], r"^[0-9a-f]{64}$")
             self.assertTrue(selection["archive_set_sha256"])
+            matrix = tomllib.loads((CONFIG / "toolchains.toml").read_text())
+            candidate = next(row for row in matrix["candidate"]
+                             if row["id"] == selection["candidate"])
+            self.assertEqual(selection["tool_set_sha256"],
+                             candidate["expected_tool_set_sha256"])
+            self.assertEqual(selection["archive_set_sha256"],
+                             candidate["expected_archive_set_sha256"])
 
     def test_global_eh_partition_closes_the_virtual_text_tail(self):
         _lo, text_end = self.pe.text_span()

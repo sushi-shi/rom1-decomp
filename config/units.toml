@@ -1,10 +1,10 @@
 [build]
-compiler = "msvc5.0-unresolved"
+compiler = "msvc5.0"
 platform = "win32"
 bootstrap = true
 
-# Exact Gruntz profile schema. These are calibration candidates until the
-# compiler census and per-TU witnesses select the retail flags.
+# Exact Gruntz profile schema under the selected SP2 payload. These complete
+# profiles remain calibration candidates until per-TU witnesses select flags.
 [flags]
 c             = ["/nologo", "/c", "/O2", "/MT"]
 cpp           = ["/nologo", "/c", "/O2", "/MT", "/GX"]

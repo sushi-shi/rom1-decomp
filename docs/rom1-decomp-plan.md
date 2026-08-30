@@ -1,12 +1,12 @@
 # Rage of Mages 1 decompilation setup plan
 
-Status: environment implemented; compiler-selection gate awaiting SP1/SP2 media,
-2026-08-29
+Status: environment and SP2 compiler selection implemented, 2026-08-30
 
 The project now has the pinned Gruntz-shaped environment, executable-native
 retail censuses, relocation-manifest Vostok path, static-library comparison,
-and vendor-header preparation. The remaining pre-campaign gate is the exact
-SP1-versus-SP2 compiler servicing decision.
+and vendor-header preparation. VC5 SP2 is selected by the retail linker stamp,
+complete tool-role hashes, and exact executable/archive witnesses. SP1 remains
+a fallback only if a representative SP2 compilation witness fails.
 
 ## What exists now
 
@@ -15,10 +15,10 @@ unit/config schemas, include/vendor roots, delinker, matching graph, and test
 suite. The former investigation toolbox remains available as
 `nix develop .#inventory`.
 
-`src/` is intentionally empty: the exact compiler gate must be resolved before
-the first translation unit is compiled. `[build] bootstrap=true` makes this
-state explicit and permits a complete zero-unit Ninja graph; it must be removed
-when the first `[[unit]]` is admitted. The authoritative retail layer already
+`src/` is intentionally empty because the first translation unit has not yet
+been admitted. `[build] bootstrap=true` makes this state explicit and permits
+a complete zero-unit Ninja graph; it must be removed when the first `[[unit]]`
+is admitted. The authoritative retail layer already
 contains FPO extents/frame metadata, strings, imports, PE/debug/section facts,
 and recovered relocation sites.
 
@@ -68,10 +68,10 @@ rows, 147 initializer helpers, two pure IAT thunks, 117 MFC runtime classes,
 tables preserve exact extents. The initial union was generated once;
 `functions.tsv` is manual from that point forward.
 
-The working compiler hypothesis is Microsoft Visual C++ 5-era optimized C/C++,
-static CRT/MFC, exception handling where required, frame-pointer omission in
-many functions, no incremental linking, and little or no game-class C++ RTTI.
-The exact compiler binary and each complete TU flag profile remain unproven.
+The selected compiler is Microsoft Visual C++ 5 SP2 with static CRT/MFC. The
+initial flag hypothesis is optimized C/C++, exception handling where required,
+frame-pointer omission in many functions, no incremental linking, and little
+or no game-class C++ RTTI. Each complete TU flag profile remains evidence-led.
 
 ## End-state layout
 
@@ -190,10 +190,10 @@ For each witness, record:
 - assembly deltas and disqualifying signatures;
 - result across multiple witnesses, not one lucky function.
 
-Test the exact Gruntz VC5 SP3 package first. Compare `/Oy` and EH/RTTI profile
-variants as full profiles. If linker/compiler fingerprints and witness bytes
-consistently reject SP3, construct a precisely pinned VC5 alternative through
-the same release pipeline and classify only the payload change as a seam.
+The exact Gruntz VC5 SP3 package was tested and rejected by its 5.10 linker.
+The precisely pinned SP2 alternative uses the same release pipeline, passes the
+5.02 linker gate, and provides 1,010 bijective exact FPO/archive witnesses.
+Compare `/Oy` and EH/RTTI variants as full profiles while admitting real TUs.
 
 Gate:
 
@@ -400,12 +400,11 @@ item are red.
 
 The following are not setup preferences and will not be guessed:
 
-- whether the target compiler is exactly the Gruntz SP3 payload or an earlier
-  VC5 payload;
 - the final complete flag profiles and their TU allocation;
 - future reviewed inclusions/exclusions to the generated relocation-site manifest;
 - the authoritative function/data census and ownership boundaries;
-- CRT/MFC/third-party library versions and archive providers;
+- remaining CRT/MFC/third-party library ownership beyond the 1,354 promoted
+  exact SP2 providers;
 - TU/link order in the absence of an incremental-link ILT;
 - resource script, link flags, library order, and runtime/CD layout;
 - which Gruntz domain-specific codec, REZ, lineage, or oracle adjuncts have a

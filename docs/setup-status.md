@@ -33,13 +33,13 @@ The recovered relocation list is consumed both by the Python delink model and
 Vostok's `--reloc-manifest`; the empty PE relocation directory is never used as
 a fallback.
 
-The first static-library pass is ready and recorded under `config/evidence/`.
-Against the rejected VC5 SP3 bootstrap, the conservative FPO panel finds 1,001
-bijective exact and 1,170 ambiguous extents (2,171 total). The Gruntz-style
-full manual-start FID finds 1,336 globally unique exact providers: 851
-`NAFXCW`, 413 `LIBCMT`, and 72 `LIBCIMT`. Those rows are ancestry evidence only
-and cannot be promoted. The same scans over complete SP1 and SP2 payloads are
-the compiler decision panel.
+The complete official VC5 SP2 payload is selected and recorded under
+`config/evidence/`. Its conservative FPO panel finds 1,010 bijective exact and
+1,170 ambiguous extents (2,180 total), nine more bijective witnesses than the
+rejected SP3 control. The Gruntz-style full manual-start FID promotes 1,354
+globally unique exact providers: 861 `NAFXCW`, 421 `LIBCMT`, and 72 `LIBCIMT`.
+Ambiguous rows remain evidence-only. SP1 is a fallback to acquire only if a
+later representative SP2 compilation witness fails.
 
 DirectX 5 is fetched by exact SHA-256 and overlays the Gruntz bootstrap's DX6
 directory. RoM1 does not import DInput or DPlay. Smacker is prepared under
@@ -58,10 +58,10 @@ identity or diagnostic strings. Both negative controls are tracked under
 `config/evidence/`; no zlib source is vendored without a substantive RoM1
 executable witness.
 
-The only hard setup gap is acquisition of complete VC5 SP1 and SP2 payloads.
-The PE linker stamp rejects RTM and SP3, but SP1 and SP2 share linker version
-5.02.7132. The build intentionally refuses to compile until the complete
-archive census selects one and records exact hashes in `compiler.toml`.
+The compiler setup gate is closed: SP2 `LINK.EXE` 5.2.0.7132 agrees with the PE
+stamp, all seven compiler/linker roles are present, and the complete tool and
+archive aggregates are pinned in `compiler.toml`. Compile and link refuse any
+active payload whose linker version or hashes differ.
 
 The source manifest's empty state is explicit: `[build] bootstrap=true` emits
 the full zero-TU Ninja graph and its committed zero-debt gate baselines. The

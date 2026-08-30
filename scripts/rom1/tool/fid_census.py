@@ -9,8 +9,8 @@ the two scans used by Gruntz:
 Relocation operands are wildcarded on both sides.  HIGH requires a substantial
 signature, a unique archive identity, a unique retail RVA, and an exact extent
 (FPO/structural, or a signature followed only by linker padding up to the next
-manual start).  The report is diagnostic under the rejected SP3 bootstrap;
-provider promotion is fail-closed until ``compiler.toml`` selects SP1 or SP2.
+manual start). Provider promotion is fail-closed unless the active toolchain's
+complete archive set matches the hash-selected compiler in ``compiler.toml``.
 """
 
 from __future__ import annotations
@@ -191,7 +191,8 @@ def _classify(probes, location_key="rva"):
             "identity_match_count": str(reverse), "rva_identity_count": str(names),
             "member": candidate.member, "archive_sha256": candidate.archive_hash,
             "member_sha256": candidate.member_hash,
-            "source": function.get("source", "anchored"), "notes": ";".join(notes),
+            "source": function.get("source", "anchored"),
+            "notes": ";".join(notes) if notes else "-",
         })
     rows.sort(key=lambda row: int(row["rva"], 0))
     return rows

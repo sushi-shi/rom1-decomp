@@ -224,10 +224,7 @@
         cp "$rom1_smackw32" "$out/SMACKW32.DLL"
       '';
 
-      # Bootstrap compiler candidate: RoM1's published, self-hosted VC5 SP3 +
-      # DirectX 5 analysis payload. The release is reproducibly rebuilt below.
-      # `rom1 tool compiler-census` must identify the exact RoM1 servicing level
-      # before library claims or the first game-function bank are final.
+      # Rejected bootstrap candidate retained for the servicing census.
       #
       # Expected unpacked layout:
       # * msvc/{bin,include,lib (LIBCMT+NAFXCW static MFC)}
@@ -244,7 +241,7 @@
         hash = "sha256-bN6bpxiGbiHosZe1mfyRk6kES4FZr4ut2+/sFq5TG1E=";
       };
 
-      rom1-toolchain = pkgs.runCommand "rom1-bootstrap-vc50-sp3-dx5" {
+      rom1-toolchain-sp3-bootstrap = pkgs.runCommand "rom1-bootstrap-vc50-sp3-dx5" {
         src = pkgs.fetchurl {
           name = "rom1-bootstrap-vc50-sp3-dx5-r1.tar.xz";
           url = "https://github.com/sushi-shi/rom1-decomp/releases/download/tooling-vc50-sp3-dx5-bootstrap-r1/rom1-bootstrap-vc50-sp3-dx5-r1.tar.xz";
@@ -256,14 +253,40 @@
         tar xf "$src" -C "$out" --strip-components=1
       '';
 
-      rom1-toolchain-release = pkgs.runCommand
+      rom1-toolchain-sp3-bootstrap-release = pkgs.runCommand
         "rom1-bootstrap-vc50-sp3-dx5-r1.tar.xz" {
           nativeBuildInputs = [ pkgs.gnutar pkgs.xz ];
         } ''
           mkdir -p "$TMPDIR/release/rom1-bootstrap-vc50-sp3-dx5"
-          cp -R ${rom1-toolchain}/. "$TMPDIR/release/rom1-bootstrap-vc50-sp3-dx5/"
+          cp -R ${rom1-toolchain-sp3-bootstrap}/. "$TMPDIR/release/rom1-bootstrap-vc50-sp3-dx5/"
           tar --sort=name --mtime=@925473600 --owner=0 --group=0 --numeric-owner \
             -C "$TMPDIR/release" -cJf "$out" rom1-bootstrap-vc50-sp3-dx5
+        '';
+
+      # Selected compiler: clean VC5 RTM Disc 3 plus only the official English
+      # and language-neutral SP2 overlays. The asset embeds complete source and
+      # per-file provenance manifests and exact DirectX 5.
+      rom1-toolchain = pkgs.runCommand "rom1-toolchain-vc50-sp2-dx5" {
+        src = pkgs.fetchurl {
+          name = "rom1-toolchain-vc50-sp2-dx5-r1.tar.xz";
+          url = "https://github.com/sushi-shi/rom1-decomp/releases/download/toolchain-vc50-sp2-dx5-r1/rom1-toolchain-vc50-sp2-dx5-r1.tar.xz";
+          hash = "sha256-instO3nT3J81oph9ICcUGGG6XOp8g86RIRJzconS0sE=";
+        };
+        nativeBuildInputs = [ pkgs.gnutar pkgs.xz ];
+      } ''
+        mkdir -p "$out"
+        tar xf "$src" -C "$out" --strip-components=1
+      '';
+
+      rom1-toolchain-release = pkgs.runCommand
+        "rom1-toolchain-vc50-sp2-dx5-r1.tar.xz" {
+          nativeBuildInputs = [ pkgs.gnutar pkgs.xz ];
+        } ''
+          mkdir -p "$TMPDIR/release/rom1-toolchain-vc50-sp2-dx5"
+          cp -R ${rom1-toolchain}/. "$TMPDIR/release/rom1-toolchain-vc50-sp2-dx5/"
+          tar --sort=name --format=gnu --mtime=@925473600 --owner=0 --group=0 \
+            --numeric-owner -C "$TMPDIR/release" -cJf "$out" \
+            rom1-toolchain-vc50-sp2-dx5
         '';
 
       # `rom1` as a real PATH executable so the CLI works in ANY shell (bash, fish,
@@ -382,6 +405,8 @@
           # shell; `rom1 clean` reaps it before removing the prefix.
           case "$-" in *i*) trap 'wineserver -k >/dev/null 2>&1 || true' EXIT ;; esac
           export ROM1_TOOLCHAIN="${rom1-toolchain}"
+          export ROM1_VC5_SP2="${rom1-toolchain}"
+          export ROM1_VC5_SP3="${rom1-toolchain-sp3-bootstrap}"
           export MSVC_DIR="${rom1-toolchain}/msvc"
           export DXSDK_DIR="${rom1-toolchain}/dx"
           export NINJA_DIR="${rom1-toolchain}/ninja"
@@ -398,7 +423,7 @@
           # Banner -> stderr so stdout stays clean for `nix develop --command`
           # piping (e.g. rom1 status ... --json | jq).
           echo "[rom1] target EXE : $ROM1_EXE" >&2
-          echo "[rom1] MSVC 5.0   : SP3 bootstrap only; retail SP1/SP2 selection is unresolved" >&2
+          echo "[rom1] MSVC 5.0   : SP2 selected (5.02.7132; exact tool/archive hashes pinned)" >&2
           echo "[rom1] DirectX SDK: exact DirectX 5 headers/import libraries" >&2
           echo "[rom1] tools      : vostok-delinker, objdiff(-cli), llvm-pdbutil; ghidra is optional" >&2
           echo "[rom1] clang      : $ROM1_CLANG (unwrapped; ghidra_metadata_generate/gen_labels)" >&2
@@ -470,7 +495,8 @@
     in {
       packages.${system} = {
         inherit vostok-delinker objdiff objdiff-cli rom1-exe rom1-toolchain
-          rom1-toolchain-release dx5sdk
+          rom1-toolchain-release rom1-toolchain-sp3-bootstrap
+          rom1-toolchain-sp3-bootstrap-release dx5sdk
           rom1-smackw32 rom1-runtime;
         default = vostok-delinker;
       };

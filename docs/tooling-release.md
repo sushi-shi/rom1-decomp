@@ -1,30 +1,34 @@
 # Tooling release
 
-The reproducible tooling asset is named
-`rom1-bootstrap-vc50-sp3-dx5-r1.tar.xz`. Build it with:
+The selected reproducible tooling asset is named
+`rom1-toolchain-vc50-sp2-dx5-r1.tar.xz`. Rebuild it from source media with:
 
 ```sh
-nix build .#rom1-toolchain-release
-sha256sum result
+nix-shell scripts/create-sp2-toolchain-release.nix
 ```
 
-It contains the Gruntz VC5 SP3 compiler/bootstrap payload, exact DirectX 5 SDK
-headers and import libraries, and the Windows Ninja binary. Fixed tar metadata
-and sorted entries make the asset reproducible.
+The builder verifies the pinned Visual Studio 97 Professional Disc 3 and SP2
+carrier ISO hashes, stages the RTM compiler, applies only `VSSP2/ENU` and
+`VSSP2/ALL`, and adds exact DirectX 5 plus Windows Ninja. It includes the full
+VC/MFC/ATL headers and sources, static libraries, tools, and per-file
+provenance. Fixed GNU tar metadata and sorted entries make the asset
+reproducible; two clean builds are byte-equal.
 
 The default flake consumes this RoM1 release directly, rather than rebuilding
 an implicit overlay from the Gruntz release on every fresh machine. The
 `rom1-toolchain-release` derivation untars and deterministically retars that
-payload, so the published asset is its own reproducibility check.
+payload, so `nix build .#rom1-toolchain-release` verifies the published asset's
+packaging. The original-media builder is the full source reconstruction.
 
 Release `r1` identity:
 
 ```text
-size     16,974,956 bytes
-sha256   ca82aaafbef4cde8f0fa345311410c710934cf94c72d5cce1a1f371860596fd0
+size     43,141,180 bytes
+sha256   8a7b2d3b79d3dc9f35a2987d2027141861ba5cea7c83ce912112737289d2d2c1
 ```
 
-The tag and release notes must call it an **analysis bootstrap**. It is not the
-RoM1 matching compiler: retail's 5.02 linker stamp rejects its SP3 linker.
-Matching releases will use a different tag only after the SP1/SP2 census writes
-an exact selected payload.
+The older `tooling-vc50-sp3-dx5-bootstrap-r1` release remains an **analysis
+bootstrap** and rejected-linker control. It is available from the flake as
+`rom1-toolchain-sp3-bootstrap`, but it cannot satisfy the selected-toolchain
+gate. SP1 remains an acquisition fallback only if SP2 later fails a concrete
+representative witness.

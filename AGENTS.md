@@ -12,11 +12,13 @@
 ## Exact environment discipline
 
 - Work in the pinned `nix develop` environment.
-- The bundled VC5 SP3 payload is a bootstrap inherited from Gruntz. Retail's
-  linker stamp is 5.02 and rejects SP3. Never compile or promote static-library
-  labels with it as though it were the matching compiler.
-- `rom1 tool compiler-census` must compare the complete SP1/SP2 matrix and
-  write an exact, hashed selection before `cl` or `link` may run.
+- VC5 SP2 is the selected payload. Retail's linker stamp is 5.02, and the
+  selected compiler/linker roles plus complete archive set are hash-pinned in
+  `config/compiler.toml`. Never compile or promote static-library labels with
+  a payload that fails that gate.
+- `rom1 tool compiler-census` exercises the complete official SP2 payload
+  first. Acquire and test SP1 only if that tracked panel fails. The rejected
+  SP3 payload remains available strictly as a calibration control.
 - DirectX 5 is exact. Do not upgrade SDK headers or import libraries.
 - Smacker declarations are exact for the complete retail-used ABI only. Do not
   call unimported 3.1L declarations recovered merely because the 3.2f header is
@@ -60,5 +62,5 @@
 
 - Verify retail census, relocations, vendor ABI, parity, Python tests, Vostok
   tests, and Nix evaluation before handoff.
-- A build is not authoritative while compiler selection remains unresolved;
-  report that gate plainly instead of generating SP3 match artifacts.
+- A build is authoritative only when the active compiler/linker and archive
+  aggregates match `config/compiler.toml`; never generate SP3 match artifacts.

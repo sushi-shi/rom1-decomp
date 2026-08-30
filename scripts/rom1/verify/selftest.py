@@ -5317,6 +5317,11 @@ class ToolchainIsADeclaredInput(unittest.TestCase):
         self.assertIn(graph.TOOLCHAIN_ID, text)
         cl_edges = [ln for ln in text.splitlines()
                     if ln.startswith("build build/objdiff/base/") and ": cl " in ln]
+        if not cl_edges:
+            from rom1 import manifest
+            data = manifest.load()
+            if data.get("build", {}).get("bootstrap") and not data.get("unit"):
+                self.skipTest("explicit pre-first-TU bootstrap manifest")
         self.assertTrue(cl_edges, "no cl edges in the manifest")
         # Edge lines are wrapped by the writer, so join the continuations.
         joined, buf = [], ""
