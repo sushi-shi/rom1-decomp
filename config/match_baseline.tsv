@@ -43,6 +43,7 @@ dib	15	12
 directxexception	1	0
 gamebitmap	2	2
 itemnames	11	3
+lldriver	2	1
 pixmap	9	6
 playerreference	1	1
 radialoffsettable	2	2
@@ -283,6 +284,8 @@ itemnames	?Load@CTextBlock@@QAEXPBD@Z	87.6294	87.6294	1	4b7a48481184	0x68660	87.
 itemnames	?LoadItemNames@@YAXXZ	98.7692	98.7692	1	efb5ef2a8a0d	0x68490	98.7692	
 itemnames	?Release@CTextBlock@@QAEXXZ	92.0513	89.3590	1	9454a0d597f2	0x68890	92.0513	
 itemnames	?Serialize@CTextPointerVector@@UAEXAAVCArchive@@@Z	81.4384	81.4384	1	3787a2781c2d	0x69390	81.4384	
+lldriver	?AppendConnectionInfo@CLlDriver@@QAEPAUCConnectionInfo@@XZ	100.0000	100.0000	1	2dca83404cb3	0xeb323	100.0000	
+lldriver	?LoadIpConnectionInfo@CLlDriver@@QAEXXZ	99.4393	99.4393	1	0c447ab3615a	0xeba39	99.4393	
 pixmap	??0CPixMap@@QAE@AAVCString@@@Z	100.0000	100.0000	1	4298753aed7b	0x8d210	100.0000	
 pixmap	??0CPixMap@@QAE@XZ	100.0000	100.0000	1	4298753aed7b	0x8d1e0	100.0000	
 pixmap	??1CPixMap@@QAE@XZ	100.0000	100.0000	1	2730ab7cdeab	0x8d250	100.0000	
@@ -348,7 +351,7 @@ scenarioobjectmap	??_GCMissionDescriptionSection@@UAEPAXI@Z	99.7059	99.7059	1	cp
 scenarioobjectmap	?AddLine@CMissionDescriptionSection@@QAEXABVCString@@@Z	100.0000	100.0000	1	43c26556cbdf	0x115550	100.0000	
 scenarioobjectmap	?GetAt@CString@@QBEDH@Z	100.0000	100.0000	1	cpp:c10100751d23	0xc7ec0	100.0000	
 scenarioobjectmap	?GetSize@CStringArray@@QBEHXZ	100.0000	100.0000	1	cpp:c10100751d23	0x479b0	100.0000	
-scenarioobjectmap	?LoadMissionDescriptions@CScenarioObjectMap@@QAEHABVCString@@@Z	99.4332	99.4332	1	585140edbc28	0xe0b06	99.4332	
+scenarioobjectmap	?LoadMissionDescriptions@CScenarioObjectMap@@QAEHABVCString@@@Z	99.4332	99.4332	2	532308ac2424	0xe0b06	99.4332	
 scenarioobjectmap	?Rebuild@CScenarioObjectMap@@QAEXPAVCScenarioResource@@H@Z	0.4425	0.4425	2	88343f55c8ae	0xe358b	0.4425	
 scenarioobjectmap	?SetAt@CMapStringToPtr@@QAEXPBDPAX@Z	99.6154	99.6154	1	cpp:c10100751d23	0x115530	99.6154	
 scenariosupport	??0CScenarioPrimary@@QAE@XZ	79.5000	79.5000	2	36308379d4b2	0x11005d	79.5000	

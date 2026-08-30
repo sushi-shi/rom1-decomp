@@ -98,7 +98,7 @@ rva	signals	status	note
 0x0dffcd	archive-vslot2	reconstructed	initial retail call/vtable census; slot-2 class=TableLine
 0x0e03d2	archive-read,archive-vslot2,archive-write	reconstructed	TableLine-derived CString extension serializer
 0x0e0b06	file-read	reconstructed	source-complete game-owned mission-description INI reader; 99.43% with identical instruction/call/branch/relocation topology and only local-slot plus deliberately unclaimed referent residue
-0x0eba39	stdio-read	target	initial retail call/vtable census
+0x0eba39	stdio-read	reconstructed	source-complete game-owned CLlDriver IP-configuration reader; 99.44%, exact mnemonic/control-flow topology with only short-string storage and deliberately ambiguous CRT provider labels
 0x0f2461	archive-read	reconstructed	exact IMPLEMENT_SERIAL Token typed reader
 0x0f2a24	archive-read	reconstructed	exact IMPLEMENT_SERIAL VirtualCaster typed reader
 0x0f2bf7	archive-read	reconstructed	exact IMPLEMENT_SERIAL Unit typed reader

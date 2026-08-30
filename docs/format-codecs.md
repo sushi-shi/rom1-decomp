@@ -714,6 +714,22 @@ slots and intentionally unclaimed executable labels for `CObject` allocation
 and the existing game logger. The pinned-header CString/CStringArray accessors
 emitted by this game TU are exact; no MFC implementation body is reproduced.
 
+The game-owned `CLlDriver` reader at `0x0eba39` invokes `IPConfig.exe` on NT
+or `WinIpCfg.exe` on Windows 9x, writing `IPINFO.$$$$$$`, then parses the
+colon-separated output. Leading and trailing whitespace is removed from each
+value. A `Description` line starts a 0x214-byte connection record with address
+`0.0.0.0`; a following `IP Address` line replaces that address. If no records
+were found, retail creates a `Default adapter` entry. The record-array growth
+helper at `0x0eb323` is byte-exact and preserves retail's unchecked
+`malloc`/`realloc` behavior.
+
+The reader is source-complete at 99.44% with identical mnemonic and branch
+topology, 24 calls, 23 branches, and 37 ordered relocations. Its residual is
+limited to the storage identity of the empty directory initializer and the
+retail executable's ambiguous exact CRT labels for `strcpy`, `strcat`,
+`_spawnlp`, and `_unlink`. Those library bodies remain external and are not
+reconstructed here.
+
 The world-map serializer at `0x144aa0` is source-complete at 84.81%. Its store
 arm scans tile indices `0x0807` through `0xeded`, packs exceptional high-byte
 tiles as index/high/low DWORDs, then serializes the list, an embedded

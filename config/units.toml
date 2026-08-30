@@ -84,6 +84,11 @@ source = "src/Graphics/DirectXException.cpp"
 flags = "cpp"
 
 [[unit]]
+unit = "lldriver"
+source = "src/Network/LlDriver.cpp"
+flags = "cpp-od"
+
+[[unit]]
 unit = "itemnames"
 source = "src/Text/ItemNames.cpp"
 flags = "cpp"
