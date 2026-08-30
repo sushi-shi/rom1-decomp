@@ -69,6 +69,19 @@ item-name-ids	0x068490	load raw little-endian item IDs	near-exact	98.77%; itemna
 archive-pointer-words	0x069390	bidirectional CArchive raw pointer vector	near-exact	81.44%; exact 0x188 extent + WriteCount/ReadCount and raw Write/Read xrefs + mapped oracle
 scenario-map	0x144aa0	exceptional-tile/map serializer	near-exact	84.81%; source-complete store/load topology; residual VC5 inline/call-set wall tied to neighboring TU context
 archive-container	0x1503e0	CList<DWORD, DWORD> serializer	exact	100%; exact 0x118 extent + WriteCount/ReadCount and DWORD element transfer
+archive-container	0x13ec20	DWORD-key/value CMap serializer	exact	100%; natural pinned-header template instantiation
+archive-container	0x13eec0	pointer-key/DWORD-value CMap serializer	exact	100%; natural pinned-header template instantiation
+archive-container	0x13f160	DWORD-key/pointer-value CMap serializer	exact	100%; natural pinned-header template instantiation
+archive-container	0x13f450	pointer-key/value CMap serializer	exact	100%; natural pinned-header template instantiation
+archive-container	0x13f6c0	DWORD CArray serializer	exact	100%; natural pinned-header template instantiation
+archive-container	0x13f850	by-value 0x50-record CList serializer	reconstructed	13.46%; source-complete lifecycle/compiler-context residual
+archive-container	0x13fb60	0x48-record CArray serializer	reconstructed	90.65%; source-complete lifecycle-referent residual
+archive-container	0x13fda0	by-value 0x18 owner-record CList serializer	reconstructed	51.30%; source-complete lifecycle/copy residual
+archive-container	0x13ff30	by-value 0x0c-record CList serializer	reconstructed	12.13%; source-complete lifecycle/compiler-context residual
+archive-container	0x1400e0	pointer-sized CList serializer	exact	100%; natural pinned-header template instantiation
+archive-container	0x140270	BYTE CList serializer	exact	100%; natural pinned-header template instantiation
+archive-container	0x1403f0	BYTE CArray serializer	exact	100%; natural pinned-header template instantiation
+archive-container	0x1405e0	object-pointer CList serializer	exact	100%; natural pinned-header template instantiation
 archive-record	0x139100	raw 0x94-byte WORD-list owner	reconstructed	31.37%; source-complete raw transfer/list replacement; incomplete-TU inline/call-set residual
 archive-record	0x139210	raw 0x50-byte WORD-list owner	reconstructed	31.37%; source-complete raw transfer/list replacement; incomplete-TU inline/call-set residual
 archive-record	0x139310	Player-owned raw 0x20-byte record	reconstructed	25.13%; source-complete Write/Read contract; incomplete-TU IsStoring inline/call-set residual

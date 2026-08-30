@@ -444,6 +444,13 @@ retail calls `CArchive::IsStoring`, while the current unit expands that header
 primitive. The raw `Write`/`Read` contract and record extent are exact; no
 vendor implementation is reconstructed to force the call shape.
 
+The reference-record container cluster at `0x13ec20`–`0x1405e0` is drained.
+Nine `CMap`, `CArray`, and `CList` serializers are byte-exact; four by-value
+record containers are source-complete at 90.65%, 51.30%, 13.46%, and 12.13%,
+with residuals confined to recovered record lifecycle and compiler/TU context.
+The emitted methods come naturally from the pinned MFC templates and
+game-owned record declarations; no static-library implementation is copied.
+
 The neighboring records at `0x139100` and `0x139210` serialize raw 0x94- and
 0x50-byte owners followed by the same separately allocated
 `CList<WORD, WORD>`. On load they delete the stale list, read the raw owner,

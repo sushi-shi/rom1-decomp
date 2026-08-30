@@ -302,19 +302,19 @@ rva	size	name	kind	note
 0x19cb68	0x1c	__rom1_vtable_19cb68	unresolved	code-ref; 7 exact slots; 1 code ref(s); promote only with reconstructed source
 0x19cb88	0x1c	__rom1_vtable_19cb88	unresolved	code-ref; 7 exact slots; 1 code ref(s); promote only with reconstructed source
 0x19cba8	0x1c	__rom1_vtable_19cba8	unresolved	code-ref; 7 exact slots; 1 code ref(s); promote only with reconstructed source
-0x19cbc8	0x14	__rom1_vtable_19cbc8	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
-0x19cbe0	0x14	__rom1_vtable_19cbe0	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
-0x19cbf8	0x14	__rom1_vtable_19cbf8	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
-0x19cc10	0x14	__rom1_vtable_19cc10	unresolved	code-ref; 5 exact slots; 5 code ref(s); promote only with reconstructed source
-0x19cc28	0x14	__rom1_vtable_19cc28	unresolved	code-ref; 5 exact slots; 5 code ref(s); promote only with reconstructed source
-0x19cc40	0x14	__rom1_vtable_19cc40	unresolved	code-ref; 5 exact slots; 5 code ref(s); promote only with reconstructed source
-0x19cc58	0x14	__rom1_vtable_19cc58	unresolved	code-ref; 5 exact slots; 5 code ref(s); promote only with reconstructed source
-0x19cc90	0x14	??_7CArchiveDwordList@@6B@	unresolved	runtime-class; 5 exact slots; source name is evidence-neutral because the original name did not survive
-0x19cca8	0x14	??_7CArchiveTripleList@@6B@	unresolved	code-ref; 5 exact slots; source name is evidence-neutral because the original name did not survive
-0x19ccc0	0x14	__rom1_vtable_19ccc0	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
-0x19ccd8	0x14	__rom1_vtable_19ccd8	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
-0x19ccf0	0x14	__rom1_vtable_19ccf0	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
-0x19cd08	0x14	__rom1_vtable_19cd08	unresolved	code-ref; 5 exact slots; 11 code ref(s); promote only with reconstructed source
+0x19cbc8	0x14	??_7?$CList@VCArchiveListPairRecord@@V1@@@6B@	unresolved	code-ref; 5 exact slots; by-value 0x18 element ABI proven by AddTail ret 0x18
+0x19cbe0	0x14	??_7?$CArray@VCReferenceRecordCompact@@AAV1@@@6B@	unresolved	code-ref; 5 exact slots; exact CArray layout and 0x48 element width
+0x19cbf8	0x14	??_7?$CList@VCReferenceRecordLarge@@V1@@@6B@	unresolved	code-ref; 5 exact slots; by-value 0x50 element ABI proven by AddTail ret 0x50
+0x19cc10	0x14	??_7?$CArray@KK@@6B@	unresolved	code-ref; 5 exact slots; exact DWORD CArray serializer
+0x19cc28	0x14	??_7?$CMap@PAXPAXPAXPAX@@6B@	unresolved	code-ref; 5 exact slots; pointer-sized key/value map specialization
+0x19cc40	0x14	??_7?$CMap@KKPAXPAX@@6B@	unresolved	code-ref; 5 exact slots; DWORD-key pointer-value map specialization
+0x19cc58	0x14	??_7?$CMap@PAXPAXKK@@6B@	unresolved	code-ref; 5 exact slots; pointer-key DWORD-value map specialization
+0x19cc90	0x14	??_7?$CList@PAXPAX@@6B@	unresolved	runtime-class; 5 exact slots; exact pointer-sized CList serializer
+0x19cca8	0x14	??_7?$CList@VCRawArchiveRecord@@V1@@@6B@	unresolved	code-ref; 5 exact slots; by-value 0x0c element ABI proven by AddTail ret 0x0c
+0x19ccc0	0x14	??_7?$CMap@KKKK@@6B@	unresolved	code-ref; 5 exact slots; exact DWORD key/value CMap serializer
+0x19ccd8	0x14	??_7?$CArray@EE@@6B@	unresolved	code-ref; 5 exact slots; exact BYTE CArray serializer
+0x19ccf0	0x14	??_7?$CList@EE@@6B@	unresolved	code-ref; 5 exact slots; exact BYTE CList serializer
+0x19cd08	0x14	??_7?$CList@PAVCObject@@PAV1@@@6B@	unresolved	code-ref; 5 exact slots; exact object-pointer CList serializer
 0x19cd20	0x14	__rom1_vtable_19cd20	unresolved	code-ref; 5 exact slots; 6 code ref(s); promote only with reconstructed source
 0x19cd38	0x14	__rom1_vtable_19cd38	unresolved	code-ref; 5 exact slots; 6 code ref(s); promote only with reconstructed source
 0x19cd50	0x14	__rom1_vtable_19cd50	unresolved	code-ref; 5 exact slots; 7 code ref(s); promote only with reconstructed source

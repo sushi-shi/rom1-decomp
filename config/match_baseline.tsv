@@ -42,7 +42,7 @@ dib	15	12
 directxexception	1	0
 itemnames	11	3
 pixmap	9	6
-referencerecords	10	6
+referencerecords	21	15
 referencesnapshot	1	1
 referenceworld	4	4
 resourcefile	6	3
@@ -164,9 +164,20 @@ referencerecords	??1CArchiveDwordList@@UAE@XZ	4.2424	4.2424	1	8049336762d1	0x140
 referencerecords	??1CArchiveTripleList@@UAE@XZ	4.2424	4.2424	1	7ffda99044ae	0x140a20	4.2424	absent
 referencerecords	??_GCArchiveDwordList@@UAEPAXI@Z	100.0000	100.0000	1	cpp:e23503b320db	0x140a90	100.0000	absent
 referencerecords	??_GCArchiveTripleList@@UAEPAXI@Z	100.0000	100.0000	1	cpp:e23503b320db	0x140a00	100.0000	absent
-referencerecords	?Serialize@CArchiveDwordList@@UAEXAAVCArchive@@@Z	0.9009	0.9009	1	bbedceead0e2	0x1400e0	0.9009	absent
+referencerecords	?Serialize@?$CArray@EE@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:6b14ce733172	0x1403f0	100.0000	
+referencerecords	?Serialize@?$CArray@KK@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:6b14ce733172	0x13f6c0	100.0000	
+referencerecords	?Serialize@?$CArray@VCReferenceRecordCompact@@AAV1@@@UAEXAAVCArchive@@@Z	90.6546	90.6546	1	cpp:6b14ce733172	0x13fb60	90.6546	
+referencerecords	?Serialize@?$CList@EE@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:6b14ce733172	0x140270	100.0000	
+referencerecords	?Serialize@?$CList@PAVCObject@@PAV1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:6b14ce733172	0x1405e0	100.0000	
+referencerecords	?Serialize@?$CList@PAXPAX@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	bbedceead0e2	0x1400e0	100.0000	
+referencerecords	?Serialize@?$CList@VCArchiveListPairRecord@@V1@@@UAEXAAVCArchive@@@Z	51.2955	51.2955	1	cpp:6b14ce733172	0x13fda0	51.2955	
+referencerecords	?Serialize@?$CList@VCRawArchiveRecord@@V1@@@UAEXAAVCArchive@@@Z	12.1319	12.1319	1	c63417f1e51b	0x13ff30	12.1319	
+referencerecords	?Serialize@?$CList@VCReferenceRecordLarge@@V1@@@UAEXAAVCArchive@@@Z	13.4598	13.4598	1	cpp:6b14ce733172	0x13f850	13.4598	
+referencerecords	?Serialize@?$CMap@KKKK@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:6b14ce733172	0x13ec20	100.0000	
+referencerecords	?Serialize@?$CMap@KKPAXPAX@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:6b14ce733172	0x13f160	100.0000	
+referencerecords	?Serialize@?$CMap@PAXPAXKK@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:6b14ce733172	0x13eec0	100.0000	
+referencerecords	?Serialize@?$CMap@PAXPAXPAXPAX@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:6b14ce733172	0x13f450	100.0000	
 referencerecords	?Serialize@CArchiveListPairRecord@@QAEXAAVCArchive@@@Z	100.0000	100.0000	1	1bd02c70ad1c	0x13dcc0	100.0000	
-referencerecords	?Serialize@CArchiveTripleList@@UAEXAAVCArchive@@@Z	1.0989	1.0989	1	c63417f1e51b	0x13ff30	1.0989	absent
 referencerecords	?Serialize@CRawArchiveRecord@@QAEXAAVCArchive@@@Z	100.0000	100.0000	1	91ef84af9ef9	0x13dc80	100.0000	
 referencerecords	?Serialize@CReferenceRecordCompact@@QAEXAAVCArchive@@@Z	100.0000	100.0000	1	88adfedf45e3	0x13dbc0	100.0000	
 referencerecords	?Serialize@CReferenceRecordLarge@@QAEXAAVCArchive@@@Z	100.0000	100.0000	1	f2656c96762c	0x13db00	100.0000	

@@ -3,20 +3,30 @@
 
 #include <MfcNoInline.h>
 
-// No retail name survives for these three complete-object records.  Their
-// exact sizes and raw archive treatment are fixed by the Serialize bodies;
-// the two larger records are distinguished by adjacent reference-remapping
-// methods that access three object pointers at +0x30, +0x34, and +0x38.
+#include <afxtempl.h>
+
+// Retail has no surviving names for these complete-object records.  Their
+// sizes, construction, and raw archive treatment are fixed by the adjacent
+// CArray/CList instantiations and reference-remapping methods.
 class CReferenceRecordLarge {
 public:
+    CReferenceRecordLarge() {
+        memset(this, 0, sizeof(*this));
+        m_enabled = 1;
+    }
+    ~CReferenceRecordLarge();
     void Serialize(CArchive& archive);
 
 private:
-    BYTE m_record[0x50];
+    BYTE m_record[0x48];
+    DWORD m_enabled;
+    DWORD m_tail;
 };
 
 class CReferenceRecordCompact {
 public:
+    CReferenceRecordCompact();
+    ~CReferenceRecordCompact();
     void Serialize(CArchive& archive);
 
 private:
@@ -25,66 +35,31 @@ private:
 
 class CRawArchiveRecord {
 public:
+    CRawArchiveRecord() {
+        m_values[0] = 0;
+        m_values[1] = 0;
+        m_values[2] = 0;
+    }
+    ~CRawArchiveRecord();
     void Serialize(CArchive& archive);
 
 private:
-    BYTE m_record[0x0c];
+    DWORD m_values[3];
 };
 
-// Two game-owned list classes use the contemporary MFC list layout but return
-// CObject's runtime-class record, proving that they are distinct non-runtime-
-// class types.  Their slot-2 bodies fix 12-byte and DWORD element widths.
-class CArchiveTripleList : public CObject {
-public:
-    explicit CArchiveTripleList(int blockSize = 10) {
-        m_count = 0;
-        m_head = m_tail = m_free = 0;
-        m_blocks = 0;
-        m_blockSize = blockSize;
-    }
-
-    virtual ~CArchiveTripleList();
-    virtual void Serialize(CArchive& archive);
-
-private:
-    struct Node;
-
-    Node* m_head;
-    Node* m_tail;
-    int m_count;
-    Node* m_free;
-    CPlex* m_blocks;
-    int m_blockSize;
-};
-
-class CArchiveDwordList : public CObject {
-public:
-    explicit CArchiveDwordList(int blockSize = 10) {
-        m_count = 0;
-        m_head = m_tail = m_free = 0;
-        m_blocks = 0;
-        m_blockSize = blockSize;
-    }
-
-    virtual ~CArchiveDwordList();
-    virtual void Serialize(CArchive& archive);
-
-private:
-    struct Node;
-
-    Node* m_head;
-    Node* m_tail;
-    int m_count;
-    Node* m_free;
-    CPlex* m_blocks;
-    int m_blockSize;
-};
+// These aliases preserve only facts visible in retail: element widths,
+// by-value/by-reference template arguments, and the shared MFC layouts.
+typedef CList<CRawArchiveRecord, CRawArchiveRecord> CArchiveTripleList;
+typedef CList<void*, void*> CArchiveDwordList;
 
 // This complete 24-byte record owns one list of each element width.  Retail
 // stores the raw record before dispatching the two list serializers, replacing
 // both stale pointer values with newly allocated lists while loading.
 class CArchiveListPairRecord {
 public:
+    CArchiveListPairRecord();
+    CArchiveListPairRecord(const CArchiveListPairRecord& other);
+    ~CArchiveListPairRecord();
     void Serialize(CArchive& archive);
 
 private:
@@ -92,5 +67,21 @@ private:
     CArchiveDwordList* m_dwords;
     BYTE m_recordTail[0x10];
 };
+
+typedef CMap<DWORD, DWORD, DWORD, DWORD> CArchiveDwordMap;
+typedef CMap<void*, void*, DWORD, DWORD> CArchivePointerDwordMap;
+typedef CMap<DWORD, DWORD, void*, void*> CArchiveDwordPointerMap;
+typedef CMap<void*, void*, void*, void*> CArchivePointerMap;
+
+typedef CArray<DWORD, DWORD> CArchiveDwordArray;
+typedef CList<CReferenceRecordLarge, CReferenceRecordLarge> CArchiveLargeRecordList;
+typedef CArray<CReferenceRecordCompact, CReferenceRecordCompact&> CArchiveCompactRecordArray;
+typedef CList<CArchiveListPairRecord, CArchiveListPairRecord> CArchiveListPairList;
+typedef CList<BYTE, BYTE> CArchiveByteList;
+typedef CArray<BYTE, BYTE> CArchiveByteArray;
+
+// The last serializer is byte-identical to the DWORD list but is a distinct
+// template specialization in retail; its users store pointer-sized values.
+typedef CList<CObject*, CObject*> CArchivePointerList;
 
 #endif // ROM1_SERIALIZATION_REFERENCERECORDS_H
