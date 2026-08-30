@@ -198,6 +198,8 @@ spell-effect	0x10c2c1	Armor typed object reader	exact	100%; runtime-class record
 spell-effect	0x10ccb0	Shield typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
 spell-effect	0x10d617	Weapon typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
 spell-effect	0x10f275	Sack typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
+spell-effect	0x110577	Unit serializer	reconstructed	0.97%; active game-owned reconstruction campaign, temporary typed body still marked @early-stop
 spell-effect	0x110ebb	Token base serializer	exact	100%; raw payload, scalar fields, ID bitset, and reference map
+spell-effect	0x1117bf	Humanoid serializer	exact	100%; Unit base, 24-byte raw block, twelve typed Item pointers, and Diary pointer
 spell-effect	0x111ba2	VirtualCaster serializer	exact	100%; Token base, BYTE field, and six-byte pointed buffer
 spell-effect	0x144a70	Token raw payload	exact	100%; exact 12-byte CArchive Read/Write branches

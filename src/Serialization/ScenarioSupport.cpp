@@ -25,6 +25,14 @@ void CScenarioPrimary::Serialize(CArchive& archive) {
     (void)archive;
 }
 
+// @early-stop: active serializer reconstruction campaign. This temporary
+// body preserves the proven Unit virtual identity while its retail stream is
+// recovered below the already exact derived-class call sites.
+RVA(0x00110577, 0x8a8)
+void Unit::Serialize(CArchive& archive) {
+    (void)archive;
+}
+
 RVA(0x00110ebb, 0x16e)
 void Token::Serialize(CArchive& archive) {
     CObject::Serialize(archive);
@@ -77,6 +85,24 @@ void CScenarioSecondary::Serialize(CArchive& archive) {
 
 RVA(0x00111531, 0x5a)
 void CScenarioSecondary::Activate() {}
+
+RVA(0x001117bf, 0xd9)
+void Humanoid::Serialize(CArchive& archive) {
+    Unit::Serialize(archive);
+    if (archive.IsStoring()) {
+        archive.Write(m_values1cc, sizeof(m_values1cc));
+        for (int i = 1; i < 13; i++) {
+            archive << m_items198[i];
+        }
+        archive << m_diary1e4;
+    } else {
+        archive.Read(m_values1cc, sizeof(m_values1cc));
+        for (int i = 1; i < 13; i++) {
+            archive >> m_items198[i];
+        }
+        archive >> m_diary1e4;
+    }
+}
 
 RVA(0x00111ba2, 0x67)
 void VirtualCaster::Serialize(CArchive& archive) {

@@ -469,6 +469,11 @@ stream, one byte at `+0x3c`, and a six-byte pointed buffer reached through the
 pointer at `+0x40`; the runtime-class record independently fixes the complete
 0x44-byte game-object layout.
 
+`Humanoid::Serialize` is byte-exact. After the Unit base stream it transfers a
+24-byte raw record, object slots 1 through 12 of the thirteen-entry typed
+`Item*` array, and one typed `Diary*`. Runtime classes and the typed archive
+readers independently prove the inheritance edge and both pointee identities.
+
 The four raw-record serializers at `0x13db00`, `0x13dbc0`, `0x13dc80`, and
 `0x13dcc0` are also exact. The first three apply the same bidirectional
 complete-object archive operation to 0x50-, 0x48-, and 0x0c-byte records. The

@@ -143,7 +143,9 @@ public:
     friend CArchive& AFXAPI operator>>(CArchive& archive, Humanoid*& value);
 
 protected:
-    BYTE m_state198[0x50];
+    Item* m_items198[13];
+    BYTE m_values1cc[0x18];
+    Diary* m_diary1e4;
 };
 
 class Diary : public CObject {
