@@ -1,0 +1,5 @@
+# retail_sha256=5ba821f37356d2da0e1eb907de28b2708714d6e2604b5caef3daf4284b9af7d3
+# archive_set_sha256=4383297a4f141837a90f2c4f753c6d00d46368d6ecc1bb25c8c16158574037f2
+# signatures=7144 manual_starts=12563 min_len=8 min_fixed=6 high_len=16 high_fixed=10
+# offstart_min_len=24 offstart_min_fixed=16
+rva	name	lib	confidence	extent	fixed_bytes	identity_match_count	rva_identity_count	member	archive_sha256	member_sha256	source	notes

@@ -1,0 +1,4 @@
+# Bootstrap floors: no source TUs have been admitted yet.
+caller-callee FAKE-VIEW	0
+nested static_casts	0
+truncated masks	0

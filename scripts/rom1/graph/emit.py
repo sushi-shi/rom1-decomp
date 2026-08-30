@@ -146,8 +146,13 @@ def load_units() -> tuple[dict, list[dict]]:
     if not profiles:
         raise SystemExit(f"{MANIFEST}: [flags] must define at least one profile")
     units = data.get("unit", [])
-    if not units:
-        raise SystemExit(f"{MANIFEST}: no [[unit]] entries")
+    bootstrap = bool(data.get("build", {}).get("bootstrap", False))
+    if not units and not bootstrap:
+        raise SystemExit(f"{MANIFEST}: no [[unit]] entries (set explicit "
+                         "[build] bootstrap=true only before the first TU)")
+    if units and bootstrap:
+        raise SystemExit(f"{MANIFEST}: remove [build] bootstrap=true when "
+                         "admitting the first [[unit]]")
     seen: set[str] = set()
     for u in units:
         for key in ("unit", "source", "flags"):

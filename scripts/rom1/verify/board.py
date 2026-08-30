@@ -455,6 +455,7 @@ def load_baseline() -> dict[str, int]:
 
 def save_baseline(rows: list[tuple[str, int]], *,
                   include_semantic: bool = True) -> None:
+    TEXT_BASELINE.parent.mkdir(parents=True, exist_ok=True)
     text_rows = [(lbl, n) for lbl, n in rows if lbl not in _SEMANTIC_LABEL_SET]
     semantic_rows = [(lbl, n) for lbl, n in rows if lbl in _SEMANTIC_LABEL_SET]
     if text_rows or not TEXT_BASELINE.exists():

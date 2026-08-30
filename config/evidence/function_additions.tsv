@@ -1,0 +1,32 @@
+# retail_sha256=5ba821f37356d2da0e1eb907de28b2708714d6e2604b5caef3daf4284b9af7d3
+# Reviewed manual additions after the one-time function bootstrap.
+# SP3 candidate names/confidence are diagnostic only and are not provider claims.
+rva	evidence	provisional_candidate	candidate_confidence
+0x151a86	FID exact body at padding transition; manually admitted after bootstrap	?GetText@CStatusBarCtrl@@QBE?AVCString@@HPAH@Z	HIGH
+0x151f2e	FID exact body at padding transition; manually admitted after bootstrap	?CreateDragImage@CListCtrl@@QAEPAVCImageList@@HPAUtagPOINT@@@Z	HIGH
+0x15202a	FID exact body at padding transition; manually admitted after bootstrap	?GetItemText@CTreeCtrl@@QBE?AVCString@@PAU_TREEITEM@@@Z	HIGH
+0x1522ca	FID exact body at padding transition; manually admitted after bootstrap	?CreateDragImage@CTreeCtrl@@QAEPAVCImageList@@PAU_TREEITEM@@@Z	HIGH
+0x16f827	FID exact body at padding transition; manually admitted after bootstrap	?Format@CString@@QAAXIZZ	HIGH
+0x16fe56	FID exact body at padding transition; manually admitted after bootstrap	?Format@COleDateTime@@QBE?AVCString@@I@Z	AMBIG
+0x17349f	FID exact body at padding transition; manually admitted after bootstrap	?_AfxThreadEntry@@YGIPAX@Z	HIGH
+0x1735eb	FID exact body at padding transition; manually admitted after bootstrap	?AfxBeginThread@@YGPAVCWinThread@@P6AIPAX@Z0HIKPAU_SECURITY_ATTRIBUTES@@@Z	HIGH
+0x17923b	FID exact body at padding transition; manually admitted after bootstrap	?UpdateDialogControls@CWnd@@QAEXPAVCCmdTarget@@H@Z	HIGH
+0x17a101	FID exact body at padding transition; manually admitted after bootstrap	??0CStdioFile@@QAE@PBDI@Z	HIGH
+0x17b760	FID exact body at padding transition; manually admitted after bootstrap	?GetSizeInPixels@CDialogTemplate@@QBEXPAUtagSIZE@@@Z	HIGH
+0x17f6e9	FID exact body at padding transition; manually admitted after bootstrap	??0CCtrlView@@QAE@PBDK@Z	HIGH
+0x17f7b1	FID exact body at padding transition; manually admitted after bootstrap	??0CDocument@@QAE@XZ	HIGH
+0x1830e5	FID exact body at padding transition; manually admitted after bootstrap	?OnSetMessageString@CFrameWnd@@IAEJIJ@Z	HIGH
+0x183348	FID exact body at padding transition; manually admitted after bootstrap	?OnToolTipText@CFrameWnd@@IAEHIPAUtagNMHDR@@PAJ@Z	HIGH
+0x1845d1	FID exact body at padding transition; manually admitted after bootstrap	?CreateObject@CByteArray@@SGPAVCObject@@XZ	AMBIG
+0x184639	FID exact body at padding transition; manually admitted after bootstrap	?CreateObject@CByteArray@@SGPAVCObject@@XZ	AMBIG
+0x184717	FID exact body at padding transition; manually admitted after bootstrap	?CreateObject@CDC@@SGPAVCObject@@XZ	HIGH
+0x1847b1	FID exact body at padding transition; manually admitted after bootstrap	?CreateObject@CObList@@SGPAVCObject@@XZ	AMBIG
+0x184cb0	FID exact body at padding transition; manually admitted after bootstrap	?CreateObject@?$CProcessLocal@V_AFX_BASE_MODULE_STATE@@@@SGPAVCNoTrackObject@@XZ	HIGH
+0x184d12	FID exact body at padding transition; manually admitted after bootstrap	?CreateObject@CFrameWnd@@SGPAVCObject@@XZ	HIGH
+0x184ec7	FID exact body at padding transition; manually admitted after bootstrap	?LoadStdProfileSettings@CWinApp@@IAEXI@Z	HIGH
+0x184f96	FID exact body at padding transition; manually admitted after bootstrap	??0CCommandLineInfo@@QAE@XZ	HIGH
+0x1854a1	FID exact body at padding transition; manually admitted after bootstrap	?CreateObject@CWnd@@SGPAVCObject@@XZ	HIGH
+0x1854d9	FID exact body at padding transition; manually admitted after bootstrap	?CreateObject@?$CProcessLocal@V_AFX_WIN_STATE@@@@SGPAVCNoTrackObject@@XZ	AMBIG
+0x185516	FID exact body at padding transition; manually admitted after bootstrap	?CreateObject@CByteArray@@SGPAVCObject@@XZ	AMBIG
+0x185584	FID exact body at padding transition; manually admitted after bootstrap	?CreateObject@CObList@@SGPAVCObject@@XZ	AMBIG
+0x1866e2	FID exact body at padding transition; manually admitted after bootstrap	?CreateObject@CImageList@@SGPAVCObject@@XZ	HIGH

@@ -1,9 +1,9 @@
 """rom1.retail_labels.censuses - the base censuses: structure only.
 
-functions.tsv and data.tsv contribute STARTS and KINDS; a row's extent is
-DERIVED to the next row (functions: to .text's virtual end; data: to the next
-row within the same section, else the section edge). Identity never comes
-from here - that is the providers' job (the model enforces it).
+functions.tsv and data.tsv contribute STARTS and KINDS.  Their maximum room is
+derived to the next row, but executable-native exact extents in the companion
+``function_extents.tsv`` / ``data_extents.tsv`` tables override that room.
+Identity never comes from here - that is the providers' job.
 """
 
 from __future__ import annotations
@@ -39,14 +39,38 @@ def _rows(path: Path, kinds: tuple[str, ...],
     return rows
 
 
+def _extents(path: Path) -> dict[int, int]:
+    _banner, fields, raw = read_tsv(path)
+    if "rva" not in fields or "size" not in fields:
+        raise ValueError(f"{path}: extent table needs rva and size")
+    out = {}
+    for row in raw:
+        rva, size = int(row["rva"], 0), int(row["size"], 0)
+        if size <= 0:
+            raise ValueError(f"{path}: non-positive extent at 0x{rva:08x}")
+        if rva in out:
+            raise ValueError(f"{path}: duplicate extent at 0x{rva:08x}")
+        out[rva] = size
+    return out
+
+
 def functions(path: Path | None = None) -> list[dict]:
-    """[{rva, kind, size}] - size derived to the next start / .text end.
-    The edges come from the retail PE's own section table, never constants."""
+    """[{rva, kind, size}] with retail exact extents taking precedence."""
     text_lo, text_end = image().text_span()
     rows = _rows(path or RETAIL / "functions.tsv", FUNCTION_KINDS,
                  lambda v: text_lo <= v < text_end)
+    exact = _extents(RETAIL / "function_extents.tsv") if path is None else {}
+    admitted = {row["rva"] for row in rows}
+    orphan = sorted(set(exact) - admitted)
+    if orphan:
+        raise ValueError(f"function_extents: 0x{orphan[0]:08x} is not an admitted start")
     for row, nxt in zip(rows, rows[1:] + [None]):
-        row["size"] = (nxt["rva"] if nxt else text_end) - row["rva"]
+        room = (nxt["rva"] if nxt else text_end) - row["rva"]
+        size = exact.get(row["rva"], room)
+        if size > room:
+            raise ValueError(f"function extent at 0x{row['rva']:08x} is 0x{size:x}, "
+                             f"crossing next start after 0x{room:x} bytes")
+        row["size"] = size
     return rows
 
 
@@ -60,6 +84,11 @@ def data(path: Path | None = None) -> list[dict]:
                     None)
     rows = _rows(path or RETAIL / "data.tsv", DATA_KINDS,
                  lambda v: region(v) is not None)
+    exact = _extents(RETAIL / "data_extents.tsv") if path is None else {}
+    admitted = {row["rva"] for row in rows}
+    orphan = sorted(set(exact) - admitted)
+    if orphan:
+        raise ValueError(f"data_extents: 0x{orphan[0]:08x} is not an admitted start")
     for r in rows:
         r["region"] = region(r["rva"])
     # data+bss are ONE PE section (.data raw bytes + loader-zero tail), so an
@@ -74,7 +103,12 @@ def data(path: Path | None = None) -> list[dict]:
             hi = nxt["rva"]
         elif contiguous.get(row["region"]):
             hi = regions[contiguous[row["region"]]][1]
-        row["size"] = hi - row["rva"]
+        room = hi - row["rva"]
+        size = exact.get(row["rva"], room)
+        if size > room:
+            raise ValueError(f"data extent at 0x{row['rva']:08x} is 0x{size:x}, "
+                             f"crossing next start after 0x{room:x} bytes")
+        row["size"] = size
     return rows
 
 

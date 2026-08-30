@@ -47,7 +47,7 @@ import sys
 TOOLS = ("wine", "cl", "link", "rc", "delinker", "pdbutil", "objdiff",
          "objdump", "ghidra", "clangd", "rez", "relocs",
          "retail-census", "library-census", "compiler-census", "vendor",
-         "parity")
+         "retail-partition", "fid-census", "parity")
 
 
 def main(argv: list[str] | None = None) -> int:

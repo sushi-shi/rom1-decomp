@@ -24,10 +24,15 @@
 
 ## Evidence discipline
 
-- Treat all 4,384 FPO records as the starting function partition, including
-  their exact extents, locals, parameters, prolog, saved-register, BP, SEH, and
-  frame fields. Refine only with stronger executable evidence and preserve the
-  original record.
+- Treat all 4,384 FPO records as an exact subset of the function partition,
+  including their extents, locals, parameters, prolog, saved-register, BP,
+  SEH, and frame fields. Refine only with stronger executable evidence and
+  preserve the original record.
+- `config/retail/functions.tsv` is generated only for its first bootstrap and
+  is manually maintained thereafter, exactly as in Gruntz. `retail-census`
+  must never rewrite it; `retail-partition` validates required FPO/EH/XC/thunk
+  starts and kinds, and rewrites the file only with the explicit one-time
+  `--bootstrap-functions --write` pair.
 - `config/retail/relocs.tsv` is the single relocation authority because retail
   is `/FIXED` and has no `.reloc`. Regenerate it only with the pinned local
   Vostok recovery script and review any diff.

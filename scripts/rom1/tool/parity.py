@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import csv
 import hashlib
+import subprocess
 from io import StringIO
 from pathlib import Path
 
@@ -57,13 +58,43 @@ def local_files() -> set[str]:
     return result
 
 
+def verify_upstream_revision(upstream: Path) -> None:
+    """A Git checkout must be exactly the advertised clean pin.
+
+    Source exports without ``.git`` remain supported: their per-file hashes
+    are the proof.  A checkout provides stronger evidence, so never let HEAD
+    drift while the ledger banner continues to claim ``PIN``.
+    """
+    if not (upstream / ".git").exists():
+        return
+    try:
+        head = subprocess.run(
+            ["git", "rev-parse", "HEAD"], cwd=upstream, capture_output=True,
+            text=True, check=True).stdout.strip()
+    except subprocess.CalledProcessError as error:
+        raise ValueError(f"{upstream}: cannot read Git revision") from error
+    if head != PIN:
+        raise ValueError(f"{upstream}: HEAD is {head}, expected pinned {PIN}")
+    try:
+        dirty = subprocess.run(
+            ["git", "status", "--porcelain", "--untracked-files=all"],
+            cwd=upstream, capture_output=True, text=True,
+            check=True).stdout.splitlines()
+    except subprocess.CalledProcessError as error:
+        raise ValueError(f"{upstream}: cannot inspect Git cleanliness") from error
+    if dirty:
+        raise ValueError(f"{upstream}: pinned checkout is dirty ({dirty[0]})")
+
+
 def generate(upstream: Path) -> list[dict[str, str]]:
     if not (upstream / "scripts/gruntz/cli.py").is_file():
         raise ValueError(f"{upstream}: not the pinned Gruntz tree")
+    verify_upstream_revision(upstream)
     rows = []
     claimed = set()
     for source in sorted(path for path in upstream.rglob("*") if path.is_file()
-                         and ".git" not in path.parts and "build" not in path.parts):
+                         and ".git" not in path.parts and "build" not in path.parts
+                         and "__pycache__" not in path.parts and path.suffix != ".pyc"):
         up = source.relative_to(upstream).as_posix()
         local = local_path(up)
         destination = REPO / local
@@ -117,6 +148,8 @@ def read() -> list[dict[str, str]]:
 
 
 def verify(rows: list[dict[str, str]], upstream: Path | None) -> None:
+    if upstream is not None:
+        verify_upstream_revision(upstream)
     if len({(row["upstream_path"], row["local_path"]) for row in rows}) != len(rows):
         raise ValueError("duplicate parity row")
     covered = set()

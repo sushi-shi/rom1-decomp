@@ -19,11 +19,11 @@ CATEGORIES = (
     ("eh", "EH unwind funclets",
      "compiler /GX EH; match with their parent function"),
     ("compiler", "private lifecycle/cleanup helpers",
-     "volatile `$E<n>` dyninit families and kind=helper forwarders"),
+     "`.CRT` initializer entries/forwarders and private cleanup helpers"),
     ("library", "CRT/MFC library",
      "static-lib labels (functions_static_libs, non-LOW)"),
     ("thunk", "jump thunks",
-     "linker ILT jmp-table + thunk-kind census rows"),
+     "pure import/linker stubs and thunk-kind census rows"),
     ("pad", "linker pad",
      "kind=pad census rows (alignment fill, no body)"),
 )

@@ -27,8 +27,13 @@ are not sufficient.
    unique decisive witness panel.
 
 The Gruntz SP3 bootstrap remains useful for parser and archive calibration. Its
-2,171 library matches are tracked under `config/evidence/`, but its rejected
-linker means none may enter `functions_static_libs.tsv`.
+conservative FPO scan has 1,001 bijective and 1,170 ambiguous matches. The
+companion Gruntz-style masked FID over all 12,563 manual starts has 1,336 HIGH
+providers (851 `NAFXCW`, 413 `LIBCMT`, 72 `LIBCIMT`) and currently no off-start
+residuals. Both reports are tracked under `config/evidence/`, but SP3's rejected
+linker means none may enter `functions_static_libs.tsv`. `fid-census --write`
+uses the same exact-toolchain gate and therefore fails closed while selection
+is unresolved.
 
 Sources: [Microsoft KB170367](https://ftp.zx.net.nz/pub/mirror/ftp.microsoft.com/MISC/KB/en-us/170/367.HTM)
 and [Microsoft SP2 notes](https://ftp.zx.net.nz/pub/mirror/ftp.microsoft.com/MISC/KB/en-us/172/610.HTM).

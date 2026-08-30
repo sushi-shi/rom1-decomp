@@ -1,0 +1,3 @@
+# data-tu-order baseline: ordinary-data defs that land inside another
+# TU's same-storage band. Empty before the first source TU is admitted.
+# rva	name	owner_cpp	container_cpp	storage

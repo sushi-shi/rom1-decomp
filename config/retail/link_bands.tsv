@@ -1,8 +1,9 @@
-# Coarse executable-native image bands. Fine contribution bands are admitted
-# only when recovered from linker/layout evidence.
+# retail_sha256=5ba821f37356d2da0e1eb907de28b2708714d6e2604b5caef3daf4284b9af7d3
+# Coarse executable-native layout with the terminal EH band proven.
 lo_rva	hi_rva	name	space	class	evidence
-0x001000	0x196c60	text	text	unknown	PE .text virtual extent
-0x197000	0x1b7450	rdata	rdata	unknown	PE .rdata virtual extent
-0x1b8000	0x1cd600	data-init	data	unknown	PE .data raw extent
-0x1cd600	0x231dbc	bss	bss	unknown	PE .data zero-fill extent
-0x232000	0x234ffe	idata	idata	library	PE .idata virtual extent
+0x001000	0x1868d0	text-body	text	mixed	PE .text start to first out-of-line /GX action
+0x1868d0	0x196c60	eh-funclets	text	compiler	FuncInfo action closure; final registration stub ends at edge
+0x197000	0x1b7450	rdata	rdata	mixed	PE .rdata virtual extent
+0x1b8000	0x1cd600	data-init	data	mixed	PE .data raw extent
+0x1cd600	0x231dbc	bss	bss	mixed	PE .data loader-zero tail
+0x232000	0x235000	idata	idata	library	PE .idata mapped extent

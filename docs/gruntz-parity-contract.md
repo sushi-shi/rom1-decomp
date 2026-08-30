@@ -301,8 +301,13 @@ The evidence channels preserve Gruntz headers and semantics:
 
 | File | Schema role |
 | --- | --- |
-| `config/retail/functions.tsv` | `rva kind` authoritative function census |
+| `config/retail/functions.tsv` | `rva kind` authoritative manual function census; generated once, then never overwritten |
+| `config/retail/function_extents.tsv` | exact executable-native extent overrides for the manual census |
+| `config/retail/functions_disasm.tsv` | pinned analyzer start evidence; never an extent or rewrite authority |
+| `config/retail/eh_groups.tsv`, `eh_actions.tsv` | global VC5 `/GX` registration/action closure |
+| `config/retail/dyninit.tsv`, `thunks.tsv` | `.CRT` initializer and pure IAT-thunk evidence |
 | `config/retail/data.tsv` | `rva kind` authoritative data census |
+| `config/retail/data_extents.tsv` | exact executable-native data extent overrides |
 | `config/retail/relocs.tsv` | Vostok `site_rva kind` DIR32 site manifest for a fixed-base image |
 | `config/functions_static_libs.tsv` | `rva name lib confidence source` |
 | `config/functions_zlib.tsv` | `rva name unit size` |

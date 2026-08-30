@@ -3873,11 +3873,14 @@ class ReadmeFreshnessControls(unittest.TestCase):
         anchor = "Overall (vs full engine)"
         self.assertIn(anchor, before, "the block lost its headline line")
         try:
-            rm.README.write_text(before.replace(anchor, anchor + "-STALE", 1))
-            verbs.refresh_readme_block()
-            fresh = rm.README.read_text()
-            self.assertIn(anchor, fresh)
-            self.assertNotIn(anchor + "-STALE", fresh)   # the stale text is GONE
+            with tempfile.TemporaryDirectory() as td:
+                report = Path(td) / "report.json"
+                report.write_text('{"units":[],"measures":{}}')
+                rm.README.write_text(before.replace(anchor, anchor + "-STALE", 1))
+                verbs.refresh_readme_block(report)
+                fresh = rm.README.read_text()
+                self.assertIn(anchor, fresh)
+                self.assertNotIn(anchor + "-STALE", fresh)  # stale text is GONE
         finally:
             rm.README.write_text(before)
 
@@ -3887,9 +3890,12 @@ class ReadmeFreshnessControls(unittest.TestCase):
             self.skipTest("no README")
         before = rm.README.read_text()
         try:
-            verbs.refresh_readme_block()
-            self.assertFalse(verbs.refresh_readme_block(),
-                             "a second refresh reported a change")
+            with tempfile.TemporaryDirectory() as td:
+                report = Path(td) / "report.json"
+                report.write_text('{"units":[],"measures":{}}')
+                verbs.refresh_readme_block(report)
+                self.assertFalse(verbs.refresh_readme_block(report),
+                                 "a second refresh reported a change")
         finally:
             rm.README.write_text(before)
 
@@ -4214,7 +4220,8 @@ class LinkVerbTargetControls(unittest.TestCase):
         from rom1 import graph
         from rom1.graph import verbs
         asked = []
-        with mock.patch.object(verbs, "configure_if_needed", lambda *a, **k: None), \
+        with mock.patch.object(verbs, "compiler_ready", return_value=True), \
+                mock.patch.object(verbs, "configure_if_needed", lambda *a, **k: None), \
                 mock.patch.object(verbs, "ninja",
                                   lambda t, **k: asked.append(list(t)) or 1):
             with mock.patch.object(verbs, "manifest_targets", lambda: {"base"}):
@@ -4284,6 +4291,29 @@ class ConfigureWriteControls(unittest.TestCase):
             rc = emit.main(["--out", "/proc/no/such/dir/build.ninja"])
         self.assertEqual(rc, 1)
         self.assertIn("cannot write", err.getvalue())
+
+    def test_empty_manifest_requires_explicit_bootstrap_state(self):
+        from rom1.graph import emit
+        profiles = {"flags": {"cpp": ["/nologo", "/c"]}}
+        with mock.patch("rom1.manifest.load", return_value=profiles):
+            with self.assertRaises(SystemExit):
+                emit.load_units()
+        profiles["build"] = {"bootstrap": True}
+        with mock.patch("rom1.manifest.load", return_value=profiles):
+            _manifest, units = emit.load_units()
+        self.assertEqual(units, [])
+
+    def test_bootstrap_state_must_be_removed_for_the_first_unit(self):
+        from rom1.graph import emit
+        manifest = {
+            "build": {"bootstrap": True},
+            "flags": {"cpp": ["/nologo", "/c"]},
+            "unit": [{"unit": "first", "source": "src/First.cpp",
+                      "flags": "cpp"}],
+        }
+        with mock.patch("rom1.manifest.load", return_value=manifest):
+            with self.assertRaises(SystemExit):
+                emit.load_units()
 
 
 class CompdbStalenessControls(unittest.TestCase):
@@ -5204,7 +5234,8 @@ class MatchReferenceControls(unittest.TestCase):
         from rom1.graph import verbs
         with tempfile.TemporaryDirectory() as td:
             missing = Path(td) / "nope.json"
-            with mock.patch.object(verbs, "configure_if_needed", lambda *a, **k: None), \
+            with mock.patch.object(verbs, "compiler_ready", return_value=True), \
+                    mock.patch.object(verbs, "configure_if_needed", lambda *a, **k: None), \
                     mock.patch.object(verbs, "ninja", lambda *a, **k: 0), \
                     mock.patch.object(verbs, "object_census", dict), \
                     mock.patch("rom1.tool.objdiff.load",

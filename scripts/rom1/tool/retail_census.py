@@ -18,7 +18,6 @@ from rom1.core.pe import Pe
 
 
 FPO = RETAIL / "functions_fpo.tsv"
-FUNCTIONS = RETAIL / "functions.tsv"
 STRINGS = RETAIL / "strings.tsv"
 SECTIONS = RETAIL / "sections.tsv"
 IMPORTS = RETAIL / "imports.tsv"
@@ -227,13 +226,6 @@ def _render(rows: list[dict[str, str]], fields: tuple[str, ...], sha: str) -> st
     return out.getvalue()
 
 
-def _functions(rows: list[dict[str, str]], sha: str) -> str:
-    return (f"# retail_sha256={sha}\n"
-            "# Starts are the executable's IMAGE_DEBUG_TYPE_FPO records. Exact\n"
-            "# extents and frame metadata remain authoritative in functions_fpo.tsv.\n"
-            "rva\tkind\n" + "".join(f"{row['rva']}\t\n" for row in rows))
-
-
 def _check_or_write(path: Path, payload: str, write: bool) -> bool:
     if path.is_file() and path.read_text() == payload:
         print(f"[retail-census] exact {path.relative_to(REPO)}")
@@ -264,7 +256,6 @@ def main(argv: list[str] | None = None) -> int:
             "local_bytes", "param_dwords", "param_bytes", "prolog_bytes",
             "saved_regs", "frame", "use_bp", "has_seh", "reserved",
             "flags_raw"), sha), args.write),
-        _check_or_write(FUNCTIONS, _functions(fpo, sha), args.write),
         _check_or_write(STRINGS, _render(strings, ("rva", "file_offset", "section",
             "encoding", "byte_length", "text"), sha), args.write),
         _check_or_write(SECTIONS, _render(sections, ("order", "name", "rva",

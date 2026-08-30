@@ -16,7 +16,9 @@ suite. The former investigation toolbox remains available as
 `nix develop .#inventory`.
 
 `src/` is intentionally empty: the exact compiler gate must be resolved before
-the first translation unit is compiled. The authoritative retail layer already
+the first translation unit is compiled. `[build] bootstrap=true` makes this
+state explicit and permits a complete zero-unit Ninja graph; it must be removed
+when the first `[[unit]]` is admitted. The authoritative retail layer already
 contains FPO extents/frame metadata, strings, imports, PE/debug/section facts,
 and recovered relocation sites.
 
@@ -58,10 +60,13 @@ Known target properties:
 | Debug record | NB10, `c:\\allods.102\\Hello__0\\Allods.pdb`, age 11 |
 | Base relocations | stripped; directory zero; no `.reloc` |
 
-Current discovery counts include about 6,659 radare2 function candidates, 4,384
-FPO records, roughly 1,390 EH-bearing functions, 117 MFC runtime classes, 358
-paired vtables, and 114 class groupings. The FPO count and full records are now
-canonical; the remaining heuristic counts are discovery evidence.
+The reviewed census now has 12,563 manually maintained function starts. Its
+executable-native subsets include 6,659 pinned radare2 start candidates, 4,384
+exact FPO records, 1,382 valid `/GX` registration groups, 4,134 EH partition
+rows, 147 initializer helpers, two pure IAT thunks, 117 MFC runtime classes,
+358 GetRuntimeClass-proven vtables, and 114 primary class providers. Companion
+tables preserve exact extents. The initial union was generated once;
+`functions.tsv` is manual from that point forward.
 
 The working compiler hypothesis is Microsoft Visual C++ 5-era optimized C/C++,
 static CRT/MFC, exception handling where required, frame-pointer omission in
@@ -260,8 +265,9 @@ Convert discovery artifacts into Gruntz-schema evidence:
    entrypoints, imports, FPO, EH, XCU, MFC tables, cross-references, and recovered
    relocations.
 2. Establish exact function starts/extents and populate
-   `config/retail/functions.tsv`. Record conflicts instead of choosing the most
-   convenient disassembler answer.
+   `config/retail/functions.tsv`. Generate the initial union once, then maintain
+   it manually exactly as Gruntz does; repeatable generators validate required
+   starts and emit companion evidence but never rewrite the function list.
 3. Establish owned data starts/extents and populate
    `config/retail/data.tsv` plus vtable/compiler-generated/provider channels.
 4. Fingerprint CRT, MFC, and other static-library functions against the exact
