@@ -59,8 +59,14 @@ resource-archive	0x0c9ed0	open resource-backed CFile view	located	exact owner/of
 resource-archive	0x0ca100	bounded resource-backed read	located	owner seek to base+position + length clamp + owner read
 resource-archive	0x0ce7e0	walk archive-root-prefixed record path	exact	100%; root prefix + slash/backslash components + container traversal
 resource-archive	0x0ce8a0	filter final archive record	exact	100%; path walk + exact flags mask 0x40000010
+resource-text	0x0683e0	load whole help-text resource	located	startup xref + CResourceFile full-length read + one-byte NUL append
+resource-text	0x068660	load shared text-line table	reconstructed	87.63%; startup xrefs + full resource read + exact CR/NUL/skip-one-byte loop
+resource-text	0x069220	split patch table key/value records	located	startup xref after patch.txt load + CString Find('=')/Left/Mid topology
 item-name-ids	0x068490	load raw little-endian item IDs	near-exact	98.77%; itemname.bin string + text/map xrefs + mapped oracle
 archive-pointer-words	0x069390	bidirectional CArchive raw pointer vector	near-exact	81.44%; exact 0x188 extent + WriteCount/ReadCount and raw Write/Read xrefs + mapped oracle
+bute-resource	0x063760	deserialize global-map object table	located	startup xref + Scenario\\GlobalMap.reg + General/ObjectCount and MapObject%d field reads
+bute-resource	0x0878a0	read mission map-object count	exact	100%; Scenario\\GlobalMap.reg + MissionObjects/Mission%d indexed read
+bute-resource	0x08a330	read mission map picture metadata	located	Scenario\\GlobalMap.reg + MapObject%d Picture/PictureOffset field reads
 archive-primitive	0x049770	CArchive IsStoring predicate	exact	100%; exact VC5 SP2 AFX.INL COMDAT instruction extent
 archive-primitive	0x114520	CArchive const-CObject insertion operator	exact	100%; exact VC5 SP2 AFX.INL COMDAT emitted by Spell serializer TU
 archive-object	0x0df278	TableLine CString and nested-object serializer	exact	100%; runtime class + vtable slot 2 + exact archive operator call topology

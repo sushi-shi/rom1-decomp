@@ -16,6 +16,7 @@ pub mod ppm;
 pub mod resource_archive;
 pub mod save_game;
 pub mod table_line;
+pub mod text_resource;
 pub mod word_rle;
 
 pub(crate) enum Sink<'a> {

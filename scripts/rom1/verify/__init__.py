@@ -7,8 +7,11 @@ gate + the README score block.
                                            exit 0 always (it reports)
     python3 -m rom1.verify check         same computation; exit nonzero on a
                                            REAL regression (a fresh below-bank
-                                           dip, an unbanked loss, or a hard
-                                           report failure) - the MAX gate
+                                           dip, excluding unchanged same-TU
+                                           neighbor movement caused by a NEW
+                                           function admission; an unbanked
+                                           loss; or a hard report failure) -
+                                           the MAX gate
     python3 -m rom1.verify bank          preconditions (bankable tree), then
                                            update config/match_baseline.tsv
                                            under the src_hash rules and refresh

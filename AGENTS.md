@@ -47,6 +47,12 @@
 - Inspect ownership, callers/callees, strings, types, and retail disassembly
   before editing. Compare the first real divergence and ordered relocations
   after each build.
+- Admitting a newly reconstructed function can repartition its target COFF
+  fragment and move unchanged neighboring scores in the same TU. Do not tune
+  those neighbors as part of the new function's campaign. Their historical
+  MAX remains preserved, but unchanged same-unit neighbor deltas are
+  non-gating while the new function is first admitted. A changed neighbor or
+  any cross-unit regression still fails normally.
 
 ## Gruntz parity
 

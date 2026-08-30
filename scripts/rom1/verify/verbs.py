@@ -3,9 +3,12 @@
 status  reports and exits 0. check is the MAX gate: nonzero on a REAL
 regression - a FRESH below-bank dip (new since the committed snapshot), an
 unbanked LOST body, or a hard report failure (a dummy.obj pairing's zero-total
-100%). Carried (inherited) debt is reported, preserved, and owned by the walls
-worklist, not re-failed on every run. bank is a MANUAL act: nothing regenerates
-the baseline automatically.
+100%). When a NEW function is first admitted, an unchanged existing function
+in that same TU is comparison-context movement, not part of the active
+campaign: its historical MAX is held but the delta is non-gating. Changed
+neighbors and cross-unit regressions still gate. Carried (inherited) debt is
+reported, preserved, and owned by the walls worklist, not re-failed on every
+run. bank is a MANUAL act: nothing regenerates the baseline automatically.
 """
 
 from __future__ import annotations
@@ -160,6 +163,29 @@ def _show(kind, rows, note=""):
                   f"(delta {p - b:+.4f})")
 
 
+def split_neighbor_context(fresh, buckets, base_funcs, fp):
+    """Split actionable fresh regressions from new-claim TU context churn.
+
+    Admitting a missing function changes the target object's partition and
+    symbol context. Objdiff can consequently move an unchanged neighbor's
+    fuzzy score even though that neighbor's source fingerprint did not move.
+    Exempt only that narrow case: same unit as a NEW row, an existing baseline
+    row, and no real edit to the regressed function itself.
+    """
+    new_units = {unit for unit, _fn, _pct, _best in buckets.get("NEW", [])}
+    actionable = []
+    neighbors = []
+    for row in fresh:
+        unit, fn, _pct, _best = row
+        prev = base_funcs.get((unit, fn))
+        if unit in new_units and prev is not None \
+                and not real_edit(prev["fp"], fp(unit, fn)):
+            neighbors.append(row)
+        else:
+            actionable.append(row)
+    return actionable, neighbors
+
+
 def _report(args, gate: bool) -> int:
     doc, cur, base_funcs, fp, stale, rvas = load_state(args.report)
     _warn_stale_report(args.report)
@@ -175,6 +201,8 @@ def _report(args, gate: bool) -> int:
     lost = buckets.get("LOST", [])
     cy = cl.currency(cur, base_funcs, regress)
     fresh = cl.fresh_regressions(cur, base_funcs, regress)
+    actionable_fresh, neighbor_context = split_neighbor_context(
+        fresh, buckets, base_funcs, fp)
     carried = [r for r in regress if r not in fresh]
     improve = buckets.get("IMPROVE", [])
     strict_below, jitter = walls_style_counts(cur, base_funcs, rvas)
@@ -185,10 +213,13 @@ def _report(args, gate: bool) -> int:
     print(f"scored {total} function(s) (EH band carved) - {exact} exact, "
           f"overall fuzzy {float(m.get('fuzzy_match_percent') or 0.0):.2f}%")
     print(f"below-bank: {len(regress)} beyond EPS={EPS} "
-          f"({len(carried)} carried in the snapshot, {len(fresh)} fresh) - "
+          f"({len(carried)} carried, {len(actionable_fresh)} fresh gating, "
+          f"{len(neighbor_context)} new-claim neighbor context) - "
           f"strict-< count {strict_below} (the no-EPS reading; "
           f"{jitter} of those are sub-EPS float jitter)")
 
+    display_buckets = dict(buckets)
+    display_buckets["REGRESS"] = carried + actionable_fresh
     for kind, note in (("REGRESS", " (cur < banked best)"),
                        ("LOST", " (rva no longer scored, not banked absent)"),
                        ("IMPROVE", " (bankable: cur > best)"),
@@ -196,13 +227,16 @@ def _report(args, gate: bool) -> int:
                        ("RENAMED", " (same rva, new name)"),
                        ("NEW", ""), ("REMOVED", " (rename/edit adjudicated)"),
                        ("KNOWN-ABSENT", " (banked absent, MAX preserved)")):
-        rows = buckets.get(kind, [])
+        rows = display_buckets.get(kind, [])
         if kind in ("MOVED", "RENAMED", "REMOVED", "KNOWN-ABSENT") \
                 and not getattr(args, "all", False):
             if rows:
                 print(f"\n{kind}: {len(rows)} row(s){note} (--all lists them)")
             continue
         _show(kind, rows, note)
+
+    _show("NEIGHBOR-CONTEXT", neighbor_context,
+          " (same TU as a NEW body; unchanged source, non-gating; MAX held)")
 
     if cy["snapshot_drift"]:
         print(f"\nBASELINE CURRENCY: {cy['snapshot_drift']} of "
@@ -215,13 +249,13 @@ def _report(args, gate: bool) -> int:
 
     if gate:
         strict_extra = args.strict and (carried or lost)
-        bad = bool(fails or fresh or lost or strict_extra)
+        bad = bool(fails or actionable_fresh or lost or strict_extra)
         if bad:
             why = []
             if fails:
                 why.append(f"{len(fails)} hard failure(s)")
-            if fresh:
-                why.append(f"{len(fresh)} fresh regression(s)")
+            if actionable_fresh:
+                why.append(f"{len(actionable_fresh)} fresh regression(s)")
             if lost:
                 why.append(f"{len(lost)} unbanked loss(es)")
             if args.strict and carried:
@@ -230,8 +264,13 @@ def _report(args, gate: bool) -> int:
                   f"preserved for every row above; fix the source (never the "
                   f"ledger), or adjudicate + bank.")
             return 1
-        note = f" ({len(improve)} unbanked improvement(s) - run bank)" \
-            if improve else ""
+        notes = []
+        if improve:
+            notes.append(f"{len(improve)} unbanked improvement(s) - run bank")
+        if neighbor_context:
+            notes.append(f"{len(neighbor_context)} unchanged same-unit "
+                         "neighbor delta(s), MAX held")
+        note = f" ({'; '.join(notes)})" if notes else ""
         print(f"\ncheck OK: no fresh regressions vs the banked MAX.{note}")
         return 0
     return 0

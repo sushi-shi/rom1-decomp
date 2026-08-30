@@ -3343,6 +3343,37 @@ class FingerprintNameControls(unittest.TestCase):
 # --------------------------------------------------------------------------- #
 # the MAX ledger: the bank rules themselves (the file is project state)       #
 # --------------------------------------------------------------------------- #
+class NewClaimNeighborControls(unittest.TestCase):
+    def _split(self, *, fresh_unit="u", new_unit="u", previous=True,
+               old_fp="same", current_fp="same"):
+        from rom1.verify.verbs import split_neighbor_context
+        row = (fresh_unit, "old", 70.0, 90.0)
+        buckets = {"NEW": [(new_unit, "new", 80.0, None)]}
+        base = {(fresh_unit, "old"): {"fp": old_fp}} if previous else {}
+        return split_neighbor_context(
+            [row], buckets, base, lambda _unit, _fn: current_fp)
+
+    def test_unchanged_same_unit_neighbor_is_non_gating(self):
+        actionable, neighbor = self._split()
+        self.assertEqual(actionable, [])
+        self.assertEqual(len(neighbor), 1)
+
+    def test_a_changed_neighbor_still_gates(self):
+        actionable, neighbor = self._split(current_fp="edited")
+        self.assertEqual(len(actionable), 1)
+        self.assertEqual(neighbor, [])
+
+    def test_a_cross_unit_regression_still_gates(self):
+        actionable, neighbor = self._split(new_unit="other")
+        self.assertEqual(len(actionable), 1)
+        self.assertEqual(neighbor, [])
+
+    def test_a_row_without_prior_identity_still_gates(self):
+        actionable, neighbor = self._split(previous=False)
+        self.assertEqual(len(actionable), 1)
+        self.assertEqual(neighbor, [])
+
+
 class BankRatchetControls(unittest.TestCase):
     """bank_rows is what edits config/match_baseline.tsv. Every rule that
     protects a banked MAX gets a control here; nothing writes the ledger."""

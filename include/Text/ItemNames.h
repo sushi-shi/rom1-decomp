@@ -31,6 +31,9 @@ public:
         m_size -= count;
     }
 
+    i32 Add(void* value);
+    i32 GetSize() const;
+
 private:
     void SetSize(i32 newSize) {
         i32 growBy;
@@ -88,6 +91,19 @@ private:
     i32 m_growBy;
 };
 
+inline i32 CTextPointerVector::Add(void* value) {
+    i32 index = m_size;
+    if (index >= m_size) {
+        SetSize(index + 1);
+    }
+    m_data[index] = value;
+    return index;
+}
+
+inline i32 CTextPointerVector::GetSize() const {
+    return m_size;
+}
+
 // Retail owns one shared pointer vector for every loaded localization block.
 // Each 16-byte descriptor records its allocation, entry count, and starting
 // index in that vector. The original class name has not survived; this neutral
@@ -97,6 +113,7 @@ public:
     CTextBlock();
     virtual ~CTextBlock();
 
+    void Load(const char* resourcePath);
     char* operator[](i32 index);
     void Release();
 

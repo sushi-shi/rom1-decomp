@@ -263,6 +263,46 @@ root-prefixed path. It has been exercised against the local retail
 `main\\text\\itemname.bin` resolves to offset `0x1ff7`, length `0x340` in the
 examined retail `MAIN.RES`. No retail bytes are stored in the repository.
 
+## Startup text resources
+
+The startup xrefs continue from archive lookup into the typed reader at
+`0x068660`. The `CWinApp::InitInstance` override calls it for
+`main\\text\\main.txt`, `heropicture.txt`, `stats.txt`, `spells.txt`,
+`spell.txt`, `dialogs.txt`, `unitname.txt`, `building.txt`, `itemname.txt`,
+`sites.txt`, `npcnames.txt`, `cutscene.txt`, `cutpaths.txt`, `tunes.txt`, and
+finally `patch\\patch.txt`. This is the deserializer for the shared startup
+text-table format, not merely a filename or archive-extension inference.
+
+Retail reads the complete resource into one allocation and repeatedly applies
+this grammar until the cursor reaches the allocation end:
+
+```text
+record_bytes[]
+u8 carriage_return = 0x0d  // overwritten with NUL in place
+u8 skipped_byte            // 0x0a in shipped CRLF data; never checked
+```
+
+Each record start is appended to one global pointer vector. The 16-byte text
+block descriptor keeps the allocation, record count, and its starting vector
+index. The loop is a do-while and scans without a bound for the next CR, so an
+empty file, a missing CR, or a final CR without its following byte reaches
+unsafe memory in retail. The independent Rust parser rejects those cases,
+preserves the unchecked post-CR byte, and emits canonical CRLF records.
+
+Two neighboring startup readers establish the consumers. `0x0683e0` reads
+`main\\text\\help.txt` in full, appends one NUL byte, and assigns the result
+to its string owner. After `patch\\patch.txt` is loaded through the shared
+table reader, `0x069220` finds `=` in every patch record and passes its
+`Left` and `Mid` substrings into the patch mapping. `LoadItemNames` then joins
+the already-loaded `itemname.txt` record positions to `itemname.bin` IDs.
+
+Startup also reaches the Bute reader through `0x063760`, which opens
+`Scenario\\GlobalMap.reg`, reads `General/ObjectCount`, then reads indexed
+`MapObject%d` point, rectangle, and picture fields. The exact helper at
+`0x0878a0` reads `MissionObjects/Mission%d`; `0x08a330` follows those indices
+back to `MapObject%d` and reads `Picture` and `PictureOffset`. These are the
+first typed resource-config deserializers identified from the startup chain.
+
 ## Item-name ID table
 
 `LoadItemNames` at `0x068490` opens `main\\text\\itemname.bin`. The file is a

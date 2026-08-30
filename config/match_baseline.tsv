@@ -19,6 +19,9 @@
 #              (structure over current %).
 #   cur_pct  = fuzzy% at THIS bank - diff the file across commits to see the moves
 #              while best_pct holds.
+#              On first admission of a NEW function, unchanged below-MAX rows in
+#              that same TU are non-gating neighbor context: target partitioning
+#              moved, their source did not, and their historical MAX still holds.
 #   tries    = times this function's source fingerprint changed (how much it has
 #              been worked on - high = hard to match).
 #   src_hash = per-function source fingerprint. Drives tries + the TOUCHED/REGRESS
@@ -35,7 +38,7 @@ bytehuffman	16	15
 bytehuffmannode	1	1
 dib	8	6
 directxexception	1	0
-itemnames	10	3
+itemnames	11	3
 pixmap	9	6
 resourcefile	6	3
 scenarioconfig	1	1
@@ -104,8 +107,9 @@ itemnames	??1CTextPointerVector@@UAE@XZ	99.5652	99.5652	1	272895c0e287	0x69330	9
 itemnames	??ACTextBlock@@QAEPADH@Z	100.0000	100.0000	1	542917515cf0	0x68900	100.0000	
 itemnames	??_GCTextBlock@@UAEPAXI@Z	100.0000	100.0000	1	cpp:2104dda7de8a	0x388a0	100.0000	
 itemnames	??_GCTextPointerVector@@UAEPAXI@Z	100.0000	100.0000	1	cpp:2104dda7de8a	0x69520	100.0000	
+itemnames	?Load@CTextBlock@@QAEXPBD@Z	87.6294	87.6294	1	4b7a48481184	0x68660	87.6294	
 itemnames	?LoadItemNames@@YAXXZ	98.7692	98.7692	1	efb5ef2a8a0d	0x68490	98.7692	
-itemnames	?Release@CTextBlock@@QAEXXZ	92.0513	92.0513	1	9454a0d597f2	0x68890	92.0513	
+itemnames	?Release@CTextBlock@@QAEXXZ	92.0513	89.3590	1	9454a0d597f2	0x68890	92.0513	
 itemnames	?Serialize@CTextPointerVector@@UAEXAAVCArchive@@@Z	81.4384	81.4384	1	3787a2781c2d	0x69390	81.4384	
 pixmap	??0CPixMap@@QAE@AAVCString@@@Z	100.0000	100.0000	1	4298753aed7b	0x8d210	100.0000	
 pixmap	??0CPixMap@@QAE@XZ	100.0000	100.0000	1	4298753aed7b	0x8d1e0	100.0000	

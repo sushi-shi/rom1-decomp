@@ -51,6 +51,29 @@ CTextBlock::CTextBlock() {
     m_firstIndex = 0;
 }
 
+RVA(0x00068660, 0x229)
+void CTextBlock::Load(const char* resourcePath) {
+    CResourceFile file;
+    file.Open(resourcePath, 0, 0);
+    i32 length = file.GetLength();
+    m_allocation = static_cast<char*>(malloc(length));
+    file.Read(m_allocation, length);
+    file.Close();
+
+    char* line = m_allocation;
+    m_count = 0;
+    m_firstIndex = g_textLines.GetSize();
+    do {
+        g_textLines.Add(line);
+        while (*line != '\r') {
+            ++line;
+        }
+        *line = '\0';
+        line += 2;
+        ++m_count;
+    } while (line < m_allocation + length);
+}
+
 RVA(0x00068890, 0x65)
 void CTextBlock::Release() {
     if (m_allocation != 0) {
