@@ -89,6 +89,41 @@ source = "src/Serialization/SpellObjects.cpp"
 flags = "cpp-od"
 
 [[unit]]
+unit = "scenariosupport"
+source = "src/Serialization/ScenarioSupport.cpp"
+flags = "cpp-od"
+
+[[unit]]
+unit = "referenceworld"
+source = "src/Serialization/ReferenceWorld.cpp"
+flags = "cpp-od"
+
+[[unit]]
+unit = "scenarioobjectmap"
+source = "src/Serialization/ScenarioObjectMap.cpp"
+flags = "cpp-od"
+
+[[unit]]
+unit = "worldobjectiterator"
+source = "src/Serialization/WorldObjectIterator.cpp"
+flags = "cpp-od"
+
+[[unit]]
+unit = "worlditemiterator"
+source = "src/Serialization/WorldItemIterator.cpp"
+flags = "cpp-od"
+
+[[unit]]
+unit = "worldruntime"
+source = "src/Serialization/WorldRuntime.cpp"
+flags = "cpp"
+
+[[unit]]
+unit = "referencesnapshot"
+source = "src/Serialization/ReferenceSnapshot.cpp"
+flags = "cpp"
+
+[[unit]]
 unit = "tokenpayload"
 source = "src/Serialization/TokenPayload.cpp"
 flags = "cpp"

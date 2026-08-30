@@ -8,11 +8,6 @@ CReferenceWorld* g_referenceWorld;
 DATA(0x0022c738)
 UINT g_seenTokenIds[0x800];
 
-RVA(0x000d9f67, 0x3f)
-static void MarkTokenIdSeen(WORD value) {
-    g_seenTokenIds[value >> 5] |= 1 << (value & 31);
-}
-
 RVA(0x000fa9f5, 0x37)
 void CDirectDamagePayload::Serialize(CArchive& archive) {
     if (archive.IsStoring()) {
@@ -164,41 +159,6 @@ CArchive& AFXAPI operator>>(CArchive& archive, Effect*& value) {
     return archive;
 }
 
-RVA(0x00110ebb, 0x16e)
-void Token::Serialize(CArchive& archive) {
-    CObject::Serialize(archive);
-    m_payload->Serialize(archive);
-    if (archive.IsStoring()) {
-        archive << m_value04;
-        archive << m_value0c;
-        archive << m_value0e;
-        archive << m_value08;
-        archive << m_value18;
-        archive << m_value1c;
-        archive << reinterpret_cast<UINT>(this); // proven raw pointer identity
-        archive << m_reference14;
-    } else {
-        archive >> m_value04;
-        if (m_value04 != 0) {
-            MarkTokenIdSeen(static_cast<WORD>(m_value04));
-        }
-        archive >> m_value0c;
-        archive >> m_value0e;
-        archive >> m_value08;
-        archive >> m_value18;
-        archive >> m_value1c;
-        UINT value;
-        archive >> value;
-        g_referenceWorld->m_references.SetAt(
-            reinterpret_cast<void*>(value), // proven raw pointer identity
-            this
-        );
-        archive >> value;
-        m_reference14 = value;
-        ResolveTokenReference(&m_reference14);
-    }
-}
-
 // AFX.INL COMDATs selected by the original /Od serializer TU.
 RVA_COMPGEN(0x00114520, 0x16, ??6@YGAAVCArchive@@AAV0@PBVCObject@@@Z)
 RVA_COMPGEN(0x001146e0, 0x19, ??6CArchive@@QAEAAV0@I@Z)
@@ -208,7 +168,6 @@ RVA_COMPGEN(0x001147a0, 0x19, ??5CArchive@@QAEAAV0@AAI@Z)
 RVA_COMPGEN(0x001147c0, 0x57, ??5CArchive@@QAEAAV0@AAE@Z)
 RVA_COMPGEN(0x00114820, 0x57, ??5CArchive@@QAEAAV0@AAJ@Z)
 
-RVA_COMPGEN(0x001176a0, 0x1c, ?SetAt@CMapPtrToPtr@@QAEXPAX0@Z)
 RVA_COMPGEN(0x001176c0, 0x1a, ??6CArchive@@QAEAAV0@F@Z)
 RVA_COMPGEN(0x001176e0, 0x45, ??6CArchive@@QAEAAV0@G@Z)
 RVA_COMPGEN(0x00117730, 0x19, ??5CArchive@@QAEAAV0@AAF@Z)

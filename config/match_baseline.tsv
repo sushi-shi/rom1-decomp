@@ -40,13 +40,20 @@ dib	8	6
 directxexception	1	0
 itemnames	11	3
 pixmap	9	6
+referencesnapshot	1	1
+referenceworld	4	4
 resourcefile	6	3
 scenarioconfig	1	1
+scenarioobjectmap	1	0
+scenariosupport	14	2
 smackerplayer	7	7
-spellobjects	34	30
-tokenpayload	1	1
+spellobjects	31	28
+tokenpayload	4	1
 wordrle	2	2
 wordrletokens	4	4
+worlditemiterator	3	0
+worldobjectiterator	3	0
+worldruntime	3	0
 # [functions]	unit	function	best_pct	cur_pct	tries	src_hash	rva	hist_pct	state
 archiveobjects	??ACStringArray@@QAEAAVCString@@H@Z	100.0000	100.0000	1	cpp:2746b765bc49	0x47a80	100.0000	
 archiveobjects	?ElementAt@CStringArray@@QAEAAVCString@@H@Z	100.0000	100.0000	1	cpp:2746b765bc49	0x47aa0	100.0000	
@@ -120,6 +127,11 @@ pixmap	?Load@CPixMap@@QAEXAAVCString@@@Z	99.8684	99.8684	1	94f3886c1272	0x8d330	
 pixmap	?LoadBMP@CPixMap@@AAEHAAVCString@@@Z	100.0000	100.0000	1	797728b01c2a	0x8d5e0	100.0000	
 pixmap	?LoadPCX@CPixMap@@AAEHAAVCString@@@Z	100.0000	100.0000	1	b0615ba4f70b	0x8d5d0	100.0000	
 pixmap	?LoadPPM@CPixMap@@AAEHAAVCString@@@Z	99.8630	99.8630	1	b7f5d538c120	0x8d430	99.8630	
+referencesnapshot	?Serialize@CReferenceSnapshot@@QAEXAAVCArchive@@@Z	100.0000	100.0000	1	bb18b5f7c678	0x13e840	100.0000	
+referenceworld	??BCString@@QBEPBDXZ	100.0000	100.0000	1	cpp:760d527cda0a	0x47c10	100.0000	
+referenceworld	??_GCScenarioResource@@QAEPAXI@Z	100.0000	100.0000	1	cpp:760d527cda0a	0x114880	100.0000	
+referenceworld	?ResetSeenTokenIds@@YAXXZ	100.0000	100.0000	1	ee4fd802844b	0xd9f44	100.0000	
+referenceworld	?Serialize@CReferenceWorld@@QAEXAAVCArchive@@@Z	100.0000	100.0000	2	20ea60bbed78	0xd0c97	100.0000	
 resourcefile	??0CResourceFile@@QAE@XZ	99.3750	99.3750	1	a22371826197	0xc9dd0	99.3750	
 resourcefile	??1CResourceFile@@UAE@XZ	99.7500	99.7500	1	843865048dfa	0xc9e80	99.7500	
 resourcefile	?Close@CResourceFile@@UAEXXZ	100.0000	100.0000	1	49b9c5d60f50	0xca1d0	100.0000	
@@ -127,6 +139,21 @@ resourcefile	?DisableResource@CResourceManager@@QAEXPAD@Z	100.0000	100.0000	1	02
 resourcefile	?ReadUpdateList@@YAXPBD@Z	100.0000	100.0000	1	dd1440e618b6	0xc99f0	100.0000	
 resourcefile	?Release@CResourceManager@@QAEXPAVCObject@@@Z	98.1579	98.1579	1	286b758a1453	0xc9d80	98.1579	
 scenarioconfig	?GetMissionObjectCount@@YGHH@Z	100.0000	100.0000	2	611c81017e31	0x878a0	100.0000	
+scenarioobjectmap	?Rebuild@CScenarioObjectMap@@QAEXPAVCScenarioResource@@H@Z	0.4425	0.4425	2	88343f55c8ae	0xe358b	0.4425	
+scenariosupport	??0CScenarioPrimary@@QAE@XZ	79.5000	79.5000	2	36308379d4b2	0x11005d	79.5000	
+scenariosupport	??0CScenarioResource@@QAE@PBD@Z	0.4616	0.4616	1	1ed37a3f8128	0x1123c8	0.4616	
+scenariosupport	??0CScenarioSecondary@@QAE@XZ	76.1539	76.1539	2	d77d23e16676	0x110216	76.1539	
+scenariosupport	??0CScenarioTertiary@@QAE@XZ	39.7500	39.7500	2	ad8806bb268c	0x114570	39.7500	
+scenariosupport	??1CScenarioResource@@QAE@XZ	2.2821	2.2821	2	4fb6f36473ce	0x11396f	2.2821	
+scenariosupport	?Activate@CScenarioSecondary@@UAEXXZ	20.6452	20.6452	2	e6039319b895	0x111531	20.6452	
+scenariosupport	?MarkTokenIdSeen@@YAXG@Z	100.0000	100.0000	1	2f6888bc142d	0xd9f67	100.0000	
+scenariosupport	?Remove@CWorldItemManager@@QAEXPAVCWorldItem@@@Z	53.3333	53.3333	1	a4e6cc213226	0x10fc4d	53.3333	
+scenariosupport	?Serialize@CScenarioPrimary@@QAEXAAVCArchive@@@Z	58.1818	58.1818	1	4f5d3fde45db	0x11033a	58.1818	
+scenariosupport	?Serialize@CScenarioSecondary@@QAEXAAVCArchive@@@Z	53.3333	53.3333	1	4449a1baaa1a	0x111515	53.3333	
+scenariosupport	?Serialize@CScenarioTertiary@@QAEXAAVCArchive@@@Z	58.1818	58.1818	1	4c3b0f9b6743	0x1114fc	58.1818	
+scenariosupport	?Serialize@CWorldObjectRegistry@@QAEXAAVCArchive@@@Z	20.6452	20.6452	1	85bbffd1a3d9	0x11108e	20.6452	
+scenariosupport	?Serialize@Token@@UAEXAAVCArchive@@@Z	100.0000	100.0000	2	73b4128adc42	0x110ebb	100.0000	
+scenariosupport	?SetAt@CMapPtrToPtr@@QAEXPAX0@Z	95.3846	95.3846	1	cpp:bdc9cc63cdd1	0x1176a0	95.3846	
 smackerplayer	??0CSmackerBuffers@@QAE@XZ	100.0000	100.0000	1	95153d343e47	0xae650	100.0000	
 smackerplayer	??0CSmackerPlayer@@QAE@XZ	100.0000	100.0000	1	8d175536bb86	0xae6c0	100.0000	
 smackerplayer	??1CSmackerBuffers@@QAE@XZ	100.0000	100.0000	1	c5194a29433a	0xae670	100.0000	
@@ -154,7 +181,6 @@ spellobjects	??6CArchive@@QAEAAV0@J@Z	100.0000	100.0000	1	cpp:bdc9cc63cdd1	0x114
 spellobjects	??A?$CArray@PAVSpell@@PAV1@@@QAEAAPAVSpell@@H@Z	100.0000	100.0000	1	cpp:bdc9cc63cdd1	0x11abd0	100.0000	
 spellobjects	?ElementAt@?$CArray@PAVSpell@@PAV1@@@QAEAAPAVSpell@@H@Z	100.0000	100.0000	1	cpp:bdc9cc63cdd1	0x1236c0	100.0000	
 spellobjects	?GetSize@?$CArray@PAVSpell@@PAV1@@@QBEHXZ	100.0000	100.0000	1	cpp:bdc9cc63cdd1	0x11a990	100.0000	
-spellobjects	?MarkTokenIdSeen@@YAXG@Z	100.0000	100.0000	1	2f6888bc142d	0xd9f67	100.0000	
 spellobjects	?ResolveEffectReference@@YAXPAI@Z	100.0000	100.0000	2	28536a4395f8	0x120eb0	100.0000	
 spellobjects	?ResolveTokenReference@@YAXPAI@Z	100.0000	100.0000	2	29b0544ed466	0x121440	100.0000	
 spellobjects	?Serialize@AreaEffect@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	2180cbe88794	0x100fa5	100.0000	
@@ -165,13 +191,23 @@ spellobjects	?Serialize@PointEffect@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	793
 spellobjects	?Serialize@SpellEffect@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	af653de1175b	0x100dcc	100.0000	
 spellobjects	?Serialize@SpellTransport@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	a9ffee3cd700	0x100e2f	100.0000	
 spellobjects	?Serialize@Spellbook@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	d92e7e7159aa	0x100c1d	100.0000	
-spellobjects	?Serialize@Token@@UAEXAAVCArchive@@@Z	100.0000	100.0000	2	73b4128adc42	0x110ebb	100.0000	
-spellobjects	?SetAt@CMapPtrToPtr@@QAEXPAX0@Z	95.3846	95.3846	1	cpp:bdc9cc63cdd1	0x1176a0	95.3846	
 spellobjects	?SetSize@?$CArray@PAVSpell@@PAV1@@@QAEXHH@Z	99.8611	99.8611	1	cpp:bdc9cc63cdd1	0x11a9b0	99.8611	
+tokenpayload	??0CWorldMapData@@QAE@PAVCScenarioResource@@PAVCWorldItemManager@@@Z	0.8861	0.8861	2	f8eb8a0d59ad	0x141830	0.8861	
+tokenpayload	?Activate@CWorldMapData@@QAEXXZ	0.8475	0.8475	2	9d30eff0cf8d	0x14d530	0.8475	
 tokenpayload	?Serialize@CTokenPayload@@QAEXAAVCArchive@@@Z	100.0000	100.0000	1	f8ba19affff0	0x144a70	100.0000	
+tokenpayload	?Serialize@CWorldMapData@@QAEXAAVCArchive@@@Z	0.4566	0.4566	1	c7a9fb249cfb	0x144aa0	0.4566	
 wordrle	?DecodeWordRle@@YAXTByteIntPointer@@HPAPAGPAH@Z	100.0000	100.0000	1	7de0bd6e7163	0x11f1e0	100.0000	
 wordrle	?EncodeWordRle@@YAXPAGHPATByteIntPointer@@PAH@Z	100.0000	100.0000	1	ade872e200bc	0x11f130	100.0000	
 wordrletokens	?DecodeWordRleLiteral@@YAHPATByteWordPointer@@PAPAG@Z	100.0000	100.0000	1	17976cccb2ed	0x127290	100.0000	
 wordrletokens	?DecodeWordRleRepeat@@YAHPATByteWordPointer@@PAPAG@Z	100.0000	100.0000	1	983cb9affca5	0x127210	100.0000	
 wordrletokens	?EncodeWordRleLiteral@@YAHPAPAGHHPATByteWordPointer@@@Z	100.0000	100.0000	1	246d4dc5e2ce	0x127110	100.0000	
 wordrletokens	?EncodeWordRleRepeat@@YAHPAPAGHHPATByteWordPointer@@@Z	100.0000	100.0000	1	cbc1bbabcd61	0x127040	100.0000	
+worlditemiterator	??0CWorldItemIterator@@QAE@XZ	80.0000	80.0000	2	14a1bbce3b4e	0x11f280	80.0000	
+worlditemiterator	?First@CWorldItemIterator@@QAEPAVCWorldItem@@PAVCWorldItemList@@@Z	20.5128	20.5128	1	85f978191487	0x11f290	20.5128	
+worlditemiterator	?Next@CWorldItemIterator@@QAEPAVCWorldItem@@XZ	32.0000	32.0000	1	8110b7e5fe0f	0x11f2e0	32.0000	
+worldobjectiterator	??0CWorldObjectIterator@@QAE@XZ	80.0000	80.0000	2	be44f9b87326	0x11f010	80.0000	
+worldobjectiterator	?First@CWorldObjectIterator@@QAEPAVCWorldObject@@PAVCWorldObjectRegistry@@@Z	20.5128	20.5128	1	a907449c7d8f	0x11f020	20.5128	
+worldobjectiterator	?Next@CWorldObjectIterator@@QAEPAVCWorldObject@@XZ	32.0000	32.0000	1	087bef887823	0x11f070	32.0000	
+worldruntime	??0CWorldRuntime@@QAE@PAVCWorldMapData@@PAVCWorldObjectRegistry@@@Z	1.7500	1.7500	2	2a9095aec6d8	0x12c440	1.7500	
+worldruntime	?Activate@CWorldRuntime@@QAEXXZ	50.0000	50.0000	2	5e957fe8e36e	0x13b8b0	50.0000	
+worldruntime	?Serialize@CWorldRuntime@@QAEXAAVCArchive@@@Z	0.7576	0.7576	1	93380fec3c1d	0x139350	0.7576	

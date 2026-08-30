@@ -5,6 +5,8 @@
 
 #include <MfcNoInline.h>
 
+#include <Serialization/ReferenceWorld.h>
+
 #include <afxtempl.h>
 
 class Spell;
@@ -12,12 +14,6 @@ class SpellEffect;
 class PointEffect;
 class AreaEffect;
 class Effect;
-
-class CReferenceWorld {
-public:
-    BYTE m_reserved[0x88];
-    CMapPtrToPtr m_references;
-};
 
 void ResolveEffectReference(UINT* value);
 void ResolveTokenReference(UINT* value);

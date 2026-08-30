@@ -26,7 +26,8 @@ save-game	0x0cee6f	write save wrapper	located	exact envelope writes + word-RLE e
 save-game	0x0cf1ee	read save wrapper	located	signed version floor + ignored declared length + mapped oracle + safe Rust parser
 character	0x0cf4f0	write .chr wrapper	located	chr path strings + 16-byte metadata + word-RLE/even-pad Rust writer
 character	0x0cf8b8	read .chr wrapper	located	packet/file caller xrefs + exact metadata/RLE extents + mapped oracle + safe Rust parser
-scenario	0x0d0c97	bidirectional CArchive serializer	located	called by both save and load wrappers
+scenario	0x0d0c97	bidirectional CArchive serializer	exact	100%; exact 0x94b extent + 112 ordered relocations + save/load wrapper calls
+scenario	0x13e840	raw 0x190-byte snapshot serializer	exact	100%; exact CArchive Read/Write branches reached by the scenario serializer tail
 dib-bmp	0x04afa0	report DIB dimensions	exact	retail body + mapped oracle
 dib-bmp	0x04afd0	read mapped BMP file	located	BM signature + Invalid/Empty bitmap strings
 dib-bmp	0x04b360	build logical palette	exact	retail body + RGBQUAD-to-PALETTEENTRY conversion

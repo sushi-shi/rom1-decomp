@@ -406,6 +406,13 @@ length prefixes and all six distinct compositional layouts; nested-object byte
 slices remain caller-supplied because retail stores no artificial boundary
 around a virtual serializer.
 
-The next large serde body is the bidirectional CArchive scenario/save
-serializer at `0x0d0c97`. The remaining DIB/BMP paths are the mapped-file
-wrapper at `0x04afd0` and VFW compression at `0x04b4e0`.
+The bidirectional scenario/save serializer at `0x0d0c97` is now exact across
+its complete `0x94b` retail extent and all 112 ordered relocations. Recovered
+source fixes the `CReferenceWorld` layout, save/load branch structure,
+iterator-current fields, signed mode guard, global scenario path referent, and
+the ownership and call identities of its support objects. Its tail reaches the
+separately exact `CReferenceSnapshot::Serialize` at `0x13e840`, whose store and
+load branches transfer one raw `0x190`-byte snapshot.
+
+The remaining DIB/BMP paths are the mapped-file wrapper at `0x04afd0` and VFW
+compression at `0x04b4e0`.
