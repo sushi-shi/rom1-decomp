@@ -32,7 +32,7 @@
 #              emitter resumes from it instead of forgetting proven work).
 # Query: python3 -m rom1.verify status | check | bank
 # [units]	unit	n_functions	matched
-archivearrays	64	53
+archivearrays	76	53
 archiveelements	2	2
 archiveobjects	12	12
 butemgr	14	11
@@ -74,17 +74,29 @@ archivearrays	?Serialize@?$CArray@PAVCStringArray@@PAV1@@@UAEXAAVCArchive@@@Z	10
 archivearrays	?Serialize@?$CArray@PAVCStringTriple@@PAV1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:1de664a95104	0x498d0	100.0000	
 archivearrays	?Serialize@?$CArray@PAVSpell@@PAV1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:b7fb239e56b8	0x11ac70	100.0000	
 archivearrays	?Serialize@?$CArray@PAXPAX@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:1de664a95104	0x49ca0	100.0000	
+archivearrays	?Serialize@?$CArray@UCCollectionHandle@@U1@@@UAEXAAVCArchive@@@Z	99.8684	99.8684	1	cpp:e113ee677497	0x11ae60	99.8684	
 archivearrays	?Serialize@?$CArray@UCCompactCollectionRecord@@AAU1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:b7fb239e56b8	0x119a10	100.0000	
 archivearrays	?Serialize@?$CArray@UCFixedCollectionRecord@@AAU1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:b7fb239e56b8	0x119650	100.0000	
 archivearrays	?Serialize@?$CArray@UCLargeCollectionRecord@@AAU1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:b7fb239e56b8	0x118ef0	100.0000	
+archivearrays	?Serialize@?$CArray@UCMapValueHandle@@U1@@@UAEXAAVCArchive@@@Z	99.8684	99.8684	1	cpp:e113ee677497	0x11cfd0	99.8684	
 archivearrays	?Serialize@?$CArray@UCNamedCollectionRecord@@AAU1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:b7fb239e56b8	0x1192b0	100.0000	
 archivearrays	?Serialize@?$CArray@UCPrimaryStateRecord@@AAU1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:b7fb239e56b8	0x119db0	100.0000	
 archivearrays	?Serialize@?$CArray@UCSecondaryStateRecord@@AAU1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:b7fb239e56b8	0x11a170	100.0000	
+archivearrays	?Serialize@?$CArray@UCSharedCollectionValue@@U1@@@UAEXAAVCArchive@@@Z	99.7368	99.7368	1	cpp:e113ee677497	0x11cc30	99.7368	
 archivearrays	?Serialize@?$CArray@UCSpellDefinition@@AAU1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:b7fb239e56b8	0x11a8d0	100.0000	
 archivearrays	?Serialize@?$CArray@UCTertiaryStateRecord@@AAU1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:b7fb239e56b8	0x11a530	100.0000	
 archivearrays	?Serialize@?$CArray@U_WIN32_FIND_DATAA@@U1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:1de664a95104	0x49ba0	100.0000	
+archivearrays	?Serialize@?$CList@GG@@UAEXAAVCArchive@@@Z	99.9138	99.9138	1	cpp:e113ee677497	0x11b090	99.9138	
 archivearrays	?Serialize@?$CList@PAVEffect@@PAV1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:b7fb239e56b8	0x118360	100.0000	
 archivearrays	?Serialize@?$CList@PAVItem@@PAV1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:b7fb239e56b8	0x118810	100.0000	
+archivearrays	?Serialize@?$CList@UCDeferredCollectionHandle@@U1@@@UAEXAAVCArchive@@@Z	99.7414	99.7414	1	cpp:e113ee677497	0x11d0a0	99.7414	
+archivearrays	?Serialize@?$CList@UCMapObjectHandle@@U1@@@UAEXAAVCArchive@@@Z	99.9138	99.9138	1	cpp:e113ee677497	0x11b570	99.9138	
+archivearrays	?Serialize@?$CList@UCMapRecordHandle@@U1@@@UAEXAAVCArchive@@@Z	99.9138	99.9138	1	cpp:e113ee677497	0x11b890	99.9138	
+archivearrays	?Serialize@?$CList@UCMapTailHandle@@AAU1@@@UAEXAAVCArchive@@@Z	99.9138	99.9138	1	cpp:e113ee677497	0x11c130	99.9138	
+archivearrays	?Serialize@?$CList@UCMapValueHandle@@U1@@@UAEXAAVCArchive@@@Z	99.9138	99.9138	1	cpp:e113ee677497	0x11b240	99.9138	
+archivearrays	?Serialize@?$CList@UCSharedMapHandle@@AAU1@@@UAEXAAVCArchive@@@Z	99.9138	99.9138	1	cpp:e113ee677497	0x11c440	99.9138	
+archivearrays	?Serialize@?$CList@UCSharedMapHandle@@U1@@@UAEXAAVCArchive@@@Z	99.9138	99.9138	1	cpp:e113ee677497	0x11bdb0	99.9138	
+archivearrays	?Serialize@?$CMap@KAAKUCMapPayloadHandle@@AAU1@@@UAEXAAVCArchive@@@Z	99.8315	99.8315	1	cpp:e113ee677497	0x11c690	99.8315	
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAGH@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x123ba0	100.0000	
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAHH@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x1227a0	100.0000	
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAPAVCStringArray@@H@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4a2c0	100.0000	

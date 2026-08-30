@@ -168,18 +168,18 @@ rva	signals	status	note
 0x11a530	archive-read,archive-vslot2,archive-write	reconstructed	exact tertiary 0x1c-record CArray serializer; 100%
 0x11a8d0	archive-read,archive-vslot2,archive-write	reconstructed	exact CSpellDefinition CArray serializer; 100%
 0x11ac70	archive-read,archive-vslot2,archive-write	reconstructed	exact Spell-pointer CArray serializer; 100%
-0x11ae60	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x11b090	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x11b240	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x11b570	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x11b890	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x11bdb0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x11c130	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x11c440	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x11c690	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x11cc30	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x11cfd0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x11d0a0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x11ae60	archive-read,archive-vslot2,archive-write	reconstructed	source-owned collection-handle CArray serializer; 99.87%, sole residual is generic SetSize referent identity
+0x11b090	archive-read,archive-vslot2,archive-write	reconstructed	source-owned CList<WORD,WORD> serializer; 99.91%, sole residual is generic AddTail referent identity
+0x11b240	archive-read,archive-vslot2,archive-write	reconstructed	source-owned by-value map-value CList serializer; 99.91%, sole residual is generic AddTail referent identity
+0x11b570	archive-read,archive-vslot2,archive-write	reconstructed	source-owned by-value map-object CList serializer; 99.91%, sole residual is generic AddTail referent identity
+0x11b890	archive-read,archive-vslot2,archive-write	reconstructed	source-owned by-value map-record CList serializer; 99.91%, sole residual is generic AddTail referent identity
+0x11bdb0	archive-read,archive-vslot2,archive-write	reconstructed	source-owned by-value shared-map CList serializer; 99.91%, sole residual is generic AddTail referent identity
+0x11c130	archive-read,archive-vslot2,archive-write	reconstructed	source-owned by-reference map-tail CList serializer; 99.91%, sole residual is generic AddTail referent identity
+0x11c440	archive-read,archive-vslot2,archive-write	reconstructed	source-owned by-reference shared-map CList serializer; 99.91%, sole residual is generic AddTail referent identity
+0x11c690	archive-read,archive-vslot2,archive-write	reconstructed	source-owned DWORD-reference/four-byte-value-reference CMap serializer; 99.83%, generic SetAt and value-element referents remain
+0x11cc30	archive-read,archive-vslot2,archive-write	reconstructed	source-owned shared four-byte-value CArray serializer; 99.74%, generic SetSize and folded element-helper referents remain
+0x11cfd0	archive-read,archive-vslot2,archive-write	reconstructed	source-owned map-value CArray serializer; 99.87%, sole residual is generic SetSize referent identity
+0x11d0a0	archive-read,archive-vslot2,archive-write	reconstructed	source-owned by-value deferred-handle CList serializer; 99.74%, generic AddTail and folded element-helper referents remain
 0x11d640	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x11d710	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x11d8e0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject

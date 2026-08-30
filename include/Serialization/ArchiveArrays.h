@@ -15,6 +15,10 @@ struct CQueuedCollectionValue {
     BYTE m_bytes[4];
 };
 
+struct CSharedCollectionValue {
+    BYTE m_bytes[4];
+};
+
 struct CLargeCollectionRecord {
     BYTE m_bytes[0x68];
 };
@@ -64,6 +68,14 @@ struct CSharedMapHandle {
 };
 
 struct CMapTailHandle {
+    BYTE m_bytes[4];
+};
+
+struct CMapPayloadHandle {
+    BYTE m_bytes[4];
+};
+
+struct CDeferredCollectionHandle {
     BYTE m_bytes[4];
 };
 

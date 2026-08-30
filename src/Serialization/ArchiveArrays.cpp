@@ -49,8 +49,21 @@ RVA_COMPGEN(0x0011a530, 0x68, ?Serialize@?$CArray@UCTertiaryStateRecord@@AAU1@@@
 RVA_COMPGEN(0x0011a610, 0x220, ?SetSize@?$CArray@UCSpellDefinition@@AAU1@@@QAEXHH@Z)
 RVA_COMPGEN(0x0011a8d0, 0x68, ?Serialize@?$CArray@UCSpellDefinition@@AAU1@@@UAEXAAVCArchive@@@Z)
 RVA_COMPGEN(0x0011ac70, 0x68, ?Serialize@?$CArray@PAVSpell@@PAV1@@@UAEXAAVCArchive@@@Z)
-RVA_COMPGEN(0x00121dc0, 0x57, ?AddTail@?$CList@PAVEffect@@PAV1@@@QAEPAU__POSITION@@PAVEffect@@@Z)
 // clang-format on
+
+RVA_COMPGEN(0x0011ae60, 0x68, ?Serialize@?$CArray@UCCollectionHandle@@U1@@@UAEXAAVCArchive@@@Z)
+RVA_COMPGEN(0x0011b090, 0x9e, ?Serialize@?$CList@GG@@UAEXAAVCArchive@@@Z)
+RVA_COMPGEN(0x0011b240, 0x9d, ?Serialize@?$CList@UCMapValueHandle@@U1@@@UAEXAAVCArchive@@@Z)
+RVA_COMPGEN(0x0011b570, 0x9d, ?Serialize@?$CList@UCMapObjectHandle@@U1@@@UAEXAAVCArchive@@@Z)
+RVA_COMPGEN(0x0011b890, 0x9d, ?Serialize@?$CList@UCMapRecordHandle@@U1@@@UAEXAAVCArchive@@@Z)
+RVA_COMPGEN(0x0011bdb0, 0x9d, ?Serialize@?$CList@UCSharedMapHandle@@U1@@@UAEXAAVCArchive@@@Z)
+RVA_COMPGEN(0x0011c130, 0x9d, ?Serialize@?$CList@UCMapTailHandle@@AAU1@@@UAEXAAVCArchive@@@Z)
+RVA_COMPGEN(0x0011c440, 0x9d, ?Serialize@?$CList@UCSharedMapHandle@@AAU1@@@UAEXAAVCArchive@@@Z)
+RVA_COMPGEN(0x0011c690, 0xf9, ?Serialize@?$CMap@KAAKUCMapPayloadHandle@@AAU1@@@UAEXAAVCArchive@@@Z)
+RVA_COMPGEN(0x0011cc30, 0x68, ?Serialize@?$CArray@UCSharedCollectionValue@@U1@@@UAEXAAVCArchive@@@Z)
+RVA_COMPGEN(0x0011cfd0, 0x68, ?Serialize@?$CArray@UCMapValueHandle@@U1@@@UAEXAAVCArchive@@@Z)
+RVA_COMPGEN(0x0011d0a0, 0x9d, ?Serialize@?$CList@UCDeferredCollectionHandle@@U1@@@UAEXAAVCArchive@@@Z)
+RVA_COMPGEN(0x00121dc0, 0x57, ?AddTail@?$CList@PAVEffect@@PAV1@@@QAEPAU__POSITION@@PAVEffect@@@Z)
 
 RVA_COMPGEN(0x00121f20, 0x3b, ?SerializeElements@@YGXAAVCArchive@@PAPAVEffect@@H@Z)
 RVA_COMPGEN(0x001222e0, 0x3b, ?SerializeElements@@YGXAAVCArchive@@PAUCQueuedCollectionValue@@H@Z)
@@ -91,6 +104,20 @@ template void CArray<CSecondaryStateRecord, CSecondaryStateRecord&>::Serialize(C
 template void CArray<CTertiaryStateRecord, CTertiaryStateRecord&>::Serialize(CArchive& archive);
 template void CArray<CSpellDefinition, CSpellDefinition&>::Serialize(CArchive& archive);
 template void CArray<Spell*, Spell*>::Serialize(CArchive& archive);
+template void CArray<CCollectionHandle, CCollectionHandle>::Serialize(CArchive& archive);
+template void CList<WORD, WORD>::Serialize(CArchive& archive);
+template void CList<CMapValueHandle, CMapValueHandle>::Serialize(CArchive& archive);
+template void CList<CMapObjectHandle, CMapObjectHandle>::Serialize(CArchive& archive);
+template void CList<CMapRecordHandle, CMapRecordHandle>::Serialize(CArchive& archive);
+template void CList<CSharedMapHandle, CSharedMapHandle>::Serialize(CArchive& archive);
+template void CList<CMapTailHandle, CMapTailHandle&>::Serialize(CArchive& archive);
+template void CList<CSharedMapHandle, CSharedMapHandle&>::Serialize(CArchive& archive);
+template void
+CMap<DWORD, DWORD&, CMapPayloadHandle, CMapPayloadHandle&>::Serialize(CArchive& archive);
+template void CArray<CSharedCollectionValue, CSharedCollectionValue>::Serialize(CArchive& archive);
+template void CArray<CMapValueHandle, CMapValueHandle>::Serialize(CArchive& archive);
+template void
+CList<CDeferredCollectionHandle, CDeferredCollectionHandle>::Serialize(CArchive& archive);
 
 template void AFXAPI SerializeElements<Effect*>(CArchive& archive, Effect** elements, int count);
 template void AFXAPI SerializeElements<CQueuedCollectionValue>(

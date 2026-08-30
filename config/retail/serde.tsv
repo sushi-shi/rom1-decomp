@@ -68,6 +68,18 @@ resource-text	0x069220	split patch table key/value records	located	startup xref 
 item-name-ids	0x068490	load raw little-endian item IDs	near-exact	98.77%; itemname.bin string + text/map xrefs + mapped oracle
 archive-pointer-words	0x069390	bidirectional CArchive raw pointer vector	near-exact	81.44%; exact 0x188 extent + WriteCount/ReadCount and raw Write/Read xrefs + mapped oracle
 scenario-map	0x144aa0	exceptional-tile/map serializer	near-exact	84.81%; source-complete store/load topology; residual VC5 inline/call-set wall tied to neighboring TU context
+archive-container	0x11ae60	four-byte collection-handle CArray serializer	reconstructed	99.87%; natural pinned-header emission, generic SetSize referent residual
+archive-container	0x11b090	WORD CList serializer	reconstructed	99.91%; natural pinned-header emission, generic AddTail referent residual
+archive-container	0x11b240	by-value map-value CList serializer	reconstructed	99.91%; natural pinned-header emission, generic AddTail referent residual
+archive-container	0x11b570	by-value map-object CList serializer	reconstructed	99.91%; natural pinned-header emission, generic AddTail referent residual
+archive-container	0x11b890	by-value map-record CList serializer	reconstructed	99.91%; natural pinned-header emission, generic AddTail referent residual
+archive-container	0x11bdb0	by-value shared-map CList serializer	reconstructed	99.91%; natural pinned-header emission, generic AddTail referent residual
+archive-container	0x11c130	by-reference map-tail CList serializer	reconstructed	99.91%; natural pinned-header emission, generic AddTail referent residual
+archive-container	0x11c440	by-reference shared-map CList serializer	reconstructed	99.91%; natural pinned-header emission, generic AddTail referent residual
+archive-container	0x11c690	DWORD-reference/four-byte-value-reference CMap serializer	reconstructed	99.83%; natural pinned-header emission, two generic template referents remain
+archive-container	0x11cc30	shared four-byte-value CArray serializer	reconstructed	99.74%; natural pinned-header emission, generic SetSize and folded element-helper referents remain
+archive-container	0x11cfd0	map-value CArray serializer	reconstructed	99.87%; natural pinned-header emission, generic SetSize referent residual
+archive-container	0x11d0a0	by-value deferred-handle CList serializer	reconstructed	99.74%; natural pinned-header emission, two generic template referents remain
 archive-container	0x1503e0	CList<DWORD, DWORD> serializer	exact	100%; exact 0x118 extent + WriteCount/ReadCount and DWORD element transfer
 archive-container	0x13ec20	DWORD-key/value CMap serializer	exact	100%; natural pinned-header template instantiation
 archive-container	0x13eec0	pointer-key/DWORD-value CMap serializer	exact	100%; natural pinned-header template instantiation

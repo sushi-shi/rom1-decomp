@@ -492,6 +492,16 @@ with residuals confined to recovered record lifecycle and compiler/TU context.
 The emitted methods come naturally from the pinned MFC templates and
 game-owned record declarations; no static-library implementation is copied.
 
+The earlier container run at `0x11ae60`–`0x11d0a0` is drained as well.  Its
+three `CArray`, eight `CList`, and one `CMap` serializers are natural emissions
+from the pinned MFC headers over game-owned declarations.  Their instruction
+streams and call sites agree with retail; scores range from 99.74% to 99.91%
+because one or two neighboring, still-unclaimed template helpers retain generic
+retail referent identities.  Retail load call shapes independently distinguish
+the by-value and by-reference list arguments, while the map passes both its
+DWORD key and distinct four-byte mapped value by reference.  No MFC or other
+vendor body is reconstructed in source.
+
 The neighboring records at `0x139100` and `0x139210` serialize raw 0x94- and
 0x50-byte owners followed by the same separately allocated
 `CList<WORD, WORD>`. On load they delete the stale list, read the raw owner,
