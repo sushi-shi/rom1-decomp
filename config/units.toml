@@ -129,6 +129,11 @@ source = "src/Serialization/ReferenceWorld.cpp"
 flags = "cpp-od"
 
 [[unit]]
+unit = "stringrecordfile"
+source = "src/Serialization/StringRecordFile.cpp"
+flags = "cpp-od"
+
+[[unit]]
 unit = "scenarioobjectmap"
 source = "src/Serialization/ScenarioObjectMap.cpp"
 flags = "cpp-od"

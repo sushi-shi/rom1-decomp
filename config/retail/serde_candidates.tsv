@@ -83,7 +83,7 @@ rva	signals	status	note
 0x0cf4f0	file-write	target	initial retail call/vtable census
 0x0d0c97	archive-read,archive-write	reconstructed	exact CReferenceWorld save/load serializer; 100% over the 0x94b retail extent with 112 ordered relocations
 0x0d15e2	file-write	reconstructed	exact game-owned server-state text writer; configured path, state line, and unattached-world-object count
-0x0d1783	file-read	target	initial retail call/vtable census
+0x0d1783	file-read	reconstructed	source-complete game-owned four-line text record reader; 99.63%, sole residual is an intentionally ambiguous exact CRT strcpy provider label
 0x0d5dd2	file-read	target	initial retail call/vtable census
 0x0d933a	file-write	target	initial retail call/vtable census
 0x0da34b	file-read	target	initial retail call/vtable census

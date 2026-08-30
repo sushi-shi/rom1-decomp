@@ -693,6 +693,15 @@ object offset `0x28` is null. Its registry traversal and all naturally emitted
 pinned-header `CString`/`CList` helpers were recovered from retail; no DirectX,
 MFC, or other vendor implementation body is claimed.
 
+The neighboring game-owned reader at `0x0d1783` consumes text records in
+groups of four lines. It retains the first two lines as one `CStringArray`
+entry, separated by byte `0x01`, and reads but discards the third and fourth
+lines. Its source, instruction stream, control flow, and ordered relocations
+are complete. The 99.63% score is solely a label ambiguity: both copy calls
+resolve to the exact retail CRT body at `0x154650`, whose `_strcpy` and
+`_mbscpy` identities collide. The static-library ledger therefore preserves
+that ambiguity instead of promoting either name, and no CRT body is copied.
+
 The world-map serializer at `0x144aa0` is source-complete at 84.81%. Its store
 arm scans tile indices `0x0807` through `0xeded`, packs exceptional high-byte
 tiles as index/high/low DWORDs, then serializes the list, an embedded

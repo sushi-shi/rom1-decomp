@@ -55,6 +55,7 @@ scenarioobjectmap	1	0
 scenariosupport	41	12
 smackerplayer	7	7
 spellobjects	65	62
+stringrecordfile	3	2
 textureresourcecontainers	17	14
 tokenpayload	17	9
 wordrle	2	2
@@ -455,6 +456,9 @@ spellobjects	?Serialize@SpellTransport@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	
 spellobjects	?Serialize@Spellbook@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	d92e7e7159aa	0x100c1d	100.0000	
 spellobjects	?Serialize@Tavern@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	b8738a952eaa	0x105ae4	100.0000	
 spellobjects	?SetSize@?$CArray@PAVSpell@@PAV1@@@QAEXHH@Z	99.8611	99.8611	1	cpp:bdc9cc63cdd1	0x11a9b0	99.8611	
+stringrecordfile	?Add@CStringArray@@QAEHPBD@Z	100.0000	100.0000	1	cpp:171c361fd17e	0x47a00	100.0000	
+stringrecordfile	?ReadRecords@CStringRecordFile@@QAEXXZ	99.6286	99.6286	1	4fae74c87572	0xd1783	99.6286	
+stringrecordfile	?RemoveAll@CStringArray@@QAEXXZ	100.0000	100.0000	1	cpp:171c361fd17e	0x48140	100.0000	
 textureresourcecontainers	??0CTextureResourceRecord@@QAE@XZ	99.8214	99.8214	1	cpp:7b0c96eb90c3	0x94520	99.8214	
 textureresourcecontainers	??0CTextureTableRecord@@QAE@XZ	99.5714	99.5714	1	c452f36b88fd	0x9a040	99.5714	
 textureresourcecontainers	??1CTextureLookupRecord@@QAE@XZ	100.0000	100.0000	1	cpp:7b0c96eb90c3	0x9a060	100.0000	
