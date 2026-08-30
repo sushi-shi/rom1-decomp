@@ -20,7 +20,7 @@ upstream_path	local_path	class	upstream_sha256	local_sha256	reason	proof
 AGENTS.md	AGENTS.md	target	757ac527ef095a567115d5d56b8d91a4f68b9a206659d21bd09560785987e77e	c31622bb912e1fb17ae2f7c04c3c5da893526b612891f7671144cab5d910df9b	same surface, RoM1 executable evidence/doctrine	tracked local sha256
 CLAUDE.md	CLAUDE.md	excluded	94ab034d88bb705fe256ffb934e0ab010ca115c96c62c9b979a1df77914a37b8		Gruntz game source/evidence or adjunct not imported	local path absent
 LICENSE	LICENSE	exact	a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499	a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499	byte-identical infrastructure	sha256 equal
-README.md	README.md	target	cf10b4a0984965ea89b8b9395fb97a5e1956bf6b6aaf7fd17ddcc60daea4a1d9	a1a71134517952ee36112e60adc2393fd6fdcbb5fcae4e8fff3a0ceaed70e7f8	same surface, RoM1 executable evidence/doctrine	tracked local sha256
+README.md	README.md	target	cf10b4a0984965ea89b8b9395fb97a5e1956bf6b6aaf7fd17ddcc60daea4a1d9	f712623cf4bee27d36d95642f0dee5b37732e23ebfd4191ad0ef39c831304226	same surface, RoM1 executable evidence/doctrine	tracked local sha256
 config/README.md	config/README.md	target	bdc2b4a4657325e676cce01a8dc46717c2a5d125af5806cce134d5163e7ee694	f0e3f9311b3bd6b31bcb3c091afbdff413e9307e20ee9aafc955321a6a2be878	same surface, RoM1 executable evidence/doctrine	tracked local sha256
 config/cleanliness/bare-constants-baseline.tsv	config/cleanliness/bare-constants-baseline.tsv	excluded	5642aa8b144066078db53f773f96ef213bfb4afa22bc9dca2a5c55c9e676714b		Gruntz game source/evidence or adjunct not imported	local path absent
 config/cleanliness/cleanliness-semantic-baseline.tsv	config/cleanliness/cleanliness-semantic-baseline.tsv	target	69b7f8359b81d160ba8b74167162bda9c5cdc4033840de5d7cf9c267bc77bb18	c93c75a4b7bfcceb99cb2f69c8e96a930686299b7c252bdfc185f861569f3115	same surface, RoM1 executable evidence/doctrine	tracked local sha256
@@ -1021,7 +1021,7 @@ editor/nvim/README.md	editor/nvim/README.md	rename	137344042b9a887064d6e445bdfc4
 editor/nvim/lua/gruntz/init.lua	editor/nvim/lua/rom1/init.lua	rename	87a2e3179cd1839fec4fe6de0e41a1ae6b0aa77391e7431c35fead2d74da72b8	e64d2f75983ab292da723d6695187f3ec238688bb1db0ea8e5a8c86fed79a6b6	mechanical Gruntz-to-RoM1 namespace substitution	canonical token transform
 editor/nvim/plugin/gruntz.lua	editor/nvim/plugin/rom1.lua	rename	7dc19ddcfca294d2fbe99cd7c1b12c259987ec3a6dcfc32defd950900bd876a7	d598266100e4950e76b4bda9cb3376914b476dfdbc9d60a461d89cb4f98ee729	mechanical Gruntz-to-RoM1 namespace substitution	canonical token transform
 flake.lock	flake.lock	exact	08ccb30693810290b7d80aa8f1313ac89406ce48cc208e8c2582fed4e60ad771	08ccb30693810290b7d80aa8f1313ac89406ce48cc208e8c2582fed4e60ad771	byte-identical infrastructure	sha256 equal
-flake.nix	flake.nix	seam	95035f68c64019582823daf9056630981c4854a224385235162eb489d1cd27ac	cef1429c1b40b7abd5ddabf85d035246c85f51faf48b2379941b235d6aeb1556	reviewed RoM1 compatibility adapter	tracked local sha256 and in-tree tests
+flake.nix	flake.nix	seam	95035f68c64019582823daf9056630981c4854a224385235162eb489d1cd27ac	87a465ffc0f3275b33abd503ea56573ea17ba7b20eb70c1af498ed50e589bcab	reviewed RoM1 compatibility adapter	tracked local sha256 and in-tree tests
 include/AddrWord.h	include/AddrWord.h	excluded	cc0820255d5dc1826a2b267fdf0658e88c6db6f49407f835071e9c4cdfe7407c		Gruntz game source/evidence or adjunct not imported	local path absent
 include/Bute/ARange.h	include/Bute/ARange.h	excluded	da6baad85fadb533a5e367cee132b56ec8d6c8c3b33862a37726622b87268e6d		Gruntz game source/evidence or adjunct not imported	local path absent
 include/Bute/AVector.h	include/Bute/AVector.h	excluded	89d48d7d26e6d9028d325a231671d30269624a64c687bd8750cc09bf11f9c16d		Gruntz game source/evidence or adjunct not imported	local path absent
@@ -2186,14 +2186,15 @@ vendor/zlib-1.0.4/zutil.h	vendor/zlib-1.0.4/zutil.h	excluded	b1c8b410d0fd4b66fca
 -	config/retail/vtables.tsv	target		b18aad5132c3c3ee90cfaf46bc11a2d3e5535f8d781b44bcb64adced3d60b7d7	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	config/toolchains.toml	target		45663975c75fa6caf42c08d0050b5b0e5dc4e89254f6d36e3184a542f9c6f020	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	docs/gruntz-parity-contract.md	target		259e6690f1e68d18bc97dc8e3381a2abd9d50f1b8fb44444b2f132e3ded4e819	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
--	docs/releases/toolchain-vc50-sp2-dx5-r1.md	target		51f5576df7946b90dfe90b8821f4b8a6f19f11ebda9429ec02389e82c7e117f4	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
+-	docs/releases/toolchain-vc50-sp2-dx5-r1.md	target		60a4f5d140e20da7610478473bfdc606e825e511d055908996e09098645139fd	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
+-	docs/releases/toolchain-vc50-sp2-dx5-r2.md	target		1ba27cfe1f020f297b46b22dfbcc35d49571adaa93fd218be3c679e90e8c561b	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	docs/releases/toolchain-vc50-sp3-dx5-bootstrap-r1.md	target		e66d09fc1e1160bad96929a239a745fea16ebb3c4d4f78f3bc8b359c26e9efe6	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	docs/rom1-decomp-plan.md	target		b0c769078b49ddbd57ab4ca776601a174d4db887bef0592d64ec7188f367a1c2	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	docs/setup-status.md	target		baa0affb2d207ae6e32fa01a1278f5ab9954ff5be283cb79719264d874b702d5	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
--	docs/tooling-release.md	target		837d287ccf0368e69cf62585455654bf599eb4a18e1a6a31d38a447e615ce1c7	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
+-	docs/tooling-release.md	target		0604782fb752dae4a4957ce1e59d2904e608613cf00004002e1ab71866a62eb5	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	nix/patches/vostok-reloc-manifest.patch	target		390a5951b75489d9267ba2250ccf61ce9872767de455d70afa93a48f05e89da6	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	scripts/create-sp2-toolchain-release.nix	target		27ab545411df2c609b223c93efc1c7b32472a56a60732e6b7d6921cde7b30ed6	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
--	scripts/create-sp2-toolchain-release.py	target		89fa7fd9a8c3bf16c4bb05c5b9bec183039493bb64dd58aa1196df398a0f68ec	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
+-	scripts/create-sp2-toolchain-release.py	target		365e54044879126dc14ed90530555d5e3161069c09b94f17ff4e1e5b262cfb2b	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	scripts/find_relocs.py	target		f5551ae92c777a0bc18d9f9e854df9672a5e649673396e78aaba842718f2140d	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	scripts/rom1/core/relocs.py	target		9c74d9e85f75ea755945223ebc7bd204805b6bd814c9981db66d4c81e0345fb5	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	scripts/rom1/tool/compiler_census.py	target		05e57c28cbc8eb5b09c279655898d2c653e7454c4ab67fb0dae88f06fec401cb	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256

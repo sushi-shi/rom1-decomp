@@ -1,8 +1,4 @@
-# VC5 SP2 + DirectX 5 toolchain r1
-
-Superseded by `toolchain-vc50-sp2-dx5-r2`, which normalizes archive modes so
-the original-media builder and Nix-store re-pack are byte-identical. Payload
-files and compiler/archive selection hashes are unchanged.
+# VC5 SP2 + DirectX 5 toolchain r2
 
 This is the selected, reproducible RoM1 compiler environment. It is built from
 the exact Visual Studio 97 Professional Disc 3 RTM image, overlaid only with
@@ -15,14 +11,16 @@ the exact DirectX 5 SDK and Windows Ninja.
 | [Microsoft VC Tech Preview carrier (`VSSP2` tree)](https://archive.org/details/vc-tech-pre) | 633,636,864 | `da848cf6902b9461c11503370a26f26bc30df8b544a8d14e8eeeb4110339fd75` |
 
 ```text
-rom1-toolchain-vc50-sp2-dx5-r1.tar.xz
-size     43,141,180 bytes
-sha256   8a7b2d3b79d3dc9f35a2987d2027141861ba5cea7c83ce912112737289d2d2c1
+rom1-toolchain-vc50-sp2-dx5-r2.tar.xz
+size     43,142,876 bytes
+sha256   11690189a64c703000a370faece50103f90f6ef6bac6b361469f73bd3484e47e
 ```
 
 The archive contains complete VC/MFC/ATL headers, CRT/MFC/ATL source, static
 libraries, compiler/linker tools, redistributables, per-file hashes, the exact
-overlay ledger, and source-media identities. Two clean builds were byte-equal.
+overlay ledger, and source-media identities. File and directory modes are
+normalized in addition to timestamp, owner, order, and tar format; clean
+source-staging and Nix-store re-packs are byte-identical.
 
 | Required role | File version | SHA-256 |
 | --- | --- | --- |

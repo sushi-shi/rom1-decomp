@@ -268,9 +268,9 @@
       # per-file provenance manifests and exact DirectX 5.
       rom1-toolchain = pkgs.runCommand "rom1-toolchain-vc50-sp2-dx5" {
         src = pkgs.fetchurl {
-          name = "rom1-toolchain-vc50-sp2-dx5-r1.tar.xz";
-          url = "https://github.com/sushi-shi/rom1-decomp/releases/download/toolchain-vc50-sp2-dx5-r1/rom1-toolchain-vc50-sp2-dx5-r1.tar.xz";
-          hash = "sha256-instO3nT3J81oph9ICcUGGG6XOp8g86RIRJzconS0sE=";
+          name = "rom1-toolchain-vc50-sp2-dx5-r2.tar.xz";
+          url = "https://github.com/sushi-shi/rom1-decomp/releases/download/toolchain-vc50-sp2-dx5-r2/rom1-toolchain-vc50-sp2-dx5-r2.tar.xz";
+          hash = "sha256-EWkBiaZMcDAAo3D67OUBA/kPbva6xrNhRp9zvTSE5H4=";
         };
         nativeBuildInputs = [ pkgs.gnutar pkgs.xz ];
       } ''
@@ -279,13 +279,14 @@
       '';
 
       rom1-toolchain-release = pkgs.runCommand
-        "rom1-toolchain-vc50-sp2-dx5-r1.tar.xz" {
+        "rom1-toolchain-vc50-sp2-dx5-r2.tar.xz" {
           nativeBuildInputs = [ pkgs.gnutar pkgs.xz ];
         } ''
           mkdir -p "$TMPDIR/release/rom1-toolchain-vc50-sp2-dx5"
           cp -R ${rom1-toolchain}/. "$TMPDIR/release/rom1-toolchain-vc50-sp2-dx5/"
           tar --sort=name --format=gnu --mtime=@925473600 --owner=0 --group=0 \
-            --numeric-owner -C "$TMPDIR/release" -cJf "$out" \
+            --numeric-owner --mode=u+rwX,go+rX,go-w \
+            -C "$TMPDIR/release" -cJf "$out" \
             rom1-toolchain-vc50-sp2-dx5
         '';
 

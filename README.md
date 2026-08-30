@@ -198,14 +198,14 @@ model and delinker consume the same reviewed `config/retail/relocs.tsv`.
 ## Tooling package
 
 Release
-[`toolchain-vc50-sp2-dx5-r1`](https://github.com/sushi-shi/rom1-decomp/releases/tag/toolchain-vc50-sp2-dx5-r1)
+[`toolchain-vc50-sp2-dx5-r2`](https://github.com/sushi-shi/rom1-decomp/releases/tag/toolchain-vc50-sp2-dx5-r2)
 contains the selected VC5 SP2 + DirectX 5 environment used by the flake. Its
 identity is:
 
 ```text
-rom1-toolchain-vc50-sp2-dx5-r1.tar.xz
-size     43,141,180 bytes
-sha256   8a7b2d3b79d3dc9f35a2987d2027141861ba5cea7c83ce912112737289d2d2c1
+rom1-toolchain-vc50-sp2-dx5-r2.tar.xz
+size     43,142,876 bytes
+sha256   11690189a64c703000a370faece50103f90f6ef6bac6b361469f73bd3484e47e
 ```
 
 Rebuild it from the pinned RTM and SP2 media with

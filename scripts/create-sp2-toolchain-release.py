@@ -274,7 +274,8 @@ def package(stage: Path, output: Path) -> str:
     output.parent.mkdir(parents=True, exist_ok=True)
     subprocess.run([
         "tar", "--sort=name", "--format=gnu", "--owner=0", "--group=0",
-        "--numeric-owner", f"--mtime=@{RELEASE_EPOCH}",
+        "--numeric-owner", "--mode=u+rwX,go+rX,go-w",
+        f"--mtime=@{RELEASE_EPOCH}",
         "--transform", f"s|^\\.|{RELEASE_ROOT}|", "-C", str(stage),
         "-cJf", str(output), ".",
     ], check=True)
@@ -288,7 +289,7 @@ def main() -> None:
         raise SystemExit("VC5_ISO does not match the pinned Archive.org Disc 3 image")
 
     output = Path(os.environ.get(
-        "OUTPUT", str(REPO / "build" / "rom1-toolchain-vc50-sp2-dx5-r1.tar.xz")))
+        "OUTPUT", str(REPO / "build" / "rom1-toolchain-vc50-sp2-dx5-r2.tar.xz")))
     requested_work = os.environ.get("WORK_DIR")
     if requested_work:
         work = Path(requested_work).resolve()
