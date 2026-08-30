@@ -242,7 +242,7 @@ rva	signals	status	note
 0x1289d0	archive-read,archive-write	target	initial retail call/vtable census
 0x139100	archive-read,archive-write	target	initial retail call/vtable census
 0x139210	archive-read,archive-write	target	initial retail call/vtable census
-0x139310	archive-read,archive-write	target	initial retail call/vtable census
+0x139310	archive-read,archive-write	reconstructed	source-complete Player-owned raw 0x20 archive block; 25.13%, incomplete-TU IsStoring inline/call-set residual
 0x139350	archive-read,archive-write	reconstructed	source-owned CWorldRuntime serializer placeholder; 0.76%, implementation remains open
 0x13db00	archive-read,archive-write	reconstructed	100%; exact complete-object 0x50-byte raw archive serializer
 0x13dbc0	archive-read,archive-write	reconstructed	100%; exact complete-object 0x48-byte raw archive serializer

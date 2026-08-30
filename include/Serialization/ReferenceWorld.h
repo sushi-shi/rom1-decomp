@@ -174,7 +174,25 @@ public:
     void Activate();
 
 private:
-    BYTE m_state[0xc320];
+    BYTE m_reserved0000[0x0008];
+    BYTE m_block0008[0x0030];
+    BYTE m_reserved0038[0x0a10];
+    BYTE m_value0a48;
+    BYTE m_value0a49;
+    BYTE m_reserved0a4a[0x0002];
+    DWORD m_value0a4c;
+    BYTE m_reserved0a50[0x9dd8];
+    BYTE m_blocka828[0x0190];
+    BYTE m_reserveda9b8[0x0004];
+    BYTE m_blocka9bc[0x09cc];
+    BYTE m_reservedb388[0x0024];
+    UINT m_valueb3ac;
+    UINT m_valueb3b0;
+    UINT m_valueb3b4;
+    BYTE m_reservedb3b8[0x097c];
+    BYTE m_blockbd34[0x0190];
+    BYTE m_blockbec4[0x03e8];
+    BYTE m_reservedc2ac[0x0074];
 };
 
 class CScenarioObjectMap {

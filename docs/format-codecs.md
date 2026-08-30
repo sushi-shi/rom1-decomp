@@ -420,6 +420,12 @@ virtual dispatch. The list vtables and slot-2 element widths prove the class
 shapes, but no original class names survive, so the source names record only
 those evidenced roles.
 
+The Player-owned raw 0x20-byte archive record at `0x139310` is also
+source-complete. Its 25.13% score is an incomplete-TU inline/call-set wall:
+retail calls `CArchive::IsStoring`, while the current unit expands that header
+primitive. The raw `Write`/`Read` contract and record extent are exact; no
+vendor implementation is reconstructed to force the call shape.
+
 The ANSI CString bytes are the exact VC5 SP2 `ARCCORE.CPP` grammar that the
 retail static-library operators implement:
 

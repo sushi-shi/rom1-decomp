@@ -55,7 +55,7 @@ wordrle	2	2
 wordrletokens	4	4
 worlditemiterator	3	0
 worldobjectiterator	3	0
-worldruntime	3	0
+worldruntime	4	0
 # [functions]	unit	function	best_pct	cur_pct	tries	src_hash	rva	hist_pct	state
 archivearrays	??2@YAPAXIPAX@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4a2b0	100.0000	
 archivearrays	?ConstructElements@@YGXPAPAVCStringArray@@H@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4a260	100.0000	
@@ -259,4 +259,5 @@ worldobjectiterator	?First@CWorldObjectIterator@@QAEPAVCWorldObject@@PAVCWorldOb
 worldobjectiterator	?Next@CWorldObjectIterator@@QAEPAVCWorldObject@@XZ	32.0000	32.0000	1	087bef887823	0x11f070	32.0000	
 worldruntime	??0CWorldRuntime@@QAE@PAVCWorldMapData@@PAVCWorldObjectRegistry@@@Z	1.7500	1.7500	2	2a9095aec6d8	0x12c440	1.7500	
 worldruntime	?Activate@CWorldRuntime@@QAEXXZ	50.0000	50.0000	2	5e957fe8e36e	0x13b8b0	50.0000	
+worldruntime	?Serialize@CPlayerArchiveBlock@@QAEXAAVCArchive@@@Z	25.1290	25.1290	1	929f03951bdc	0x139310	25.1290	
 worldruntime	?Serialize@CWorldRuntime@@QAEXAAVCArchive@@@Z	0.7576	0.7576	1	93380fec3c1d	0x139350	0.7576	
