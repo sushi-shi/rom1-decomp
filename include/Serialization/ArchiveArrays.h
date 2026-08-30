@@ -11,10 +11,6 @@
 // canonical declaration for every distinct recovered identity until stronger
 // field-use evidence supplies semantic names.
 // @identity-TODO: recover the original record names and fields.
-struct CQueuedCollectionValue {
-    BYTE m_bytes[4];
-};
-
 struct CSharedCollectionValue {
     BYTE m_bytes[4];
 };
@@ -127,6 +123,32 @@ class CScenarioUnitRecord;
 class CMultiShopInstance;
 struct CSpellDefinition;
 
+// The parser allocates 0x1c-byte polymorphic entries and stores their pointers
+// in the same list used for the Humans, Outposts, and Items sections.  No
+// surviving runtime-class name identifies the pointee more narrowly.
+class CParsedScenarioEntry {
+private:
+    BYTE m_state[0x1c];
+};
+
+// The owning constructor families append separately allocated scenario
+// objects to this common pointer array.  The pointees have several recovered
+// concrete extents, so retain only their proven common pointer identity here.
+class CScenarioResourceObject;
+
+struct CScenarioResourceObjectReference {
+    CScenarioResourceObject* m_value;
+};
+
+// The queue removes pointers and immediately dispatches virtual slot 5 on the
+// pointee.  This corrects the earlier size-only four-byte placeholder without
+// inventing the lost class name.
+class CQueuedCollectionObject;
+
+struct CQueuedCollectionReference {
+    CQueuedCollectionObject* m_value;
+};
+
 // Construction at 0x113d2a and the two owning lists prove a 0x31c-byte,
 // non-polymorphic scenario-resource entry.  Its fields remain separate work.
 class CScenarioResourceEntry {
@@ -154,6 +176,7 @@ struct CScenarioUnitRecordReference {
 };
 
 typedef CArray<int, int> CSignedIndexArray;
+typedef CArray<double, double> CDoubleArray;
 typedef CArray<CLargeCollectionRecord, CLargeCollectionRecord&> CLargeCollectionRecordArray;
 typedef CArray<CNamedCollectionRecord, CNamedCollectionRecord&> CNamedCollectionRecordArray;
 typedef CArray<CFixedCollectionRecord, CFixedCollectionRecord&> CFixedCollectionRecordArray;

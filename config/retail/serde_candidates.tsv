@@ -192,17 +192,17 @@ rva	signals	status	note
 0x11ead0	archive-read,archive-vslot2,archive-write	reconstructed	exact CScenarioResource+0x318 unit-record reference CArray serializer; parent dereference sites; 100%
 0x11ed20	archive-read,archive-vslot2,archive-write	reconstructed	exact CMultiShopTemplate+0x7c CArray<CMultiShopInstance*> serializer; allocation/destruction parent paths; 100%
 0x11edf0	archive-read,archive-vslot2,archive-write	reconstructed	exact CScenarioSecondary+0x04 CList<SpellEffect*, SpellEffect*> serializer; SpellEffect-derived add-tail parents; 100%
-0x11f5d0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x11fb70	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x11fdc0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x120010	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x120260	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x120540	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x120870	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x121350	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x11f5d0	archive-read,archive-vslot2,archive-write	reconstructed	exact parsed-scenario-entry pointer CList serializer; Humans/Outposts/Items parser parents and 0x1c polymorphic allocation; 100%
+0x11fb70	archive-read,archive-vslot2,archive-write	reconstructed	exact int-key/map-value CMap serializer; CScenarioObjectMap::Rebuild local and helper topology; 100%
+0x11fdc0	archive-read,archive-vslot2,archive-write	reconstructed	exact int-key/map-object CMap serializer; CScenarioObjectMap::Rebuild local and helper topology; 100%
+0x120010	archive-read,archive-vslot2,archive-write	reconstructed	exact int-key/map-record CMap serializer; CScenarioObjectMap::Rebuild local and helper topology; 100%
+0x120260	archive-read,archive-vslot2,archive-write	reconstructed	exact int-key/deferred-handle CMap serializer; CScenarioObjectMap::Rebuild local and shared helper; 100%
+0x120540	archive-read,archive-vslot2,archive-write	reconstructed	exact int-reference key/value CMap serializer; load-side SetAt argument addresses; 100%
+0x120870	archive-read,archive-vslot2,archive-write	reconstructed	exact BYTE-reference key/int-reference value CMap serializer; node offsets and helpers; 100%
+0x121350	archive-read,archive-vslot2,archive-write	reconstructed	exact CArray<double,double> serializer; QWORD element initialization/comparison and eight-byte stride; 100%
 0x121f20	archive-read,archive-write	reconstructed	exact linked-collection element SerializeElements instantiation
-0x122020	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x1222e0	archive-read,archive-write	reconstructed	exact queued-collection element SerializeElements instantiation
+0x122020	archive-read,archive-vslot2,archive-write	reconstructed	exact queued-object reference CList serializer; removal path dereferences each word then dispatches a virtual method; 100%
+0x1222e0	archive-read,archive-write	reconstructed	exact queued-object reference SerializeElements instantiation; corrected from the earlier size-only value identity; 100%
 0x122670	archive-read,archive-write	reconstructed	exact list/array-shared element SerializeElements instantiation
 0x1227a0	archive-read,archive-write	reconstructed	exact shared signed-index SerializeElements instantiation
 0x122920	archive-read,archive-write	reconstructed	exact 0x68-byte record SerializeElements instantiation
@@ -222,13 +222,13 @@ rva	signals	status	note
 0x1245e0	archive-read,archive-write	reconstructed	exact map-family-shared SerializeElements instantiation
 0x1247a0	archive-read,archive-write	reconstructed	exact map-tail SerializeElements instantiation
 0x124bc0	archive-read,archive-write	reconstructed	source-owned MFC SerializeElements<DWORD> instantiation; 40.57% compiler-context residual
-0x124c00	archive-read,archive-write	target	initial retail call/vtable census
-0x1250a0	archive-read,archive-write	target	initial retail call/vtable census
+0x124c00	archive-read,archive-write	reconstructed	exact map-payload-handle SerializeElements instantiation; parent 0x11c690; 100%
+0x1250a0	archive-read,archive-write	reconstructed	exact deferred-collection-handle SerializeElements instantiation; parents 0x11d0a0/0x120260; 100%
 0x125230	archive-read,archive-write	reconstructed	exact Outpost four-short-record SerializeElements instantiation; parent 0x11d640; 100%
 0x125400	archive-read,archive-write	reconstructed	exact VirtualCaster-pointer SerializeElements instantiation; parent 0x11d710; 100%
 0x125770	archive-read,archive-write	reconstructed	exact CWorldItem-pointer SerializeElements instantiation; parent 0x11d8e0; 100%
 0x125b10	archive-read,archive-write	reconstructed	exact six-byte scenario-index SerializeElements instantiation; parent 0x11dc60; 100%
-0x125bc0	archive-read,archive-write	target	initial retail call/vtable census
+0x125bc0	archive-read,archive-write	reconstructed	exact scenario-resource-object reference SerializeElements instantiation; zero-call retained emission beside the game-owned pointer-array methods; 100%
 0x125db0	archive-read,archive-write	reconstructed	exact scenario-entry-pointer SerializeElements instantiation; parent 0x11df80; 100%
 0x125e90	archive-read,archive-write	reconstructed	exact 0xb8-byte scenario-record SerializeElements instantiation; parent 0x11e390; 100%
 0x126190	archive-read,archive-write	reconstructed	exact building-collection reference SerializeElements instantiation; parent 0x11e560; 100%
@@ -237,9 +237,9 @@ rva	signals	status	note
 0x126a60	archive-read,archive-write	reconstructed	exact unit-record reference SerializeElements instantiation; parent 0x11ead0; 100%
 0x126d50	archive-read,archive-write	reconstructed	exact CMultiShopInstance-pointer SerializeElements instantiation; parent 0x11ed20; 100%
 0x126f70	archive-read,archive-write	reconstructed	exact SpellEffect-pointer SerializeElements instantiation; parent 0x11edf0; 100%
-0x1274b0	archive-read,archive-write	target	initial retail call/vtable census
-0x128570	archive-read,archive-write	target	initial retail call/vtable census
-0x1289d0	archive-read,archive-write	target	initial retail call/vtable census
+0x1274b0	archive-read,archive-write	reconstructed	exact parsed-scenario-entry pointer SerializeElements instantiation; parent 0x11f5d0; 100%
+0x128570	archive-read,archive-write	reconstructed	exact BYTE SerializeElements instantiation; key helper for parent 0x120870; 100%
+0x1289d0	archive-read,archive-write	reconstructed	exact double SerializeElements instantiation; parent 0x121350; 100%
 0x139100	archive-read,archive-write	reconstructed	source-complete raw 0x94 owner plus CList<WORD,WORD>; 31.37%, incomplete-TU IsStoring/allocation/constructor inline-call residual
 0x139210	archive-read,archive-write	reconstructed	source-complete raw 0x50 owner plus CList<WORD,WORD>; 31.37%, incomplete-TU IsStoring/allocation/constructor inline-call residual
 0x139310	archive-read,archive-write	reconstructed	source-complete Player-owned raw 0x20 archive block; 25.13%, incomplete-TU IsStoring inline/call-set residual

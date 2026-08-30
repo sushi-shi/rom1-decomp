@@ -144,8 +144,17 @@ archive-array	0x11e900	building-record reference CArray serializer	exact	100%; C
 archive-array	0x11ead0	unit-record reference CArray serializer	exact	100%; CScenarioResource+0x318 parent and player/unit resolution callsites
 archive-array	0x11ed20	CMultiShopInstance-pointer CArray serializer	exact	100%; CMultiShopTemplate+0x7c parent plus typed allocation/destruction paths
 archive-array	0x11edf0	SpellEffect-pointer CList serializer	exact	100%; CScenarioSecondary+0x04 parent plus SpellEffect-derived add-tail callsites
+archive-array	0x11f5d0	parsed-scenario-entry pointer CList serializer	exact	100%; Humans/Outposts/Items parser parents allocate 0x1c-byte polymorphic pointees
+archive-container	0x11fb70	int-key/map-value CMap serializer	exact	100%; CScenarioObjectMap::Rebuild local, ordered helpers, and by-value mapped argument
+archive-container	0x11fdc0	int-key/map-object CMap serializer	exact	100%; CScenarioObjectMap::Rebuild local, ordered helpers, and by-value mapped argument
+archive-container	0x120010	int-key/map-record CMap serializer	exact	100%; CScenarioObjectMap::Rebuild local, ordered helpers, and by-value mapped argument
+archive-container	0x120260	int-key/deferred-handle CMap serializer	exact	100%; CScenarioObjectMap::Rebuild local and shared deferred-handle helper
+archive-container	0x120540	int-reference key/value CMap serializer	exact	100%; both load-side SetAt arguments retain address passing
+archive-container	0x120870	BYTE-reference key/int-reference value CMap serializer	exact	100%; one-byte key node offset and distinct BYTE helper
+archive-array	0x121350	double CArray serializer	exact	100%; QWORD element initialization/comparison and eight-byte helper stride
 archive-array	0x121f20	Effect-pointer element serializer	exact	100%; parent list and typed Effect reader prove the four-byte pointer identity
-archive-array	0x1222e0	queued-collection element serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation, four-byte opaque value
+archive-array	0x122020	queued-object reference CList serializer	exact	100%; owner removal path dereferences each stored word before virtual dispatch
+archive-array	0x1222e0	queued-object reference element serializer	exact	100%; owner removal path corrects the earlier size-only value identity to a pointer reference
 archive-array	0x122670	Item-pointer element serializer	exact	100%; parent list and Item runtime-class reader prove the four-byte pointer identity
 archive-array	0x1227a0	shared signed-index serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H int instantiation
 archive-array	0x122920	large collection-record serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation, 0x68-byte stride
@@ -164,10 +173,13 @@ archive-array	0x1240e0	map-object serializer	exact	100%; exact VC5 SP2 AFXTEMPL.
 archive-array	0x124440	map-record serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation, four-byte opaque value
 archive-array	0x1245e0	map-family-shared serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation, four-byte opaque value
 archive-array	0x1247a0	map-tail serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation, four-byte opaque value
+archive-array	0x124c00	map-payload-handle element serializer	exact	100%; exact pinned-header instantiation selected by parent 0x11c690
+archive-array	0x1250a0	deferred-collection-handle element serializer	exact	100%; exact pinned-header instantiation shared by parents 0x11d0a0 and 0x120260
 archive-array	0x125230	Outpost placement-record element serializer	exact	100%; exact pinned-header instantiation selected by parent 0x11d640
 archive-array	0x125400	VirtualCaster-pointer element serializer	exact	100%; exact pinned-header instantiation selected by parent 0x11d710
 archive-array	0x125770	CWorldItem-pointer element serializer	exact	100%; exact pinned-header instantiation selected by parent 0x11d8e0
 archive-array	0x125b10	scenario-index-record element serializer	exact	100%; exact pinned-header six-byte instantiation selected by parent 0x11dc60
+archive-array	0x125bc0	scenario-resource-object reference element serializer	exact	100%; zero-call retained emission belongs to adjacent game-owned pointer-array methods
 archive-array	0x125db0	scenario-entry-pointer element serializer	exact	100%; exact pinned-header instantiation selected by parent 0x11df80
 archive-array	0x125e90	large scenario-record element serializer	exact	100%; exact pinned-header 0xb8-byte instantiation selected by parent 0x11e390
 archive-array	0x126190	building-collection reference element serializer	exact	100%; exact pinned-header instantiation selected by parent 0x11e560
@@ -177,6 +189,9 @@ archive-array	0x126a60	unit-record reference element serializer	exact	100%; exac
 archive-array	0x126d50	CMultiShopInstance-pointer element serializer	exact	100%; exact pinned-header instantiation selected by parent 0x11ed20
 archive-array	0x126f70	SpellEffect-pointer element serializer	exact	100%; exact pinned-header instantiation selected by parent 0x11edf0
 archive-object	0x0de85b	TableLine typed object reader	exact	100%; reviewed runtime-class record + CArchive::ReadObject
+archive-array	0x1274b0	parsed-scenario-entry pointer element serializer	exact	100%; exact pinned-header instantiation selected by parent 0x11f5d0
+archive-array	0x128570	BYTE element serializer	exact	100%; exact pinned-header key instantiation selected by parent 0x120870
+archive-array	0x1289d0	double element serializer	exact	100%; exact pinned-header QWORD instantiation selected by parent 0x121350
 archive-object	0x0df278	TableLine CString and nested-object serializer	exact	100%; runtime class + vtable slot 2 + exact archive operator call topology
 archive-object	0x0df2c6	TableLine five-WORD block and nested CStringArray serializer	exact	100%; constructor offsets + raw 10-byte archive calls + nested virtual dispatch
 archive-object	0x0df322	TableLine-named raw 72-byte block serializer	exact	100%; CString at +0x04 + exact 0x48-byte archive extent at +0x20

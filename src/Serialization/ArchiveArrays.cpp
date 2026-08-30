@@ -76,11 +76,23 @@ RVA_COMPGEN(0x0011e900, 0x68, ?Serialize@?$CArray@UCScenarioBuildingRecordRefere
 RVA_COMPGEN(0x0011ead0, 0x68, ?Serialize@?$CArray@UCScenarioUnitRecordReference@@AAU1@@@UAEXAAVCArchive@@@Z)
 RVA_COMPGEN(0x0011ed20, 0x68, ?Serialize@?$CArray@PAVCMultiShopInstance@@PAV1@@@UAEXAAVCArchive@@@Z)
 RVA_COMPGEN(0x0011edf0, 0x9d, ?Serialize@?$CList@PAVSpellEffect@@PAV1@@@UAEXAAVCArchive@@@Z)
+RVA_COMPGEN(0x0011f510, 0x57, ?AddTail@?$CList@PAVCParsedScenarioEntry@@PAV1@@@QAEPAU__POSITION@@PAVCParsedScenarioEntry@@@Z)
+RVA_COMPGEN(0x0011f5d0, 0x9d, ?Serialize@?$CList@PAVCParsedScenarioEntry@@PAV1@@@UAEXAAVCArchive@@@Z)
+RVA_COMPGEN(0x0011fb70, 0xf9, ?Serialize@?$CMap@HAAHUCMapValueHandle@@U1@@@UAEXAAVCArchive@@@Z)
+RVA_COMPGEN(0x0011fdc0, 0xf9, ?Serialize@?$CMap@HAAHUCMapObjectHandle@@U1@@@UAEXAAVCArchive@@@Z)
+RVA_COMPGEN(0x00120010, 0xf9, ?Serialize@?$CMap@HAAHUCMapRecordHandle@@U1@@@UAEXAAVCArchive@@@Z)
+RVA_COMPGEN(0x00120260, 0xf9, ?Serialize@?$CMap@HAAHUCDeferredCollectionHandle@@U1@@@UAEXAAVCArchive@@@Z)
+RVA_COMPGEN(0x00120540, 0xf9, ?Serialize@?$CMap@HAAHHAAH@@UAEXAAVCArchive@@@Z)
+RVA_COMPGEN(0x00120870, 0xf9, ?Serialize@?$CMap@EAAEHAAH@@UAEXAAVCArchive@@@Z)
+RVA_COMPGEN(0x00121070, 0x21a, ?SetSize@?$CArray@NN@@QAEXHH@Z)
+RVA_COMPGEN(0x00121350, 0x68, ?Serialize@?$CArray@NN@@UAEXAAVCArchive@@@Z)
 RVA_COMPGEN(0x00121dc0, 0x57, ?AddTail@?$CList@PAVEffect@@PAV1@@@QAEPAU__POSITION@@PAVEffect@@@Z)
+RVA_COMPGEN(0x00121f20, 0x3b, ?SerializeElements@@YGXAAVCArchive@@PAPAVEffect@@H@Z)
+RVA_COMPGEN(0x00122020, 0x9d, ?Serialize@?$CList@UCQueuedCollectionReference@@U1@@@UAEXAAVCArchive@@@Z)
+RVA_COMPGEN(0x00122150, 0x57, ?AddTail@?$CList@UCQueuedCollectionReference@@U1@@@QAEPAU__POSITION@@UCQueuedCollectionReference@@@Z)
 // clang-format on
 
-RVA_COMPGEN(0x00121f20, 0x3b, ?SerializeElements@@YGXAAVCArchive@@PAPAVEffect@@H@Z)
-RVA_COMPGEN(0x001222e0, 0x3b, ?SerializeElements@@YGXAAVCArchive@@PAUCQueuedCollectionValue@@H@Z)
+RVA_COMPGEN(0x001222e0, 0x3b, ?SerializeElements@@YGXAAVCArchive@@PAUCQueuedCollectionReference@@H@Z)
 RVA_COMPGEN(0x00122670, 0x3b, ?SerializeElements@@YGXAAVCArchive@@PAPAVItem@@H@Z)
 RVA_COMPGEN(0x001227a0, 0x3b, ?SerializeElements@@YGXAAVCArchive@@PAHH@Z)
 RVA_COMPGEN(0x00122920, 0x3b, ?SerializeElements@@YGXAAVCArchive@@PAUCLargeCollectionRecord@@H@Z)
@@ -99,6 +111,8 @@ RVA_COMPGEN(0x001240e0, 0x3b, ?SerializeElements@@YGXAAVCArchive@@PAUCMapObjectH
 RVA_COMPGEN(0x00124440, 0x3b, ?SerializeElements@@YGXAAVCArchive@@PAUCMapRecordHandle@@H@Z)
 RVA_COMPGEN(0x001245e0, 0x3b, ?SerializeElements@@YGXAAVCArchive@@PAUCSharedMapHandle@@H@Z)
 RVA_COMPGEN(0x001247a0, 0x3b, ?SerializeElements@@YGXAAVCArchive@@PAUCMapTailHandle@@H@Z)
+RVA_COMPGEN(0x00124c00, 0x3b, ?SerializeElements@@YGXAAVCArchive@@PAUCMapPayloadHandle@@H@Z)
+RVA_COMPGEN(0x001250a0, 0x3b, ?SerializeElements@@YGXAAVCArchive@@PAUCDeferredCollectionHandle@@H@Z)
 // clang-format off
 RVA_COMPGEN(0x00125230, 0x3b, ?SerializeElements@@YGXAAVCArchive@@PAUCOutpostPlacementRecord@@H@Z)
 RVA_COMPGEN(0x001252d0, 0x57, ?AddTail@?$CList@PAVVirtualCaster@@PAV1@@@QAEPAU__POSITION@@PAVVirtualCaster@@@Z)
@@ -107,6 +121,7 @@ RVA_COMPGEN(0x00125540, 0x57, ?AddTail@?$CList@PAVCWorldItem@@PAV1@@@QAEPAU__POS
 RVA_COMPGEN(0x00125770, 0x3b, ?SerializeElements@@YGXAAVCArchive@@PAPAVCWorldItem@@H@Z)
 RVA_COMPGEN(0x00125850, 0x220, ?SetSize@?$CArray@UCScenarioResourceIndexRecord@@AAU1@@@QAEXHH@Z)
 RVA_COMPGEN(0x00125b10, 0x3b, ?SerializeElements@@YGXAAVCArchive@@PAUCScenarioResourceIndexRecord@@H@Z)
+RVA_COMPGEN(0x00125bc0, 0x3b, ?SerializeElements@@YGXAAVCArchive@@PAUCScenarioResourceObjectReference@@H@Z)
 RVA_COMPGEN(0x00125db0, 0x3b, ?SerializeElements@@YGXAAVCArchive@@PAPAVCScenarioResourceEntry@@H@Z)
 RVA_COMPGEN(0x00125e90, 0x41, ?SerializeElements@@YGXAAVCArchive@@PAUCScenarioResourceLargeRecord@@H@Z)
 RVA_COMPGEN(0x00125ee0, 0x21a, ?SetSize@?$CArray@UCScenarioBuildingCollectionReference@@AAU1@@@QAEXHH@Z)
@@ -121,6 +136,15 @@ RVA_COMPGEN(0x00126aa0, 0x21a, ?SetSize@?$CArray@PAVCMultiShopInstance@@PAV1@@@Q
 RVA_COMPGEN(0x00126d50, 0x3b, ?SerializeElements@@YGXAAVCArchive@@PAPAVCMultiShopInstance@@H@Z)
 RVA_COMPGEN(0x00126e10, 0x57, ?AddTail@?$CList@PAVSpellEffect@@PAV1@@@QAEPAU__POSITION@@PAVSpellEffect@@@Z)
 RVA_COMPGEN(0x00126f70, 0x3b, ?SerializeElements@@YGXAAVCArchive@@PAPAVSpellEffect@@H@Z)
+RVA_COMPGEN(0x001274b0, 0x3b, ?SerializeElements@@YGXAAVCArchive@@PAPAVCParsedScenarioEntry@@H@Z)
+RVA_COMPGEN(0x001275b0, 0x1e, ?SetAt@?$CMap@HAAHUCMapValueHandle@@U1@@@QAEXAAHUCMapValueHandle@@@Z)
+RVA_COMPGEN(0x00127850, 0x1e, ?SetAt@?$CMap@HAAHUCMapObjectHandle@@U1@@@QAEXAAHUCMapObjectHandle@@@Z)
+RVA_COMPGEN(0x00127af0, 0x1e, ?SetAt@?$CMap@HAAHUCMapRecordHandle@@U1@@@QAEXAAHUCMapRecordHandle@@@Z)
+RVA_COMPGEN(0x00127d90, 0x1e, ?SetAt@?$CMap@HAAHUCDeferredCollectionHandle@@U1@@@QAEXAAHUCDeferredCollectionHandle@@@Z)
+RVA_COMPGEN(0x00128030, 0x20, ?SetAt@?$CMap@HAAHHAAH@@QAEXAAH0@Z)
+RVA_COMPGEN(0x001282d0, 0x20, ?SetAt@?$CMap@EAAEHAAH@@QAEXAAEAAH@Z)
+RVA_COMPGEN(0x00128570, 0x35, ?SerializeElements@@YGXAAVCArchive@@PAEH@Z)
+RVA_COMPGEN(0x001289d0, 0x3b, ?SerializeElements@@YGXAAVCArchive@@PANH@Z)
 // clang-format on
 
 template class CArray<CStringArray*, CStringArray*>;
@@ -180,11 +204,22 @@ template void
 CArray<CScenarioUnitRecordReference, CScenarioUnitRecordReference&>::Serialize(CArchive& archive);
 template void CArray<CMultiShopInstance*, CMultiShopInstance*>::Serialize(CArchive& archive);
 template void CList<SpellEffect*, SpellEffect*>::Serialize(CArchive& archive);
+template void CList<CParsedScenarioEntry*, CParsedScenarioEntry*>::Serialize(CArchive& archive);
+template void CMap<int, int&, CMapValueHandle, CMapValueHandle>::Serialize(CArchive& archive);
+template void CMap<int, int&, CMapObjectHandle, CMapObjectHandle>::Serialize(CArchive& archive);
+template void CMap<int, int&, CMapRecordHandle, CMapRecordHandle>::Serialize(CArchive& archive);
+template void
+CMap<int, int&, CDeferredCollectionHandle, CDeferredCollectionHandle>::Serialize(CArchive& archive);
+template void CMap<int, int&, int, int&>::Serialize(CArchive& archive);
+template void CMap<BYTE, BYTE&, int, int&>::Serialize(CArchive& archive);
+template void CArray<double, double>::Serialize(CArchive& archive);
+template void
+CList<CQueuedCollectionReference, CQueuedCollectionReference>::Serialize(CArchive& archive);
 
 template void AFXAPI SerializeElements<Effect*>(CArchive& archive, Effect** elements, int count);
-template void AFXAPI SerializeElements<CQueuedCollectionValue>(
+template void AFXAPI SerializeElements<CQueuedCollectionReference>(
     CArchive& archive,
-    CQueuedCollectionValue* elements,
+    CQueuedCollectionReference* elements,
     int count
 );
 template void AFXAPI SerializeElements<Item*>(CArchive& archive, Item** elements, int count);
@@ -285,3 +320,22 @@ template void AFXAPI
 SerializeElements<CMultiShopInstance*>(CArchive& archive, CMultiShopInstance** elements, int count);
 template void AFXAPI
 SerializeElements<SpellEffect*>(CArchive& archive, SpellEffect** elements, int count);
+template void AFXAPI
+SerializeElements<CMapPayloadHandle>(CArchive& archive, CMapPayloadHandle* elements, int count);
+template void AFXAPI SerializeElements<CDeferredCollectionHandle>(
+    CArchive& archive,
+    CDeferredCollectionHandle* elements,
+    int count
+);
+template void AFXAPI SerializeElements<CScenarioResourceObjectReference>(
+    CArchive& archive,
+    CScenarioResourceObjectReference* elements,
+    int count
+);
+template void AFXAPI SerializeElements<CParsedScenarioEntry*>(
+    CArchive& archive,
+    CParsedScenarioEntry** elements,
+    int count
+);
+template void AFXAPI SerializeElements<BYTE>(CArchive& archive, BYTE* elements, int count);
+template void AFXAPI SerializeElements<double>(CArchive& archive, double* elements, int count);

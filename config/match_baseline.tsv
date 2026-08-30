@@ -32,7 +32,7 @@
 #              emitter resumes from it instead of forgetting proven work).
 # Query: python3 -m rom1.verify status | check | bank
 # [units]	unit	n_functions	matched
-archivearrays	112	77
+archivearrays	136	92
 archiveelements	8	6
 archiveobjects	13	13
 butemgr	14	11
@@ -59,12 +59,14 @@ worldobjectiterator	3	0
 worldruntime	6	0
 # [functions]	unit	function	best_pct	cur_pct	tries	src_hash	rva	hist_pct	state
 archivearrays	??2@YAPAXIPAX@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4a2b0	100.0000	
+archivearrays	?AddTail@?$CList@PAVCParsedScenarioEntry@@PAV1@@@QAEPAU__POSITION@@PAVCParsedScenarioEntry@@@Z	99.8438	99.8438	1	cpp:332c974f8a2d	0x11f510	99.8438	
 archivearrays	?AddTail@?$CList@PAVCScenarioResourceEntry@@PAV1@@@QAEPAU__POSITION@@PAVCScenarioResourceEntry@@@Z	99.8438	99.8438	1	cpp:30e265a260d2	0x11de70	99.8438	
 archivearrays	?AddTail@?$CList@PAVCWorldItem@@PAV1@@@QAEPAU__POSITION@@PAVCWorldItem@@@Z	99.8438	99.8438	1	cpp:30e265a260d2	0x125540	99.8438	
 archivearrays	?AddTail@?$CList@PAVEffect@@PAV1@@@QAEPAU__POSITION@@PAVEffect@@@Z	99.8438	99.8438	1	cpp:b7fb239e56b8	0x121dc0	99.8438	
 archivearrays	?AddTail@?$CList@PAVItem@@PAV1@@@QAEPAU__POSITION@@PAVItem@@@Z	99.8438	99.8438	1	cpp:b7fb239e56b8	0x118680	99.8438	
 archivearrays	?AddTail@?$CList@PAVSpellEffect@@PAV1@@@QAEPAU__POSITION@@PAVSpellEffect@@@Z	99.8438	99.8438	1	cpp:30e265a260d2	0x126e10	99.8438	
 archivearrays	?AddTail@?$CList@PAVVirtualCaster@@PAV1@@@QAEPAU__POSITION@@PAVVirtualCaster@@@Z	99.8438	99.8438	1	cpp:30e265a260d2	0x1252d0	99.8438	
+archivearrays	?AddTail@?$CList@UCQueuedCollectionReference@@U1@@@QAEPAU__POSITION@@UCQueuedCollectionReference@@@Z	99.8438	99.8438	1	cpp:332c974f8a2d	0x122150	99.8438	
 archivearrays	?ConstructElements@@YGXPAPAVCStringArray@@H@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4a260	100.0000	
 archivearrays	?ConstructElements@@YGXPAPAVCStringTriple@@H@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4ac50	100.0000	
 archivearrays	?ConstructElements@@YGXPAPAXH@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4acf0	100.0000	
@@ -74,6 +76,7 @@ archivearrays	?DestructElements@@YGXPAPAVCStringTriple@@H@Z	100.0000	100.0000	1	
 archivearrays	?DestructElements@@YGXPAPAXH@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4abe0	100.0000	
 archivearrays	?DestructElements@@YGXPAU_WIN32_FIND_DATAA@@H@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4a920	100.0000	
 archivearrays	?Serialize@?$CArray@HH@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:b7fb239e56b8	0x118b50	100.0000	
+archivearrays	?Serialize@?$CArray@NN@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:332c974f8a2d	0x121350	100.0000	
 archivearrays	?Serialize@?$CArray@PAVCMultiShopInstance@@PAV1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:30e265a260d2	0x11ed20	100.0000	
 archivearrays	?Serialize@?$CArray@PAVCStringArray@@PAV1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:1de664a95104	0x49700	100.0000	
 archivearrays	?Serialize@?$CArray@PAVCStringTriple@@PAV1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:1de664a95104	0x498d0	100.0000	
@@ -99,23 +102,34 @@ archivearrays	?Serialize@?$CArray@UCSpellDefinition@@AAU1@@@UAEXAAVCArchive@@@Z	
 archivearrays	?Serialize@?$CArray@UCTertiaryStateRecord@@AAU1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:b7fb239e56b8	0x11a530	100.0000	
 archivearrays	?Serialize@?$CArray@U_WIN32_FIND_DATAA@@U1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:1de664a95104	0x49ba0	100.0000	
 archivearrays	?Serialize@?$CList@GG@@UAEXAAVCArchive@@@Z	99.9138	99.9138	1	cpp:e113ee677497	0x11b090	99.9138	
+archivearrays	?Serialize@?$CList@PAVCParsedScenarioEntry@@PAV1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:332c974f8a2d	0x11f5d0	100.0000	
 archivearrays	?Serialize@?$CList@PAVCScenarioResourceEntry@@PAV1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:30e265a260d2	0x11df80	100.0000	
 archivearrays	?Serialize@?$CList@PAVCWorldItem@@PAV1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:30e265a260d2	0x11d8e0	100.0000	
 archivearrays	?Serialize@?$CList@PAVEffect@@PAV1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:b7fb239e56b8	0x118360	100.0000	
 archivearrays	?Serialize@?$CList@PAVItem@@PAV1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:b7fb239e56b8	0x118810	100.0000	
 archivearrays	?Serialize@?$CList@PAVSpellEffect@@PAV1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:30e265a260d2	0x11edf0	100.0000	
 archivearrays	?Serialize@?$CList@PAVVirtualCaster@@PAV1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:30e265a260d2	0x11d710	100.0000	
-archivearrays	?Serialize@?$CList@UCDeferredCollectionHandle@@U1@@@UAEXAAVCArchive@@@Z	99.7414	99.7414	1	cpp:e113ee677497	0x11d0a0	99.7414	
+archivearrays	?Serialize@?$CList@UCDeferredCollectionHandle@@U1@@@UAEXAAVCArchive@@@Z	99.9138	99.9138	1	cpp:e113ee677497	0x11d0a0	99.9138	
 archivearrays	?Serialize@?$CList@UCMapObjectHandle@@U1@@@UAEXAAVCArchive@@@Z	99.9138	99.9138	1	cpp:e113ee677497	0x11b570	99.9138	
 archivearrays	?Serialize@?$CList@UCMapRecordHandle@@U1@@@UAEXAAVCArchive@@@Z	99.9138	99.9138	1	cpp:e113ee677497	0x11b890	99.9138	
 archivearrays	?Serialize@?$CList@UCMapTailHandle@@AAU1@@@UAEXAAVCArchive@@@Z	99.9138	99.9138	1	cpp:e113ee677497	0x11c130	99.9138	
 archivearrays	?Serialize@?$CList@UCMapValueHandle@@U1@@@UAEXAAVCArchive@@@Z	99.9138	99.9138	1	cpp:e113ee677497	0x11b240	99.9138	
+archivearrays	?Serialize@?$CList@UCQueuedCollectionReference@@U1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:332c974f8a2d	0x122020	100.0000	
 archivearrays	?Serialize@?$CList@UCSharedMapHandle@@AAU1@@@UAEXAAVCArchive@@@Z	99.9138	99.9138	1	cpp:e113ee677497	0x11c440	99.9138	
 archivearrays	?Serialize@?$CList@UCSharedMapHandle@@U1@@@UAEXAAVCArchive@@@Z	99.9138	99.9138	1	cpp:e113ee677497	0x11bdb0	99.9138	
-archivearrays	?Serialize@?$CMap@KAAKUCMapPayloadHandle@@AAU1@@@UAEXAAVCArchive@@@Z	99.8315	99.8315	1	cpp:e113ee677497	0x11c690	99.8315	
+archivearrays	?Serialize@?$CMap@EAAEHAAH@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:332c974f8a2d	0x120870	100.0000	
+archivearrays	?Serialize@?$CMap@HAAHHAAH@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:332c974f8a2d	0x120540	100.0000	
+archivearrays	?Serialize@?$CMap@HAAHUCDeferredCollectionHandle@@U1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:332c974f8a2d	0x120260	100.0000	
+archivearrays	?Serialize@?$CMap@HAAHUCMapObjectHandle@@U1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:332c974f8a2d	0x11fdc0	100.0000	
+archivearrays	?Serialize@?$CMap@HAAHUCMapRecordHandle@@U1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:332c974f8a2d	0x120010	100.0000	
+archivearrays	?Serialize@?$CMap@HAAHUCMapValueHandle@@U1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:332c974f8a2d	0x11fb70	100.0000	
+archivearrays	?Serialize@?$CMap@KAAKUCMapPayloadHandle@@AAU1@@@UAEXAAVCArchive@@@Z	99.9438	99.9438	1	cpp:e113ee677497	0x11c690	99.9438	
+archivearrays	?SerializeElements@@YGXAAVCArchive@@PAEH@Z	100.0000	100.0000	1	cpp:332c974f8a2d	0x128570	100.0000	
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAGH@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x123ba0	100.0000	
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAHH@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x1227a0	100.0000	
+archivearrays	?SerializeElements@@YGXAAVCArchive@@PANH@Z	100.0000	100.0000	1	cpp:332c974f8a2d	0x1289d0	100.0000	
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAPAVCMultiShopInstance@@H@Z	100.0000	100.0000	1	cpp:30e265a260d2	0x126d50	100.0000	
+archivearrays	?SerializeElements@@YGXAAVCArchive@@PAPAVCParsedScenarioEntry@@H@Z	100.0000	100.0000	1	cpp:332c974f8a2d	0x1274b0	100.0000	
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAPAVCScenarioResourceEntry@@H@Z	100.0000	100.0000	1	cpp:30e265a260d2	0x125db0	100.0000	
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAPAVCStringArray@@H@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4a2c0	100.0000	
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAPAVCStringTriple@@H@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4a5b0	100.0000	
@@ -128,28 +142,38 @@ archivearrays	?SerializeElements@@YGXAAVCArchive@@PAPAVVirtualCaster@@H@Z	100.00
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAPAXH@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4ac10	100.0000	
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCCollectionHandle@@H@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x123a50	100.0000	
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCCompactCollectionRecord@@H@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x122f10	100.0000	
+archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCDeferredCollectionHandle@@H@Z	100.0000	100.0000	1	cpp:332c974f8a2d	0x1250a0	100.0000	
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCFixedCollectionRecord@@H@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x122d90	100.0000	
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCLargeCollectionRecord@@H@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x122920	100.0000	
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCMapObjectHandle@@H@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x1240e0	100.0000	
+archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCMapPayloadHandle@@H@Z	100.0000	100.0000	1	cpp:332c974f8a2d	0x124c00	100.0000	
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCMapRecordHandle@@H@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x124440	100.0000	
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCMapTailHandle@@H@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x1247a0	100.0000	
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCMapValueHandle@@H@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x123e00	100.0000	
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCNamedCollectionRecord@@H@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x122b30	100.0000	
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCOutpostPlacementRecord@@H@Z	100.0000	100.0000	1	cpp:30e265a260d2	0x125230	100.0000	
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCPrimaryStateRecord@@H@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x123110	100.0000	
-archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCQueuedCollectionValue@@H@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x1222e0	100.0000	
+archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCQueuedCollectionReference@@H@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x1222e0	100.0000	
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCScenarioBuildingCasterReference@@H@Z	100.0000	100.0000	1	cpp:30e265a260d2	0x126480	100.0000	
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCScenarioBuildingCollectionReference@@H@Z	100.0000	100.0000	1	cpp:30e265a260d2	0x126190	100.0000	
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCScenarioBuildingRecordReference@@H@Z	100.0000	100.0000	1	cpp:30e265a260d2	0x126770	100.0000	
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCScenarioResourceIndexRecord@@H@Z	100.0000	100.0000	1	cpp:30e265a260d2	0x125b10	100.0000	
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCScenarioResourceLargeRecord@@H@Z	100.0000	100.0000	1	cpp:30e265a260d2	0x125e90	100.0000	
+archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCScenarioResourceObjectReference@@H@Z	100.0000	100.0000	1	cpp:332c974f8a2d	0x125bc0	100.0000	
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCScenarioUnitRecordReference@@H@Z	100.0000	100.0000	1	cpp:30e265a260d2	0x126a60	100.0000	
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCSecondaryStateRecord@@H@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x123310	100.0000	
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCSharedMapHandle@@H@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x1245e0	100.0000	
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCSpellDefinition@@H@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x123680	100.0000	
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAUCTertiaryStateRecord@@H@Z	100.0000	100.0000	1	cpp:fa7204ff2579	0x123490	100.0000	
 archivearrays	?SerializeElements@@YGXAAVCArchive@@PAU_WIN32_FIND_DATAA@@H@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4a950	100.0000	
+archivearrays	?SetAt@?$CMap@EAAEHAAH@@QAEXAAEAAH@Z	99.6429	99.6429	1	cpp:332c974f8a2d	0x1282d0	99.6429	
+archivearrays	?SetAt@?$CMap@HAAHHAAH@@QAEXAAH0@Z	99.6429	99.6429	1	cpp:332c974f8a2d	0x128030	99.6429	
+archivearrays	?SetAt@?$CMap@HAAHUCDeferredCollectionHandle@@U1@@@QAEXAAHUCDeferredCollectionHandle@@@Z	99.6154	99.6154	1	cpp:332c974f8a2d	0x127d90	99.6154	
+archivearrays	?SetAt@?$CMap@HAAHUCMapObjectHandle@@U1@@@QAEXAAHUCMapObjectHandle@@@Z	99.6154	99.6154	1	cpp:332c974f8a2d	0x127850	99.6154	
+archivearrays	?SetAt@?$CMap@HAAHUCMapRecordHandle@@U1@@@QAEXAAHUCMapRecordHandle@@@Z	99.6154	99.6154	1	cpp:332c974f8a2d	0x127af0	99.6154	
+archivearrays	?SetAt@?$CMap@HAAHUCMapValueHandle@@U1@@@QAEXAAHUCMapValueHandle@@@Z	99.6154	99.6154	1	cpp:332c974f8a2d	0x1275b0	99.6154	
 archivearrays	?SetSize@?$CArray@HH@@QAEXHH@Z	0.0000	0.0000	1	cpp:b7fb239e56b8	0xce250	0.0000	
+archivearrays	?SetSize@?$CArray@NN@@QAEXHH@Z	99.8611	99.8611	1	cpp:332c974f8a2d	0x121070	99.8611	
 archivearrays	?SetSize@?$CArray@PAVCMultiShopInstance@@PAV1@@@QAEXHH@Z	99.8611	99.8611	1	cpp:30e265a260d2	0x126aa0	99.8611	
 archivearrays	?SetSize@?$CArray@PAVCStringArray@@PAV1@@@QAEXHH@Z	100.0000	100.0000	1	cpp:1de664a95104	0x49420	100.0000	
 archivearrays	?SetSize@?$CArray@PAVCStringTriple@@PAV1@@@QAEXHH@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4a300	100.0000	

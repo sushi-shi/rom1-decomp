@@ -424,6 +424,31 @@ Every element body is the natural pinned-header emission selected by its
 game-owned parent collection; no static-library or other vendor body is
 reconstructed.
 
+The next ArchiveArrays band closes nine more parent serializers at
+`0x11f5d0`-`0x122020` and six element helpers at
+`0x124c00`-`0x1289d0`. The list at `0x11f5d0` is used by the parser paths
+named `Humans`, `Outposts`, and `Items`; those paths allocate 0x1c-byte
+polymorphic entries before appending their pointers. Six maps are local to
+`CScenarioObjectMap::Rebuild`. Their ordered helpers and load-side `SetAt`
+arguments prove an `int` key for the first five, a `BYTE` key for the sixth,
+four distinct mapped-handle domains, and the two key/value reference forms.
+The remaining parents are a `CArray<double, double>` whose callers initialize
+and compare QWORD elements, and a queued-object reference list whose removal
+path dereferences the stored word before virtual dispatch. That last caller
+evidence corrects the earlier size-only description of `0x1222e0` as an
+opaque value.
+
+The helpers at `0x124c00` and `0x1250a0` are shared with the earlier
+map-payload and deferred-handle parents. `0x125bc0` has no direct retail call,
+but its position among the constructor, resize, destruction, and access
+methods of the game-owned scenario-resource pointer array fixes its natural
+template ownership; it is not a library body. `0x1274b0`, `0x128570`, and
+`0x1289d0` are selected by the parsed-entry pointer list, the `BYTE`-key map,
+and the double array respectively. All fifteen assigned serializers are
+byte-exact under the pinned VC5 SP2 header. The additionally labeled `SetAt`,
+`AddTail`, and `SetSize` bodies are only the compiler-emitted template
+referents naturally required by those game-owned instantiations.
+
 ## Complete first-pass candidate wall
 
 The first-pass retail census is reproducible from two stronger signals than
