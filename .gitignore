@@ -16,6 +16,7 @@
 # project, recompiled objects, and the Wine prefix.
 /build/
 /out/
+/tools/target/
 **/.wineprefix/
 *.exe
 *.dll

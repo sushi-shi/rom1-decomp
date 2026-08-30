@@ -32,6 +32,8 @@
 butemgr	12	9
 scenarioconfig	1	1
 smackerplayer	7	7
+wordrle	2	2
+wordrletokens	4	4
 # [functions]	unit	function	best_pct	cur_pct	tries	src_hash	rva	hist_pct	state
 butemgr	??0CButeMgr@@QAE@PAVCFile@@I@Z	100.0000	100.0000	1	abd47d72fb21	0xcb050	100.0000	
 butemgr	??0CButeMgr@@QAE@PBD@Z	0.9524	0.9524	2	abd47d72fb21	0xcb140	0.9524	
@@ -53,3 +55,9 @@ smackerplayer	?ApplyPan@CSmackerPlayer@@QAEXXZ	100.0000	100.0000	1	b4334841a281	
 smackerplayer	?GetBufferFormat@CSmackerPlayer@@QAEKPAUIDirectDrawSurface@@@Z	100.0000	100.0000	2	c38d404f6192	0xae7f0	100.0000	
 smackerplayer	?GetMovieSize@CSmackerPlayer@@QBE?AUSmackerSize@@XZ	100.0000	100.0000	1	dc8a04dd8976	0xaedd0	100.0000	
 smackerplayer	?SetDestinationSize@CSmackerPlayer@@QAEXHH@Z	100.0000	100.0000	1	508dfc90a7f1	0xaee00	100.0000	
+wordrle	?DecodeWordRle@@YAXTByteIntPointer@@HPAPAGPAH@Z	100.0000	100.0000	1	7de0bd6e7163	0x11f1e0	100.0000	
+wordrle	?EncodeWordRle@@YAXPAGHPATByteIntPointer@@PAH@Z	100.0000	100.0000	1	ade872e200bc	0x11f130	100.0000	
+wordrletokens	?DecodeWordRleLiteral@@YAHPATByteWordPointer@@PAPAG@Z	100.0000	100.0000	1	17976cccb2ed	0x127290	100.0000	
+wordrletokens	?DecodeWordRleRepeat@@YAHPATByteWordPointer@@PAPAG@Z	100.0000	100.0000	1	983cb9affca5	0x127210	100.0000	
+wordrletokens	?EncodeWordRleLiteral@@YAHPAPAGHHPATByteWordPointer@@@Z	100.0000	100.0000	1	246d4dc5e2ce	0x127110	100.0000	
+wordrletokens	?EncodeWordRleRepeat@@YAHPAPAGHHPATByteWordPointer@@@Z	100.0000	100.0000	1	cbc1bbabcd61	0x127040	100.0000	

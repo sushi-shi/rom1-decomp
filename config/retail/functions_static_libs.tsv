@@ -104,6 +104,7 @@ rva	name	lib	confidence	source
 0x153dd0	__onexit	LIBCMT.LIB	HIGH	fid-census:1f18290e7cc8:build/intel/mt_obj/onexit.obj:207d90bc2ea1
 0x153e60	_atexit	LIBCMT.LIB	HIGH	fid-census:1f18290e7cc8:build/intel/mt_obj/onexit.obj:207d90bc2ea1
 0x153e80	___onexitinit	LIBCMT.LIB	HIGH	fid-census:1f18290e7cc8:build/intel/mt_obj/onexit.obj:207d90bc2ea1
+0x153ec0	_memcpy	LIBCMT.LIB	HIGH	manual-context: codec and MFC non-overlap copy callers select SP2 memcpy.obj from the exact memcpy/memmove body pair
 0x154200	_memset	LIBCMT.LIB	HIGH	fid-census:1f18290e7cc8:build/intel/mt_obj/memset.obj:cc6ac83ae587
 0x154290	__cfltcvt_init	LIBCMT.LIB	HIGH	fid-census:1f18290e7cc8:../build/intel/mt_obj/fpinit.obj:22582d9d8431
 0x1542e0	_malloc	LIBCMT.LIB	HIGH	fid-census:1f18290e7cc8:build/intel/mt_obj/malloc.obj:da11867f49cc

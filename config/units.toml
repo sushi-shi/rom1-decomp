@@ -10,6 +10,8 @@ cpp           = ["/nologo", "/c", "/O2", "/MT", "/GX"]
 cpp-rtti      = ["/nologo", "/c", "/O2", "/MT", "/GX", "/GR"]
 cpp-rtti-noeh = ["/nologo", "/c", "/O2", "/MT", "/GR"]
 cpp-noeh      = ["/nologo", "/c", "/O2", "/MT"]
+cpp-od        = ["/nologo", "/c", "/Od", "/MT", "/GX"]
+cpp-od-noeh   = ["/nologo", "/c", "/Od", "/MT"]
 
 [[unit]]
 unit = "smackerplayer"
@@ -30,3 +32,13 @@ flags = "cpp"
 unit = "ddrawglobals"
 source = "src/DDraw/DDrawGlobals.cpp"
 flags = "cpp-noeh"
+
+[[unit]]
+unit = "wordrle"
+source = "src/Codec/WordRle.cpp"
+flags = "cpp-od"
+
+[[unit]]
+unit = "wordrletokens"
+source = "src/Codec/WordRleTokens.cpp"
+flags = "cpp-od-noeh"

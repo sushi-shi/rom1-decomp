@@ -1,0 +1,8 @@
+[package]
+name = "rom1-codec"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+
+[lib]
+path = "src/lib.rs"

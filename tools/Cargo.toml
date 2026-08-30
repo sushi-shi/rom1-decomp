@@ -1,0 +1,12 @@
+[workspace]
+resolver = "2"
+members = ["rom1-codec"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[profile.release]
+debug = true
+overflow-checks = true
