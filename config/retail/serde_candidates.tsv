@@ -124,23 +124,23 @@ rva	signals	status	note
 0x100efc	archive-vslot2	reconstructed	exact object/reference serializer; slot-2 class=PointEffect
 0x100fa5	archive-vslot2	reconstructed	exact byte/WORD/object serializer; slot-2 class=AreaEffect
 0x101148	archive-read	reconstructed	exact IMPLEMENT_SERIAL Effect typed reader
-0x102b3e	archive-read	target	initial retail call/vtable census
+0x102b3e	archive-read	reconstructed	exact IMPLEMENT_SERIAL Effect_DirectDamage typed reader
 0x10385d	stdio-read	target	initial retail call/vtable census
-0x10418a	archive-read	target	initial retail call/vtable census
+0x10418a	archive-read	reconstructed	exact IMPLEMENT_SERIAL Building typed reader
 0x104825	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Building
-0x104a3f	archive-read	target	initial retail call/vtable census
-0x105131	archive-read	target	initial retail call/vtable census
+0x104a3f	archive-read	reconstructed	exact IMPLEMENT_SERIAL Outpost typed reader
+0x105131	archive-read	reconstructed	exact IMPLEMENT_SERIAL Tavern typed reader
 0x105ae4	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Tavern
-0x105bc6	archive-read	target	initial retail call/vtable census
+0x105bc6	archive-read	reconstructed	exact IMPLEMENT_SERIAL Shop typed reader
 0x10602b	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Shop
-0x106108	archive-read	target	initial retail call/vtable census
-0x1061bf	archive-read	target	initial retail call/vtable census
-0x106276	archive-read	target	initial retail call/vtable census
-0x107f85	archive-read	target	initial retail call/vtable census
-0x10c2c1	archive-read	target	initial retail call/vtable census
-0x10ccb0	archive-read	target	initial retail call/vtable census
-0x10d617	archive-read	target	initial retail call/vtable census
-0x10f275	archive-read	target	initial retail call/vtable census
+0x106108	archive-read	reconstructed	exact IMPLEMENT_SERIAL CMultiShopShelf typed reader
+0x1061bf	archive-read	reconstructed	exact IMPLEMENT_SERIAL CMultiShopInstance typed reader
+0x106276	archive-read	reconstructed	exact IMPLEMENT_SERIAL CMultiShopTemplate typed reader
+0x107f85	archive-read	reconstructed	exact IMPLEMENT_SERIAL Item typed reader
+0x10c2c1	archive-read	reconstructed	exact IMPLEMENT_SERIAL Armor typed reader
+0x10ccb0	archive-read	reconstructed	exact IMPLEMENT_SERIAL Shield typed reader
+0x10d617	archive-read	reconstructed	exact IMPLEMENT_SERIAL Weapon typed reader
+0x10f275	archive-read	reconstructed	exact IMPLEMENT_SERIAL Sack typed reader
 0x1104d6	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Weapon
 0x110577	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=Unit
 0x110ebb	archive-vslot2	reconstructed	exact base Token payload/scalar/reference serializer; slot-2 class=Token

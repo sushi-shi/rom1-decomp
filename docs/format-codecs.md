@@ -438,6 +438,15 @@ that identity and resolves a definition through a global 32-byte-stride
 `CArray`. The two naturally emitted `CArray` indexing helpers are exact as
 well, so the recovered cluster is 13/13 exact including required header code.
 
+The next thirteen typed-object readers at `0x102b3e`-`0x10f275` are exact as
+well. Retail runtime-class records prove the `Building`, `Outpost`, `Tavern`,
+`Shop`, three `CMultiShop*`, `Item`, `Armor`, `Shield`, `Weapon`, and `Sack`
+identities, their inheritance edges, and complete sizes; the first reader is
+the remaining `Effect_DirectDamage` overload. Every function is the same
+28-byte `CArchive::ReadObject` source form with its own game runtime-class
+referent. The opaque class tails preserve only the proven layouts until their
+serializers recover individual fields.
+
 The four raw-record serializers at `0x13db00`, `0x13dbc0`, `0x13dc80`, and
 `0x13dcc0` are also exact. The first three apply the same bidirectional
 complete-object archive operation to 0x50-, 0x48-, and 0x0c-byte records. The

@@ -18,3 +18,15 @@ rva	size	name	evidence
 0x1c3098	0x18	?classSpellbook@Spellbook@@2UCRuntimeClass@@A	runtime_classes.tsv Spellbook record; IMPLEMENT_SERIAL schema 1
 0x1c3138	0x18	?classEffect@Effect@@2UCRuntimeClass@@A	runtime_classes.tsv Effect record; IMPLEMENT_SERIAL schema 1
 0x1c3150	0x18	?classEffect_DirectDamage@Effect_DirectDamage@@2UCRuntimeClass@@A	runtime_classes.tsv Effect_DirectDamage record; IMPLEMENT_SERIAL schema 1
+0x1c32a8	0x18	?classBuilding@Building@@2UCRuntimeClass@@A	runtime_classes.tsv Building record; IMPLEMENT_SERIAL schema 1
+0x1c32c0	0x18	?classOutpost@Outpost@@2UCRuntimeClass@@A	runtime_classes.tsv Outpost record; IMPLEMENT_SERIAL schema 1
+0x1c32d8	0x18	?classTavern@Tavern@@2UCRuntimeClass@@A	runtime_classes.tsv Tavern record; IMPLEMENT_SERIAL schema 1
+0x1c3300	0x18	?classShop@Shop@@2UCRuntimeClass@@A	runtime_classes.tsv Shop record; IMPLEMENT_SERIAL schema 1
+0x1c3318	0x18	?classCMultiShopShelf@CMultiShopShelf@@2UCRuntimeClass@@A	runtime_classes.tsv CMultiShopShelf record; IMPLEMENT_SERIAL schema 1
+0x1c3330	0x18	?classCMultiShopInstance@CMultiShopInstance@@2UCRuntimeClass@@A	runtime_classes.tsv CMultiShopInstance record; IMPLEMENT_SERIAL schema 1
+0x1c3348	0x18	?classCMultiShopTemplate@CMultiShopTemplate@@2UCRuntimeClass@@A	runtime_classes.tsv CMultiShopTemplate record; IMPLEMENT_SERIAL schema 1
+0x1c3360	0x18	?classItem@Item@@2UCRuntimeClass@@A	runtime_classes.tsv Item record; IMPLEMENT_SERIAL schema 1
+0x1c3378	0x18	?classArmor@Armor@@2UCRuntimeClass@@A	runtime_classes.tsv Armor record; IMPLEMENT_SERIAL schema 1
+0x1c3390	0x18	?classShield@Shield@@2UCRuntimeClass@@A	runtime_classes.tsv Shield record; IMPLEMENT_SERIAL schema 1
+0x1c33a8	0x18	?classWeapon@Weapon@@2UCRuntimeClass@@A	runtime_classes.tsv Weapon record; IMPLEMENT_SERIAL schema 1
+0x1c33c0	0x18	?classSack@Sack@@2UCRuntimeClass@@A	runtime_classes.tsv Sack record; IMPLEMENT_SERIAL schema 1

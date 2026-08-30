@@ -264,6 +264,111 @@ CArchive& AFXAPI operator>>(CArchive& archive, Effect*& value) {
     return archive;
 }
 
+// @dead-code
+// Zero-ref: no direct callers, relocated references, or live ILT forwarders in retail.
+RVA(0x00102b3e, 0x1c)
+CArchive& AFXAPI operator>>(CArchive& archive, Effect_DirectDamage*& value) {
+    value = static_cast<Effect_DirectDamage*>(
+        archive.ReadObject(&Effect_DirectDamage::classEffect_DirectDamage)
+    );
+    return archive;
+}
+
+RVA(0x0010418a, 0x1c)
+CArchive& AFXAPI operator>>(CArchive& archive, Building*& value) {
+    value = static_cast<Building*>(archive.ReadObject(&Building::classBuilding));
+    return archive;
+}
+
+// @dead-code
+// Zero-ref: no direct callers, relocated references, or live ILT forwarders in retail.
+RVA(0x00104a3f, 0x1c)
+CArchive& AFXAPI operator>>(CArchive& archive, Outpost*& value) {
+    value = static_cast<Outpost*>(archive.ReadObject(&Outpost::classOutpost));
+    return archive;
+}
+
+// @dead-code
+// Zero-ref: no direct callers, relocated references, or live ILT forwarders in retail.
+RVA(0x00105131, 0x1c)
+CArchive& AFXAPI operator>>(CArchive& archive, Tavern*& value) {
+    value = static_cast<Tavern*>(archive.ReadObject(&Tavern::classTavern));
+    return archive;
+}
+
+// @dead-code
+// Zero-ref: no direct callers, relocated references, or live ILT forwarders in retail.
+RVA(0x00105bc6, 0x1c)
+CArchive& AFXAPI operator>>(CArchive& archive, Shop*& value) {
+    value = static_cast<Shop*>(archive.ReadObject(&Shop::classShop));
+    return archive;
+}
+
+// @dead-code
+// Zero-ref: no direct callers, relocated references, or live ILT forwarders in retail.
+RVA(0x00106108, 0x1c)
+CArchive& AFXAPI operator>>(CArchive& archive, CMultiShopShelf*& value) {
+    value =
+        static_cast<CMultiShopShelf*>(archive.ReadObject(&CMultiShopShelf::classCMultiShopShelf));
+    return archive;
+}
+
+// @dead-code
+// Zero-ref: no direct callers, relocated references, or live ILT forwarders in retail.
+RVA(0x001061bf, 0x1c)
+CArchive& AFXAPI operator>>(CArchive& archive, CMultiShopInstance*& value) {
+    value = static_cast<CMultiShopInstance*>(
+        archive.ReadObject(&CMultiShopInstance::classCMultiShopInstance)
+    );
+    return archive;
+}
+
+// @dead-code
+// Zero-ref: no direct callers, relocated references, or live ILT forwarders in retail.
+RVA(0x00106276, 0x1c)
+CArchive& AFXAPI operator>>(CArchive& archive, CMultiShopTemplate*& value) {
+    value = static_cast<CMultiShopTemplate*>(
+        archive.ReadObject(&CMultiShopTemplate::classCMultiShopTemplate)
+    );
+    return archive;
+}
+
+RVA(0x00107f85, 0x1c)
+CArchive& AFXAPI operator>>(CArchive& archive, Item*& value) {
+    value = static_cast<Item*>(archive.ReadObject(&Item::classItem));
+    return archive;
+}
+
+// @dead-code
+// Zero-ref: no direct callers, relocated references, or live ILT forwarders in retail.
+RVA(0x0010c2c1, 0x1c)
+CArchive& AFXAPI operator>>(CArchive& archive, Armor*& value) {
+    value = static_cast<Armor*>(archive.ReadObject(&Armor::classArmor));
+    return archive;
+}
+
+// @dead-code
+// Zero-ref: no direct callers, relocated references, or live ILT forwarders in retail.
+RVA(0x0010ccb0, 0x1c)
+CArchive& AFXAPI operator>>(CArchive& archive, Shield*& value) {
+    value = static_cast<Shield*>(archive.ReadObject(&Shield::classShield));
+    return archive;
+}
+
+// @dead-code
+// Zero-ref: no direct callers, relocated references, or live ILT forwarders in retail.
+RVA(0x0010d617, 0x1c)
+CArchive& AFXAPI operator>>(CArchive& archive, Weapon*& value) {
+    value = static_cast<Weapon*>(archive.ReadObject(&Weapon::classWeapon));
+    return archive;
+}
+
+RVA(0x0010f275, 0x1c)
+CArchive& AFXAPI operator>>(CArchive& archive, Sack*& value) {
+    value = static_cast<Sack*>(archive.ReadObject(&Sack::classSack));
+    return archive;
+}
+
 // AFX.INL COMDATs selected by the original /Od serializer TU.
 RVA_COMPGEN(0x00114520, 0x16, ??6@YGAAVCArchive@@AAV0@PBVCObject@@@Z)
 RVA_COMPGEN(0x001146e0, 0x19, ??6CArchive@@QAEAAV0@I@Z)

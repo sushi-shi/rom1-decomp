@@ -229,8 +229,142 @@ public:
     static AFX_DATA CRuntimeClass classEffect_DirectDamage;
     virtual void Serialize(CArchive& archive);
 
+    friend CArchive& AFXAPI operator>>(CArchive& archive, Effect_DirectDamage*& value);
+
 private:
     CDirectDamagePayload m_damage;
+};
+
+// Runtime-class records prove this complete game-object hierarchy and every
+// complete size. The field identities have not survived, so keep the newly
+// introduced tails opaque until their individual methods recover them.
+class Building : public Token {
+public:
+    static AFX_DATA CRuntimeClass classBuilding;
+    virtual void Serialize(CArchive& archive);
+
+    friend CArchive& AFXAPI operator>>(CArchive& archive, Building*& value);
+
+protected:
+    BYTE m_state3c[0x30];
+};
+
+class Outpost : public Building {
+public:
+    static AFX_DATA CRuntimeClass classOutpost;
+    virtual void Serialize(CArchive& archive);
+
+    friend CArchive& AFXAPI operator>>(CArchive& archive, Outpost*& value);
+
+private:
+    BYTE m_state6c[0x40];
+};
+
+class Tavern : public Building {
+public:
+    static AFX_DATA CRuntimeClass classTavern;
+    virtual void Serialize(CArchive& archive);
+
+    friend CArchive& AFXAPI operator>>(CArchive& archive, Tavern*& value);
+
+private:
+    BYTE m_state6c[0x34];
+};
+
+class Shop : public Building {
+public:
+    static AFX_DATA CRuntimeClass classShop;
+    virtual void Serialize(CArchive& archive);
+
+    friend CArchive& AFXAPI operator>>(CArchive& archive, Shop*& value);
+
+private:
+    BYTE m_state6c[0x08];
+};
+
+class CMultiShopShelf : public CObject {
+public:
+    static AFX_DATA CRuntimeClass classCMultiShopShelf;
+
+    friend CArchive& AFXAPI operator>>(CArchive& archive, CMultiShopShelf*& value);
+
+private:
+    BYTE m_state04[0x18];
+};
+
+class CMultiShopInstance : public CObject {
+public:
+    static AFX_DATA CRuntimeClass classCMultiShopInstance;
+
+    friend CArchive& AFXAPI operator>>(CArchive& archive, CMultiShopInstance*& value);
+
+private:
+    BYTE m_state04[0x9c];
+};
+
+class CMultiShopTemplate : public CObject {
+public:
+    static AFX_DATA CRuntimeClass classCMultiShopTemplate;
+
+    friend CArchive& AFXAPI operator>>(CArchive& archive, CMultiShopTemplate*& value);
+
+private:
+    BYTE m_state04[0x94];
+};
+
+class Item : public Token {
+public:
+    static AFX_DATA CRuntimeClass classItem;
+    virtual void Serialize(CArchive& archive);
+
+    friend CArchive& AFXAPI operator>>(CArchive& archive, Item*& value);
+
+protected:
+    BYTE m_state3c[0x14];
+};
+
+class Armor : public Item {
+public:
+    static AFX_DATA CRuntimeClass classArmor;
+    virtual void Serialize(CArchive& archive);
+
+    friend CArchive& AFXAPI operator>>(CArchive& archive, Armor*& value);
+
+private:
+    BYTE m_state50[0x18];
+};
+
+class Shield : public Item {
+public:
+    static AFX_DATA CRuntimeClass classShield;
+    virtual void Serialize(CArchive& archive);
+
+    friend CArchive& AFXAPI operator>>(CArchive& archive, Shield*& value);
+
+private:
+    BYTE m_state50[0x18];
+};
+
+class Weapon : public Item {
+public:
+    static AFX_DATA CRuntimeClass classWeapon;
+    virtual void Serialize(CArchive& archive);
+
+    friend CArchive& AFXAPI operator>>(CArchive& archive, Weapon*& value);
+
+private:
+    BYTE m_state50[0x34];
+};
+
+class Sack : public Token {
+public:
+    static AFX_DATA CRuntimeClass classSack;
+    virtual void Serialize(CArchive& archive);
+
+    friend CArchive& AFXAPI operator>>(CArchive& archive, Sack*& value);
+
+private:
+    BYTE m_state3c[0x08];
 };
 
 class Spell : public CObject {
