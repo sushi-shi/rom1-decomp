@@ -2183,13 +2183,13 @@ vendor/zlib-1.0.4/zutil.h	vendor/zlib-1.0.4/zutil.h	excluded	b1c8b410d0fd4b66fca
 -	config/retail/runtime_classes.tsv	target		a44211505542d5171cc12d1b77fdb834811f67752c2ecc48df67dd55a672de37	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	config/retail/sections.tsv	target		e7a74e5ddb7a8d37998e390a6d9a25a027e000095f09fdabfc2b4b6f2e19b263	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	config/retail/serde.tsv	target		69a39e135318aca5b55d6c46c66149a741ca4236733d2d2611f2f430821c08ad	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
--	config/retail/serde_candidates.tsv	target		2ab6e8ccdeaf825bf038165ad8ccaac9744c150338a7d626161c4a4a2431add6	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
+-	config/retail/serde_candidates.tsv	target		af93c252f35daec46d3f7626206305881cc7e1d9b372ab28c588e510479215a0	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	config/retail/serde_roots.tsv	target		b146594bdadda754f97c0cf1a6219d1cc0d45239547965532d341801009d4d31	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	config/retail/strings.tsv	target		2f9f82d54587b11250c0a6fc0cc6c65e620fee0dbdec6cb947f9e0cf506787e8	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	config/retail/thunks.tsv	target		df23413c9e4bdf212b56b52b84f16c9623bb96ff18b2746d83bcf697094c84d8	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	config/retail/vtables.tsv	target		22fde806f40598dbe0cabc7f4b03145188fe40e14e266a2f12ec4178f8f4e5a9	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	config/toolchains.toml	target		45663975c75fa6caf42c08d0050b5b0e5dc4e89254f6d36e3184a542f9c6f020	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
--	docs/format-codecs.md	target		5540d1fcf50af6262d152d3d8f8e54eae74c448d6ff6319a202fea8313acf463	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
+-	docs/format-codecs.md	target		0a36faca41bfe94e74689791d3fc37510cc972dca482d58447776dd38e35a1f5	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	docs/gruntz-parity-contract.md	target		5a6ff883d17f3af1bd5c4f5cd7dbdaf21a0e3e9cae67e1be6ad08a63463c06ff	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	docs/releases/toolchain-vc50-sp2-dx5-r1.md	target		60a4f5d140e20da7610478473bfdc606e825e511d055908996e09098645139fd	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	docs/releases/toolchain-vc50-sp2-dx5-r2.md	target		1ba27cfe1f020f297b46b22dfbcc35d49571adaa93fd218be3c679e90e8c561b	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
@@ -2241,7 +2241,8 @@ vendor/zlib-1.0.4/zutil.h	vendor/zlib-1.0.4/zutil.h	excluded	b1c8b410d0fd4b66fca
 -	scripts/rom1/tool/test_parity.py	target		33832d73709ca2dff71ef8199595d33e3158249dc512d026efe4ff394c81782c	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	scripts/rom1/tool/test_retail_evidence.py	target		60b869e5e88cef446b67004d0a92396ad5d17c66dcbf0147da9bf22498912a0b	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	scripts/rom1/tool/vendor.py	target		9a8bfc8036381ecfefa714a20e519dcb3c5a6fc175ecae52e4c4906eedb629ba	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
--	scripts/rom1/verify/serde_coverage.py	target		29a02961b4d3bb413de653979037aab86eb7e9a47818165bc84417c6c592e1d6	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
+-	scripts/rom1/verify/serde_coverage.py	target		c0b233b074b023c4af07b4abac3cab19e39b3ec070a14e1dfd7d9d0c433679ae	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
+-	scripts/rom1/verify/test_serde_coverage.py	target		7c8593670bf1c4c289be54b37ce809201d704af09256ca2655f29e070b7c5ccf	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	src/Codec/ByteHuffman.cpp	target		8a2ac5263fd6df580c9e88c24c554f6589bf13d08954fd9f973307f6bc21b82a	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	src/Codec/ByteHuffmanNode.cpp	target		ad8e1124dd8677608a77550acd88638df6c68ba983e62e09cad4c591014f5ac2	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	src/Codec/WordRle.cpp	target		1bf02f77e1885024753f2aa54d8ca40722f7a860396f483063db1300039e735d	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256

@@ -3,15 +3,19 @@
 from __future__ import annotations
 
 import argparse
+import tomllib
 from pathlib import Path
 
-from rom1.core.paths import RETAIL
-from rom1.core.tsv import read as read_tsv
+from rom1.core.paths import CONFIG, RETAIL
+from rom1.core.tsv import read as read_tsv, rint
 from rom1.sema.serde import REPORT, Candidate, discover, write_report
 
 WALL = RETAIL / "serde_candidates.tsv"
+FID_CENSUS = CONFIG / "evidence/vc5-sp2-fid-census.tsv"
+COMPILER = CONFIG / "compiler.toml"
 SCHEMA = ["rva", "signals", "status", "note"]
 STATUSES = {"target", "reconstructed", "static-library"}
+VENDOR_COLLISION_LIBRARIES = {"NAFXCW.LIB"}
 
 
 def load_wall(path: Path = WALL) -> list[dict[str, str]]:
@@ -29,8 +33,60 @@ def expected_status(candidate: Candidate) -> str:
     return "target"
 
 
-def compare(candidates: dict[int, Candidate], rows: list[dict[str, str]]) -> list[str]:
+def load_selected_vendor_collisions(
+    fid_path: Path = FID_CENSUS,
+    compiler_path: Path = COMPILER,
+) -> set[int]:
+    """Return unpromotable-but-vendor-owned SP2 FID collisions.
+
+    These rows remain absent from ``functions_static_libs.tsv`` because their
+    exact bytes do not identify one unique symbol.  The shared vendor archive
+    and multi-identity evidence are nevertheless enough to keep them out of
+    game-source reconstruction.  Fail closed if the census is not for the
+    selected archive payload.
+    """
+    selection = tomllib.loads(compiler_path.read_text())
+    if selection.get("status") != "selected":
+        return set()
+    archive_hash = selection.get("archive_set_sha256", "")
+    banner, fields, rows = read_tsv(fid_path)
+    evidence_hash = next(
+        (line.split("=", 1)[1] for line in banner
+         if line.startswith("# archive_set_sha256=")),
+        "",
+    )
+    if not archive_hash or evidence_hash != archive_hash:
+        raise ValueError(
+            f"{fid_path}: archive-set hash {evidence_hash or '<missing>'} "
+            f"does not match selected {archive_hash or '<missing>'}"
+        )
+    required = {
+        "rva", "lib", "confidence", "rva_identity_count", "source", "notes",
+    }
+    missing = required - set(fields)
+    if missing:
+        raise ValueError(f"{fid_path}: missing fields {sorted(missing)}")
+
+    collisions: set[int] = set()
+    for row in rows:
+        if row["lib"] not in VENDOR_COLLISION_LIBRARIES:
+            continue
+        if row["confidence"] != "AMBIG" or row["source"] != "anchored":
+            continue
+        count = rint(row["rva_identity_count"])
+        if count <= 1 or f"rva_multiidentity={count}" not in row["notes"]:
+            continue
+        collisions.add(rint(row["rva"]))
+    return collisions
+
+
+def compare(
+    candidates: dict[int, Candidate],
+    rows: list[dict[str, str]],
+    vendor_collisions: set[int] | None = None,
+) -> list[str]:
     findings: list[str] = []
+    vendor_collisions = vendor_collisions or set()
     wall: dict[int, dict[str, str]] = {}
     for row in rows:
         try:
@@ -59,6 +115,8 @@ def compare(candidates: dict[int, Candidate], rows: list[dict[str, str]]) -> lis
                 f"0x{rva:06x}: signals changed "
                 f"{','.join(sorted(saved)) or '-'} -> {actual.signal_text() or '-'}")
         want = expected_status(actual)
+        if want == "target" and rva in vendor_collisions:
+            want = "static-library"
         if wall[rva]["status"] != want:
             findings.append(f"0x{rva:06x}: status {wall[rva]['status']} should be "
                             f"{want} for channel {actual.channel or 'unclaimed'}")
@@ -68,7 +126,7 @@ def compare(candidates: dict[int, Candidate], rows: list[dict[str, str]]) -> lis
 def gate_findings() -> list[str]:
     candidates = discover()
     write_report(candidates)
-    return compare(candidates, load_wall())
+    return compare(candidates, load_wall(), load_selected_vendor_collisions())
 
 
 def main(argv=None) -> int:
@@ -77,7 +135,7 @@ def main(argv=None) -> int:
     ap.parse_args(argv)
     candidates = discover()
     write_report(candidates)
-    findings = compare(candidates, load_wall())
+    findings = compare(candidates, load_wall(), load_selected_vendor_collisions())
     if findings:
         print(f"serde coverage: FAIL ({len(findings)} finding(s))")
         print("\n".join(f"  {row}" for row in findings))

@@ -281,9 +281,9 @@ rva	signals	status	note
 0x17badb	archive-read,archive-write	static-library	initial retail call/vtable census; SerializeElements
 0x17bb29	archive-read	static-library	initial retail call/vtable census; CRuntimeClass::Load
 0x17bbb9	archive-write	static-library	initial retail call/vtable census; CRuntimeClass::Store
-0x184413	archive-read	target	initial retail call/vtable census
-0x18461e	archive-read	target	initial retail call/vtable census
-0x184686	archive-read	target	initial retail call/vtable census
-0x184800	archive-read	target	initial retail call/vtable census
-0x185563	archive-read	target	initial retail call/vtable census
-0x1855d3	archive-read	target	initial retail call/vtable census
+0x184413	archive-read	static-library	pinned SP2 FID: exact 0x1b NAFXCW.LIB CArchive collection-pointer reader; 13-way MFC identity collision retained
+0x18461e	archive-read	static-library	pinned SP2 FID: exact 0x1b NAFXCW.LIB CArchive collection-pointer reader; 13-way MFC identity collision retained
+0x184686	archive-read	static-library	pinned SP2 FID: exact 0x1b NAFXCW.LIB CArchive collection-pointer reader; 13-way MFC identity collision retained
+0x184800	archive-read	static-library	pinned SP2 FID: exact 0x1b NAFXCW.LIB CArchive collection-pointer reader; 13-way MFC identity collision retained
+0x185563	archive-read	static-library	pinned SP2 FID: exact 0x1b NAFXCW.LIB CArchive collection-pointer reader; 13-way MFC identity collision retained
+0x1855d3	archive-read	static-library	pinned SP2 FID: exact 0x1b NAFXCW.LIB CArchive collection-pointer reader; 13-way MFC identity collision retained

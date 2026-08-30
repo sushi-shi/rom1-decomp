@@ -519,6 +519,13 @@ not a reconstructed static-library implementation.
 The ANSI CString bytes are the exact VC5 SP2 `ARCCORE.CPP` grammar that the
 retail static-library operators implement:
 
+Six late `CArchive` pointer readers at `0x184413`, `0x18461e`, `0x184686`,
+`0x184800`, `0x185563`, and `0x1855d3` are not game reconstruction targets.
+The pinned SP2 FID census matches every complete 27-byte body to NAFXCW.LIB;
+their identical bytes collide across thirteen MFC collection/operator
+identities, so the vendor ownership is recorded while the ambiguous symbol
+identity remains explicit. No source body is copied into RoM1.
+
 ```text
 length < 0xff:   u8 length
 length < 0xfffe: u8 0xff, u16 length
