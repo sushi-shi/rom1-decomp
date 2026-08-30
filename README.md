@@ -296,9 +296,3 @@ Reconstructed C/C++ uses the same Rust-like clang-format house style as
 Gruntz: four-space indentation, attached braces, `int* p`, and braces on every
 control body. The tracked pre-commit hook formats staged `src/` and `include/`
 files. `vendor/` material is never formatted.
-
-## Licensing
-
-Repository-owned work is dedicated under CC0 1.0. `LICENSE` is byte-identical
-to the HoMM2 project copy. Third-party and retail material retains its own
-terms; see [`THIRD_PARTY.md`](THIRD_PARTY.md).
