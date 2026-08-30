@@ -1,7 +1,7 @@
 """Relocation-masked census of retail FPO functions against VC5 archives.
 
-The report is evidence, not a name oracle: every collision remains visible and
-only a unique exact extent/byte match is eligible for ``--write`` promotion.
+The report is evidence, not a name oracle: every ambiguity remains visible and
+only a bijective exact extent/byte match is eligible for ``--write`` promotion.
 """
 
 from __future__ import annotations
@@ -12,7 +12,7 @@ import hashlib
 import os
 import struct
 import tomllib
-from collections import defaultdict
+from collections import Counter, defaultdict
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -206,6 +206,23 @@ def default_archives(toolchain: Path) -> list[Path]:
     return sorted(found, key=lambda p: p.name.lower())
 
 
+def match_confidence(candidate_count: int, reverse_count: int) -> tuple[str, str]:
+    """Classify an exact byte match without mistaking a generic body for ID.
+
+    A forward-unique match is insufficient: ``mov eax,<reloc>; ret`` may name
+    one archive symbol yet occur at hundreds of retail extents. Promotion
+    requires the relation to be one-to-one in both directions.
+    """
+    if candidate_count == 0:
+        return "", ""
+    if candidate_count == 1 and reverse_count == 1:
+        return "HIGH", "bijective union-reloc-mask exact extent"
+    if candidate_count == 1:
+        return ("AMBIG", f"non-discriminating candidate matches "
+                f"{reverse_count} retail extents")
+    return "AMBIG", "collision retained"
+
+
 def scan(exe: Path, fpo: Path, relocs: Path,
          archives: list[Path]) -> list[dict[str, str]]:
     pe = Pe(exe)
@@ -221,7 +238,7 @@ def scan(exe: Path, fpo: Path, relocs: Path,
                 buckets[len(candidate.payload)].append(candidate)
 
     exe_hash = sha256(exe.read_bytes())
-    output = []
+    probes = []
     for function in load_fpo(fpo):
         rva, declared_size = function["rva"], function["size"]
         payload = pe.read(rva, declared_size)
@@ -236,13 +253,21 @@ def scan(exe: Path, fpo: Path, relocs: Path,
             if mask_bytes(payload, union) == mask_bytes(candidate.payload, union):
                 matches.append(candidate)
         matches.sort(key=lambda c: (c.archive.lower(), c.member, c.order, c.symbol))
-        unique = len(matches) == 1
+        probes.append((function, payload, retail_sites, matches))
+
+    reverse_hits = Counter(candidate for _function, _payload, _sites, matches
+                           in probes for candidate in matches)
+    output = []
+    for function, payload, retail_sites, matches in probes:
+        rva = function["rva"]
         primary = matches[0] if matches else None
+        reverse_count = reverse_hits[primary] if primary is not None else 0
+        confidence, evidence = match_confidence(len(matches), reverse_count)
         output.append({
             "rva": f"0x{rva:x}",
             "size": f"0x{len(payload):x}",
             "class": "library-exact" if matches else "unknown",
-            "confidence": "HIGH" if unique else ("AMBIG" if matches else ""),
+            "confidence": confidence,
             "library": primary.archive if primary else "",
             "member": primary.member if primary else "",
             "symbol": primary.symbol if primary else "",
@@ -251,8 +276,7 @@ def scan(exe: Path, fpo: Path, relocs: Path,
             "archive_sha256": primary.archive_hash if primary else "",
             "member_sha256": primary.member_hash if primary else "",
             "masked_sha256": sha256(mask_bytes(payload, retail_sites)),
-            "evidence": ("unique union-reloc-mask exact extent"
-                         if unique else "collision retained" if matches else ""),
+            "evidence": evidence,
         })
     return output
 
@@ -288,7 +312,7 @@ def promote(rows: list[dict[str, str]], path: Path) -> int:
                                      "HIGH", source)))
     merged = sorted(set(manual + generated), key=lambda line: int(line.split("\t", 1)[0], 0))
     path.write_text(
-        "# Unique exact static-library function providers. Generated rows are\n"
+        "# Bijective exact static-library function providers. Generated rows are\n"
         "# replaced only by `rom1 tool library-census --write`; manual rows survive.\n"
         "rva\tname\tlib\tconfidence\tsource\n"
         + "".join(line + "\n" for line in merged))
@@ -326,8 +350,8 @@ def main(argv: list[str] | None = None) -> int:
     write_report(rows, args.output)
     exact = sum(row["confidence"] == "HIGH" for row in rows)
     ambiguous = sum(row["confidence"] == "AMBIG" for row in rows)
-    print(f"[library-census] {len(rows)} FPO functions, {exact} unique exact, "
-          f"{ambiguous} colliding; {args.output.relative_to(REPO) if args.output.is_relative_to(REPO) else args.output}")
+    print(f"[library-census] {len(rows)} FPO functions, {exact} bijective exact, "
+          f"{ambiguous} ambiguous; {args.output.relative_to(REPO) if args.output.is_relative_to(REPO) else args.output}")
     if args.write:
         try:
             candidate = selected_toolchain(archives)

@@ -20,8 +20,8 @@ Vostok's `--reloc-manifest`; the empty PE relocation directory is never used as
 a fallback.
 
 The first static-library pass is ready and recorded under `config/evidence/`.
-Against the rejected VC5 SP3 bootstrap it finds 1,021 unique exact and 1,150
-colliding FPO extents (2,171 total), primarily from `LIBCMT`, `LIBCIMT`, and
+Against the rejected VC5 SP3 bootstrap it finds 1,001 bijective exact and 1,170
+ambiguous FPO extents (2,171 total), primarily from `LIBCMT`, `LIBCIMT`, and
 `NAFXCW`. Those rows are ancestry evidence only and cannot be promoted. The
 same scan over both surviving SP1/SP2 payloads is the compiler decision panel.
 
@@ -29,6 +29,16 @@ DirectX 5 is fetched by exact SHA-256 and overlays the Gruntz bootstrap's DX6
 directory. RoM1 does not import DInput or DPlay. Smacker is prepared under
 `vendor/smacker-3.1l/` with byte-exact upstream originals, one admitted patch,
 and executable/runtime ABI checks.
+
+Zlib 1.0.4 was tested rather than inherited from Gruntz. A relocation-masked
+probe of all 4,384 FPO extents against Gruntz's complete zlib archive produced
+126 forward-unique hits, but every hit was the same generic six-byte
+`_zlibVersion` body (`mov eax,<reloc>; ret`) and that one candidate matched 126
+different retail functions. The corrected census requires a bijection and
+therefore admits zero. Retail also contains none of zlib 1.0.4's identity or
+diagnostic strings. The negative-control identity is tracked in
+`config/evidence/vendor_candidates.tsv`; no zlib source is vendored without a
+substantive executable witness.
 
 The only hard setup gap is acquisition of complete VC5 SP1 and SP2 payloads.
 The PE linker stamp rejects RTM and SP3, but SP1 and SP2 share linker version

@@ -12,6 +12,11 @@ It contains the Gruntz VC5 SP3 compiler/bootstrap payload, exact DirectX 5 SDK
 headers and import libraries, and the Windows Ninja binary. Fixed tar metadata
 and sorted entries make the asset reproducible.
 
+The default flake consumes this RoM1 release directly, rather than rebuilding
+an implicit overlay from the Gruntz release on every fresh machine. The
+`rom1-toolchain-release` derivation untars and deterministically retars that
+payload, so the published asset is its own reproducibility check.
+
 Release `r1` identity:
 
 ```text

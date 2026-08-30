@@ -224,7 +224,8 @@
         cp "$rom1_smackw32" "$out/SMACKW32.DLL"
       '';
 
-      # Bootstrap compiler candidate: Gruntz's reproducible VC5 SP3 payload.
+      # Bootstrap compiler candidate: RoM1's published, self-hosted VC5 SP3 +
+      # DirectX 5 analysis payload. The release is reproducibly rebuilt below.
       # `rom1 tool compiler-census` must identify the exact RoM1 servicing level
       # before library claims or the first game-function bank are final.
       #
@@ -245,26 +246,14 @@
 
       rom1-toolchain = pkgs.runCommand "rom1-bootstrap-vc50-sp3-dx5" {
         src = pkgs.fetchurl {
-          name = "gruntz-toolchain-vc50.tar.xz";
-          url = "https://github.com/sushi-shi/gruntz-decomp/releases/download/toolchain-vc50-sp3-r3/gruntz-toolchain-vc50.tar.xz";
-          sha256 = "sha256-sZgl957g2+6wlrAPxIa1OcaDqlcG8PXsXVOKWc5KeZ8=";
+          name = "rom1-bootstrap-vc50-sp3-dx5-r1.tar.xz";
+          url = "https://github.com/sushi-shi/rom1-decomp/releases/download/tooling-vc50-sp3-dx5-bootstrap-r1/rom1-bootstrap-vc50-sp3-dx5-r1.tar.xz";
+          sha256 = "sha256-yoKqr770zejw+jRTEUEMcQk0z5THLVzOGh83GGBZb9A=";
         };
-        nativeBuildInputs = [ pkgs.gnutar pkgs.xz pkgs.p7zip pkgs.findutils ];
+        nativeBuildInputs = [ pkgs.gnutar pkgs.xz ];
       } ''
         mkdir -p "$out"
         tar xf "$src" -C "$out" --strip-components=1
-        mkdir -p "$TMPDIR/dx5-outer" "$TMPDIR/dx5-inner"
-        7z x -y "${dx5sdk}" -o"$TMPDIR/dx5-outer" >/dev/null
-        dx5_inner="$(find "$TMPDIR/dx5-outer" -type f -iname DX5SDK.EXE -print -quit)"
-        test -n "$dx5_inner"
-        7z x -y "$dx5_inner" -o"$TMPDIR/dx5-inner" >/dev/null
-        dx5_inc="$(find "$TMPDIR/dx5-inner" -type d -ipath '*/sdk/inc' -print -quit)"
-        dx5_lib="$(find "$TMPDIR/dx5-inner" -type d -ipath '*/sdk/lib' -print -quit)"
-        test -n "$dx5_inc" -a -n "$dx5_lib"
-        rm -rf "$out/dx"
-        mkdir -p "$out/dx"
-        cp -R "$dx5_inc" "$out/dx/Include"
-        cp -R "$dx5_lib" "$out/dx/Lib"
       '';
 
       rom1-toolchain-release = pkgs.runCommand
