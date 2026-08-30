@@ -123,6 +123,14 @@ archive-array	0x04a2c0	CStringArray-pointer element serializer	exact	100%; exact
 archive-array	0x04a5b0	three-CString-record-pointer element serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation
 archive-array	0x04a950	WIN32_FIND_DATA element serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation
 archive-array	0x04ac10	opaque-pointer element serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation
+archive-array	0x098aa0	texture command-record CArray serializer	exact	100%; owner construction/destruction, vtable slot 2, and exact 0x20-byte element topology
+archive-array	0x098cd0	texture span-record CArray serializer	exact	100%; owner construction/destruction, vtable slot 2, and exact eight-byte element topology
+archive-array	0x098ee0	texture runtime-object-reference CArray serializer	exact	100%; runtime owner use proves the four-byte pointer/reference element
+archive-array	0x0990d0	texture descriptor-record CArray serializer	exact	100%; 0x7c-byte stride and load-side tail-pointer construction
+archive-array	0x099370	texture table-record CArray serializer	exact	100%; 0x13c-byte stride and retail constructor zeroing the final four DWORDs
+archive-array	0x099620	texture block-record CArray serializer	exact	100%; owner construction/destruction and exact 0x80-byte raw-record topology
+archive-container	0x0998c0	DWORD-to-texture-resource CMap serializer	reconstructed	99.9713%; code and relocation topology match; sole identity residual is ambiguous NAFXCW CString assignment
+archive-container	0x099c20	DWORD-to-texture-lookup CMap serializer	exact	100%; DirectDraw-reference value lifecycle and pinned DWORD HashKey topology
 archive-container	0x118360	Effect-pointer CList serializer	exact	100%; Token+0x20 owner, typed Effect reader, and exact count/element topology
 archive-container	0x118810	Item-pointer CList serializer	exact	100%; typed Item reader, runtime-class record, and exact count/element topology
 archive-array	0x118b50	signed-index CArray serializer	exact	100%; exact count, resize, and raw int element topology

@@ -586,6 +586,23 @@ four-byte raw pointer handles passed by value, but not the pointee layouts or
 original class names. The neutral handle declarations retain exactly that
 evidence and do not reconstruct either pointee or an MFC body.
 
+The texture/resource-owner container band at `0x098aa0`-`0x099c20` is drained.
+Retail's owner constructor at `0x0982a0`, its paired destructor at `0x098570`,
+element users, and the eight five-slot CObject-derived collection vtables at
+`0x19a8f0`, `0x19a908`, `0x19a8d8`, `0x19a8c0`, `0x19a8a8`, `0x19a890`,
+`0x19a878`, and `0x19a860` prove six arrays and two maps. The arrays contain
+raw 0x20-, 0x08-, 0x04-, 0x7c-, 0x13c-, and 0x80-byte elements; neighboring
+constructors independently prove the pointer tail of the 0x7c-byte record and
+the four zero DWORDs ending the 0x13c-byte record. Both maps use raw DWORD keys.
+Their values own respectively two DirectDraw references plus a CString and one
+DirectDraw reference plus a scalar; the release paths are COM vtable calls,
+not game serialization. Seven target serializers and all required game-owned
+MFC helper emissions are exact. The first map serializer is source-complete at
+99.9713% with byte and ordered-relocation topology aligned; its sole residual is
+the ambiguous NAFXCW `CString::operator=(LPCSTR)` referent at `0x172f92`, whose
+pinned SP2 FID row collides with another CString identity. No vendor body or
+ambiguous static-library identity is promoted to improve that score.
+
 The neighboring records at `0x139100` and `0x139210` serialize raw 0x94- and
 0x50-byte owners followed by the same separately allocated
 `CList<WORD, WORD>`. On load they delete the stale list, read the raw owner,

@@ -2212,6 +2212,7 @@ vendor/zlib-1.0.4/zutil.h	vendor/zlib-1.0.4/zutil.h	excluded	b1c8b410d0fd4b66fca
 -	include/Serialization/ReferenceRecords.h	target		125dab9d3e5761955fd36e36a2c52e1596d18c014f712815fdbb99c60002a9c0	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	include/Serialization/ReferenceWorld.h	target		a26a89aa730ae73bdc66f3b96436795038d971e1ba02e87acc7332399561e7ca	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	include/Serialization/SpellObjects.h	target		33c981e752fcf08ca2a2410debc104e91d343e3e211cc7865776f5f3e2c0ce65	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
+-	include/Serialization/TextureResourceContainers.h	target		8abc2db3a9ed68e916e096ee09bac05fd8d78eaed62a93bf258d3f8ea85b813a	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	include/Serialization/WorldRuntimeRecords.h	target		db696a0b1d8d4be8f50d6da52c3ff288548cedb4df79bbd692a301b45fde9d08	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	include/Text/ItemNames.h	target		8c0536fe4a8a7750c9143f1b202d53dfe69085bdea9665fb43c7bbe92648eab2	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	include/Video/SmackerPlayer.h	target		456a0cce7e454e175b1d50caa5bcd62a803b01cb0d4dc45f6be9ac7db33a0725	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
@@ -2264,6 +2265,8 @@ vendor/zlib-1.0.4/zutil.h	vendor/zlib-1.0.4/zutil.h	excluded	b1c8b410d0fd4b66fca
 -	src/Serialization/ScenarioObjectMap.cpp	target		7c1ee8693209cd461d284081b52c0f69fadea806b23011bd2ee0e95458e90f61	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	src/Serialization/ScenarioSupport.cpp	target		d58ef6b900dce837aa61b41e4ed8a9c85a4951c7cc5ea13b6d0f92ec8065cc12	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	src/Serialization/SpellObjects.cpp	target		ce94483a7b7cc75e1ae38d129c388670af2c2e85973d6676473b09232eb7d251	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
+-	src/Serialization/TokenPayload.cpp	target		d843e71abad95f8aa0f489a7d1d32903635c4d61b084cbcfa9a7d5614e86ac7e	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
+-	src/Serialization/TextureResourceContainers.cpp	target		8548f5f7c17114e759705a99af3e35c621c706ca136e626e494af9b4660e79c2	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	src/Serialization/TokenPayload.cpp	target		d843e71abad95f8aa0f489a7d1d32903635c4d61b084cbcfa9a7d5614e86ac7e	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	src/Serialization/WorldItemIterator.cpp	target		0dc8eb2ffb7d028fb73ea6e4ee3f6b85dc4e7016b062ec8db279fbc9f369a233	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256
 -	src/Serialization/WorldObjectIterator.cpp	target		68c71acf73da8201993a3d1bc3c38a94a3abd892279023b5d09fdfaf7db43073	RoM1-only evidence, adapter, documentation, or vendor input	tracked local sha256

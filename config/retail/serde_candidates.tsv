@@ -55,14 +55,14 @@ rva	signals	status	note
 0x08bbb0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x08cef0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x08d430	stdio-read	reconstructed	initial retail call/vtable census; CPixMap::LoadPPM
-0x098aa0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x098cd0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x098ee0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x0990d0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x099370	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x099620	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x0998c0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x099c20	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x098aa0	archive-read,archive-vslot2,archive-write	reconstructed	exact texture-owner CArray serializer over raw 0x20-byte command records; 100%
+0x098cd0	archive-read,archive-vslot2,archive-write	reconstructed	exact texture-owner CArray serializer over raw eight-byte span records; 100%
+0x098ee0	archive-read,archive-vslot2,archive-write	reconstructed	exact texture-owner CArray serializer over four-byte runtime-object references; 100%
+0x0990d0	archive-read,archive-vslot2,archive-write	reconstructed	exact texture-owner CArray serializer over 0x7c-byte descriptor records; 100%
+0x099370	archive-read,archive-vslot2,archive-write	reconstructed	exact texture-owner CArray serializer over 0x13c-byte table records; 100%
+0x099620	archive-read,archive-vslot2,archive-write	reconstructed	exact texture-owner CArray serializer over raw 0x80-byte block records; 100%
+0x0998c0	archive-read,archive-vslot2,archive-write	reconstructed	source-complete DWORD-to-texture-resource CMap serializer; 99.9713%, sole residual is ambiguous vendor CString assignment referent
+0x099c20	archive-read,archive-vslot2,archive-write	reconstructed	exact DWORD-to-texture-lookup CMap serializer with DirectDraw-reference value; 100%
 0x09e710	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x0ae2e0	archive-read,archive-write	reconstructed	exact four-byte raw SerializeElements instantiation for first neighboring CArray cluster; 100%
 0x0ae3b0	archive-read,archive-write	reconstructed	exact four-byte raw SerializeElements instantiation for second neighboring CArray cluster; 100%

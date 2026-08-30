@@ -52,6 +52,7 @@ scenarioobjectmap	1	0
 scenariosupport	24	5
 smackerplayer	7	7
 spellobjects	64	61
+textureresourcecontainers	17	14
 tokenpayload	17	9
 wordrle	2	2
 wordrletokens	4	4
@@ -414,6 +415,23 @@ spellobjects	?Serialize@SpellTransport@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	
 spellobjects	?Serialize@Spellbook@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	d92e7e7159aa	0x100c1d	100.0000	
 spellobjects	?Serialize@Tavern@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	b8738a952eaa	0x105ae4	100.0000	
 spellobjects	?SetSize@?$CArray@PAVSpell@@PAV1@@@QAEXHH@Z	99.8611	99.8611	1	cpp:bdc9cc63cdd1	0x11a9b0	99.8611	
+textureresourcecontainers	??0CTextureResourceRecord@@QAE@XZ	99.8214	99.8214	1	cpp:7b0c96eb90c3	0x94520	99.8214	
+textureresourcecontainers	??0CTextureTableRecord@@QAE@XZ	99.5714	99.5714	1	c452f36b88fd	0x9a040	99.5714	
+textureresourcecontainers	??1CTextureLookupRecord@@QAE@XZ	100.0000	100.0000	1	cpp:7b0c96eb90c3	0x9a060	100.0000	
+textureresourcecontainers	??1CTextureResourceRecord@@QAE@XZ	100.0000	100.0000	1	cpp:7b0c96eb90c3	0x94580	100.0000	
+textureresourcecontainers	?GetAssocAt@?$CMap@KAAKVCTextureResourceRecord@@AAV1@@@IBEPAUCAssoc@1@AAKAAI@Z	100.0000	100.0000	1	cpp:7b0c96eb90c3	0x944c0	100.0000	
+textureresourcecontainers	?InitHashTable@?$CMap@KAAKVCTextureLookupRecord@@AAV1@@@QAEXIH@Z	100.0000	100.0000	1	cpp:7b0c96eb90c3	0x99f70	100.0000	
+textureresourcecontainers	?InitHashTable@?$CMap@KAAKVCTextureResourceRecord@@AAV1@@@QAEXIH@Z	100.0000	100.0000	1	cpp:7b0c96eb90c3	0x943d0	100.0000	
+textureresourcecontainers	?NewAssoc@?$CMap@KAAKVCTextureLookupRecord@@AAV1@@@IAEPAUCAssoc@1@XZ	100.0000	100.0000	1	cpp:7b0c96eb90c3	0x99fd0	100.0000	
+textureresourcecontainers	?NewAssoc@?$CMap@KAAKVCTextureResourceRecord@@AAV1@@@IAEPAUCAssoc@1@XZ	100.0000	100.0000	1	cpp:7b0c96eb90c3	0x94430	100.0000	
+textureresourcecontainers	?Serialize@?$CArray@UCTextureBlockRecord@@AAU1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:7b0c96eb90c3	0x99620	100.0000	
+textureresourcecontainers	?Serialize@?$CArray@UCTextureCommandRecord@@AAU1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:7b0c96eb90c3	0x98aa0	100.0000	
+textureresourcecontainers	?Serialize@?$CArray@UCTextureRuntimeObjectReference@@AAU1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:7b0c96eb90c3	0x98ee0	100.0000	
+textureresourcecontainers	?Serialize@?$CArray@UCTextureSpanRecord@@AAU1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:7b0c96eb90c3	0x98cd0	100.0000	
+textureresourcecontainers	?Serialize@?$CArray@VCTextureDescriptorRecord@@AAV1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:7b0c96eb90c3	0x990d0	100.0000	
+textureresourcecontainers	?Serialize@?$CArray@VCTextureTableRecord@@AAV1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:7b0c96eb90c3	0x99370	100.0000	
+textureresourcecontainers	?Serialize@?$CMap@KAAKVCTextureLookupRecord@@AAV1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:7b0c96eb90c3	0x99c20	100.0000	
+textureresourcecontainers	?Serialize@?$CMap@KAAKVCTextureResourceRecord@@AAV1@@@UAEXAAVCArchive@@@Z	99.9713	99.9713	1	cpp:7b0c96eb90c3	0x998c0	99.9713	
 tokenpayload	??0CWorldMapData@@QAE@PAVCScenarioResource@@PAVCWorldItemManager@@@Z	4.5000	4.5000	2	f8eb8a0d59ad	0x141830	4.5000	
 tokenpayload	??1?$CList@KK@@UAE@XZ	99.6970	99.6970	1	cpp:1a394f34b136	0x150370	99.6970	
 tokenpayload	??1?$CMap@GGUCWorldMapRecord@@AAU1@@@UAE@XZ	99.7917	99.7917	1	cpp:1a394f34b136	0x14ff20	99.7917	

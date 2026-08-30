@@ -147,3 +147,8 @@ flags = "cpp"
 unit = "referencerecords"
 source = "src/Serialization/ReferenceRecords.cpp"
 flags = "cpp"
+
+[[unit]]
+unit = "textureresourcecontainers"
+source = "src/Serialization/TextureResourceContainers.cpp"
+flags = "cpp"
