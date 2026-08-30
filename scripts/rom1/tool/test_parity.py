@@ -10,6 +10,23 @@ from rom1.tool import parity
 
 
 class ParityPinTest(unittest.TestCase):
+    def test_local_files_excludes_gitignored_build_artifacts(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            subprocess.run(["git", "init", "-q"], cwd=root, check=True)
+            (root / ".gitignore").write_text("*.obj\ntarget/\n")
+            (root / "tracked.txt").write_text("source\n")
+            (root / "new.txt").write_text("new source\n")
+            (root / "output.obj").write_text("generated\n")
+            (root / "target").mkdir()
+            (root / "target" / "cache.bin").write_bytes(b"generated")
+            subprocess.run(["git", "add", ".gitignore", "tracked.txt"],
+                           cwd=root, check=True)
+            with mock.patch.object(parity, "REPO", root):
+                self.assertEqual(parity.local_files(), {
+                    ".gitignore", "new.txt", "tracked.txt",
+                })
+
     def test_git_checkout_must_be_the_advertised_pin(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)

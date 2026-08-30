@@ -27,7 +27,13 @@ save-game	0x0cf1ee	read save wrapper	located	signature/version validation + word
 character	0x0cf4f0	write .chr wrapper	located	chr path strings + word-RLE encode
 character	0x0cf8b8	read .chr wrapper	located	chr caller xrefs + word-RLE decode
 scenario	0x0d0c97	bidirectional CArchive serializer	located	called by both save and load wrappers
+dib-bmp	0x04afa0	report DIB dimensions	exact	retail body + mapped oracle
 dib-bmp	0x04afd0	read mapped BMP file	located	BM signature + Invalid/Empty bitmap strings
+dib-bmp	0x04b360	build logical palette	exact	retail body + RGBQUAD-to-PALETTEENTRY conversion
 dib-bmp	0x04b4e0	compress DIB	located	ICCompress calls + compression error strings
-dib-bmp	0x04b710	read BMP through CFile	located	14-byte header read + BM validation
-dib-bmp	0x04b860	write BMP through CFile	located	14-byte header + DIB/pixel writes
+dib-bmp	0x04b710	read BMP through CFile	exact	14-byte header + bfOffBits split + DIB/pixel reads
+dib-bmp	0x04b860	write BMP through CFile	near-exact	95.85%; referents and serialized bytes align
+dib-bmp	0x04b990	derive palette entry count	near-exact	93.85%; instructions exact, section-tail padding residue; mapped oracle
+dib-bmp	0x04ba20	derive image size and palette offset	exact	retail body + mapped oracle
+dib-bmp	0x04ba60	release DIB ownership	exact	retail body + allocation/Win32 ownership states
+dib-bmp	0x04bb00	detach mapped BMP file	exact	retail body + mapped view/handle release order

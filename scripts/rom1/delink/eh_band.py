@@ -176,6 +176,20 @@ def _funclets(image: _Image, funcinfo_rva: int) -> tuple[set[int], int, bool, bo
     return out, states, packed, simple
 
 
+def actions_outside_owner(addresses: set[int], owner_rva: int,
+                          owner_size: int) -> tuple[int, ...]:
+    """Sorted EH actions that need their own packed-band symbols.
+
+    VC5 may place a catch handler inside the parent's ordinary function extent.
+    That code is already owned by the source claim and can be far below the
+    terminal `.text$x` registration stub. Treating it as the band's first
+    funclet makes one group span every unrelated function in between.
+    """
+    owner_end = owner_rva + owner_size
+    return tuple(sorted(address for address in addresses
+                        if not owner_rva <= address < owner_end))
+
+
 def groups(exe: Path, names_map: dict[int, tuple]) -> list[Group]:
     """Every EH funclet group owned by a function `names_map` attributes to a unit.
 
@@ -209,12 +223,13 @@ def groups(exe: Path, names_map: dict[int, tuple]) -> list[Group]:
             if parsed is None:
                 continue
             addresses, states, packed, simple = parsed
-            if addresses and max(addresses) >= stub:
+            external = actions_outside_owner(addresses, rva, size)
+            if external and max(external) >= stub:
                 # A funclet at or past the registration stub would make the
                 # group non-contiguous; refuse to guess an extent for it.
                 continue
             found[stub] = Group(owner_rva=rva, owner=name, unit=unit,
-                                funclets=tuple(sorted(addresses)), stub=stub,
+                                funclets=external, stub=stub,
                                 funcinfo=funcinfo, states=states,
                                 packed=packed, simple=simple)
     ordered = sorted(found.values(), key=lambda g: g.start)

@@ -32,6 +32,7 @@
 butemgr	12	9
 bytehuffman	16	15
 bytehuffmannode	1	1
+dib	8	6
 scenarioconfig	1	1
 smackerplayer	7	7
 wordrle	2	2
@@ -66,6 +67,14 @@ bytehuffman	?RebuildTree@ByteHuffmanPacker@@QAEXXZ	100.0000	100.0000	1	57d2bc2b2
 bytehuffman	?SaveStatistics@ByteHuffmanPacker@@QAEXPAVCFile@@@Z	100.0000	100.0000	1	ce94d5a1dbf9	0xef433	100.0000	
 bytehuffman	?Unpack@ByteHuffmanPacker@@QAEHPAIHPAEH@Z	100.0000	100.0000	2	b08f2cdc13d7	0xefa04	100.0000	
 bytehuffmannode	??0ByteHuffmanNode@@QAE@XZ	100.0000	100.0000	1	4c7484212058	0x1160d0	100.0000	
+dib	?ComputeMetrics@CDib@@AAEXXZ	100.0000	100.0000	2	cf3e48ee2798	0x4ba20	100.0000	
+dib	?ComputePaletteSize@CDib@@AAEXH@Z	93.8461	93.8461	2	475e8d2beb99	0x4b990	93.8461	
+dib	?DetachMapFile@CDib@@AAEXXZ	100.0000	100.0000	1	dcce8f1331da	0x4bb00	100.0000	
+dib	?Empty@CDib@@QAEXXZ	100.0000	100.0000	1	b2bafe315cbf	0x4ba60	100.0000	
+dib	?GetDimensions@CDib@@QAE?AVCSize@@XZ	100.0000	100.0000	1	d4352e7ac020	0x4afa0	100.0000	
+dib	?MakePalette@CDib@@QAEHXZ	100.0000	100.0000	2	bf0f647813a0	0x4b360	100.0000	
+dib	?Read@CDib@@QAEHPAVCFile@@@Z	100.0000	100.0000	1	bb0139b1b93c	0x4b710	100.0000	
+dib	?Write@CDib@@QAEHPAVCFile@@@Z	95.8518	95.8518	2	f265d2a72d1b	0x4b860	95.8518	
 scenarioconfig	?GetMissionObjectCount@@YGHH@Z	100.0000	100.0000	2	611c81017e31	0x878a0	100.0000	
 smackerplayer	??0CSmackerBuffers@@QAE@XZ	100.0000	100.0000	1	95153d343e47	0xae650	100.0000	
 smackerplayer	??0CSmackerPlayer@@QAE@XZ	100.0000	100.0000	1	8d175536bb86	0xae6c0	100.0000	

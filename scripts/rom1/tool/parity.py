@@ -47,15 +47,18 @@ def renamed(data: bytes) -> bytes | None:
 
 
 def local_files() -> set[str]:
-    result = set()
-    for path in REPO.rglob("*"):
-        if (not path.is_file() or ".git" in path.parts or "build" in path.parts
-                or "__pycache__" in path.parts or path.suffix == ".pyc"):
-            continue
-        rel = path.relative_to(REPO).as_posix()
-        if rel not in SKIP_LOCAL and not rel.startswith("result"):
-            result.add(rel)
-    return result
+    try:
+        discovered = subprocess.run(
+            ["git", "ls-files", "-z", "--cached", "--others",
+             "--exclude-standard"], cwd=REPO, capture_output=True,
+            check=True).stdout
+    except subprocess.CalledProcessError as error:
+        raise ValueError(f"{REPO}: cannot enumerate repository files") from error
+    return {
+        path.decode("utf-8")
+        for path in discovered.split(b"\0")
+        if path and path.decode("utf-8") not in SKIP_LOCAL
+    }
 
 
 def verify_upstream_revision(upstream: Path) -> None:

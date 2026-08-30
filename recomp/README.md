@@ -36,3 +36,15 @@ packed bit counts, packed bytes, decoded bytes, and 4,096 incremental
 frequency-table updates. Only the retail tree allocator/free callsites are
 redirected; sorting, tree construction, code generation, packing, and
 unpacking all execute from the mapped retail image.
+
+Build and run the pure BMP/DIB layout oracle the same way:
+
+```sh
+recomp/harness/build.sh dibmetricsrun dib
+wine recomp/harness/dibmetricsrun.exe "$ROM1_EXE" config/retail/relocs.tsv
+```
+
+It compares null and randomized dimensions, all supported palette bit depths
+plus invalid defaults, explicit `biClrUsed` overrides, DWORD-aligned scanline
+sizes, explicit `biSizeImage` overrides, and the derived palette offset. The
+retail methods need no import or allocator patches.

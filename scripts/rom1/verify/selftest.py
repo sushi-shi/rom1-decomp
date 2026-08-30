@@ -4469,6 +4469,23 @@ class SemDiffControls(unittest.TestCase):
         self.assertNotEqual(referent_runs(b), referent_runs(t))
 
 
+class EhBandOwnerExtentControls(unittest.TestCase):
+    def test_an_in_body_catch_does_not_expand_the_terminal_funclet_band(self):
+        from rom1.delink.eh_band import actions_outside_owner
+
+        actions = {0x04B913, 0x1891A0}
+        self.assertEqual(
+            actions_outside_owner(actions, 0x04B860, 0xF0), (0x1891A0,)
+        )
+
+    def test_an_action_at_the_parent_end_is_external(self):
+        from rom1.delink.eh_band import actions_outside_owner
+
+        self.assertEqual(
+            actions_outside_owner({0x1100}, 0x1000, 0x100), (0x1100,)
+        )
+
+
 class EhRegistrationRenameControls(unittest.TestCase):
     """`_eh_funclet_owners` renames a delinked `push <undefined FUN_<rva>>` to
     `__ehreg$<owner>` so the two sides co-name their EH machinery.  On the

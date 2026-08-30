@@ -52,3 +52,8 @@ flags = "cpp-od"
 unit = "bytehuffmannode"
 source = "src/Codec/ByteHuffmanNode.cpp"
 flags = "cpp-od-noeh"
+
+[[unit]]
+unit = "dib"
+source = "src/Graphics/Dib.cpp"
+flags = "cpp"
