@@ -657,6 +657,14 @@ the ownership and call identities of its support objects. Its tail reaches the
 separately exact `CReferenceSnapshot::Serialize` at `0x13e840`, whose store and
 load branches transfer one raw `0x190`-byte snapshot.
 
+The game-owned server-state writer at `0x0d15e2` is byte-exact. When the
+command-line-configured `-aslfile` path is nonempty, it creates that text file,
+writes the `CReferenceWorld` state line at offset `0x170`, then appends
+`"\n%d\n"`. The decimal value counts registry objects whose attachment field at
+object offset `0x28` is null. Its registry traversal and all naturally emitted
+pinned-header `CString`/`CList` helpers were recovered from retail; no DirectX,
+MFC, or other vendor implementation body is claimed.
+
 The world-map serializer at `0x144aa0` is source-complete at 84.81%. Its store
 arm scans tile indices `0x0807` through `0xeded`, packs exceptional high-byte
 tiles as index/high/low DWORDs, then serializes the list, an embedded

@@ -36,7 +36,11 @@ class CWorldObject {
 public:
     BYTE m_reserved00[0x20];
     CWorldItemCollection* m_itemCollection;
+    BYTE m_reserved24[4];
+    void* m_attachment;
 };
+
+typedef CList<CWorldObject*, CWorldObject*> CWorldObjectList;
 
 class CWorldItem {
 public:
@@ -80,10 +84,13 @@ public:
 class CWorldObjectRegistry {
 public:
     void Serialize(CArchive& archive);
+    CWorldObject* First();
+    CWorldObject* Next(CWorldObject* object);
+    UINT CountUnattachedObjects();
 
 private:
-    BYTE m_reserved00[0x20];
-    void* m_objects;
+    CWorldObjectList m_objects;
+    BYTE m_reserved1c[8];
 };
 
 class CWorldItemManager {
@@ -216,6 +223,7 @@ private:
 class CReferenceWorld {
 public:
     void Serialize(CArchive& archive);
+    void WriteServerStateFile();
 
     UINT m_value00;
     UINT m_value04;
@@ -243,6 +251,8 @@ public:
     UINT m_value140;
     UINT m_value144;
     UINT m_value148;
+    BYTE m_reserved14c[0x24];
+    CString m_serverStateLine;
 };
 
 extern CReferenceWorld* g_referenceWorld;

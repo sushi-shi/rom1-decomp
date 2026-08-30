@@ -75,7 +75,7 @@ flags = "cpp"
 
 [[unit]]
 unit = "directxexception"
-source = "src/DirectX/DirectXException.cpp"
+source = "src/Graphics/DirectXException.cpp"
 flags = "cpp"
 
 [[unit]]

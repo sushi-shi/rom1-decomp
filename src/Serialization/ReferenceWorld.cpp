@@ -22,7 +22,17 @@ g_saveRevision;
 DATA(0x001c5e9c)
 char g_scenarioDirectory[] = "Scenario\\";
 
+DATA(0x001c5ea8)
+char g_serverStateCountFormat[] = "\n%d\n";
+
+// The storage and lifecycle belong to the main executable TU; this unit owns
+// only the server-state file user below.
+// clang-format off
+DATA(0x001efd88) extern CString g_serverStatePath;
+// clang-format on
+
 RVA_COMPGEN(0x00047c10, 0x10, ??BCString@@QBEPBDXZ)
+RVA_COMPGEN(0x000c7c10, 0x13, ?GetData@CString@@IBEPAUCStringData@@XZ)
 
 RVA(0x000d0c97, 0x94b)
 void CReferenceWorld::Serialize(CArchive& archive) {
@@ -178,10 +188,71 @@ void CReferenceWorld::Serialize(CArchive& archive) {
     m_snapshot->Serialize(archive);
 }
 
+RVA(0x000d15e2, 0xdc)
+void CReferenceWorld::WriteServerStateFile() {
+    if (g_serverStatePath.IsEmpty()) {
+        return;
+    }
+
+    CStdioFile file;
+    file.Open(g_serverStatePath, CFile::modeCreate | CFile::modeWrite, NULL);
+    file.WriteString(m_serverStateLine);
+
+    CString countLine;
+    countLine.Format(g_serverStateCountFormat, g_worldObjectRegistry->CountUnattachedObjects());
+    file.WriteString(countLine);
+    file.Close();
+}
+
 RVA(0x000d9f44, 0x23)
 void ResetSeenTokenIds() {
     memset(g_seenTokenIds, 0, sizeof(g_seenTokenIds));
     g_seenTokenIds[0] = 1;
 }
 
+RVA(0x000fb716, 0x4b)
+UINT CWorldObjectRegistry::CountUnattachedObjects() {
+    CWorldObject* object;
+    UINT count;
+    count = 0;
+    object = First();
+    while (object != NULL) {
+        if (object->m_attachment == NULL) {
+            ++count;
+        }
+        object = Next(object);
+    }
+    return count;
+}
+
+RVA_COMPGEN(0x00114500, 0x1e, ?IsEmpty@CString@@QBEHXZ)
 RVA_COMPGEN(0x00114880, 0x2e, ??_GCScenarioResource@@QAEPAXI@Z)
+
+RVA(0x0011b630, 0x25)
+CWorldObject* CWorldObjectRegistry::First() {
+    if (m_objects.IsEmpty()) {
+        return NULL;
+    }
+    return m_objects.GetHead();
+}
+
+RVA(0x0011b660, 0x4e)
+CWorldObject* CWorldObjectRegistry::Next(CWorldObject* object) {
+    POSITION position = m_objects.Find(object);
+    if (position == NULL) {
+        return NULL;
+    }
+
+    m_objects.GetNext(position);
+    if (position == NULL) {
+        return NULL;
+    }
+    return m_objects.GetAt(position);
+}
+
+RVA_COMPGEN(0x00123ec0, 0x19, ?IsEmpty@?$CList@PAVCWorldObject@@PAV1@@@QBEHXZ)
+RVA_COMPGEN(0x00123ee0, 0x14, ?GetHead@?$CList@PAVCWorldObject@@PAV1@@@QAEAAPAVCWorldObject@@XZ)
+RVA_COMPGEN(0x00124030, 0x27, ?GetNext@?$CList@PAVCWorldObject@@PAV1@@@QAEAAPAVCWorldObject@@AAPAU__POSITION@@@Z)
+RVA_COMPGEN(0x00124060, 0x1b, ?GetAt@?$CList@PAVCWorldObject@@PAV1@@@QAEAAPAVCWorldObject@@PAU__POSITION@@@Z)
+RVA_COMPGEN(0x00124080, 0x5b, ?Find@?$CList@PAVCWorldObject@@PAV1@@@QBEPAU__POSITION@@PAVCWorldObject@@PAU2@@Z)
+RVA_COMPGEN(0x001291b0, 0x16, ?CompareElements@@YGHPBQAVCWorldObject@@0@Z)
