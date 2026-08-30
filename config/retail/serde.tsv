@@ -98,12 +98,23 @@ archive-object	0x0dfe42	TableLine fixed ten-CString serializer	exact	100%; exact
 archive-object	0x0dffcd	TableLine-derived base-only serializer	exact	100%; vtable slot 2 + sole direct call to TableLine::Serialize
 archive-object	0x0e03d2	TableLine CString extension serializer	exact	100%; explicit base call + CString at +0x1c
 archive-object	0x111b15	embedded CObject virtual serializer	exact	100%; vtable slot 2 + exact indirect nested Serialize dispatch
+spell-effect	0x0f2461	Token typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
+spell-effect	0x0f2a24	VirtualCaster typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
+spell-effect	0x0f2bf7	Unit typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
+spell-effect	0x0f562c	Unit embedded raw block	exact	100%; exact 0x40-byte CArchive Read/Write branches
+spell-effect	0x0f6d82	Humanoid typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
+spell-effect	0x0f8a4f	Diary typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
+spell-effect	0x0f8e4e	Human typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
+spell-effect	0x0fa69a	shared embedded raw block	exact	100%; five owner callsites + exact 0x16-byte CArchive Read/Write branches
 spell-effect	0x0fa9f5	direct-damage raw payload	exact	100%; exact 24-byte CArchive Read/Write branches
+spell-effect	0x0faac4	Player typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
 spell-effect	0x0fc448	SpellEffect typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
 spell-effect	0x0fc59a	PointEffect typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
 spell-effect	0x0fc8d7	AreaEffect typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
 spell-effect	0x0fda57	SpellTransport typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
 spell-effect	0x0fdda2	Spell typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
+spell-effect	0x100742	Spell serializer	exact	100%; byte/WORD fields + raw identity registration + 32-byte definition lookup
+spell-effect	0x1008ba	Spellbook typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
 spell-effect	0x100c1d	Spellbook array/object serializer	exact	100%; count, SetSize, and typed object loop topology
 spell-effect	0x100d05	Effect serializer	exact	100%; Token base plus byte/UINT field order
 spell-effect	0x100da4	direct-damage serializer	exact	100%; Effect base plus exact raw payload

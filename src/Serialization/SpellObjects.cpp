@@ -8,6 +8,74 @@ CReferenceWorld* g_referenceWorld;
 DATA(0x0022c738)
 UINT g_seenTokenIds[0x800];
 
+// Keep the extern declaration on the DATA site so source-label extraction can
+// bind the retail global without defining duplicate CArray storage in this TU.
+// clang-format off
+DATA(0x00209b4c) extern CSpellDefinitionArray g_spellDefinitions;
+// clang-format on
+
+// @dead-code
+// Zero-ref: no direct callers, relocated references, or live ILT forwarders in retail.
+RVA(0x000f2461, 0x1c)
+CArchive& AFXAPI operator>>(CArchive& archive, Token*& value) {
+    value = static_cast<Token*>(archive.ReadObject(&Token::classToken));
+    return archive;
+}
+
+// @dead-code
+// Zero-ref: no direct callers, relocated references, or live ILT forwarders in retail.
+RVA(0x000f2a24, 0x1c)
+CArchive& AFXAPI operator>>(CArchive& archive, VirtualCaster*& value) {
+    value = static_cast<VirtualCaster*>(archive.ReadObject(&VirtualCaster::classVirtualCaster));
+    return archive;
+}
+
+RVA(0x000f2bf7, 0x1c)
+CArchive& AFXAPI operator>>(CArchive& archive, Unit*& value) {
+    value = static_cast<Unit*>(archive.ReadObject(&Unit::classUnit));
+    return archive;
+}
+
+RVA(0x000f562c, 0x37)
+void CUnitArchiveBlock::Serialize(CArchive& archive) {
+    if (archive.IsStoring()) {
+        archive.Write(this, sizeof(*this));
+    } else {
+        archive.Read(this, sizeof(*this));
+    }
+}
+
+// @dead-code
+// Zero-ref: no direct callers, relocated references, or live ILT forwarders in retail.
+RVA(0x000f6d82, 0x1c)
+CArchive& AFXAPI operator>>(CArchive& archive, Humanoid*& value) {
+    value = static_cast<Humanoid*>(archive.ReadObject(&Humanoid::classHumanoid));
+    return archive;
+}
+
+RVA(0x000f8a4f, 0x1c)
+CArchive& AFXAPI operator>>(CArchive& archive, Diary*& value) {
+    value = static_cast<Diary*>(archive.ReadObject(&Diary::classDiary));
+    return archive;
+}
+
+// @dead-code
+// Zero-ref: no direct callers, relocated references, or live ILT forwarders in retail.
+RVA(0x000f8e4e, 0x1c)
+CArchive& AFXAPI operator>>(CArchive& archive, Human*& value) {
+    value = static_cast<Human*>(archive.ReadObject(&Human::classHuman));
+    return archive;
+}
+
+RVA(0x000fa69a, 0x37)
+void CSharedArchiveBlock::Serialize(CArchive& archive) {
+    if (archive.IsStoring()) {
+        archive.Write(this, sizeof(*this));
+    } else {
+        archive.Read(this, sizeof(*this));
+    }
+}
+
 RVA(0x000fa9f5, 0x37)
 void CDirectDamagePayload::Serialize(CArchive& archive) {
     if (archive.IsStoring()) {
@@ -15,6 +83,12 @@ void CDirectDamagePayload::Serialize(CArchive& archive) {
     } else {
         archive.Read(this, sizeof(*this));
     }
+}
+
+RVA(0x000faac4, 0x1c)
+CArchive& AFXAPI operator>>(CArchive& archive, Player*& value) {
+    value = static_cast<Player*>(archive.ReadObject(&Player::classPlayer));
+    return archive;
 }
 
 RVA(0x000fc448, 0x1c)
@@ -48,6 +122,37 @@ CArchive& AFXAPI operator>>(CArchive& archive, SpellTransport*& value) {
 RVA(0x000fdda2, 0x1c)
 CArchive& AFXAPI operator>>(CArchive& archive, Spell*& value) {
     value = static_cast<Spell*>(archive.ReadObject(&Spell::classSpell));
+    return archive;
+}
+
+RVA(0x00100742, 0xe0)
+void Spell::Serialize(CArchive& archive) {
+    if (archive.IsStoring()) {
+        archive << m_values08[0];
+        archive << m_values08[1];
+        archive << m_values08[2];
+        archive << m_value0c;
+        archive << reinterpret_cast<UINT>(this); // proven raw pointer identity
+    } else {
+        archive >> m_values08[0];
+        archive >> m_values08[1];
+        archive >> m_values08[2];
+        archive >> m_value0c;
+        UINT value;
+        archive >> value;
+        g_referenceWorld->m_references.SetAt(
+            reinterpret_cast<void*>(value), // proven raw pointer identity
+            this
+        );
+        m_definition = &g_spellDefinitions[m_values08[0]];
+    }
+}
+
+// @dead-code
+// Zero-ref: no direct callers, relocated references, or live ILT forwarders in retail.
+RVA(0x001008ba, 0x1c)
+CArchive& AFXAPI operator>>(CArchive& archive, Spellbook*& value) {
+    value = static_cast<Spellbook*>(archive.ReadObject(&Spellbook::classSpellbook));
     return archive;
 }
 
@@ -173,6 +278,8 @@ RVA_COMPGEN(0x001176e0, 0x45, ??6CArchive@@QAEAAV0@G@Z)
 RVA_COMPGEN(0x00117730, 0x19, ??5CArchive@@QAEAAV0@AAF@Z)
 RVA_COMPGEN(0x00117750, 0x5b, ??5CArchive@@QAEAAV0@AAG@Z)
 
+RVA_COMPGEN(0x0011a830, 0x19, ??A?$CArray@UCSpellDefinition@@AAU1@@@QAEAAUCSpellDefinition@@H@Z)
+
 RVA_COMPGEN(0x0011a990, 0x11, ?GetSize@?$CArray@PAVSpell@@PAV1@@@QBEHXZ)
 RVA_COMPGEN(0x0011a9b0, 0x21a, ?SetSize@?$CArray@PAVSpell@@PAV1@@@QAEXHH@Z)
 RVA_COMPGEN(0x0011abd0, 0x19, ??A?$CArray@PAVSpell@@PAV1@@@QAEAAPAVSpell@@H@Z)
@@ -199,4 +306,5 @@ void ResolveTokenReference(UINT* value) {
     }
 }
 
+RVA_COMPGEN(0x001234d0, 0x1b, ?ElementAt@?$CArray@UCSpellDefinition@@AAU1@@@QAEAAUCSpellDefinition@@H@Z)
 RVA_COMPGEN(0x001236c0, 0x19, ?ElementAt@?$CArray@PAVSpell@@PAV1@@@QAEAAPAVSpell@@H@Z)

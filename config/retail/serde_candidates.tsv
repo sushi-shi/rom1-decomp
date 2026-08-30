@@ -99,23 +99,23 @@ rva	signals	status	note
 0x0e03d2	archive-read,archive-vslot2,archive-write	reconstructed	TableLine-derived CString extension serializer
 0x0e0b06	file-read	target	initial retail call/vtable census
 0x0eba39	stdio-read	target	initial retail call/vtable census
-0x0f2461	archive-read	target	initial retail call/vtable census
-0x0f2a24	archive-read	target	initial retail call/vtable census
-0x0f2bf7	archive-read	target	initial retail call/vtable census
-0x0f562c	archive-read,archive-write	target	initial retail call/vtable census
-0x0f6d82	archive-read	target	initial retail call/vtable census
-0x0f8a4f	archive-read	target	initial retail call/vtable census
-0x0f8e4e	archive-read	target	initial retail call/vtable census
-0x0fa69a	archive-read,archive-write	target	initial retail call/vtable census
+0x0f2461	archive-read	reconstructed	exact IMPLEMENT_SERIAL Token typed reader
+0x0f2a24	archive-read	reconstructed	exact IMPLEMENT_SERIAL VirtualCaster typed reader
+0x0f2bf7	archive-read	reconstructed	exact IMPLEMENT_SERIAL Unit typed reader
+0x0f562c	archive-read,archive-write	reconstructed	exact raw 0x40-byte embedded Unit block serializer
+0x0f6d82	archive-read	reconstructed	exact IMPLEMENT_SERIAL Humanoid typed reader
+0x0f8a4f	archive-read	reconstructed	exact IMPLEMENT_SERIAL Diary typed reader
+0x0f8e4e	archive-read	reconstructed	exact IMPLEMENT_SERIAL Human typed reader
+0x0fa69a	archive-read,archive-write	reconstructed	exact shared raw 0x16-byte embedded block serializer
 0x0fa9f5	archive-read,archive-write	reconstructed	exact CDirectDamagePayload raw 24-byte serializer
-0x0faac4	archive-read	target	initial retail call/vtable census
+0x0faac4	archive-read	reconstructed	exact IMPLEMENT_SERIAL Player typed reader
 0x0fc448	archive-read	reconstructed	exact IMPLEMENT_SERIAL SpellEffect typed reader
 0x0fc59a	archive-read	reconstructed	exact IMPLEMENT_SERIAL PointEffect typed reader
 0x0fc8d7	archive-read	reconstructed	exact IMPLEMENT_SERIAL AreaEffect typed reader
 0x0fda57	archive-read	reconstructed	exact IMPLEMENT_SERIAL SpellTransport typed reader
 0x0fdda2	archive-read	reconstructed	exact IMPLEMENT_SERIAL Spell typed reader
-0x100742	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Spell
-0x1008ba	archive-read	target	initial retail call/vtable census
+0x100742	archive-vslot2	reconstructed	exact Spell scalar/reference/definition serializer; slot-2 class=Spell
+0x1008ba	archive-read	reconstructed	exact IMPLEMENT_SERIAL Spellbook typed reader
 0x100c1d	archive-vslot2	reconstructed	exact Spellbook array/object serializer; slot-2 class=Spellbook
 0x100d05	archive-vslot2	reconstructed	exact Token-derived serializer; slot-2 class=Effect
 0x100da4	archive-vslot2	reconstructed	exact Effect plus raw damage payload serializer; slot-2 class=Effect_DirectDamage

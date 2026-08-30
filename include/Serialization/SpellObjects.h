@@ -14,6 +14,12 @@ class SpellEffect;
 class PointEffect;
 class AreaEffect;
 class Effect;
+class VirtualCaster;
+class Unit;
+class Humanoid;
+class Diary;
+class Human;
+class Player;
 
 void ResolveEffectReference(UINT* value);
 void ResolveTokenReference(UINT* value);
@@ -36,10 +42,38 @@ private:
     BYTE m_bytes[24];
 };
 
+// These embedded records are copied as raw bytes by their only recovered
+// methods. Their original source names and field semantics do not survive.
+class CUnitArchiveBlock {
+public:
+    void Serialize(CArchive& archive);
+
+private:
+    BYTE m_bytes[0x40];
+};
+
+class CSharedArchiveBlock {
+public:
+    void Serialize(CArchive& archive);
+
+private:
+    BYTE m_bytes[0x16];
+};
+
+// The element stride and CArray accessors prove a contiguous 32-byte spell
+// definition record. Its original record name and fields remain unknown.
+struct CSpellDefinition {
+    BYTE m_bytes[0x20];
+};
+
+typedef CArray<CSpellDefinition, CSpellDefinition&> CSpellDefinitionArray;
+
 class Token : public CObject {
 public:
     static AFX_DATA CRuntimeClass classToken;
     virtual void Serialize(CArchive& archive);
+
+    friend CArchive& AFXAPI operator>>(CArchive& archive, Token*& value);
 
 protected:
     UINT m_value04;
@@ -53,6 +87,72 @@ protected:
     WORD m_reserved1a;
     UINT m_value1c;
     BYTE m_reserved20[0x1c];
+};
+
+// Runtime-class records prove these inheritance edges and complete sizes.
+// Opaque tails preserve only that executable evidence until their individual
+// serializers and methods recover the fields.
+class VirtualCaster : public Token {
+public:
+    static AFX_DATA CRuntimeClass classVirtualCaster;
+    virtual void Serialize(CArchive& archive);
+
+    friend CArchive& AFXAPI operator>>(CArchive& archive, VirtualCaster*& value);
+
+private:
+    BYTE m_state3c[0x08];
+};
+
+class Unit : public Token {
+public:
+    static AFX_DATA CRuntimeClass classUnit;
+    virtual void Serialize(CArchive& archive);
+
+    friend CArchive& AFXAPI operator>>(CArchive& archive, Unit*& value);
+
+protected:
+    BYTE m_state3c[0x15c];
+};
+
+class Humanoid : public Unit {
+public:
+    static AFX_DATA CRuntimeClass classHumanoid;
+    virtual void Serialize(CArchive& archive);
+
+    friend CArchive& AFXAPI operator>>(CArchive& archive, Humanoid*& value);
+
+protected:
+    BYTE m_state198[0x50];
+};
+
+class Diary : public CObject {
+public:
+    static AFX_DATA CRuntimeClass classDiary;
+    virtual void Serialize(CArchive& archive);
+
+    friend CArchive& AFXAPI operator>>(CArchive& archive, Diary*& value);
+
+private:
+    BYTE m_state04[0x2c];
+};
+
+class Human : public Humanoid {
+public:
+    static AFX_DATA CRuntimeClass classHuman;
+    virtual void Serialize(CArchive& archive);
+
+    friend CArchive& AFXAPI operator>>(CArchive& archive, Human*& value);
+};
+
+class Player : public CObject {
+public:
+    static AFX_DATA CRuntimeClass classPlayer;
+    virtual void Serialize(CArchive& archive);
+
+    friend CArchive& AFXAPI operator>>(CArchive& archive, Player*& value);
+
+private:
+    BYTE m_state04[0x6c];
 };
 
 class SpellEffect : public Token {
@@ -152,6 +252,8 @@ class Spellbook : public CObject {
 public:
     static AFX_DATA CRuntimeClass classSpellbook;
     virtual void Serialize(CArchive& archive);
+
+    friend CArchive& AFXAPI operator>>(CArchive& archive, Spellbook*& value);
 
 private:
     CArray<Spell*, Spell*> m_spells;

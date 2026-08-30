@@ -410,6 +410,18 @@ nested polymorphic object at `+0x08`, five raw WORDs, fixed two- and ten-entry
 CStringArray loops, a raw 72-byte record, and CString extensions. Names that
 did not survive remain evidence-neutral rather than guessed.
 
+The game-owned spell/object cluster now contributes another 11 exact wall
+candidates. Eight are typed `IMPLEMENT_SERIAL` readers for `Token`,
+`VirtualCaster`, `Unit`, `Humanoid`, `Diary`, `Human`, `Player`, and
+`Spellbook`; their runtime-class records independently fix the type identities,
+inheritance edges, and complete object sizes. Two serializers copy embedded
+0x40- and 0x16-byte records in both archive modes, retaining layout-only source
+names because their original record names do not survive. `Spell::Serialize`
+stores three bytes, one WORD, and its raw process identity; on load it registers
+that identity and resolves a definition through a global 32-byte-stride
+`CArray`. The two naturally emitted `CArray` indexing helpers are exact as
+well, so the recovered cluster is 13/13 exact including required header code.
+
 The four raw-record serializers at `0x13db00`, `0x13dbc0`, `0x13dc80`, and
 `0x13dcc0` are also exact. The first three apply the same bidirectional
 complete-object archive operation to 0x50-, 0x48-, and 0x0c-byte records. The
