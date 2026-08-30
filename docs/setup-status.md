@@ -110,6 +110,13 @@ array serializer is 99.92% with relocation-masked bytes identical; only three
 unclaimed game lifecycle-helper identities remain. The SP2 archive census has
 no exact provider for these bodies, so none is attributed to a static library.
 
+The structure/resource template band at `0x06f6a0`-`0x070300` is also drained:
+all seven distinct four-byte `CArray` serializers are byte-exact. Their seven
+vtable and lifecycle families prove distinct game source types, while the
+shared raw element width and complete archive control flow are exact. No SP2
+archive provider matches these bodies, so this is natural pinned-header code,
+not copied or reconstructed vendor implementation.
+
 The vtable catalog joins two independent executable witnesses: 417 tables from
 relocated text-pointer runs split by RTTI/code vptr references, plus eight
 `GetRuntimeClass` tables whose first relocation site was absent from the

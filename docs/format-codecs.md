@@ -501,6 +501,18 @@ byte-exact under the pinned VC5 SP2 header. The additionally labeled `SetAt`,
 `AddTail`, and `SetSize` bodies are only the compiler-emitted template
 referents naturally required by those game-owned instantiations.
 
+The seven adjacent slot-2 bodies at `0x06f6a0`-`0x070300` are exact natural
+VC5 `CArray` emissions from the structure/resource translation-unit band.
+Their instruction streams are identical to the independently reconstructed
+four-byte array witness at `0x098ee0`: count framing, the complete inlined
+resize path, and raw `count * 4` archive transfer all agree byte for byte.
+Seven separate vtables, constructor/destructor families, and scalar deleting
+destructors prove seven source type identities even though no type-bearing
+RTTI or non-template caller preserves their original names. The source keeps
+those identities distinct as opaque four-byte records. The pinned SP2 archive
+census supplies no exact provider for any of the seven retail bodies, so they
+are game-owned header emissions rather than reconstructed vendor code.
+
 ## Complete first-pass candidate wall
 
 The first-pass retail census is reproducible from two stronger signals than

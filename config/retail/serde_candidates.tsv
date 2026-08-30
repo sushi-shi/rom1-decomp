@@ -31,13 +31,13 @@ rva	signals	status	note
 0x066f70	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x0671b0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x069390	archive-read,archive-vslot2,archive-write	reconstructed	initial retail call/vtable census; slot-2 class=CObject; CTextPointerVector::Serialize
-0x06f6a0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x06f8b0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x06fac0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x06fcd0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x06fee0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x0700f0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x070300	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x06f6a0	archive-read,archive-vslot2,archive-write	reconstructed	exact game-owned structure/resource four-byte CArray serializer; distinct natural pinned-header emission; 100%
+0x06f8b0	archive-read,archive-vslot2,archive-write	reconstructed	exact game-owned structure/resource four-byte CArray serializer; distinct natural pinned-header emission; 100%
+0x06fac0	archive-read,archive-vslot2,archive-write	reconstructed	exact game-owned structure/resource four-byte CArray serializer; distinct natural pinned-header emission; 100%
+0x06fcd0	archive-read,archive-vslot2,archive-write	reconstructed	exact game-owned structure/resource four-byte CArray serializer; distinct natural pinned-header emission; 100%
+0x06fee0	archive-read,archive-vslot2,archive-write	reconstructed	exact game-owned structure/resource four-byte CArray serializer; distinct natural pinned-header emission; 100%
+0x0700f0	archive-read,archive-vslot2,archive-write	reconstructed	exact game-owned structure/resource four-byte CArray serializer; distinct natural pinned-header emission; 100%
+0x070300	archive-read,archive-vslot2,archive-write	reconstructed	exact game-owned structure/resource four-byte CArray serializer; distinct natural pinned-header emission; 100%
 0x078af0	file-write	target	initial retail call/vtable census
 0x07a800	file-read,stdio-read	target	initial retail call/vtable census
 0x07abc0	file-read,stdio-read	target	initial retail call/vtable census

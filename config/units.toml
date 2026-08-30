@@ -188,3 +188,8 @@ flags = "cpp-od-ob1"
 unit = "earlyarchivehandle"
 source = "src/Serialization/EarlyArchiveHandle.cpp"
 flags = "cpp"
+
+[[unit]]
+unit = "structurearchivecontainers"
+source = "src/Serialization/StructureArchiveContainers.cpp"
+flags = "cpp"

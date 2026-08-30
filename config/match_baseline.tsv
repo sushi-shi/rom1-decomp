@@ -59,6 +59,7 @@ scenariosupport	51	12
 smackerplayer	7	7
 spellobjects	65	62
 stringrecordfile	3	2
+structurearchivecontainers	7	7
 textureresourcecontainers	17	14
 tokenpayload	17	9
 wordrle	2	2
@@ -491,6 +492,13 @@ spellobjects	?SetSize@?$CArray@PAVSpell@@PAV1@@@QAEXHH@Z	99.8611	99.8611	1	cpp:b
 stringrecordfile	?Add@CStringArray@@QAEHPBD@Z	100.0000	100.0000	1	cpp:171c361fd17e	0x47a00	100.0000	
 stringrecordfile	?ReadRecords@CStringRecordFile@@QAEXXZ	99.6286	99.6286	1	4fae74c87572	0xd1783	99.6286	
 stringrecordfile	?RemoveAll@CStringArray@@QAEXXZ	100.0000	100.0000	1	cpp:171c361fd17e	0x48140	100.0000	
+structurearchivecontainers	?Serialize@?$CArray@UCStructureArchiveHandle@@AAU1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:4765a2380b2d	0x6f6a0	100.0000	
+structurearchivecontainers	?Serialize@?$CArray@UCStructureArchiveIndex@@AAU1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:4765a2380b2d	0x6fee0	100.0000	
+structurearchivecontainers	?Serialize@?$CArray@UCStructureArchiveKey@@AAU1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:4765a2380b2d	0x700f0	100.0000	
+structurearchivecontainers	?Serialize@?$CArray@UCStructureArchiveLink@@AAU1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:4765a2380b2d	0x70300	100.0000	
+structurearchivecontainers	?Serialize@?$CArray@UCStructureArchiveReference@@AAU1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:4765a2380b2d	0x6fac0	100.0000	
+structurearchivecontainers	?Serialize@?$CArray@UCStructureArchiveToken@@AAU1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:4765a2380b2d	0x6fcd0	100.0000	
+structurearchivecontainers	?Serialize@?$CArray@UCStructureArchiveValue@@AAU1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:4765a2380b2d	0x6f8b0	100.0000	
 textureresourcecontainers	??0CTextureResourceRecord@@QAE@XZ	99.8214	99.8214	1	cpp:7b0c96eb90c3	0x94520	99.8214	
 textureresourcecontainers	??0CTextureTableRecord@@QAE@XZ	99.5714	99.5714	1	c452f36b88fd	0x9a040	99.5714	
 textureresourcecontainers	??1CTextureLookupRecord@@QAE@XZ	100.0000	100.0000	1	cpp:7b0c96eb90c3	0x9a060	100.0000	
