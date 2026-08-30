@@ -69,6 +69,11 @@ source = "src/Graphics/RadialOffsetTable.cpp"
 flags = "cpp"
 
 [[unit]]
+unit = "characterslots"
+source = "src/Serialization/CharacterSlots.cpp"
+flags = "cpp"
+
+[[unit]]
 unit = "directxexception"
 source = "src/DirectX/DirectXException.cpp"
 flags = "cpp"

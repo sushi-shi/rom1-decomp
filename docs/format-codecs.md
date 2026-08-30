@@ -603,6 +603,16 @@ the ambiguous NAFXCW `CString::operator=(LPCSTR)` referent at `0x172f92`, whose
 pinned SP2 FID row collides with another CString identity. No vendor body or
 ambiguous static-library identity is promoted to improve that score.
 
+The character-slot updater at `0x07b250` is game-owned code in the object
+embedded at `CMainWindow+0x420`. Its independently exact helper formats slot
+paths as `game%04d.chr`; the updater synchronizes the current `CStringArray`
+entry, opens the indexed slot for writing, seeks to byte 12, and replaces the
+fixed 32-byte display-name field. The source-complete body scores 99.8857% with
+its extent, instructions, call topology, and ordered relocation targets
+aligned. Its only reported difference is the same pinned-SP2 FID ambiguity for
+the vendor `CString::operator=(LPCSTR)` body at `0x172f92`; that vendor body is
+not reconstructed or claimed.
+
 The neighboring records at `0x139100` and `0x139210` serialize raw 0x94- and
 0x50-byte owners followed by the same separately allocated
 `CList<WORD, WORD>`. On load they delete the stale list, read the raw owner,

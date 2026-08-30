@@ -38,6 +38,7 @@ archiveobjects	13	13
 butemgr	14	11
 bytehuffman	16	15
 bytehuffmannode	1	1
+characterslots	2	1
 dib	15	12
 directxexception	1	0
 itemnames	11	3
@@ -248,6 +249,8 @@ bytehuffman	?RebuildTree@ByteHuffmanPacker@@QAEXXZ	100.0000	100.0000	1	57d2bc2b2
 bytehuffman	?SaveStatistics@ByteHuffmanPacker@@QAEXPAVCFile@@@Z	100.0000	100.0000	1	ce94d5a1dbf9	0xef433	100.0000	
 bytehuffman	?Unpack@ByteHuffmanPacker@@QAEHPAIHPAEH@Z	100.0000	100.0000	2	b08f2cdc13d7	0xefa04	100.0000	
 bytehuffmannode	??0ByteHuffmanNode@@QAE@XZ	100.0000	100.0000	1	4c7484212058	0x1160d0	100.0000	
+characterslots	?CharacterFileName@CCharacterSlots@@QAE?AVCString@@H@Z	100.0000	100.0000	1	81287968c3ff	0x7a740	100.0000	
+characterslots	?RenameCurrentCharacter@CCharacterSlots@@QAEXPBD@Z	99.8857	99.8857	1	4994f802febe	0x7b250	99.8857	
 dib	??0CDib@@QAE@XZ	100.0000	100.0000	1	e2a1d93fa919	0x4adf0	100.0000	
 dib	??1CDib@@UAE@XZ	99.7222	99.7222	1	ccf6e743bd5e	0x4af50	99.7222	
 dib	??5@YGAAVCArchive@@AAV0@AAPAVCDib@@@Z	100.0000	100.0000	1	2f7b2c3caa17	0x4add0	100.0000	

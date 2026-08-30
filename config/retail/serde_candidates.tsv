@@ -42,7 +42,7 @@ rva	signals	status	note
 0x07a800	file-read,stdio-read	target	initial retail call/vtable census
 0x07abc0	file-read,stdio-read	target	initial retail call/vtable census
 0x07ada0	file-read	target	initial retail call/vtable census
-0x07b250	file-write	target	initial retail call/vtable census
+0x07b250	file-write	reconstructed	source-complete game-owned character-slot name updater; 99.89%, sole residual is FID-ambiguous vendor CString assignment referent; helper 0x07a740 exact
 0x07b760	file-write	target	initial retail call/vtable census
 0x07cc60	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x0814b0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject

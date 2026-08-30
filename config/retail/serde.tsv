@@ -26,6 +26,7 @@ save-game	0x0cee6f	write save wrapper	located	exact envelope writes + word-RLE e
 save-game	0x0cf1ee	read save wrapper	located	signed version floor + ignored declared length + mapped oracle + safe Rust parser
 character	0x0cf4f0	write .chr wrapper	located	chr path strings + 16-byte metadata + word-RLE/even-pad Rust writer
 character	0x0cf8b8	read .chr wrapper	located	packet/file caller xrefs + exact metadata/RLE extents + mapped oracle + safe Rust parser
+character-slot	0x07b250	update current .chr display name	near-exact	99.89%; game-owned CMainWindow-embedded owner, exact gameNNNN.chr formatter, 32-byte write at file offset 12; sole residual is FID-ambiguous vendor CString referent
 scenario	0x0d0c97	bidirectional CArchive serializer	exact	100%; exact 0x94b extent + 112 ordered relocations + save/load wrapper calls
 scenario	0x13e840	raw 0x190-byte snapshot serializer	exact	100%; exact CArchive Read/Write branches reached by the scenario serializer tail
 world-map	0x141c90	tile-digit table loader	near-exact	99.98%; source-complete CFile load and 256-byte-row update loops, sole two-load scheduling residue
