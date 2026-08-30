@@ -77,6 +77,15 @@ resource-text	0x069220	split patch table key/value records	located	startup xref 
 item-name-ids	0x068490	load raw little-endian item IDs	near-exact	98.77%; itemname.bin string + text/map xrefs + mapped oracle
 archive-pointer-words	0x069390	bidirectional CArchive raw pointer vector	near-exact	81.44%; exact 0x188 extent + WriteCount/ReadCount and raw Write/Read xrefs + mapped oracle
 scenario-map	0x144aa0	exceptional-tile/map serializer	near-exact	84.81%; source-complete store/load topology; residual VC5 inline/call-set wall tied to neighboring TU context
+archive-container	0x0019f0	early-owner four-byte CArray serializer	exact	100%; optimized natural pinned-header emission, unique game vtable, and no SP2 archive provider
+archive-container	0x023930	early-owner WORD CArray serializer	exact	100%; exact two-byte stride and natural pinned-header emission
+archive-container	0x023d40	early-owner four-byte value CArray serializer	exact	100%; distinct game vtable and natural pinned-header emission
+archive-container	0x024150	early-owner constructed 0x10-byte CArray serializer	exact	100%; placement construction topology and natural pinned-header emission
+archive-container	0x0245c0	early-owner four-byte reference CArray serializer	exact	100%; distinct game vtable and natural pinned-header emission
+archive-container	0x024fb0	WORD-to-DWORD by-value CMap serializer	exact	100%; exact node offsets, raw key/value widths, and natural pinned-header emission
+archive-container	0x0256f0	WORD-to-DWORD by-reference CMap serializer	exact	100%; load-side address passing and natural pinned-header emission
+archive-container	0x025be0	CString-record CArray serializer	reconstructed	99.92%; masked bytes identical; only unclaimed constructor/destructor/ConstructElements referent identities remain
+archive-container	0x0260a0	early-owner four-byte token CArray serializer	exact	100%; distinct game vtable and natural pinned-header emission
 archive-container	0x11ae60	four-byte collection-handle CArray serializer	reconstructed	99.87%; natural pinned-header emission, generic SetSize referent residual
 archive-container	0x11b090	WORD CList serializer	reconstructed	99.91%; natural pinned-header emission, generic AddTail referent residual
 archive-container	0x11b240	by-value map-value CList serializer	reconstructed	99.91%; natural pinned-header emission, generic AddTail referent residual

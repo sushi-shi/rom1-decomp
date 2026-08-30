@@ -103,6 +103,13 @@ residuals. Player has identical call/control-flow/relocation topology with a
 local-slot scheduling difference; Human is relocation-masked identical and
 retains only an unclaimed literal plus an archive-ambiguous MFC call identity.
 
+The early game-owned container band at `0x0019f0` and
+`0x023930`-`0x0260a0` is drained as well. Eight of its nine natural pinned-MFC
+template emissions are byte-exact. The remaining 0x24-byte CString-record
+array serializer is 99.92% with relocation-masked bytes identical; only three
+unclaimed game lifecycle-helper identities remain. The SP2 archive census has
+no exact provider for these bodies, so none is attributed to a static library.
+
 The vtable catalog joins two independent executable witnesses: 417 tables from
 relocated text-pointer runs split by RTTI/code vptr references, plus eight
 `GetRuntimeClass` tables whose first relocation site was absent from the

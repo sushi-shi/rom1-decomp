@@ -392,6 +392,28 @@ zero disagreements over 38,399 call/state checks and 4,094 raw-word checks.
 The Rust parser additionally rejects truncated count prefixes, truncated word
 arrays, size overflow, and undersized writer output.
 
+## Early game archive containers
+
+Nine slot-2 serializers at `0x0019f0` and `0x023930`-`0x0260a0` are natural
+VC5 SP2 `CArray` and `CMap` emissions selected by game-owned container types.
+Their distinct vtables are installed and destroyed by the large early owner;
+the pinned archive census contains no exact provider for any body. This makes
+them game template emissions, not copied MFC/static-library implementations.
+
+Retail proves arrays over a `WORD`, four distinct opaque DWORD-sized types, a
+constructed 0x10-byte record, and a 0x24-byte record with a `CString` prefix.
+The two maps both store a `WORD` key and DWORD value, while their load call
+shapes distinguish by-value from by-reference template arguments. Eight
+serializers are byte-exact. The 0x24-byte record serializer at `0x025be0` is
+99.92% with identical relocation-masked bytes and instruction, call, branch,
+return, and relocation counts; only the still-unclaimed record lifecycle
+helper identities at `0x027810`, `0x027bc0`, and `0x055e40` remain.
+
+The first serializer is the optimized exception and matches under the normal
+game C++ profile. The other eight share retail's `/Od /Ob1` call/control-flow
+shape, including the constructed record's placement-new branches. Keeping the
+two source units separate preserves that executable-proven TU distinction.
+
 ## MFC archive arrays
 
 The four slot-2 bodies at `0x049700`, `0x0498d0`, `0x049ba0`, and `0x049ca0`

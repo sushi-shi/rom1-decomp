@@ -3,15 +3,15 @@
 # Manually maintained after bootstrap. Never replace this wall from generated output;
 # review additions/removals and their source/static-library disposition explicitly.
 rva	signals	status	note
-0x0019f0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x023930	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x023d40	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x024150	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x0245c0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x024fb0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x0256f0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x025be0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x0260a0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x0019f0	archive-read,archive-vslot2,archive-write	reconstructed	exact optimized game-owned four-byte CArray serializer; natural pinned-header emission; 100%
+0x023930	archive-read,archive-vslot2,archive-write	reconstructed	exact game-owned WORD CArray serializer; natural pinned-header emission; 100%
+0x023d40	archive-read,archive-vslot2,archive-write	reconstructed	exact game-owned four-byte CArray serializer; natural pinned-header emission; 100%
+0x024150	archive-read,archive-vslot2,archive-write	reconstructed	exact game-owned 0x10-byte constructed-record CArray serializer; natural pinned-header emission; 100%
+0x0245c0	archive-read,archive-vslot2,archive-write	reconstructed	exact game-owned four-byte CArray serializer; natural pinned-header emission; 100%
+0x024fb0	archive-read,archive-vslot2,archive-write	reconstructed	exact game-owned WORD-to-DWORD by-value CMap serializer; natural pinned-header emission; 100%
+0x0256f0	archive-read,archive-vslot2,archive-write	reconstructed	exact game-owned WORD-to-DWORD by-reference CMap serializer; natural pinned-header emission; 100%
+0x025be0	archive-read,archive-vslot2,archive-write	reconstructed	source-complete game-owned 0x24-byte CString-record CArray serializer; 99.92%, masked bytes identical; sole residual is unclaimed lifecycle-helper identities
+0x0260a0	archive-read,archive-vslot2,archive-write	reconstructed	exact game-owned four-byte CArray serializer; natural pinned-header emission; 100%
 0x0296f0	file-write	reconstructed	exact game-owned CBmp64k BMP writer and exact packed-16-to-24-bit support conversion; 100%
 0x036a70	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x03a2a7	stdio-read	target	initial retail call/vtable census

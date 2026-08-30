@@ -41,6 +41,8 @@ bytehuffmannode	1	1
 characterslots	2	1
 dib	15	12
 directxexception	1	0
+earlyarchivecontainers	8	7
+earlyarchivehandle	1	1
 gamebitmap	2	2
 itemnames	11	3
 lldriver	2	1
@@ -271,6 +273,15 @@ dib	?Read@CDib@@QAEHPAVCFile@@@Z	100.0000	100.0000	1	bb0139b1b93c	0x4b710	100.00
 dib	?Serialize@CDib@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	ea5a9eb7ea23	0x4b950	100.0000	
 dib	?Write@CDib@@QAEHPAVCFile@@@Z	95.8518	95.8518	2	f265d2a72d1b	0x4b860	95.8518	
 directxexception	??0CDirectXException@@QAE@PBD@Z	99.7727	99.7727	1	990ce6d30b3f	0x54860	99.7727	
+earlyarchivecontainers	?Serialize@?$CArray@GG@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:2ab207b5a03e	0x23930	100.0000	
+earlyarchivecontainers	?Serialize@?$CArray@UCEarlyArchiveBlock@@AAU1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:2ab207b5a03e	0x24150	100.0000	
+earlyarchivecontainers	?Serialize@?$CArray@UCEarlyArchiveReference@@U1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:2ab207b5a03e	0x245c0	100.0000	
+earlyarchivecontainers	?Serialize@?$CArray@UCEarlyArchiveToken@@U1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:2ab207b5a03e	0x260a0	100.0000	
+earlyarchivecontainers	?Serialize@?$CArray@UCEarlyArchiveValue@@U1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:2ab207b5a03e	0x23d40	100.0000	
+earlyarchivecontainers	?Serialize@?$CArray@VCEarlyArchiveTextRecord@@AAV1@@@UAEXAAVCArchive@@@Z	99.9191	99.9191	1	cpp:2ab207b5a03e	0x25be0	99.9191	
+earlyarchivecontainers	?Serialize@?$CMap@GAAGKAAK@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:2ab207b5a03e	0x256f0	100.0000	
+earlyarchivecontainers	?Serialize@?$CMap@GGKK@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:2ab207b5a03e	0x24fb0	100.0000	
+earlyarchivehandle	?Serialize@?$CArray@UCEarlyArchiveHandle@@U1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:95379cf5f307	0x19f0	100.0000	
 gamebitmap	?ConvertBitmap16To24@@YAXPBGPAEH@Z	100.0000	100.0000	2	b3cd683e1b3d	0x29260	100.0000	
 gamebitmap	?WriteBmp@CBmp64k@@QAEXPBDPAVCGameBitmap@@@Z	100.0000	100.0000	2	04381263ed04	0x296f0	100.0000	
 itemnames	??0CTextBlock@@QAE@XZ	99.2857	99.2857	1	1ad7b9faaa1e	0x68640	99.2857	
@@ -284,8 +295,8 @@ itemnames	?Load@CTextBlock@@QAEXPBD@Z	87.6294	87.6294	1	4b7a48481184	0x68660	87.
 itemnames	?LoadItemNames@@YAXXZ	98.7692	98.7692	1	efb5ef2a8a0d	0x68490	98.7692	
 itemnames	?Release@CTextBlock@@QAEXXZ	92.0513	89.3590	1	9454a0d597f2	0x68890	92.0513	
 itemnames	?Serialize@CTextPointerVector@@UAEXAAVCArchive@@@Z	81.4384	81.4384	1	3787a2781c2d	0x69390	81.4384	
-lldriver	?AppendConnectionInfo@CLlDriver@@QAEPAUCConnectionInfo@@XZ	100.0000	100.0000	1	2dca83404cb3	0xeb323	100.0000	
-lldriver	?LoadIpConnectionInfo@CLlDriver@@QAEXXZ	99.4393	99.4393	1	0c447ab3615a	0xeba39	99.4393	
+lldriver	?AppendConnectionInfo@CLlDriver@@QAEPAUCConnectionInfo@@XZ	100.0000	100.0000	2	b8b3579db037	0xeb323	100.0000	
+lldriver	?LoadIpConnectionInfo@CLlDriver@@QAEXXZ	99.4393	99.4393	2	86325efc008f	0xeba39	99.4393	
 pixmap	??0CPixMap@@QAE@AAVCString@@@Z	100.0000	100.0000	1	4298753aed7b	0x8d210	100.0000	
 pixmap	??0CPixMap@@QAE@XZ	100.0000	100.0000	1	4298753aed7b	0x8d1e0	100.0000	
 pixmap	??1CPixMap@@QAE@XZ	100.0000	100.0000	1	2730ab7cdeab	0x8d250	100.0000	

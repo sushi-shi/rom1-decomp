@@ -12,6 +12,7 @@ cpp-rtti-noeh = ["/nologo", "/c", "/O2", "/MT", "/GR"]
 cpp-noeh      = ["/nologo", "/c", "/O2", "/MT"]
 cpp-od        = ["/nologo", "/c", "/Od", "/MT", "/GX"]
 cpp-od-noeh   = ["/nologo", "/c", "/Od", "/MT"]
+cpp-od-ob1     = ["/nologo", "/c", "/Od", "/Ob1", "/MT", "/GX"]
 
 [[unit]]
 unit = "smackerplayer"
@@ -176,4 +177,14 @@ flags = "cpp"
 [[unit]]
 unit = "textureresourcecontainers"
 source = "src/Serialization/TextureResourceContainers.cpp"
+flags = "cpp"
+
+[[unit]]
+unit = "earlyarchivecontainers"
+source = "src/Serialization/EarlyArchiveContainers.cpp"
+flags = "cpp-od-ob1"
+
+[[unit]]
+unit = "earlyarchivehandle"
+source = "src/Serialization/EarlyArchiveHandle.cpp"
 flags = "cpp"
