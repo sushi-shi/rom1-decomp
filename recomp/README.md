@@ -44,6 +44,11 @@ recomp/harness/build.sh dibmetricsrun dib
 wine recomp/harness/dibmetricsrun.exe "$ROM1_EXE" config/retail/relocs.tsv
 ```
 
+It compares null and randomized dimensions, all supported palette bit depths
+plus invalid defaults, explicit `biClrUsed` overrides, DWORD-aligned scanline
+sizes, explicit `biSizeImage` overrides, and the derived palette offset. The
+retail methods need no import or allocator patches.
+
 The PPM harness performs both ASCII P3 and binary P6 loads through retail and
 the reconstruction, then compares parser state and every decoded byte:
 
@@ -53,7 +58,20 @@ recomp/harness/build.sh pixmaprun pixmap directxexception
 wine recomp/harness/pixmaprun.exe "$ROM1_EXE" config/retail/relocs.tsv
 ```
 
-It compares null and randomized dimensions, all supported palette bit depths
-plus invalid defaults, explicit `biClrUsed` overrides, DWORD-aligned scanline
-sizes, explicit `biSizeImage` overrides, and the derived palette offset. The
-retail methods need no import or allocator patches.
+The item-name harness executes retail's complete `LoadItemNames` loop on 2,050
+fabricated raw files. It replaces only resource I/O, allocation, text lookup,
+and map insertion edges, then checks every requested byte count and assignment:
+
+```sh
+recomp/harness/build.sh itemnamesrun
+wine recomp/harness/itemnamesrun.exe "$ROM1_EXE" config/retail/relocs.tsv
+```
+
+The adjacent archive-pointer harness executes the game-owned vector serializer
+in both `CArchive` modes across empty, retained-capacity, heuristic-growth,
+explicit-growth, and shrink-to-zero states:
+
+```sh
+recomp/harness/build.sh archiveptrrun
+wine recomp/harness/archiveptrrun.exe "$ROM1_EXE" config/retail/relocs.tsv
+```

@@ -419,6 +419,14 @@ class ConstantControls(unittest.TestCase):
         self.assertEqual(len(errors), 1)
         self.assertIn("requires --driver-mode=cl", errors[0])
 
+    def test_default_flags_select_clang_metadata_header_path(self):
+        from rom1.verify import constants
+        entry = {"file": "src/Probe.cpp",
+                 "arguments": ["clang-cl", "/c", "src/Probe.cpp", "/TP"]}
+        flags = constants._flags(entry)
+        self.assertIn("--driver-mode=cl", flags)
+        self.assertIn("/DROM1_EMIT_META", flags)
+
 
 class LabelStyleControls(unittest.TestCase):
     def _scan(self, text):

@@ -7,8 +7,10 @@
 
 #![no_std]
 
+pub mod archive_pointer_words;
 pub mod bmp;
 pub mod byte_huffman;
+pub mod item_names;
 pub mod ppm;
 pub mod word_rle;
 

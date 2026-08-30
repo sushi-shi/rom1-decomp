@@ -644,6 +644,10 @@ rva	name	lib	confidence	source
 0x171636	?RemoveAt@CByteArray@@QAEXHH@Z	NAFXCW.LIB	HIGH	fid-census:70a8d16f09bf:$NW/array_b.obj:6f36433374b0
 0x171668	?InsertAt@CByteArray@@QAEXHPAV1@@Z	NAFXCW.LIB	HIGH	fid-census:70a8d16f09bf:$NW/array_b.obj:6f36433374b0
 0x1716ad	?Serialize@CByteArray@@UAEXAAVCArchive@@@Z	NAFXCW.LIB	HIGH	fid-census:70a8d16f09bf:$NW/array_b.obj:6f36433374b0
+0x1719d6	??0CMapWordToPtr@@QAE@H@Z	NAFXCW.LIB	HIGH	manual-context:CMapWordToPtr-vtable-0x19cfb4:$NW/map_wp.obj:a469108aa4a5
+0x171a8a	??1CMapWordToPtr@@UAE@XZ	NAFXCW.LIB	HIGH	manual-context:CMapWordToPtr-vtable-0x19cfb4:$NW/map_wp.obj:a469108aa4a5
+0x171b56	?Lookup@CMapWordToPtr@@QBEHGAAPAX@Z	NAFXCW.LIB	HIGH	manual-context:CMapWordToPtr-global-0x1eb368:$NW/map_wp.obj:a469108aa4a5
+0x171b78	??ACMapWordToPtr@@QAEAAPAXG@Z	NAFXCW.LIB	HIGH	manual-context:CMapWordToPtr-vtable-0x19cfb4:$NW/map_wp.obj:a469108aa4a5
 0x171d0c	?RemoveAll@CMapStringToString@@QAEXXZ	NAFXCW.LIB	HIGH	fid-census:70a8d16f09bf:$NW/map_ss.obj:7e4aa9a53100
 0x171d99	?NewAssoc@CMapStringToString@@IAEPAUCAssoc@1@XZ	NAFXCW.LIB	HIGH	fid-census:70a8d16f09bf:$NW/map_ss.obj:7e4aa9a53100
 0x171e09	?FreeAssoc@CMapStringToString@@IAEXPAUCAssoc@1@@Z	NAFXCW.LIB	HIGH	fid-census:70a8d16f09bf:$NW/map_ss.obj:7e4aa9a53100

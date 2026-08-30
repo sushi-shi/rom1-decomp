@@ -67,3 +67,13 @@ flags = "cpp"
 unit = "directxexception"
 source = "src/DirectX/DirectXException.cpp"
 flags = "cpp"
+
+[[unit]]
+unit = "itemnames"
+source = "src/Text/ItemNames.cpp"
+flags = "cpp"
+
+[[unit]]
+unit = "resourcefile"
+source = "src/Io/ResourceFile.cpp"
+flags = "cpp"

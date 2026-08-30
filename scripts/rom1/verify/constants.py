@@ -74,7 +74,11 @@ class Site:
 def _flags(entry: dict) -> list[str]:
     args = list(entry.get("arguments") or entry["command"].split())
     src = entry["file"]
-    out = ["--driver-mode=cl"]
+    # Keep every libclang consumer on the same source dialect as metadata
+    # extraction.  Vendor headers may use ROM1_EMIT_META to replace constructs
+    # that VC5 accepts but Clang cannot parse; the retail compiler never sees
+    # this define.
+    out = ["--driver-mode=cl", "/DROM1_EMIT_META"]
     for arg in args[1:]:
         if arg == "/c" or arg == src or arg.endswith(src):
             continue

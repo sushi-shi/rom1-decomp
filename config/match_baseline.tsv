@@ -34,7 +34,9 @@ bytehuffman	16	15
 bytehuffmannode	1	1
 dib	8	6
 directxexception	1	0
+itemnames	10	3
 pixmap	9	6
+resourcefile	4	1
 scenarioconfig	1	1
 smackerplayer	7	7
 wordrle	2	2
@@ -78,6 +80,16 @@ dib	?MakePalette@CDib@@QAEHXZ	100.0000	100.0000	2	bf0f647813a0	0x4b360	100.0000
 dib	?Read@CDib@@QAEHPAVCFile@@@Z	100.0000	100.0000	1	bb0139b1b93c	0x4b710	100.0000	
 dib	?Write@CDib@@QAEHPAVCFile@@@Z	95.8518	95.8518	2	f265d2a72d1b	0x4b860	95.8518	
 directxexception	??0CDirectXException@@QAE@PBD@Z	99.7727	99.7727	1	990ce6d30b3f	0x54860	99.7727	
+itemnames	??0CTextBlock@@QAE@XZ	99.2857	99.2857	1	1ad7b9faaa1e	0x68640	99.2857	
+itemnames	??0CTextPointerVector@@QAE@XZ	99.3750	99.3750	1	b5dff990f87a	0x69310	99.3750	
+itemnames	??1CTextBlock@@UAE@XZ	99.4444	99.4444	1	a06c7abfbab2	0x38850	99.4444	
+itemnames	??1CTextPointerVector@@UAE@XZ	99.5652	99.5652	1	272895c0e287	0x69330	99.5652	
+itemnames	??ACTextBlock@@QAEPADH@Z	100.0000	100.0000	1	542917515cf0	0x68900	100.0000	
+itemnames	??_GCTextBlock@@UAEPAXI@Z	100.0000	100.0000	1	cpp:2104dda7de8a	0x388a0	100.0000	
+itemnames	??_GCTextPointerVector@@UAEPAXI@Z	100.0000	100.0000	1	cpp:2104dda7de8a	0x69520	100.0000	
+itemnames	?LoadItemNames@@YAXXZ	98.7692	98.7692	1	efb5ef2a8a0d	0x68490	98.7692	
+itemnames	?Release@CTextBlock@@QAEXXZ	92.0513	92.0513	1	9454a0d597f2	0x68890	92.0513	
+itemnames	?Serialize@CTextPointerVector@@UAEXAAVCArchive@@@Z	81.4384	81.4384	1	3787a2781c2d	0x69390	81.4384	
 pixmap	??0CPixMap@@QAE@AAVCString@@@Z	100.0000	100.0000	1	4298753aed7b	0x8d210	100.0000	
 pixmap	??0CPixMap@@QAE@XZ	100.0000	100.0000	1	4298753aed7b	0x8d1e0	100.0000	
 pixmap	??1CPixMap@@QAE@XZ	100.0000	100.0000	1	2730ab7cdeab	0x8d250	100.0000	
@@ -87,6 +99,10 @@ pixmap	?Load@CPixMap@@QAEXAAVCString@@@Z	99.8684	99.8684	1	94f3886c1272	0x8d330	
 pixmap	?LoadBMP@CPixMap@@AAEHAAVCString@@@Z	100.0000	100.0000	1	797728b01c2a	0x8d5e0	100.0000	
 pixmap	?LoadPCX@CPixMap@@AAEHAAVCString@@@Z	100.0000	100.0000	1	b0615ba4f70b	0x8d5d0	100.0000	
 pixmap	?LoadPPM@CPixMap@@AAEHAAVCString@@@Z	99.8288	99.8288	1	b7f5d538c120	0x8d430	99.8288	
+resourcefile	??0CResourceFile@@QAE@XZ	99.3750	99.3750	1	a22371826197	0xc9dd0	99.3750	
+resourcefile	??1CResourceFile@@UAE@XZ	99.7500	99.7500	1	843865048dfa	0xc9e80	99.7500	
+resourcefile	?Close@CResourceFile@@UAEXXZ	100.0000	100.0000	1	49b9c5d60f50	0xca1d0	100.0000	
+resourcefile	?Release@CResourceManager@@QAEXPAVCObject@@@Z	98.1579	98.1579	1	286b758a1453	0xc9d80	98.1579	
 scenarioconfig	?GetMissionObjectCount@@YGHH@Z	100.0000	100.0000	2	611c81017e31	0x878a0	100.0000	
 smackerplayer	??0CSmackerBuffers@@QAE@XZ	100.0000	100.0000	1	95153d343e47	0xae650	100.0000	
 smackerplayer	??0CSmackerPlayer@@QAE@XZ	100.0000	100.0000	1	8d175536bb86	0xae6c0	100.0000	

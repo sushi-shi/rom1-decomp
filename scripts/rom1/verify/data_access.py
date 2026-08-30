@@ -825,7 +825,7 @@ def injection_plans(spine, accesses):
     claim set only; src/ is never touched."""
     layout = spine.layout
     claims, starts = spine.claims, spine.starts
-    per, width_eligible, fpu, scale, wrote = (
+    per, width_eligible, fpu, scale, engine_wrote = (
         defaultdict(Counter), defaultdict(Counter), defaultdict(Counter),
         defaultdict(Counter), defaultdict(set))
     for a in accesses:
@@ -842,8 +842,9 @@ def injection_plans(spine, accesses):
             fpu[c.rva][(a.target_rva - c.rva, a.fpu)] += 1
         if a.form == "indexed" and a.scale and a.target_rva == c.rva:
             scale[c.rva][a.scale] += 1
-        if "w" in a.rw:
-            wrote[c.rva].add(a.target_rva - c.rva)
+        if "w" in a.rw and a.owner is not None \
+                and not spine.is_library_fn(a.owner):
+            engine_wrote[c.rva].add(a.target_rva - c.rva)
 
     def pick(pred):
         return next((c for c in claims if pred(c)), None)
@@ -895,8 +896,12 @@ def injection_plans(spine, accesses):
                                    "m": [[0, ".m_second", prim(_TY[b], b)],
                                          [4, ".m_first", prim(_TY[a], a)]]})]
         plans.append(("swap", "width", c, _swap))
+    # The tail must be written by a known engine body. Otherwise _run_kind
+    # deliberately classifies a run reached only from LOW/unclaimed code as
+    # possible library storage, so selecting it would test that suppression
+    # rather than the unclaimed-data detector.
     c = pick(lambda c: c.extent >= 16
-             and any(o >= c.extent // 2 for o in wrote[c.rva]))
+             and any(o >= c.extent // 2 for o in engine_wrote[c.rva]))
     if c:
         plans.append(("halve", "unclaimed", c,
                       lambda c: [clone(c, extent=c.extent // 2)]))

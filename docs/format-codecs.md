@@ -147,6 +147,59 @@ grammar and successful unknown-magic no-op while rejecting truncated input,
 invalid dimensions, 32-bit allocation overflow, and undersized output that
 would make the original consume or expose unsafe memory.
 
+## Item-name ID table
+
+`LoadItemNames` at `0x068490` opens `main\\text\\itemname.bin`. The file is a
+headerless sequence rather than a general text container:
+
+```text
+u16 item_id[]  // little endian; file position is the text-block index
+```
+
+Retail computes `item_count = file_length >> 1`, allocates and reads exactly
+`item_count * 2` bytes, and ignores one odd trailing byte. For each entry it
+looks up the string at the same zero-based position in the already-loaded
+item-name text block and assigns that pointer to the word-keyed global map.
+Duplicate IDs therefore issue duplicate map assignments in file order, with
+the final pointer retained by the real map.
+
+The loader is 98.77% and instruction-aligned. Its remaining comparison residue
+is the provisional identity of the game-owned resource-file methods; the
+loader's exact callees, count arithmetic, loop, globals, and map operation are
+all located. The mapped-retail oracle executes 2,050 fabricated inputs and
+reports zero disagreements over 18,450 file/control checks and 1,046,842
+key/value assignment checks. The allocator-free Rust view exposes complete
+little-endian IDs, the consumed byte count, and the ignored tail explicitly;
+its canonical writer never emits an odd tail.
+
+## CArchive raw pointer vector
+
+The game-owned 20-byte vector at `0x5eb328` has the same data/size/max/growth
+layout and resize policy as the contemporary MFC pointer array, but its
+`0x599630` vtable has the game class's own runtime identity. Its serializer at
+`0x069390` is bidirectional:
+
+```text
+count < 0xffff: u16 count
+otherwise:      u16 0xffff, u32 count
+u32 pointer_word[count]
+```
+
+The count prefix is the 32-bit MFC `CArchive::WriteCount` format. After it,
+retail passes the pointer array directly to `CArchive::Write` or `Read`. These
+words are process addresses, not stable string IDs; the Rust codec preserves
+them as raw little-endian `u32` values and deliberately labels the format as
+an address snapshot.
+
+The reconstructed serializer has the exact `0x188` retail extent and an
+81.44% fuzzy score. Its call sequence, constants, archive-mode branches, and
+semantics agree; residual instructions are concentrated in VC5 register
+scheduling for the inlined resize routine. The mapped-retail oracle exercises
+2,048 randomized store/load pairs across every allocation state and reports
+zero disagreements over 38,399 call/state checks and 4,094 raw-word checks.
+The Rust parser additionally rejects truncated count prefixes, truncated word
+arrays, size overflow, and undersized writer output.
+
 ## Located next families
 
 The campaign roster in `config/retail/serde.tsv` records high-confidence

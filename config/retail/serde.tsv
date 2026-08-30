@@ -47,3 +47,5 @@ pixmap-ppm	0x08d330	dispatch format loader	near-exact	99.87%; instructions align
 pixmap-ppm	0x08d430	parse P3/P6 PPM pixels	near-exact	99.83%; instructions align + mapped oracle agrees
 pixmap-ppm	0x08d5d0	PCX loader success stub	exact	retail body + dispatcher arm
 pixmap-ppm	0x08d5e0	BMP loader success stub	exact	retail body + dispatcher arm
+item-name-ids	0x068490	load raw little-endian item IDs	near-exact	98.77%; itemname.bin string + text/map xrefs + mapped oracle
+archive-pointer-words	0x069390	bidirectional CArchive raw pointer vector	near-exact	81.44%; exact 0x188 extent + WriteCount/ReadCount and raw Write/Read xrefs + mapped oracle
