@@ -594,6 +594,8 @@ rva	name	lib	confidence	source
 0x16f35b	?Mid@CString@@QBE?AV1@HH@Z	NAFXCW.LIB	HIGH	fid-census:70a8d16f09bf:$NW/strex.obj:327cb6936b11
 0x16f3e6	?Right@CString@@QBE?AV1@H@Z	NAFXCW.LIB	HIGH	fid-census:70a8d16f09bf:$NW/strex.obj:327cb6936b11
 0x16f463	?Left@CString@@QBE?AV1@H@Z	NAFXCW.LIB	HIGH	fid-census:70a8d16f09bf:$NW/strex.obj:327cb6936b11
+0x16f4da	?SpanIncluding@CString@@QBE?AV1@PBD@Z	NAFXCW.LIB	HIGH	manual-context: exact 0x2a SP2 strex.obj pair; retail call to uniquely identified __mbsspn selects SpanIncluding
+0x16f504	?SpanExcluding@CString@@QBE?AV1@PBD@Z	NAFXCW.LIB	HIGH	manual-context: exact 0x2a SP2 strex.obj pair; retail call to uniquely identified __mbscspn selects SpanExcluding
 0x16f56e	?FormatV@CString@@IAEXPBDPAD@Z	NAFXCW.LIB	HIGH	fid-census:70a8d16f09bf:$NW/strex.obj:327cb6936b11
 0x16f814	?Format@CString@@QAAXPBDZZ	NAFXCW.LIB	HIGH	fid-census:70a8d16f09bf:$NW/strex.obj:327cb6936b11
 0x16f827	?Format@CString@@QAAXIZZ	NAFXCW.LIB	HIGH	fid-census:70a8d16f09bf:$NW/strex.obj:327cb6936b11

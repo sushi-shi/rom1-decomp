@@ -241,6 +241,7 @@ spell-effect	0x100efc	PointEffect serializer	exact	100%; typed object plus defer
 spell-effect	0x100fa5	AreaEffect serializer	exact	100%; four BYTE, WORD, and object field order
 spell-effect	0x101148	Effect typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
 spell-effect	0x102b3e	Effect_DirectDamage typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
+spell-text	0x10385d	parse leading signed decimal text	exact	100%; leading-character span, in-place CString update, and sscanf decimal conversion
 spell-effect	0x10418a	Building typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
 spell-effect	0x104825	Building serializer	exact	100%; Token base, embedded record, scalar fields, and definition-array resolution
 spell-effect	0x104a3f	Outpost typed object reader	exact	100%; runtime-class record + CArchive::ReadObject

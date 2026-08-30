@@ -48,7 +48,7 @@ playerreference	1	1
 radialoffsettable	2	2
 referencerecords	21	15
 referencesnapshot	1	1
-referenceworld	16	15
+referenceworld	18	17
 resourcefile	6	3
 scenarioconfig	1	1
 scenarioobjectmap	1	0
@@ -269,8 +269,8 @@ dib	?Read@CDib@@QAEHPAVCFile@@@Z	100.0000	100.0000	1	bb0139b1b93c	0x4b710	100.00
 dib	?Serialize@CDib@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	ea5a9eb7ea23	0x4b950	100.0000	
 dib	?Write@CDib@@QAEHPAVCFile@@@Z	95.8518	95.8518	2	f265d2a72d1b	0x4b860	95.8518	
 directxexception	??0CDirectXException@@QAE@PBD@Z	99.7727	99.7727	1	990ce6d30b3f	0x54860	99.7727	
-gamebitmap	?ConvertBitmap16To24@@YAXPBGPAEH@Z	100.0000	100.0000	1	112ed6833913	0x29260	100.0000	
-gamebitmap	?WriteBmp@CBmp64k@@QAEXPBDPAVCGameBitmap@@@Z	100.0000	100.0000	1	2eb5f672bb56	0x296f0	100.0000	
+gamebitmap	?ConvertBitmap16To24@@YAXPBGPAEH@Z	100.0000	100.0000	2	b3cd683e1b3d	0x29260	100.0000	
+gamebitmap	?WriteBmp@CBmp64k@@QAEXPBDPAVCGameBitmap@@@Z	100.0000	100.0000	2	04381263ed04	0x296f0	100.0000	
 itemnames	??0CTextBlock@@QAE@XZ	99.2857	99.2857	1	1ad7b9faaa1e	0x68640	99.2857	
 itemnames	??0CTextPointerVector@@QAE@XZ	99.3750	99.3750	1	b5dff990f87a	0x69310	99.3750	
 itemnames	??1CTextBlock@@UAE@XZ	99.4444	99.4444	1	a06c7abfbab2	0x38850	99.4444	
@@ -325,10 +325,12 @@ referenceworld	?First@CWorldObjectRegistry@@QAEPAVCWorldObject@@XZ	100.0000	100.
 referenceworld	?GetAt@?$CList@PAVCWorldObject@@PAV1@@@QAEAAPAVCWorldObject@@PAU__POSITION@@@Z	100.0000	100.0000	1	cpp:990c57503b0b	0x124060	100.0000	
 referenceworld	?GetData@CString@@IBEPAUCStringData@@XZ	100.0000	100.0000	1	cpp:990c57503b0b	0xc7c10	100.0000	
 referenceworld	?GetHead@?$CList@PAVCWorldObject@@PAV1@@@QAEAAPAVCWorldObject@@XZ	100.0000	100.0000	1	cpp:990c57503b0b	0x123ee0	100.0000	
+referenceworld	?GetLength@CString@@QBEHXZ	100.0000	100.0000	1	cpp:4f0a92616027	0xc7bf0	100.0000	
 referenceworld	?GetNext@?$CList@PAVCWorldObject@@PAV1@@@QAEAAPAVCWorldObject@@AAPAU__POSITION@@@Z	100.0000	100.0000	1	cpp:990c57503b0b	0x124030	100.0000	
 referenceworld	?IsEmpty@?$CList@PAVCWorldObject@@PAV1@@@QBEHXZ	100.0000	100.0000	1	cpp:990c57503b0b	0x123ec0	100.0000	
 referenceworld	?IsEmpty@CString@@QBEHXZ	100.0000	100.0000	1	cpp:990c57503b0b	0x114500	100.0000	
 referenceworld	?Next@CWorldObjectRegistry@@QAEPAVCWorldObject@@PAV2@@Z	100.0000	100.0000	1	07610ee15530	0x11b660	100.0000	
+referenceworld	?ParseDecimalInteger@@YAHPAVCString@@@Z	100.0000	100.0000	1	7207db05c860	0x10385d	100.0000	
 referenceworld	?ResetSeenTokenIds@@YAXXZ	100.0000	100.0000	1	ee4fd802844b	0xd9f44	100.0000	
 referenceworld	?Serialize@CReferenceWorld@@QAEXAAVCArchive@@@Z	100.0000	100.0000	2	20ea60bbed78	0xd0c97	100.0000	
 referenceworld	?WriteServerStateFile@CReferenceWorld@@QAEXXZ	100.0000	100.0000	1	5a6ce7d7b692	0xd15e2	100.0000	

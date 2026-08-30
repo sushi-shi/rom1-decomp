@@ -2,6 +2,7 @@
 
 #include <Serialization/ReferenceWorld.h>
 
+#include <stdio.h>
 #include <string.h>
 
 CWorldObjectRegistry* DATA(0x0020949c)
@@ -25,6 +26,12 @@ char g_scenarioDirectory[] = "Scenario\\";
 DATA(0x001c5ea8)
 char g_serverStateCountFormat[] = "\n%d\n";
 
+DATA(0x001c8114)
+char g_decimalCharacters[] = "+-1234567890";
+
+DATA(0x001c8124)
+char g_decimalFormat[] = "%d";
+
 // The storage and lifecycle belong to the main executable TU; this unit owns
 // only the server-state file user below.
 // clang-format off
@@ -32,6 +39,7 @@ DATA(0x001efd88) extern CString g_serverStatePath;
 // clang-format on
 
 RVA_COMPGEN(0x00047c10, 0x10, ??BCString@@QBEPBDXZ)
+RVA_COMPGEN(0x000c7bf0, 0x16, ?GetLength@CString@@QBEHXZ)
 RVA_COMPGEN(0x000c7c10, 0x13, ?GetData@CString@@IBEPAUCStringData@@XZ)
 
 RVA(0x000d0c97, 0x94b)
@@ -223,6 +231,18 @@ UINT CWorldObjectRegistry::CountUnattachedObjects() {
         object = Next(object);
     }
     return count;
+}
+
+RVA(0x0010385d, 0x92)
+int ParseDecimalInteger(CString* text) {
+    if (text->GetLength() == 0) {
+        return 0;
+    }
+
+    *text = text->SpanIncluding(g_decimalCharacters);
+    int value;
+    sscanf(*text, g_decimalFormat, &value);
+    return value;
 }
 
 RVA_COMPGEN(0x00114500, 0x1e, ?IsEmpty@CString@@QBEHXZ)

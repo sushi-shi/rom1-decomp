@@ -719,5 +719,18 @@ WORD-keyed map with a four-byte-aligned mapped value and a list with a
 four-byte value, respectively. Retail node offsets prove the map value's
 four-byte alignment; no MFC or other vendor implementation is reconstructed.
 
+The game-owned spell-text integer parser at `0x10385d` is byte-exact. An empty
+`CString` returns zero. Otherwise the parser replaces the input with its
+leading span of characters from `+-1234567890`, scans that shortened text with
+`%d`, and returns the resulting `int`. Retail does not initialize the result
+before `sscanf`, so sign-only and otherwise non-convertible accepted spans keep
+that original undefined-result behavior.
+
+The called `CString::SpanIncluding` body remains vendor code. The selected SP2
+archive contains an otherwise byte-colliding Including/Excluding pair, but the
+retail bodies call the independently identified `mbsspn` and `mbscspn`
+providers respectively. Those callee edges classify the two MFC functions in
+the static-library ledger; neither body is reproduced in game source.
+
 The remaining DIB/BMP paths are the mapped-file wrapper at `0x04afd0` and VFW
 compression at `0x04b4e0`.

@@ -125,7 +125,7 @@ rva	signals	status	note
 0x100fa5	archive-vslot2	reconstructed	exact byte/WORD/object serializer; slot-2 class=AreaEffect
 0x101148	archive-read	reconstructed	exact IMPLEMENT_SERIAL Effect typed reader
 0x102b3e	archive-read	reconstructed	exact IMPLEMENT_SERIAL Effect_DirectDamage typed reader
-0x10385d	stdio-read	target	initial retail call/vtable census
+0x10385d	stdio-read	reconstructed	exact game-owned decimal CString parser; pinned MFC SpanIncluding provider classified from its __mbsspn callee; 100%
 0x10418a	archive-read	reconstructed	exact IMPLEMENT_SERIAL Building typed reader
 0x104825	archive-vslot2	reconstructed	exact Token-derived Building definition/scalar serializer; slot-2 class=Building
 0x104a3f	archive-read	reconstructed	exact IMPLEMENT_SERIAL Outpost typed reader
