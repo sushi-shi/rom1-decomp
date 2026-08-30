@@ -12,6 +12,23 @@
 /binaries/
 /refs/
 
+# Local archival corpus and reverse-engineering databases. These are retained
+# beside the checkout for provenance work but are never public repository
+# inputs.
+*.zip
+*.rar
+*.iso
+*.bin
+*.cue
+*.img
+*.7z
+/extracted/
+/inventory/
+/logs/
+/ghidra_projects/
+*.gpr
+*.rep
+
 # Generated build / diff outputs: delinked COFF, synthesised PDBs, the objdiff
 # project, recompiled objects, and the Wine prefix.
 /build/
