@@ -426,6 +426,15 @@ retail calls `CArchive::IsStoring`, while the current unit expands that header
 primitive. The raw `Write`/`Read` contract and record extent are exact; no
 vendor implementation is reconstructed to force the call shape.
 
+The neighboring records at `0x139100` and `0x139210` serialize raw 0x94- and
+0x50-byte owners followed by the same separately allocated
+`CList<WORD, WORD>`. On load they delete the stale list, read the raw owner,
+allocate a replacement with block size ten, and dispatch its serializer. Both
+source forms score 31.37%; their common residual is an incomplete-TU
+inline/call-set difference covering `IsStoring`, the allocation thunk, and the
+list constructor. The list is a natural pinned-header template instantiation,
+not a reconstructed static-library implementation.
+
 The ANSI CString bytes are the exact VC5 SP2 `ARCCORE.CPP` grammar that the
 retail static-library operators implement:
 

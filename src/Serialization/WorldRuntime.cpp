@@ -9,6 +9,32 @@ CWorldRuntime::CWorldRuntime(CWorldMapData* mapData, CWorldObjectRegistry* regis
     (void)registry;
 }
 
+RVA(0x00139100, 0x10e)
+void CWordListRecordLarge::Serialize(CArchive& archive) {
+    if (archive.IsStoring()) {
+        archive.Write(this, sizeof(*this));
+        m_words->Serialize(archive);
+    } else {
+        delete m_words;
+        archive.Read(this, sizeof(*this));
+        m_words = new CList<WORD, WORD>;
+        m_words->Serialize(archive);
+    }
+}
+
+RVA(0x00139210, 0xf6)
+void CWordListRecordCompact::Serialize(CArchive& archive) {
+    if (archive.IsStoring()) {
+        archive.Write(this, sizeof(*this));
+        m_words->Serialize(archive);
+    } else {
+        delete m_words;
+        archive.Read(this, sizeof(*this));
+        m_words = new CList<WORD, WORD>;
+        m_words->Serialize(archive);
+    }
+}
+
 RVA(0x00139310, 0x40)
 void CPlayerArchiveBlock::Serialize(CArchive& archive) {
     if (archive.IsStoring()) {
