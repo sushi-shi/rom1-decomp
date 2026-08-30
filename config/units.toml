@@ -80,6 +80,11 @@ source = "src/Serialization/CharacterSlots.cpp"
 flags = "cpp"
 
 [[unit]]
+unit = "characterslotsave"
+source = "src/Serialization/CharacterSlotSave.cpp"
+flags = "cpp"
+
+[[unit]]
 unit = "directxexception"
 source = "src/Graphics/DirectXException.cpp"
 flags = "cpp"

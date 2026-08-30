@@ -1,3 +1,5 @@
 # data-tu-order baseline: ordinary-data defs that land inside another
-# TU's same-storage band. Empty before the first source TU is admitted.
+# TU's same-storage band (known scattered singletons / accepted homes).
+# Regenerate: python3 -m rom1.verify.data_tu_order --update
 # rva	name	owner_cpp	container_cpp	storage
+0x001efd88	g_serverStatePath	ReferenceWorld.cpp	CharacterSlotSave.cpp	bss

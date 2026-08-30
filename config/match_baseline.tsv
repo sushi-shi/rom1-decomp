@@ -38,7 +38,8 @@ archiveobjects	13	13
 butemgr	14	11
 bytehuffman	16	15
 bytehuffmannode	1	1
-characterslots	2	1
+characterslots	5	1
+characterslotsave	1	0
 dib	15	12
 directxexception	1	0
 earlyarchivecontainers	8	7
@@ -257,7 +258,11 @@ bytehuffman	?SaveStatistics@ByteHuffmanPacker@@QAEXPAVCFile@@@Z	100.0000	100.000
 bytehuffman	?Unpack@ByteHuffmanPacker@@QAEHPAIHPAEH@Z	100.0000	100.0000	2	b08f2cdc13d7	0xefa04	100.0000	
 bytehuffmannode	??0ByteHuffmanNode@@QAE@XZ	100.0000	100.0000	1	4c7484212058	0x1160d0	100.0000	
 characterslots	?CharacterFileName@CCharacterSlots@@QAE?AVCString@@H@Z	100.0000	100.0000	1	81287968c3ff	0x7a740	100.0000	
-characterslots	?RenameCurrentCharacter@CCharacterSlots@@QAEXPBD@Z	99.8857	99.8857	1	4994f802febe	0x7b250	99.8857	
+characterslots	?DeleteTemporaryCharacters@CCharacterSlots@@QAEXXZ	99.9635	99.9635	1	05d3574206fb	0x7abc0	99.9635	
+characterslots	?LoadCharacter@CCharacterSlots@@QAEXH@Z	98.1320	98.1039	1	49a9bda605e4	0x7ada0	98.1320	
+characterslots	?RefreshCharacters@CCharacterSlots@@QAEXXZ	99.8120	99.8120	1	5f596851b3d7	0x7a800	99.8120	
+characterslots	?RenameCurrentCharacter@CCharacterSlots@@QAEXPBD@Z	99.9286	99.9286	1	4994f802febe	0x7b250	99.9286	
+characterslotsave	?SaveCharacter@CCharacterSlots@@QAEXPAVCWordArray@@@Z	91.0375	91.0375	1	bc56e424c4fd	0x7b760	91.0375	
 dib	??0CDib@@QAE@XZ	100.0000	100.0000	1	e2a1d93fa919	0x4adf0	100.0000	
 dib	??1CDib@@UAE@XZ	99.7222	99.7222	1	ccf6e743bd5e	0x4af50	99.7222	
 dib	??5@YGAAVCArchive@@AAV0@AAPAVCDib@@@Z	100.0000	100.0000	1	2f7b2c3caa17	0x4add0	100.0000	

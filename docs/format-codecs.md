@@ -686,6 +686,27 @@ aligned. Its only reported difference is the same pinned-SP2 FID ambiguity for
 the vendor `CString::operator=(LPCSTR)` body at `0x172f92`; that vendor body is
 not reconstructed or claimed.
 
+The surrounding character-slot persistence cluster is now reconstructed as
+well. `0x07a800` scans `game????.chr`, validates the `AlCh` signature and
+revision, and inserts accepted names and numeric file IDs in descending
+`FILETIME` order; mismatched-revision IDs remain reserved. `0x07abc0` reads the
+signature and flags and deletes files marked incomplete but not special. Both
+source forms are relocation-masked byte-identical at 99.8120% and 99.9635%;
+their residuals are anonymous retail identities for MFC/header-selected
+helpers, not copied vendor bodies.
+
+`0x07ada0` and `0x07b760` are the paired fixed-layout loader and writer. The
+stream contains the signature, two fixed names, two flag DWORDs, overlapping
+slot records, fixed `CUnit` blocks, twelve optional game-owned detail objects,
+and a counted `CWordArray`. Loading restores four packed statistics, clamps
+values above 24 to `-1`, rebuilds incomplete details, and attaches the unit to
+the world map. Saving performs the retail registry and `ALLODS` volume check,
+packs those statistics, selects supplied or default WORD data, and writes the
+inverse stream. The loader scores 98.1320% with one local schedule residual;
+the writer scores 91.0375% with register/control scheduling residue. Their
+remaining direct game callees have no admitted retail symbol identity, so the
+typed source names remain working evidence rather than promoted retail truth.
+
 The neighboring records at `0x139100` and `0x139210` serialize raw 0x94- and
 0x50-byte owners followed by the same separately allocated
 `CList<WORD, WORD>`. On load they delete the stale list, read the raw owner,

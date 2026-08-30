@@ -26,8 +26,12 @@ save-game	0x0cee6f	write save wrapper	located	exact envelope writes + word-RLE e
 save-game	0x0cf1ee	read save wrapper	located	signed version floor + ignored declared length + mapped oracle + safe Rust parser
 character	0x0cf4f0	write .chr wrapper	located	chr path strings + 16-byte metadata + word-RLE/even-pad Rust writer
 character	0x0cf8b8	read .chr wrapper	located	packet/file caller xrefs + exact metadata/RLE extents + mapped oracle + safe Rust parser
+character-slot	0x07a800	scan and sort .chr roster	reconstructed	99.81%; source-complete game????.chr scan, revision filter, descending FILETIME insertion, and reserved-slot capture; relocation-masked bytes identical
+character-slot	0x07abc0	delete incomplete temporary .chr files	reconstructed	99.96%; source-complete signature/flag filter and deletion pass; relocation-masked bytes identical
+character-slot	0x07ada0	load current .chr slot	reconstructed	98.13%; source-complete fixed-block, detail-object, WORD-array, statistic, and world-unit restoration stream; local scheduling and anonymous-helper residue
 character-slot	0x07b250	update current .chr display name	near-exact	99.89%; game-owned CMainWindow-embedded owner, exact gameNNNN.chr formatter, 32-byte write at file offset 12; sole residual is FID-ambiguous vendor CString referent
 bitmap	0x0296f0	write CBmp64k pixels and optional plane	exact	100%; raw BMP headers, chunked 16-to-24-bit expansion, and optional width-by-height auxiliary bytes
+character-slot	0x07b760	write current .chr slot	reconstructed	91.04%; source-complete inverse stream with registry/volume preflight, optional WORD data, detail objects, and fixed unit records; register/control and anonymous-helper residue
 scenario	0x0d0c97	bidirectional CArchive serializer	exact	100%; exact 0x94b extent + 112 ordered relocations + save/load wrapper calls
 server-state	0x0d15e2	write configured state file	exact	100%; writes the saved state line followed by the unattached-world-object count
 string-record-file	0x0d1783	read four-line text records	reconstructed	99.63%; joins the first two lines with byte 0x01 and discards the next two; sole residual is the ambiguous exact CRT strcpy provider label

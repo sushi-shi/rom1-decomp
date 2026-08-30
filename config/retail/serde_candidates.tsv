@@ -39,11 +39,11 @@ rva	signals	status	note
 0x0700f0	archive-read,archive-vslot2,archive-write	reconstructed	exact game-owned structure/resource four-byte CArray serializer; distinct natural pinned-header emission; 100%
 0x070300	archive-read,archive-vslot2,archive-write	reconstructed	exact game-owned structure/resource four-byte CArray serializer; distinct natural pinned-header emission; 100%
 0x078af0	file-write	target	initial retail call/vtable census
-0x07a800	file-read,stdio-read	target	initial retail call/vtable census
-0x07abc0	file-read,stdio-read	target	initial retail call/vtable census
-0x07ada0	file-read	target	initial retail call/vtable census
+0x07a800	file-read,stdio-read	reconstructed	source-complete character-slot roster scan; 99.81%, relocation-masked bytes identical, residual is unclaimed MFC/template referent identity
+0x07abc0	file-read,stdio-read	reconstructed	source-complete temporary-slot cleanup; 99.96%, relocation-masked bytes identical, residual is the unclaimed CFileFind::FindNextFileA referent
+0x07ada0	file-read	reconstructed	source-complete character-slot loader; 98.13%, exact stream/layout semantics with local scheduling residue and six unclaimed game-helper identities
 0x07b250	file-write	reconstructed	source-complete game-owned character-slot name updater; 99.89%, sole residual is FID-ambiguous vendor CString assignment referent; helper 0x07a740 exact
-0x07b760	file-write	target	initial retail call/vtable census
+0x07b760	file-write	reconstructed	source-complete character-slot writer; 91.04%, exact inverse stream and disc-preflight semantics, residual is register/control scheduling plus three unclaimed game-helper identities
 0x07cc60	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x0814b0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x0855d0	file-write	reconstructed	exact game-owned radial-offset table writer; 100%
