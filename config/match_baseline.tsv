@@ -30,6 +30,8 @@
 # Query: python3 -m rom1.verify status | check | bank
 # [units]	unit	n_functions	matched
 butemgr	12	9
+bytehuffman	16	15
+bytehuffmannode	1	1
 scenarioconfig	1	1
 smackerplayer	7	7
 wordrle	2	2
@@ -47,6 +49,23 @@ butemgr	?FindRecord@CButeMgr@@AAEPAURecord@1@PAU21@PBD@Z	97.8505	97.8505	1	6e284
 butemgr	?GetInt@CButeMgr@@QAEHPBD0H@Z	100.0000	100.0000	2	7b2dcd76e701	0xccc00	100.0000	
 butemgr	?Read@CButeMgr@@AAEXPAVCFile@@I@Z	99.6689	99.6689	1	ed53b175f198	0xcae40	99.6689	
 butemgr	?ResetCurrentRecord@CButeMgr@@AAEPAV1@XZ	100.0000	100.0000	1	dd63d88ef962	0xce390	100.0000	
+bytehuffman	??0ByteHuffmanPacker@@QAE@XZ	100.0000	100.0000	1	9778bbde97df	0xef383	100.0000	
+bytehuffman	??1ByteHuffmanPacker@@QAE@XZ	100.0000	100.0000	1	d036a203f256	0xef39e	100.0000	
+bytehuffman	?BuildCodes@ByteHuffmanPacker@@QAEXPAUByteHuffmanNode@@IH@Z	100.0000	100.0000	2	fc871836aca7	0xef826	100.0000	
+bytehuffman	?BuildCodes@ByteHuffmanPacker@@QAEXXZ	100.0000	100.0000	2	fc871836aca7	0xef7da	100.0000	
+bytehuffman	?ByteCountForBits@@YAHH@Z	100.0000	100.0000	1	90dc5f606f77	0xef920	100.0000	
+bytehuffman	?ClearStatistics@ByteHuffmanPacker@@QAEXXZ	100.0000	100.0000	1	9d2055d0a44a	0xef3b1	100.0000	
+bytehuffman	?CompareByteHuffmanSymbolStats@@YAHPBX0@Z	100.0000	100.0000	1	bb42735fd446	0xef4a1	100.0000	
+bytehuffman	?CountSymbols@ByteHuffmanPacker@@QAEXPAEH@Z	100.0000	100.0000	2	26f6aeae7979	0xef3d4	100.0000	
+bytehuffman	?DestroyNode@ByteHuffmanPacker@@QAEXPAUByteHuffmanNode@@@Z	100.0000	100.0000	1	2b0abb69e4a0	0xef8dc	100.0000	
+bytehuffman	?DestroyTree@ByteHuffmanPacker@@QAEXXZ	100.0000	100.0000	1	0f46c8f8e7b1	0xef8b2	100.0000	
+bytehuffman	?Insert@ByteHuffmanPacker@@QAEXPAUByteHuffmanNode@@EH@Z	100.0000	100.0000	1	58128fd49cef	0xef673	100.0000	
+bytehuffman	?LoadStatistics@ByteHuffmanPacker@@QAEXPAVCFile@@@Z	100.0000	100.0000	1	7de8172d69a4	0xef459	100.0000	
+bytehuffman	?Pack@ByteHuffmanPacker@@QAEHPAEHPAI@Z	99.5373	99.5373	1	155232f2e251	0xef939	99.5373	
+bytehuffman	?RebuildTree@ByteHuffmanPacker@@QAEXXZ	100.0000	100.0000	1	57d2bc2b2ba8	0xef4d0	100.0000	
+bytehuffman	?SaveStatistics@ByteHuffmanPacker@@QAEXPAVCFile@@@Z	100.0000	100.0000	1	ce94d5a1dbf9	0xef433	100.0000	
+bytehuffman	?Unpack@ByteHuffmanPacker@@QAEHPAIHPAEH@Z	100.0000	100.0000	2	b08f2cdc13d7	0xefa04	100.0000	
+bytehuffmannode	??0ByteHuffmanNode@@QAE@XZ	100.0000	100.0000	1	4c7484212058	0x1160d0	100.0000	
 scenarioconfig	?GetMissionObjectCount@@YGHH@Z	100.0000	100.0000	2	611c81017e31	0x878a0	100.0000	
 smackerplayer	??0CSmackerBuffers@@QAE@XZ	100.0000	100.0000	1	95153d343e47	0xae650	100.0000	
 smackerplayer	??0CSmackerPlayer@@QAE@XZ	100.0000	100.0000	1	8d175536bb86	0xae6c0	100.0000	

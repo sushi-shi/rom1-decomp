@@ -1,0 +1,33 @@
+# retail_sha256=5ba821f37356d2da0e1eb907de28b2708714d6e2604b5caef3daf4284b9af7d3
+# Manually maintained campaign index. functions.tsv remains the authoritative
+# function-start census; this file records reviewed format roles and is never
+# regenerated from strings or disassembly.
+family	rva	role	status	evidence
+word-rle	0x11f130	encode stream	exact	retail body + save/.chr callsites + mapped oracle
+word-rle	0x11f1e0	decode stream	exact	retail body + save/.chr callsites + mapped oracle
+word-rle	0x127040	encode repeat token	exact	retail body + mapped oracle
+word-rle	0x127110	encode literal token	exact	retail body + mapped oracle
+word-rle	0x127210	decode repeat token	exact	retail body + mapped oracle
+word-rle	0x127290	decode literal token	exact	retail body + mapped oracle
+byte-huffman	0x0ef3b1	clear frequency table	exact	retail body + mapped oracle
+byte-huffman	0x0ef3d4	accumulate frequency table	exact	retail body + mapped oracle
+byte-huffman	0x0ef433	write 1024-byte statistics	exact	CFile::Write vslot + Packer1.dat/Packer2.dat xrefs
+byte-huffman	0x0ef459	read statistics and rebuild	exact	CFile::Read vslot + exact-length check + packer xrefs
+byte-huffman	0x0ef4d0	rebuild weighted tree	exact	retail body + mapped oracle
+byte-huffman	0x0ef673	insert weighted symbol	exact	retail body + mapped oracle
+byte-huffman	0x0ef7da	generate codebook	exact	retail body + mapped oracle
+byte-huffman	0x0ef826	generate code subtree	exact	retail body + mapped oracle
+byte-huffman	0x0ef939	pack bytes to LSB-first bits	near-exact	99.54%; mapped oracle agrees on all cases
+byte-huffman	0x0efa04	unpack LSB-first bits	exact	retail body + mapped oracle
+network-buffer	0x0e71f8	select/call packer	located	calls count/pack/bit-to-byte for message classes 1 and 2
+network-buffer	0x0e733b	select/call unpacker	located	calls unpack for message classes 1 and 2
+network-buffer	0x0e6135	receive and unpack buffer	located	CBufferManager::ReceiveData string + unpack call
+save-game	0x0cee6f	write save wrapper	located	signature/version + word-RLE encode + CArchive serializer call
+save-game	0x0cf1ee	read save wrapper	located	signature/version validation + word-RLE decode + serializer call
+character	0x0cf4f0	write .chr wrapper	located	chr path strings + word-RLE encode
+character	0x0cf8b8	read .chr wrapper	located	chr caller xrefs + word-RLE decode
+scenario	0x0d0c97	bidirectional CArchive serializer	located	called by both save and load wrappers
+dib-bmp	0x04afd0	read mapped BMP file	located	BM signature + Invalid/Empty bitmap strings
+dib-bmp	0x04b4e0	compress DIB	located	ICCompress calls + compression error strings
+dib-bmp	0x04b710	read BMP through CFile	located	14-byte header read + BM validation
+dib-bmp	0x04b860	write BMP through CFile	located	14-byte header + DIB/pixel writes

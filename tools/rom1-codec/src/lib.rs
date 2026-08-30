@@ -7,6 +7,7 @@
 
 #![no_std]
 
+pub mod byte_huffman;
 pub mod word_rle;
 
 pub(crate) enum Sink<'a> {

@@ -22,3 +22,17 @@ The retail encoder/decoder allocation calls and the token helpers' two CRT
 `memcpy` calls are redirected to the harness CRT. The six codec bodies and all
 token-selection/cursor logic remain retail code; this avoids depending on the
 mapped executable's uninitialized CRT jump-table state.
+
+Build and run the network byte-Huffman oracle the same way:
+
+```sh
+recomp/harness/build.sh bytehuffmanrun bytehuffman bytehuffmannode
+wine recomp/harness/bytehuffmanrun.exe "$ROM1_EXE" config/retail/relocs.tsv
+```
+
+This sweep rebuilds 1,024 code trees (including all-equal and heavily tied
+frequency tables), compares all 256 code values and lengths, then compares
+packed bit counts, packed bytes, decoded bytes, and 4,096 incremental
+frequency-table updates. Only the retail tree allocator/free callsites are
+redirected; sorting, tree construction, code generation, packing, and
+unpacking all execute from the mapped retail image.

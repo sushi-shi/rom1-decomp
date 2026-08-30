@@ -42,3 +42,13 @@ flags = "cpp-od"
 unit = "wordrletokens"
 source = "src/Codec/WordRleTokens.cpp"
 flags = "cpp-od-noeh"
+
+[[unit]]
+unit = "bytehuffman"
+source = "src/Codec/ByteHuffman.cpp"
+flags = "cpp-od"
+
+[[unit]]
+unit = "bytehuffmannode"
+source = "src/Codec/ByteHuffmanNode.cpp"
+flags = "cpp-od-noeh"
