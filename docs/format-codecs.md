@@ -28,6 +28,65 @@ logic.
 All six bodies are exact: top-level encode/decode at `0x11f130` and `0x11f1e0`,
 and token helpers at `0x127040`, `0x127110`, `0x127210`, and `0x127290`.
 
+## Save-game envelope
+
+The save writer at `0x0cee6f` serializes the scenario into memory, rounds an
+odd byte count up to a word, word-RLE encodes it, and writes this envelope:
+
+```text
+u32 magic = 0x26677341       // little-endian bytes "Asg&"
+u32 declared_file_size       // backpatched after all writes
+u32 version = 0x0bad0002
+u32 compressed_byte_count
+u8  word_rle[compressed_byte_count]
+u8  server_description[256]  // optional
+```
+
+For an odd serialized scenario length, retail increments the length and writes
+its new low byte as the padding byte before compression; that is not assumed
+to be zero. In server-multiplayer mode the writer appends the NUL-terminated
+text `Server Multiplayer save file.` and zero-fills the rest of a fixed
+256-byte record. The backpatched file size includes that record.
+
+The reader at `0x0cf1ee` validates the magic and accepts a version using the
+signed comparison `version >= 0x0bad0002`. It reads but never validates the
+declared file size, and it ignores everything after the declared compressed
+extent. The safe Rust parser preserves those compatibility rules while
+rejecting a compressed extent outside the supplied slice; its writer emits
+the canonical current version and optional fixed server record.
+
+The mapped-retail oracle runs 2,050 inputs spanning open failure, invalid
+magic, old and sign-bit-set versions, current/future versions, arbitrary
+declared lengths, and zero/random compressed sizes. It reports zero
+disagreements over 16,180 control/extent checks and 1,330 compressed-payload
+checks.
+
+## Character `.chr` envelope
+
+The character writer at `0x0cf4f0` serializes one character, word-RLE encodes
+it, and creates a payload in a 14-byte network record. The disk file is exactly
+the record payload, not its transport header:
+
+```text
+u32 metadata[4]              // four non-contiguous character fields
+u8  word_rle[]
+u8  zero_pad[word_rle_size & 1]
+```
+
+The original semantic names of the four metadata words are not yet proven, so
+the codec preserves them without inventing field identities. The transport
+header stores the complete payload length in words. Disk loading computes that
+word count with `file_length >> 1`; one odd physical trailing byte is therefore
+ignored. The writer itself always produces an even file and writes zero for
+its possible compressed-stream pad.
+
+The reader at `0x0cf8b8` copies exactly 16 metadata bytes, computes the
+compressed extent as `payload_words * 2 - 16`, and passes that entire region,
+including the possible zero pad, to word-RLE. The mapped oracle reports zero
+disagreements over 14,336 extent checks and 6,144 metadata/payload checks on
+2,048 randomized packets. The safe Rust parser rejects a truncated metadata
+prefix and exposes the retail-ignored odd tail separately.
+
 ## Network byte Huffman
 
 The network buffer manager owns two packers. Their adaptive statistics are

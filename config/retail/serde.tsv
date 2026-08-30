@@ -22,10 +22,10 @@ byte-huffman	0x0efa04	unpack LSB-first bits	exact	retail body + mapped oracle
 network-buffer	0x0e71f8	select/call packer	located	calls count/pack/bit-to-byte for message classes 1 and 2
 network-buffer	0x0e733b	select/call unpacker	located	calls unpack for message classes 1 and 2
 network-buffer	0x0e6135	receive and unpack buffer	located	CBufferManager::ReceiveData string + unpack call
-save-game	0x0cee6f	write save wrapper	located	signature/version + word-RLE encode + CArchive serializer call
-save-game	0x0cf1ee	read save wrapper	located	signature/version validation + word-RLE decode + serializer call
-character	0x0cf4f0	write .chr wrapper	located	chr path strings + word-RLE encode
-character	0x0cf8b8	read .chr wrapper	located	chr caller xrefs + word-RLE decode
+save-game	0x0cee6f	write save wrapper	located	exact envelope writes + word-RLE encode + independent Rust writer
+save-game	0x0cf1ee	read save wrapper	located	signed version floor + ignored declared length + mapped oracle + safe Rust parser
+character	0x0cf4f0	write .chr wrapper	located	chr path strings + 16-byte metadata + word-RLE/even-pad Rust writer
+character	0x0cf8b8	read .chr wrapper	located	packet/file caller xrefs + exact metadata/RLE extents + mapped oracle + safe Rust parser
 scenario	0x0d0c97	bidirectional CArchive serializer	located	called by both save and load wrappers
 dib-bmp	0x04afa0	report DIB dimensions	exact	retail body + mapped oracle
 dib-bmp	0x04afd0	read mapped BMP file	located	BM signature + Invalid/Empty bitmap strings

@@ -82,14 +82,17 @@ The first codec and serde anchors are live: the six-function word-RLE stream,
 the complete network byte-Huffman core and raw 1,024-byte statistics format,
 the Windows BMP/contiguous-DIB reader/writer core, `CPixMap`'s P3/P6 PPM
 parser, the raw item-name ID table, and the game-owned `CArchive` pointer-word
-vector. All six have independent `no_std` Rust implementations or safe
+vector, plus the save-game and `.chr` envelopes around word-RLE. All eight
+have independent `no_std` Rust implementations or safe
 parser/writer APIs and mapped-retail execution oracles. Word-RLE covers 32,770
 fabricated cases per dimension; byte-Huffman covers 1,024 tied/random
 tree-and-stream cases plus 4,096 cumulative statistics updates; DIB layout
 covers 98,306 randomized comparisons; PPM covers 65,372 field and decoded-byte
 comparisons across 1,024 files; item-name loading covers 1,065,292 checks over
 2,050 files; and pointer-vector archives cover 42,493 checks over 2,048
-store/load pairs. Every oracle reports zero disagreements. See the
+store/load pairs. The envelope oracle adds 17,510 save checks over 2,050 inputs
+and 20,480 character checks over 2,048 packets. Every oracle reports zero
+disagreements. See the
 [format record](docs/format-codecs.md) and manually maintained
 [`serde.tsv`](config/retail/serde.tsv) campaign index.
 

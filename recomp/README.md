@@ -75,3 +75,14 @@ explicit-growth, and shrink-to-zero states:
 recomp/harness/build.sh archiveptrrun
 wine recomp/harness/archiveptrrun.exe "$ROM1_EXE" config/retail/relocs.tsv
 ```
+
+The envelope harness executes the retail save reader and character packet
+reader with only allocator, I/O, and downstream object-graph edges replaced.
+It checks save magic/version acceptance, ignored declared lengths, exact read
+sizes and compressed bytes, then the complete 16-byte `.chr` metadata prefix
+and word-RLE extent:
+
+```sh
+recomp/harness/build.sh envelopesrun
+wine recomp/harness/envelopesrun.exe "$ROM1_EXE" config/retail/relocs.tsv
+```
