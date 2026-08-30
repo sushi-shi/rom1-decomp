@@ -48,7 +48,7 @@ referenceworld	4	4
 resourcefile	6	3
 scenarioconfig	1	1
 scenarioobjectmap	1	0
-scenariosupport	14	2
+scenariosupport	15	3
 smackerplayer	7	7
 spellobjects	64	61
 tokenpayload	13	6
@@ -250,6 +250,7 @@ scenariosupport	?Serialize@CScenarioSecondary@@QAEXAAVCArchive@@@Z	53.3333	53.33
 scenariosupport	?Serialize@CScenarioTertiary@@QAEXAAVCArchive@@@Z	58.1818	58.1818	1	4c3b0f9b6743	0x1114fc	58.1818	
 scenariosupport	?Serialize@CWorldObjectRegistry@@QAEXAAVCArchive@@@Z	20.6452	20.6452	1	85bbffd1a3d9	0x11108e	20.6452	
 scenariosupport	?Serialize@Token@@UAEXAAVCArchive@@@Z	100.0000	100.0000	2	73b4128adc42	0x110ebb	100.0000	
+scenariosupport	?Serialize@VirtualCaster@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	6e970736e41c	0x111ba2	100.0000	
 scenariosupport	?SetAt@CMapPtrToPtr@@QAEXPAX0@Z	95.3846	95.3846	1	cpp:bdc9cc63cdd1	0x1176a0	95.3846	
 smackerplayer	??0CSmackerBuffers@@QAE@XZ	100.0000	100.0000	1	95153d343e47	0xae650	100.0000	
 smackerplayer	??0CSmackerPlayer@@QAE@XZ	100.0000	100.0000	1	8d175536bb86	0xae6c0	100.0000	

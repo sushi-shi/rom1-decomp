@@ -78,6 +78,18 @@ void CScenarioSecondary::Serialize(CArchive& archive) {
 RVA(0x00111531, 0x5a)
 void CScenarioSecondary::Activate() {}
 
+RVA(0x00111ba2, 0x67)
+void VirtualCaster::Serialize(CArchive& archive) {
+    Token::Serialize(archive);
+    if (archive.IsStoring()) {
+        archive << m_value3c;
+        archive.Write(m_values40, 6);
+    } else {
+        archive >> m_value3c;
+        archive.Read(m_values40, 6);
+    }
+}
+
 RVA(0x001123c8, 0x157f)
 CScenarioResource::CScenarioResource(const char* path) {
     (void)path;

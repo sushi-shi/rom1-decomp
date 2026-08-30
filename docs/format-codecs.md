@@ -464,6 +464,11 @@ record, byte/short/DWORD fields, and a load-time pointer into the retail-proven
 add one `UINT`. The four array/archive helpers selected naturally by these
 source forms are exact pinned-header emissions, not copied vendor bodies.
 
+`VirtualCaster::Serialize` is byte-exact as well. It preserves the Token base
+stream, one byte at `+0x3c`, and a six-byte pointed buffer reached through the
+pointer at `+0x40`; the runtime-class record independently fixes the complete
+0x44-byte game-object layout.
+
 The four raw-record serializers at `0x13db00`, `0x13dbc0`, `0x13dc80`, and
 `0x13dcc0` are also exact. The first three apply the same bidirectional
 complete-object archive operation to 0x50-, 0x48-, and 0x0c-byte records. The

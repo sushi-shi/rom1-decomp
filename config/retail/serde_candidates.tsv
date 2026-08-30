@@ -154,7 +154,7 @@ rva	signals	status	note
 0x111943	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Sack
 0x111b15	archive-vslot2	reconstructed	initial retail call/vtable census; slot-2 class=CObject
 0x111b35	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Armor
-0x111ba2	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=VirtualCaster
+0x111ba2	archive-read,archive-vslot2,archive-write	reconstructed	exact VirtualCaster serializer; Token base, BYTE field, and six-byte pointed buffer; 100%
 0x114520	archive-write	reconstructed	exact VC5 SP2 CArchive const-CObject insertion COMDAT emitted by Spell serializer TU
 0x118360	archive-read,archive-vslot2,archive-write	reconstructed	exact CList<Effect*, Effect*> serializer; Token+0x20 owner and typed Effect archive reader; 100%
 0x118810	archive-read,archive-vslot2,archive-write	reconstructed	exact CList<Item*, Item*> serializer; typed Item archive reader and CRuntimeClass record; 100%

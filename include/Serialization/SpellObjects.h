@@ -106,7 +106,9 @@ public:
     friend CArchive& AFXAPI operator>>(CArchive& archive, VirtualCaster*& value);
 
 private:
-    BYTE m_state3c[0x08];
+    BYTE m_value3c;
+    BYTE m_reserved3d[3];
+    BYTE* m_values40;
 };
 
 // Runtime-class record 0x1c3360 fixes Token as the base and the complete
