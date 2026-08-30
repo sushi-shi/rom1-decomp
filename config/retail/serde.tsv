@@ -51,6 +51,8 @@ pixmap-ppm	0x08d330	dispatch format loader	near-exact	99.87%; instructions align
 pixmap-ppm	0x08d430	parse P3/P6 PPM pixels	near-exact	99.83%; instructions align + mapped oracle agrees
 pixmap-ppm	0x08d5d0	PCX loader success stub	exact	retail body + dispatcher arm
 pixmap-ppm	0x08d5e0	BMP loader success stub	exact	retail body + dispatcher arm
+radial-offset	0x0855d0	write packed offset matrix	exact	100%; three signed dimensions followed by N-by-N packed i16 coordinate pairs
+radial-offset	0x085690	read packed offset matrix	exact	100%; exact dimension reads, two-level allocation, and packed coordinate transfer
 resource-archive	0x070b40	startup mount and typed-load sequence	located	CWinApp vtable slot 22 + exact .res/update.lst string xrefs and call order
 resource-archive	0x0c9070	read .res header and 32-byte tail index	codec-validated	0x31415926 check + exact CFile read/seek topology + local retail archives
 resource-archive	0x0c92f0	resolve record to owner/offset/length	codec-validated	hierarchical lookup call + disabled sentinel + exact three-dword result

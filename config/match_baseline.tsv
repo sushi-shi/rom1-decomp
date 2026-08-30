@@ -42,6 +42,7 @@ dib	15	12
 directxexception	1	0
 itemnames	11	3
 pixmap	9	6
+radialoffsettable	2	2
 referencerecords	21	15
 referencesnapshot	1	1
 referenceworld	4	4
@@ -282,6 +283,8 @@ pixmap	?Load@CPixMap@@QAEXAAVCString@@@Z	99.8684	99.8684	1	94f3886c1272	0x8d330	
 pixmap	?LoadBMP@CPixMap@@AAEHAAVCString@@@Z	100.0000	100.0000	1	797728b01c2a	0x8d5e0	100.0000	
 pixmap	?LoadPCX@CPixMap@@AAEHAAVCString@@@Z	100.0000	100.0000	1	b0615ba4f70b	0x8d5d0	100.0000	
 pixmap	?LoadPPM@CPixMap@@AAEHAAVCString@@@Z	99.8630	99.8630	1	b7f5d538c120	0x8d430	99.8630	
+radialoffsettable	?Load@CRadialOffsetTable@@QAEXAAVCString@@@Z	100.0000	100.0000	1	ed40c7950d49	0x85690	100.0000	
+radialoffsettable	?Save@CRadialOffsetTable@@QAEXAAVCString@@@Z	100.0000	100.0000	1	0d42a88ccacd	0x855d0	100.0000	
 referencerecords	??1CArchiveDwordList@@UAE@XZ	4.2424	4.2424	1	8049336762d1	0x140070	4.2424	absent
 referencerecords	??1CArchiveTripleList@@UAE@XZ	4.2424	4.2424	1	7ffda99044ae	0x140a20	4.2424	absent
 referencerecords	??_GCArchiveDwordList@@UAEPAXI@Z	100.0000	100.0000	1	cpp:e23503b320db	0x140a90	100.0000	absent
@@ -418,7 +421,7 @@ tokenpayload	??_G?$CList@KK@@UAEPAXI@Z	100.0000	100.0000	1	cpp:1a394f34b136	0x15
 tokenpayload	??_G?$CMap@GGUCWorldMapRecord@@AAU1@@@UAEPAXI@Z	100.0000	100.0000	1	cpp:1a394f34b136	0x150520	100.0000	
 tokenpayload	?Activate@CWorldMapData@@QAEXXZ	0.8475	0.8475	2	9d30eff0cf8d	0x14d530	0.8475	
 tokenpayload	?AddTail@?$CList@KK@@QAEPAU__POSITION@@K@Z	100.0000	100.0000	1	cpp:1a394f34b136	0x1502f0	100.0000	
-tokenpayload	?LoadTileTable@CWorldMapData@@QAEXPBDIII@Z	99.9815	99.9815	1	87af420f06f4	0x141c90	99.9815	
+tokenpayload	?LoadTileTable@CWorldMapData@@QAEXPBDIII@Z	99.9815	99.9815	2	67fbac2c13f7	0x141c90	99.9815	
 tokenpayload	?NewNode@?$CList@KK@@IAEPAUCNode@1@PAU21@0@Z	100.0000	100.0000	1	cpp:1a394f34b136	0x150780	100.0000	
 tokenpayload	?Serialize@?$CList@KK@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:1a394f34b136	0x1503e0	100.0000	
 tokenpayload	?Serialize@?$CList@UCUnitListValue@@U1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:d9b66891dd42	0x1501d0	100.0000	

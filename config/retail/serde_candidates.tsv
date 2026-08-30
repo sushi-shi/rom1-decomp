@@ -46,8 +46,8 @@ rva	signals	status	note
 0x07b760	file-write	target	initial retail call/vtable census
 0x07cc60	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x0814b0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x0855d0	file-write	target	initial retail call/vtable census
-0x085690	file-read	target	initial retail call/vtable census
+0x0855d0	file-write	reconstructed	exact game-owned radial-offset table writer; 100%
+0x085690	file-read	reconstructed	exact game-owned radial-offset table reader; 100%
 0x08aaf0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x08ad90	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x08b1c0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject

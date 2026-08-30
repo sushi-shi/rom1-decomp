@@ -64,6 +64,11 @@ source = "src/Graphics/PixMap.cpp"
 flags = "cpp"
 
 [[unit]]
+unit = "radialoffsettable"
+source = "src/Graphics/RadialOffsetTable.cpp"
+flags = "cpp"
+
+[[unit]]
 unit = "directxexception"
 source = "src/DirectX/DirectXException.cpp"
 flags = "cpp"

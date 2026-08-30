@@ -170,6 +170,23 @@ both reader modes and writes the retail packed wrapper; its tests cover offset
 gaps, the mapped-reader quirk, palette rules, DWORD row alignment, exact DIB
 byte preservation, and malformed bounds.
 
+## Radial-offset table
+
+The symbol-free 16-byte game type used by the graphics material initializer is
+modeled as `CRadialOffsetTable`. The semantic name follows the retail algorithm:
+its constructor builds a square radial transform whose four-byte cells contain
+two signed 16-bit coordinate offsets. Retail does not expose an original class
+name, so no stronger source-name claim is made.
+
+The otherwise unreferenced file methods at `0x0855d0` and `0x085690` are both
+byte-exact. The writer stores the outer radius, matrix size, and inner radius as
+three DWORDs, then writes the square matrix one packed coordinate pair at a
+time. The reader restores those fields, allocates one row-pointer array and one
+packed row per matrix row, then reads the same cells in row-major order. The
+allocation-only snapshot of the matrix size is source-significant: retail
+caches it across both allocation loops and rereads the member for the transfer
+loops.
+
 ## CPixMap P3/P6 PPM
 
 The 36-byte `CPixMap` family at `0x08d1e0`–`0x08d5e0` detects `.pcx`, `.ppm`,
