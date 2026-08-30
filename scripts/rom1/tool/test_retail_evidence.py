@@ -6,7 +6,9 @@ import unittest
 from rom1.core.paths import CONFIG, retail_exe
 from rom1.core.pe import Pe
 from rom1.core.relocs import load as load_relocs
+from rom1.core.tsv import read as read_tsv
 from rom1.delink.image import Image as DelinkImage
+from rom1.delink.implib import _decorated_export_imp
 from rom1.retail_labels import censuses
 from rom1.sema.image import Image as SemaImage
 from rom1.tool.retail_census import fpo_rows, import_rows, string_rows
@@ -42,12 +44,29 @@ class RetailEvidenceTest(unittest.TestCase):
         ])
         self.assertEqual(len(rows), 472)
 
+    def test_retail_decorated_vendor_imports_are_exact_iat_identities(self):
+        _banner, fields, rows = read_tsv(
+            CONFIG.parent / "vendor/smacker-3.1l/retail_imports.tsv")
+        self.assertEqual(fields, ["hint", "symbol", "function", "stack_bytes"])
+        self.assertEqual(len(rows), 16)
+        self.assertEqual(
+            [_decorated_export_imp(row["symbol"]) for row in rows],
+            ["__imp_" + row["symbol"] for row in rows])
+        self.assertIsNone(_decorated_export_imp("CreateFileA"))
+        self.assertIsNone(_decorated_export_imp("_SmackOpen"))
+
     def test_all_consumers_share_the_recovered_relocations(self):
         sites = load_relocs()
         self.assertEqual(len(sites), 32454)
         self.assertEqual(DelinkImage(self.pe).reloc_sites, sites)
         self.assertEqual(sorted(SemaImage(self.pe).reloc), sites)
         self.assertEqual(self.pe.directories[5], (0, 0))
+        _banner, fields, rows = read_tsv(
+            CONFIG / "retail/reloc_referents.tsv")
+        self.assertEqual(fields, ["function_rva", "target_rva", "site_rva",
+                                  "owner", "addend", "occurrences",
+                                  "provenance"])
+        self.assertEqual(rows, [])
 
     def test_compiler_selection_is_fail_closed(self):
         selection = tomllib.loads((CONFIG / "compiler.toml").read_text())
@@ -88,9 +107,19 @@ class RetailEvidenceTest(unittest.TestCase):
         self.assertEqual(sum(row["table"] == "XC" for row in rows), 135)
         self.assertEqual(len(helpers), 147)
         thunks = recover_iat_thunks(self.pe, self.fpo)
-        self.assertEqual([(int(row["rva"], 0), int(row["iat_rva"], 0))
-                          for row in thunks],
-                         [(0x15BF40, 0x232C48), (0x15BF50, 0x232B30)])
+        self.assertEqual((len(thunks), sum(int(row["size"], 0) for row in thunks)),
+                         (474, 2844))
+        self.assertEqual([int(row["rva"], 0) for row in thunks[:4]],
+                         [0x0CEB20, 0x0CEB26, 0x0CEB2C, 0x0CEB32])
+        self.assertEqual([int(row["rva"], 0) for row in thunks[-14:]],
+                         list(range(0x16F120, 0x16F174, 6)))
+        self.assertEqual(
+            [(int(row["rva"], 0), row["import"]) for row in thunks
+             if int(row["rva"], 0) in (0x15BF40, 0x15BF50)],
+            [(0x15BF40, "KERNEL32.dll!GetCurrentThreadId"),
+             (0x15BF50, "KERNEL32.dll!GetCurrentThread")])
+        self.assertNotIn(0x15969D, {int(row["rva"], 0) for row in thunks})
+        self.assertNotIn(0x1596B2, {int(row["rva"], 0) for row in thunks})
 
     def test_mfc_runtime_class_and_vtable_census(self):
         records, rows = recover_runtime_classes(self.pe)
@@ -102,17 +131,30 @@ class RetailEvidenceTest(unittest.TestCase):
 
     def test_model_census_uses_exact_extents_and_full_manual_partition(self):
         functions = censuses.functions()
-        self.assertEqual(len(functions), 12563)
+        self.assertEqual(len(functions), 13023)
         kinds = {kind: sum(row["kind"] == kind for row in functions)
                  for kind in ("", "eh", "helper", "thunk", "pad")}
         self.assertEqual(kinds,
-                         {"": 8280, "eh": 4134, "helper": 147,
-                          "thunk": 2, "pad": 0})
+                         {"": 8268, "eh": 4134, "helper": 147,
+                          "thunk": 474, "pad": 0})
         self.assertEqual(next(row["size"] for row in functions
                               if row["rva"] == 0x1000), 0x5B)
         data = censuses.data()
-        self.assertEqual(len(data), 3476)
-        self.assertEqual(sum(row["kind"] == "vtable" for row in data), 358)
+        # Complete census: relocation/RTTI/code-vptr scan plus the eight
+        # GetRuntimeClass witnesses whose first relocation site is absent.
+        self.assertEqual(sum(row["kind"] == "vtable" for row in data), 425)
+        self.assertEqual(
+            [(row["rva"], row["kind"]) for row in data
+             if row["rva"] in (0x1C086C, 0x1C0888)],
+            [(0x1C086C, "string"), (0x1C0888, "string")])
+        self.assertEqual(censuses.link_bands(), [
+            (0x001000, 0x1868D0, "text-body"),
+            (0x1868D0, 0x196C60, "eh-funclets"),
+            (0x197000, 0x1B7450, "rdata"),
+            (0x1B8000, 0x1CD600, "data-init"),
+            (0x1CD600, 0x231DBC, "bss"),
+            (0x232000, 0x235000, "idata"),
+        ])
 
 
 if __name__ == "__main__":

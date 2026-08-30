@@ -1,117 +1,355 @@
 # retail_sha256=5ba821f37356d2da0e1eb907de28b2708714d6e2604b5caef3daf4284b9af7d3
-# One richest unambiguous primary vtable provider per runtime class.
+# Hand-owned vtable catalog refreshed only by explicit --write.
+# kind=unresolved proves retail structure, not reconstructed source.
 rva	size	name	kind	note
-0x19c240	0x3c	??_7AreaEffect@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19c528	0x58	??_7Armor@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19c388	0x3c	??_7Building@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x1974f8	0x44	??_7CA16@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x199470	0x84	??_7CAirUnit@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19f8c4	0xc0	??_7CAnimateCtrl@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19e8f4	0x1c	??_7CArchiveException@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x1992e0	0x54	??_7CBackPack@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x1973c8	0x14	??_7CBitmap@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x1974a0	0x3c	??_7CBmp256@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x197460	0x40	??_7CBmp64k@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x199390	0x58	??_7CBridge@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19d3e4	0x14	??_7CBrush@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x1a015c	0xc4	??_7CButton@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19e6f4	0x14	??_7CByteArray@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19d24c	0x7c	??_7CClientDC@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19df5c	0x58	??_7CCmdTarget@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x1a0314	0xd0	??_7CComboBox@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19fe9c	0x110	??_7CCtrlView@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19d1cc	0x7c	??_7CDC@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19cf1c	0x14	??_7CDWordArray@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19e0dc	0xd8	??_7CDialog@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x198ff8	0x14	??_7CDib@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x1a06bc	0xb8	??_7CDocument@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19ef5c	0xec	??_7CDragListBox@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x1a03f4	0xc0	??_7CEdit@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19d66c	0x1c	??_7CException@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19bb08	0x5c	??_7CFile@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19d4fc	0x1c	??_7CFileException@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19e654	0x54	??_7CFileFind@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19a928	0x14	??_7CFont@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19db7c	0xfc	??_7CFrameWnd@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x197390	0x34	??_7CGameBitmap@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x199270	0x54	??_7CGameObject@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x197378	0x14	??_7CGamePalette@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19cf5c	0x14	??_7CGdiObject@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19f63c	0xc4	??_7CHeaderCtrl@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x1971f0	0x58	??_7CHorisontalWoodenBridge@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19f714	0xc0	??_7CHotKeyCtrl@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19fa54	0x14	??_7CImageList@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x1a022c	0xd8	??_7CListBox@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19f20c	0xc4	??_7CListCtrl@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x199db8	0xfc	??_7CMainWindow@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19e734	0x14	??_7CMapPtrToPtr@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19e75c	0x14	??_7CMapStringToOb@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x1a0614	0x14	??_7CMapStringToPtr@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19d5d4	0x14	??_7CMapStringToString@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19cfb4	0x14	??_7CMapWordToPtr@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19e79c	0x70	??_7CMemFile@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19d68c	0x1c	??_7CMemoryException@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19e994	0x1c	??_7CMenu@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x1974e0	0x14	??_7CMousePointer@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19c4a0	0x14	??_7CMultiShopInstance@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19c488	0x14	??_7CMultiShopShelf@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19c4b8	0x14	??_7CMultiShopTemplate@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19d6ac	0x1c	??_7CNotSupportedException@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19abc0	0xc0	??_7CObject@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19d34c	0x7c	??_7CPaintDC@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19d3cc	0x14	??_7CPen@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19a558	0x14	??_7CPlayer@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19f56c	0xc0	??_7CProgressCtrl@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x1994f8	0x54	??_7CProjectile@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19cef4	0x14	??_7CPtrArray@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19e95c	0x14	??_7CPtrList@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19d3fc	0x1c	??_7CResourceException@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19cf74	0x14	??_7CRgn@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19f98c	0xc0	??_7CRichEditCtrl@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x1a04c4	0xc0	??_7CScrollBar@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19eb44	0x110	??_7CScrollView@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19f494	0xc0	??_7CSliderCtrl@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19f3bc	0xc0	??_7CSpinButtonCtrl@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x1973e0	0x38	??_7CSprite16@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x197418	0x44	??_7CSprite256@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x1a008c	0xc0	??_7CStatic@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19f134	0xc4	??_7CStatusBarCtrl@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19e83c	0x68	??_7CStdioFile@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19cdd4	0x14	??_7CStringArray@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x199338	0x54	??_7CStructure@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19f7ec	0xc4	??_7CTabCtrl@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19f05c	0xc0	??_7CToolBarCtrl@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19fafc	0xc0	??_7CToolTipCtrl@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19f2e4	0xc0	??_7CTreeCtrl@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19d5a4	0x14	??_7CUIntArray@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x1993e8	0x84	??_7CUnit@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19d41c	0x1c	??_7CUserException@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x197248	0x58	??_7CVerticalWoodenBridge@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19fd84	0x110	??_7CView@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x199d10	0xa4	??_7CWinApp@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19ce34	0x84	??_7CWinThread@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19d2cc	0x7c	??_7CWindowDC@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19e52c	0xc0	??_7CWnd@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19cf44	0x14	??_7CWordArray@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19c120	0x14	??_7Diary@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19c2d8	0x58	??_7Effect@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19c330	0x58	??_7Effect_DirectDamage@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19c138	0x70	??_7Human@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19c0b0	0x70	??_7Humanoid@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19c4d0	0x58	??_7Item@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19c3c8	0x3c	??_7Outpost@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19c1a8	0x14	??_7Player@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19c200	0x3c	??_7PointEffect@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19c648	0x44	??_7Sack@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19c580	0x58	??_7Shield@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19c448	0x3c	??_7Shop@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19c2c0	0x14	??_7Spell@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19c1c0	0x3c	??_7SpellEffect@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19c280	0x3c	??_7SpellTransport@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19bd48	0x14	??_7Spellbook@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19bd60	0x1c	??_7TableLine@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19c408	0x3c	??_7Tavern@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19bfd0	0x38	??_7Token@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19c040	0x70	??_7Unit@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19c008	0x38	??_7VirtualCaster@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
-0x19c5d8	0x58	??_7Weapon@@6B@	primary	GetRuntimeClass/CRuntimeClass retail proof
+0x197058	0x14	__rom1_vtable_197058	unresolved	runtime-class; 5 exact slots; 0 code ref(s); promote only with reconstructed source
+0x197070	0x14	__rom1_vtable_197070	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x197088	0x78	__rom1_vtable_197088	unresolved	code-ref; 30 exact slots; 2 code ref(s); promote only with reconstructed source
+0x197100	0x14	__rom1_vtable_197100	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x197118	0x14	__rom1_vtable_197118	unresolved	code-ref; 5 exact slots; 5 code ref(s); promote only with reconstructed source
+0x197130	0x14	__rom1_vtable_197130	unresolved	code-ref; 5 exact slots; 5 code ref(s); promote only with reconstructed source
+0x197148	0x14	__rom1_vtable_197148	unresolved	code-ref; 5 exact slots; 4 code ref(s); promote only with reconstructed source
+0x197160	0x14	__rom1_vtable_197160	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x1971c0	0x14	__rom1_vtable_1971c0	unresolved	runtime-class; 5 exact slots; 0 code ref(s); promote only with reconstructed source
+0x1971d8	0x14	__rom1_vtable_1971d8	unresolved	code-ref; 5 exact slots; 11 code ref(s); promote only with reconstructed source
+0x1971f0	0x58	??_7CHorisontalWoodenBridge@@6B@	unresolved	code-ref; 22 exact slots; 1 code ref(s); promote only with reconstructed source
+0x197248	0x58	??_7CVerticalWoodenBridge@@6B@	unresolved	code-ref; 22 exact slots; 1 code ref(s); promote only with reconstructed source
+0x1972a0	0x14	__rom1_vtable_1972a0	unresolved	code-ref; 5 exact slots; 20 code ref(s); promote only with reconstructed source
+0x197378	0x14	??_7CGamePalette@@6B@	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x197390	0x34	??_7CGameBitmap@@6B@	unresolved	code-ref; 13 exact slots; 4 code ref(s); promote only with reconstructed source
+0x1973e0	0x38	??_7CSprite16@@6B@	unresolved	code-ref; 14 exact slots; 1 code ref(s); promote only with reconstructed source
+0x197418	0x44	??_7CSprite256@@6B@	unresolved	code-ref; 17 exact slots; 2 code ref(s); promote only with reconstructed source
+0x197460	0x40	??_7CBmp64k@@6B@	unresolved	code-ref; 16 exact slots; 2 code ref(s); promote only with reconstructed source
+0x1974a0	0x3c	??_7CBmp256@@6B@	unresolved	code-ref; 15 exact slots; 2 code ref(s); promote only with reconstructed source
+0x1974e0	0x14	??_7CMousePointer@@6B@	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x1974f8	0x44	??_7CA16@@6B@	unresolved	code-ref; 17 exact slots; 1 code ref(s); promote only with reconstructed source
+0x197550	0x78	__rom1_vtable_197550	unresolved	code-ref; 30 exact slots; 3 code ref(s); promote only with reconstructed source
+0x1975c8	0x78	__rom1_vtable_1975c8	unresolved	code-ref; 30 exact slots; 3 code ref(s); promote only with reconstructed source
+0x197640	0x78	__rom1_vtable_197640	unresolved	code-ref; 30 exact slots; 3 code ref(s); promote only with reconstructed source
+0x1976b8	0x78	__rom1_vtable_1976b8	unresolved	code-ref; 30 exact slots; 3 code ref(s); promote only with reconstructed source
+0x197730	0x88	__rom1_vtable_197730	unresolved	code-ref; 34 exact slots; 3 code ref(s); promote only with reconstructed source
+0x1977b8	0x78	__rom1_vtable_1977b8	unresolved	code-ref; 30 exact slots; 3 code ref(s); promote only with reconstructed source
+0x197830	0x78	__rom1_vtable_197830	unresolved	code-ref; 30 exact slots; 3 code ref(s); promote only with reconstructed source
+0x1978a8	0x78	__rom1_vtable_1978a8	unresolved	code-ref; 30 exact slots; 3 code ref(s); promote only with reconstructed source
+0x197920	0x88	__rom1_vtable_197920	unresolved	code-ref; 34 exact slots; 3 code ref(s); promote only with reconstructed source
+0x1979a8	0x78	__rom1_vtable_1979a8	unresolved	code-ref; 30 exact slots; 3 code ref(s); promote only with reconstructed source
+0x197a20	0x88	__rom1_vtable_197a20	unresolved	code-ref; 34 exact slots; 3 code ref(s); promote only with reconstructed source
+0x197aa8	0x14	__rom1_vtable_197aa8	unresolved	code-ref; 5 exact slots; 20 code ref(s); promote only with reconstructed source
+0x197ac0	0x78	__rom1_vtable_197ac0	unresolved	code-ref; 30 exact slots; 2 code ref(s); promote only with reconstructed source
+0x197b38	0x88	__rom1_vtable_197b38	unresolved	code-ref; 34 exact slots; 3 code ref(s); promote only with reconstructed source
+0x197bc0	0x88	__rom1_vtable_197bc0	unresolved	code-ref; 34 exact slots; 3 code ref(s); promote only with reconstructed source
+0x197c48	0x14	__rom1_vtable_197c48	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x197c60	0x88	__rom1_vtable_197c60	unresolved	code-ref; 34 exact slots; 1 code ref(s); promote only with reconstructed source
+0x197ce8	0x88	__rom1_vtable_197ce8	unresolved	code-ref; 34 exact slots; 1 code ref(s); promote only with reconstructed source
+0x197d70	0x88	__rom1_vtable_197d70	unresolved	code-ref; 34 exact slots; 1 code ref(s); promote only with reconstructed source
+0x197df8	0x88	__rom1_vtable_197df8	unresolved	code-ref; 34 exact slots; 1 code ref(s); promote only with reconstructed source
+0x197e80	0x78	__rom1_vtable_197e80	unresolved	code-ref; 30 exact slots; 1 code ref(s); promote only with reconstructed source
+0x197ef8	0x88	__rom1_vtable_197ef8	unresolved	code-ref; 34 exact slots; 1 code ref(s); promote only with reconstructed source
+0x197f80	0x88	__rom1_vtable_197f80	unresolved	code-ref; 34 exact slots; 1 code ref(s); promote only with reconstructed source
+0x198008	0x88	__rom1_vtable_198008	unresolved	code-ref; 34 exact slots; 1 code ref(s); promote only with reconstructed source
+0x198090	0x88	__rom1_vtable_198090	unresolved	code-ref; 34 exact slots; 1 code ref(s); promote only with reconstructed source
+0x198118	0x88	__rom1_vtable_198118	unresolved	code-ref; 34 exact slots; 2 code ref(s); promote only with reconstructed source
+0x1981a0	0x88	__rom1_vtable_1981a0	unresolved	code-ref; 34 exact slots; 2 code ref(s); promote only with reconstructed source
+0x198228	0x90	__rom1_vtable_198228	unresolved	code-ref; 36 exact slots; 2 code ref(s); promote only with reconstructed source
+0x1982b8	0x90	__rom1_vtable_1982b8	unresolved	code-ref; 36 exact slots; 1 code ref(s); promote only with reconstructed source
+0x198348	0x90	__rom1_vtable_198348	unresolved	code-ref; 36 exact slots; 2 code ref(s); promote only with reconstructed source
+0x1983d8	0x90	__rom1_vtable_1983d8	unresolved	code-ref; 36 exact slots; 2 code ref(s); promote only with reconstructed source
+0x198468	0x90	__rom1_vtable_198468	unresolved	code-ref; 36 exact slots; 2 code ref(s); promote only with reconstructed source
+0x1984f8	0x90	__rom1_vtable_1984f8	unresolved	code-ref; 36 exact slots; 1 code ref(s); promote only with reconstructed source
+0x198588	0x88	__rom1_vtable_198588	unresolved	code-ref; 34 exact slots; 1 code ref(s); promote only with reconstructed source
+0x198610	0x88	__rom1_vtable_198610	unresolved	code-ref; 34 exact slots; 1 code ref(s); promote only with reconstructed source
+0x198698	0x8c	__rom1_vtable_198698	unresolved	code-ref; 35 exact slots; 1 code ref(s); promote only with reconstructed source
+0x198728	0x88	__rom1_vtable_198728	unresolved	code-ref; 34 exact slots; 1 code ref(s); promote only with reconstructed source
+0x1987b0	0x90	__rom1_vtable_1987b0	unresolved	code-ref; 36 exact slots; 1 code ref(s); promote only with reconstructed source
+0x198840	0x88	__rom1_vtable_198840	unresolved	code-ref; 34 exact slots; 2 code ref(s); promote only with reconstructed source
+0x1988c8	0x8c	__rom1_vtable_1988c8	unresolved	code-ref; 35 exact slots; 1 code ref(s); promote only with reconstructed source
+0x198958	0x8c	__rom1_vtable_198958	unresolved	code-ref; 35 exact slots; 1 code ref(s); promote only with reconstructed source
+0x1989e8	0x8c	__rom1_vtable_1989e8	unresolved	code-ref; 35 exact slots; 1 code ref(s); promote only with reconstructed source
+0x198a78	0x78	__rom1_vtable_198a78	unresolved	code-ref; 30 exact slots; 1 code ref(s); promote only with reconstructed source
+0x198af0	0x88	__rom1_vtable_198af0	unresolved	code-ref; 34 exact slots; 1 code ref(s); promote only with reconstructed source
+0x198b78	0x88	__rom1_vtable_198b78	unresolved	code-ref; 34 exact slots; 1 code ref(s); promote only with reconstructed source
+0x198c00	0x90	__rom1_vtable_198c00	unresolved	code-ref; 36 exact slots; 1 code ref(s); promote only with reconstructed source
+0x198c90	0x88	__rom1_vtable_198c90	unresolved	code-ref; 34 exact slots; 1 code ref(s); promote only with reconstructed source
+0x198d18	0x7c	__rom1_vtable_198d18	unresolved	code-ref; 31 exact slots; 2 code ref(s); promote only with reconstructed source
+0x198d98	0x7c	__rom1_vtable_198d98	unresolved	code-ref; 31 exact slots; 1 code ref(s); promote only with reconstructed source
+0x198e18	0x7c	__rom1_vtable_198e18	unresolved	code-ref; 31 exact slots; 2 code ref(s); promote only with reconstructed source
+0x198e98	0x78	__rom1_vtable_198e98	unresolved	code-ref; 30 exact slots; 2 code ref(s); promote only with reconstructed source
+0x198f10	0x14	__rom1_vtable_198f10	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x198f28	0x14	__rom1_vtable_198f28	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x198f40	0x14	__rom1_vtable_198f40	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x198f58	0x14	__rom1_vtable_198f58	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x198f70	0x88	__rom1_vtable_198f70	unresolved	code-ref; 34 exact slots; 1 code ref(s); promote only with reconstructed source
+0x198ff8	0x14	??_7CDib@@6B@	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x199030	0x14	__rom1_vtable_199030	unresolved	runtime-class; 5 exact slots; 0 code ref(s); promote only with reconstructed source
+0x199048	0x14	__rom1_vtable_199048	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x199060	0x14	__rom1_vtable_199060	unresolved	code-ref; 5 exact slots; 1 code ref(s); promote only with reconstructed source
+0x199078	0x88	__rom1_vtable_199078	unresolved	code-ref; 34 exact slots; 3 code ref(s); promote only with reconstructed source
+0x199108	0x1c	__rom1_vtable_199108	unresolved	code-ref; 7 exact slots; 2 code ref(s); promote only with reconstructed source
+0x199138	0x1c	__rom1_vtable_199138	unresolved	code-ref; 7 exact slots; 1 code ref(s); promote only with reconstructed source
+0x199158	0x1c	__rom1_vtable_199158	unresolved	code-ref; 7 exact slots; 1 code ref(s); promote only with reconstructed source
+0x199270	0x54	??_7CGameObject@@6B@	unresolved	code-ref; 21 exact slots; 3 code ref(s); promote only with reconstructed source
+0x1992c8	0x14	__rom1_vtable_1992c8	unresolved	code-ref; 5 exact slots; 8 code ref(s); promote only with reconstructed source
+0x1992e0	0x54	??_7CBackPack@@6B@	unresolved	code-ref; 21 exact slots; 2 code ref(s); promote only with reconstructed source
+0x199338	0x54	??_7CStructure@@6B@	unresolved	code-ref; 21 exact slots; 2 code ref(s); promote only with reconstructed source
+0x199390	0x58	??_7CBridge@@6B@	unresolved	code-ref; 22 exact slots; 2 code ref(s); promote only with reconstructed source
+0x1993e8	0x84	??_7CUnit@@6B@	unresolved	code-ref; 33 exact slots; 3 code ref(s); promote only with reconstructed source
+0x199470	0x84	??_7CAirUnit@@6B@	unresolved	code-ref; 33 exact slots; 2 code ref(s); promote only with reconstructed source
+0x1994f8	0x54	??_7CProjectile@@6B@	unresolved	code-ref; 21 exact slots; 2 code ref(s); promote only with reconstructed source
+0x199550	0x88	__rom1_vtable_199550	unresolved	code-ref; 34 exact slots; 4 code ref(s); promote only with reconstructed source
+0x1995d8	0x14	__rom1_vtable_1995d8	unresolved	code-ref; 5 exact slots; 5 code ref(s); promote only with reconstructed source
+0x1995f0	0x14	__rom1_vtable_1995f0	unresolved	code-ref; 5 exact slots; 21 code ref(s); promote only with reconstructed source
+0x199630	0x14	__rom1_vtable_199630	unresolved	runtime-class; 5 exact slots; 0 code ref(s); promote only with reconstructed source
+0x199648	0x14	__rom1_vtable_199648	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x199660	0x14	__rom1_vtable_199660	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x199678	0x14	__rom1_vtable_199678	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x199690	0x14	__rom1_vtable_199690	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x1996a8	0x14	__rom1_vtable_1996a8	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x1996c0	0x14	__rom1_vtable_1996c0	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x1996d8	0x14	__rom1_vtable_1996d8	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x1996f0	0x14	__rom1_vtable_1996f0	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x199708	0x14	__rom1_vtable_199708	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x199720	0x14	__rom1_vtable_199720	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x199738	0x14	__rom1_vtable_199738	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x199750	0x14	__rom1_vtable_199750	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x199768	0x14	__rom1_vtable_199768	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x199780	0x14	__rom1_vtable_199780	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x199d10	0xa4	__rom1_vtable_199d10	unresolved	code-ref; 41 exact slots; 1 code ref(s); retail-duplicate class spelling withheld; promote only with reconstructed source
+0x199db8	0xfc	??_7CMainWindow@@6B@	unresolved	code-ref; 63 exact slots; 1 code ref(s); promote only with reconstructed source
+0x199eb8	0x14	__rom1_vtable_199eb8	unresolved	code-ref; 5 exact slots; 1 code ref(s); promote only with reconstructed source
+0x199ed0	0x14	__rom1_vtable_199ed0	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x199ee8	0x78	__rom1_vtable_199ee8	unresolved	code-ref; 30 exact slots; 3 code ref(s); promote only with reconstructed source
+0x199f60	0x78	__rom1_vtable_199f60	unresolved	code-ref; 30 exact slots; 3 code ref(s); promote only with reconstructed source
+0x199fd8	0x78	__rom1_vtable_199fd8	unresolved	code-ref; 30 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19a050	0x14	__rom1_vtable_19a050	unresolved	code-ref; 5 exact slots; 15 code ref(s); promote only with reconstructed source
+0x19a068	0x88	__rom1_vtable_19a068	unresolved	code-ref; 34 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19a0f0	0xac	__rom1_vtable_19a0f0	unresolved	code-ref; 43 exact slots; 4 code ref(s); promote only with reconstructed source
+0x19a1a0	0xac	__rom1_vtable_19a1a0	unresolved	code-ref; 43 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19a250	0x14	__rom1_vtable_19a250	unresolved	code-ref; 5 exact slots; 5 code ref(s); promote only with reconstructed source
+0x19a268	0x14	__rom1_vtable_19a268	unresolved	code-ref; 5 exact slots; 4 code ref(s); promote only with reconstructed source
+0x19a3d0	0x88	__rom1_vtable_19a3d0	unresolved	code-ref; 34 exact slots; 4 code ref(s); promote only with reconstructed source
+0x19a458	0x10	__rom1_vtable_19a458	unresolved	code-ref; 4 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19a468	0x10	__rom1_vtable_19a468	unresolved	code-ref; 4 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19a478	0x14	__rom1_vtable_19a478	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19a490	0x14	__rom1_vtable_19a490	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19a4a8	0x14	__rom1_vtable_19a4a8	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19a4c0	0x14	__rom1_vtable_19a4c0	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19a4d8	0x14	__rom1_vtable_19a4d8	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19a4f0	0xc	__rom1_vtable_19a4f0	unresolved	code-ref; 3 exact slots; 1 code ref(s); promote only with reconstructed source
+0x19a510	0x14	__rom1_vtable_19a510	unresolved	runtime-class; 5 exact slots; 0 code ref(s); promote only with reconstructed source
+0x19a528	0x14	__rom1_vtable_19a528	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19a558	0x14	??_7CPlayer@@6B@	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19a570	0x88	__rom1_vtable_19a570	unresolved	code-ref; 34 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19a5f8	0x78	__rom1_vtable_19a5f8	unresolved	code-ref; 30 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19a670	0x78	__rom1_vtable_19a670	unresolved	code-ref; 30 exact slots; 4 code ref(s); promote only with reconstructed source
+0x19a6e8	0x78	__rom1_vtable_19a6e8	unresolved	code-ref; 30 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19a760	0x84	__rom1_vtable_19a760	unresolved	code-ref; 33 exact slots; 4 code ref(s); promote only with reconstructed source
+0x19a7e8	0x78	__rom1_vtable_19a7e8	unresolved	code-ref; 30 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19a860	0x14	__rom1_vtable_19a860	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19a878	0x14	__rom1_vtable_19a878	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19a890	0x14	__rom1_vtable_19a890	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19a8a8	0x14	__rom1_vtable_19a8a8	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19a8c0	0x14	__rom1_vtable_19a8c0	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19a8d8	0x14	__rom1_vtable_19a8d8	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19a8f0	0x14	__rom1_vtable_19a8f0	unresolved	code-ref; 5 exact slots; 10 code ref(s); promote only with reconstructed source
+0x19a908	0x14	__rom1_vtable_19a908	unresolved	code-ref; 5 exact slots; 10 code ref(s); promote only with reconstructed source
+0x19a968	0x14	__rom1_vtable_19a968	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19a980	0xbc	__rom1_vtable_19a980	unresolved	code-ref; 47 exact slots; 4 code ref(s); promote only with reconstructed source
+0x19aa40	0xbc	__rom1_vtable_19aa40	unresolved	code-ref; 47 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19ab00	0xbc	__rom1_vtable_19ab00	unresolved	code-ref; 47 exact slots; 4 code ref(s); promote only with reconstructed source
+0x19abc0	0xc0	__rom1_vtable_19abc0	unresolved	code-ref; 48 exact slots; 4 code ref(s); retail-duplicate class spelling withheld; promote only with reconstructed source
+0x19ac80	0x88	__rom1_vtable_19ac80	unresolved	code-ref; 34 exact slots; 4 code ref(s); promote only with reconstructed source
+0x19ad08	0x7c	__rom1_vtable_19ad08	unresolved	code-ref; 31 exact slots; 4 code ref(s); promote only with reconstructed source
+0x19ad98	0x7c	__rom1_vtable_19ad98	unresolved	runtime-class; 31 exact slots; 0 code ref(s); promote only with reconstructed source
+0x19ae18	0x14	__rom1_vtable_19ae18	unresolved	code-ref; 5 exact slots; 1 code ref(s); promote only with reconstructed source
+0x19ae30	0x14	__rom1_vtable_19ae30	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19ae48	0x78	__rom1_vtable_19ae48	unresolved	code-ref; 30 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19af50	0x14	__rom1_vtable_19af50	unresolved	runtime-class; 5 exact slots; 0 code ref(s); promote only with reconstructed source
+0x19af68	0x88	__rom1_vtable_19af68	unresolved	code-ref; 34 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19aff0	0x88	__rom1_vtable_19aff0	unresolved	code-ref; 34 exact slots; 4 code ref(s); promote only with reconstructed source
+0x19b078	0x88	__rom1_vtable_19b078	unresolved	code-ref; 34 exact slots; 4 code ref(s); promote only with reconstructed source
+0x19b100	0x78	__rom1_vtable_19b100	unresolved	code-ref; 30 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19b178	0x78	__rom1_vtable_19b178	unresolved	code-ref; 30 exact slots; 4 code ref(s); promote only with reconstructed source
+0x19b1f0	0x78	__rom1_vtable_19b1f0	unresolved	code-ref; 30 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19b268	0x8c	__rom1_vtable_19b268	unresolved	code-ref; 35 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19b2f8	0x78	__rom1_vtable_19b2f8	unresolved	code-ref; 30 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19b370	0x78	__rom1_vtable_19b370	unresolved	code-ref; 30 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19b3e8	0x7c	__rom1_vtable_19b3e8	unresolved	code-ref; 31 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19b468	0x8c	__rom1_vtable_19b468	unresolved	code-ref; 35 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19b4f8	0x8c	__rom1_vtable_19b4f8	unresolved	code-ref; 35 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19b588	0x78	__rom1_vtable_19b588	unresolved	code-ref; 30 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19b600	0x78	__rom1_vtable_19b600	unresolved	code-ref; 30 exact slots; 4 code ref(s); promote only with reconstructed source
+0x19b678	0x88	__rom1_vtable_19b678	unresolved	code-ref; 34 exact slots; 4 code ref(s); promote only with reconstructed source
+0x19b700	0x88	__rom1_vtable_19b700	unresolved	code-ref; 34 exact slots; 1 code ref(s); promote only with reconstructed source
+0x19b788	0x88	__rom1_vtable_19b788	unresolved	code-ref; 34 exact slots; 1 code ref(s); promote only with reconstructed source
+0x19b810	0x78	__rom1_vtable_19b810	unresolved	code-ref; 30 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19b888	0x78	__rom1_vtable_19b888	unresolved	code-ref; 30 exact slots; 1 code ref(s); promote only with reconstructed source
+0x19b900	0x8c	__rom1_vtable_19b900	unresolved	code-ref; 35 exact slots; 1 code ref(s); promote only with reconstructed source
+0x19b990	0x78	__rom1_vtable_19b990	unresolved	code-ref; 30 exact slots; 1 code ref(s); promote only with reconstructed source
+0x19ba08	0x88	__rom1_vtable_19ba08	unresolved	code-ref; 34 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19ba90	0x14	__rom1_vtable_19ba90	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19baa8	0x14	__rom1_vtable_19baa8	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19bac0	0x14	__rom1_vtable_19bac0	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19bad8	0x14	__rom1_vtable_19bad8	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19baf0	0x14	__rom1_vtable_19baf0	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19bb08	0x5c	__rom1_vtable_19bb08	unresolved	code-ref; 23 exact slots; 3 code ref(s); retail-duplicate class spelling withheld; promote only with reconstructed source
+0x19bd30	0x14	__rom1_vtable_19bd30	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19bd48	0x14	??_7Spellbook@@6B@	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19bd60	0x1c	??_7TableLine@@6B@	unresolved	code-ref; 7 exact slots; 1 code ref(s); promote only with reconstructed source
+0x19bd80	0x14	__rom1_vtable_19bd80	unresolved	code-ref; 5 exact slots; 1 code ref(s); promote only with reconstructed source
+0x19bd98	0x1c	__rom1_vtable_19bd98	unresolved	code-ref; 7 exact slots; 1 code ref(s); promote only with reconstructed source
+0x19bdb8	0x8	__rom1_vtable_19bdb8	unresolved	code-ref; 2 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19bdc0	0x14	__rom1_vtable_19bdc0	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19bdd8	0x14	__rom1_vtable_19bdd8	unresolved	code-ref; 5 exact slots; 1 code ref(s); promote only with reconstructed source
+0x19bdf0	0x14	__rom1_vtable_19bdf0	unresolved	code-ref; 5 exact slots; 1 code ref(s); promote only with reconstructed source
+0x19be08	0x14	__rom1_vtable_19be08	unresolved	code-ref; 5 exact slots; 1 code ref(s); promote only with reconstructed source
+0x19be20	0x14	__rom1_vtable_19be20	unresolved	code-ref; 5 exact slots; 1 code ref(s); promote only with reconstructed source
+0x19be38	0x14	__rom1_vtable_19be38	unresolved	code-ref; 5 exact slots; 1 code ref(s); promote only with reconstructed source
+0x19be50	0x14	__rom1_vtable_19be50	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19be68	0x14	__rom1_vtable_19be68	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19be80	0x14	__rom1_vtable_19be80	unresolved	code-ref; 5 exact slots; 6 code ref(s); promote only with reconstructed source
+0x19be98	0x14	__rom1_vtable_19be98	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19beb0	0x14	__rom1_vtable_19beb0	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19bec8	0x14	__rom1_vtable_19bec8	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19bee0	0x14	__rom1_vtable_19bee0	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19bef8	0x14	__rom1_vtable_19bef8	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19bf10	0x14	__rom1_vtable_19bf10	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19bf28	0x14	__rom1_vtable_19bf28	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19bf40	0x14	__rom1_vtable_19bf40	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19bf58	0x14	__rom1_vtable_19bf58	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19bf70	0x14	__rom1_vtable_19bf70	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19bf88	0x14	__rom1_vtable_19bf88	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19bfa0	0x14	__rom1_vtable_19bfa0	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19bfb8	0x14	__rom1_vtable_19bfb8	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19bfd0	0x38	??_7Token@@6B@	unresolved	code-ref; 14 exact slots; 5 code ref(s); promote only with reconstructed source
+0x19c008	0x38	??_7VirtualCaster@@6B@	unresolved	code-ref; 14 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c040	0x70	??_7Unit@@6B@	unresolved	code-ref; 28 exact slots; 6 code ref(s); promote only with reconstructed source
+0x19c0b0	0x70	??_7Humanoid@@6B@	unresolved	code-ref; 28 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19c120	0x14	??_7Diary@@6B@	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19c138	0x70	??_7Human@@6B@	unresolved	code-ref; 28 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c1a8	0x14	??_7Player@@6B@	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c1c0	0x3c	??_7SpellEffect@@6B@	unresolved	code-ref; 15 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c200	0x3c	??_7PointEffect@@6B@	unresolved	code-ref; 15 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19c240	0x3c	??_7AreaEffect@@6B@	unresolved	code-ref; 15 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19c280	0x3c	??_7SpellTransport@@6B@	unresolved	code-ref; 15 exact slots; 4 code ref(s); promote only with reconstructed source
+0x19c2c0	0x14	??_7Spell@@6B@	unresolved	code-ref; 5 exact slots; 4 code ref(s); promote only with reconstructed source
+0x19c2d8	0x58	??_7Effect@@6B@	unresolved	code-ref; 22 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19c330	0x58	??_7Effect_DirectDamage@@6B@	unresolved	code-ref; 22 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19c388	0x3c	??_7Building@@6B@	unresolved	code-ref; 15 exact slots; 5 code ref(s); promote only with reconstructed source
+0x19c3c8	0x3c	??_7Outpost@@6B@	unresolved	code-ref; 15 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19c408	0x3c	??_7Tavern@@6B@	unresolved	code-ref; 15 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c448	0x3c	??_7Shop@@6B@	unresolved	code-ref; 15 exact slots; 4 code ref(s); promote only with reconstructed source
+0x19c488	0x14	??_7CMultiShopShelf@@6B@	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c4a0	0x14	??_7CMultiShopInstance@@6B@	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c4b8	0x14	??_7CMultiShopTemplate@@6B@	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19c4d0	0x58	??_7Item@@6B@	unresolved	code-ref; 22 exact slots; 5 code ref(s); promote only with reconstructed source
+0x19c528	0x58	??_7Armor@@6B@	unresolved	code-ref; 22 exact slots; 5 code ref(s); promote only with reconstructed source
+0x19c580	0x58	??_7Shield@@6B@	unresolved	code-ref; 22 exact slots; 5 code ref(s); promote only with reconstructed source
+0x19c5d8	0x58	??_7Weapon@@6B@	unresolved	code-ref; 22 exact slots; 5 code ref(s); promote only with reconstructed source
+0x19c630	0x14	__rom1_vtable_19c630	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c648	0x38	??_7Sack@@6B@	unresolved	code-ref; 14 exact slots; 4 code ref(s); promote only with reconstructed source
+0x19c680	0x8	__rom1_vtable_19c680	unresolved	code-ref; 2 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c688	0x4	__rom1_vtable_19c688	unresolved	code-ref-weak; 1 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c690	0x14	__rom1_vtable_19c690	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c6a8	0x14	__rom1_vtable_19c6a8	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c6c0	0x14	__rom1_vtable_19c6c0	unresolved	code-ref; 5 exact slots; 8 code ref(s); promote only with reconstructed source
+0x19c6d8	0x14	__rom1_vtable_19c6d8	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c6f0	0x14	__rom1_vtable_19c6f0	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c708	0x14	__rom1_vtable_19c708	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c720	0x14	__rom1_vtable_19c720	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c738	0x14	__rom1_vtable_19c738	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c750	0x14	__rom1_vtable_19c750	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c768	0x14	__rom1_vtable_19c768	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c780	0x14	__rom1_vtable_19c780	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c798	0x14	__rom1_vtable_19c798	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c7b0	0x14	__rom1_vtable_19c7b0	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c7c8	0x14	__rom1_vtable_19c7c8	unresolved	code-ref; 5 exact slots; 14 code ref(s); promote only with reconstructed source
+0x19c7e0	0x14	__rom1_vtable_19c7e0	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c7f8	0x14	__rom1_vtable_19c7f8	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c810	0x14	__rom1_vtable_19c810	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c828	0x14	__rom1_vtable_19c828	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c840	0x14	__rom1_vtable_19c840	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c858	0x14	__rom1_vtable_19c858	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c870	0x14	__rom1_vtable_19c870	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c888	0x14	__rom1_vtable_19c888	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c8a0	0x14	__rom1_vtable_19c8a0	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c8b8	0x14	__rom1_vtable_19c8b8	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c8d0	0x14	__rom1_vtable_19c8d0	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c8e8	0x14	__rom1_vtable_19c8e8	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c900	0x14	__rom1_vtable_19c900	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c918	0x14	__rom1_vtable_19c918	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c930	0x14	__rom1_vtable_19c930	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c948	0x14	__rom1_vtable_19c948	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c960	0x14	__rom1_vtable_19c960	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c978	0x14	__rom1_vtable_19c978	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c990	0x14	__rom1_vtable_19c990	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c9a8	0x14	__rom1_vtable_19c9a8	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c9c0	0x14	__rom1_vtable_19c9c0	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c9d8	0x14	__rom1_vtable_19c9d8	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19c9f0	0x14	__rom1_vtable_19c9f0	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19ca08	0x14	__rom1_vtable_19ca08	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19ca20	0x14	__rom1_vtable_19ca20	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19ca38	0x14	__rom1_vtable_19ca38	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19ca50	0x14	__rom1_vtable_19ca50	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19ca68	0x14	__rom1_vtable_19ca68	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19ca80	0x14	__rom1_vtable_19ca80	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19ca98	0x14	__rom1_vtable_19ca98	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19cab0	0x14	__rom1_vtable_19cab0	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19cac8	0x1c	__rom1_vtable_19cac8	unresolved	code-ref; 7 exact slots; 1 code ref(s); promote only with reconstructed source
+0x19cae8	0x1c	__rom1_vtable_19cae8	unresolved	code-ref; 7 exact slots; 1 code ref(s); promote only with reconstructed source
+0x19cb08	0x1c	__rom1_vtable_19cb08	unresolved	code-ref; 7 exact slots; 1 code ref(s); promote only with reconstructed source
+0x19cb28	0x1c	__rom1_vtable_19cb28	unresolved	code-ref; 7 exact slots; 1 code ref(s); promote only with reconstructed source
+0x19cb48	0x1c	__rom1_vtable_19cb48	unresolved	code-ref; 7 exact slots; 1 code ref(s); promote only with reconstructed source
+0x19cb68	0x1c	__rom1_vtable_19cb68	unresolved	code-ref; 7 exact slots; 1 code ref(s); promote only with reconstructed source
+0x19cb88	0x1c	__rom1_vtable_19cb88	unresolved	code-ref; 7 exact slots; 1 code ref(s); promote only with reconstructed source
+0x19cba8	0x1c	__rom1_vtable_19cba8	unresolved	code-ref; 7 exact slots; 1 code ref(s); promote only with reconstructed source
+0x19cbc8	0x14	__rom1_vtable_19cbc8	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19cbe0	0x14	__rom1_vtable_19cbe0	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19cbf8	0x14	__rom1_vtable_19cbf8	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19cc10	0x14	__rom1_vtable_19cc10	unresolved	code-ref; 5 exact slots; 5 code ref(s); promote only with reconstructed source
+0x19cc28	0x14	__rom1_vtable_19cc28	unresolved	code-ref; 5 exact slots; 5 code ref(s); promote only with reconstructed source
+0x19cc40	0x14	__rom1_vtable_19cc40	unresolved	code-ref; 5 exact slots; 5 code ref(s); promote only with reconstructed source
+0x19cc58	0x14	__rom1_vtable_19cc58	unresolved	code-ref; 5 exact slots; 5 code ref(s); promote only with reconstructed source
+0x19cc90	0x14	__rom1_vtable_19cc90	unresolved	runtime-class; 5 exact slots; 0 code ref(s); promote only with reconstructed source
+0x19cca8	0x14	__rom1_vtable_19cca8	unresolved	code-ref; 5 exact slots; 8 code ref(s); promote only with reconstructed source
+0x19ccc0	0x14	__rom1_vtable_19ccc0	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19ccd8	0x14	__rom1_vtable_19ccd8	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
+0x19ccf0	0x14	__rom1_vtable_19ccf0	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19cd08	0x14	__rom1_vtable_19cd08	unresolved	code-ref; 5 exact slots; 11 code ref(s); promote only with reconstructed source
+0x19cd20	0x14	__rom1_vtable_19cd20	unresolved	code-ref; 5 exact slots; 6 code ref(s); promote only with reconstructed source
+0x19cd38	0x14	__rom1_vtable_19cd38	unresolved	code-ref; 5 exact slots; 6 code ref(s); promote only with reconstructed source
+0x19cd50	0x14	__rom1_vtable_19cd50	unresolved	code-ref; 5 exact slots; 7 code ref(s); promote only with reconstructed source
+0x19cd68	0x14	__rom1_vtable_19cd68	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
+0x19cdec	0x14	__rom1_vtable_19cdec	unresolved	rtti; 5 exact slots; 264 code ref(s); RTTI CObject; retail-duplicate class spelling withheld; promote only with reconstructed source
+0x19cebc	0x4	??_7_AFX_CTL3D_STATE@@6B@	unresolved	rtti; 1 exact slots; 2 code ref(s); RTTI _AFX_CTL3D_STATE; promote only with reconstructed source
+0x19cec4	0x4	??_7_AFX_CTL3D_THREAD@@6B@	unresolved	rtti; 1 exact slots; 2 code ref(s); RTTI _AFX_CTL3D_THREAD; promote only with reconstructed source
+0x19cf5c	0x14	??_7CGdiObject@@6B@	unresolved	rtti; 5 exact slots; 10 code ref(s); RTTI CGdiObject; promote only with reconstructed source
+0x19cf74	0x14	??_7CRgn@@6B@	unresolved	rtti; 5 exact slots; 2 code ref(s); RTTI CRgn; promote only with reconstructed source
+0x19d3cc	0x14	??_7CPen@@6B@	unresolved	rtti; 5 exact slots; 2 code ref(s); RTTI CPen; promote only with reconstructed source
+0x19d3e4	0x14	??_7CBrush@@6B@	unresolved	rtti; 5 exact slots; 3 code ref(s); RTTI CBrush; promote only with reconstructed source
+0x19d49c	0x5c	__rom1_vtable_19d49c	unresolved	rtti; 23 exact slots; 4 code ref(s); RTTI CFile; retail-duplicate class spelling withheld; promote only with reconstructed source
+0x19d4fc	0x1c	??_7CFileException@@6B@	unresolved	rtti; 7 exact slots; 14 code ref(s); RTTI CFileException; promote only with reconstructed source
+0x19d6d4	0x4	??_7CNoTrackObject@@6B@	unresolved	rtti; 1 exact slots; 10 code ref(s); RTTI CNoTrackObject; promote only with reconstructed source
+0x19dd54	0xa4	__rom1_vtable_19dd54	unresolved	rtti; 41 exact slots; 2 code ref(s); RTTI CWinApp; retail-duplicate class spelling withheld; promote only with reconstructed source
+0x1a077c	0x4	__rom1_vtable_1a077c	unresolved	code-ref-weak; 1 exact slots; 1 code ref(s); promote only with reconstructed source
+0x1a1644	0x4	__rom1_vtable_1a1644	unresolved	code-ref-weak; 1 exact slots; 1 code ref(s); promote only with reconstructed source
+0x1a1648	0x4	__rom1_vtable_1a1648	unresolved	code-ref-weak; 1 exact slots; 1 code ref(s); promote only with reconstructed source
+0x1a1714	0x4	__rom1_vtable_1a1714	unresolved	rtti; 1 exact slots; 5 code ref(s); RTTI fstream; secondary base+0x14; promote only with reconstructed source
+0x1a172c	0x4	__rom1_vtable_1a172c	unresolved	rtti; 1 exact slots; 4 code ref(s); RTTI ostream; secondary base+0x8; promote only with reconstructed source
+0x1a173c	0x4	__rom1_vtable_1a173c	unresolved	rtti; 1 exact slots; 3 code ref(s); RTTI ostream_withassign; secondary base+0x8; promote only with reconstructed source
+0x1a1764	0x4	__rom1_vtable_1a1764	unresolved	rtti; 1 exact slots; 4 code ref(s); RTTI iostream; secondary base+0x14; promote only with reconstructed source
+0x1a17c4	0x4	__rom1_vtable_1a17c4	unresolved	rtti; 1 exact slots; 4 code ref(s); RTTI istream; secondary base+0xc; promote only with reconstructed source
+0x1a17d4	0x4	__rom1_vtable_1a17d4	unresolved	rtti; 1 exact slots; 3 code ref(s); RTTI istream_withassign; secondary base+0xc; promote only with reconstructed source
+0x1c8614	0x4	__rom1_vtable_1c8614	unresolved	code-ref-weak; 1 exact slots; 1 code ref(s); promote only with reconstructed source
+0x1c8618	0x4	__rom1_vtable_1c8618	unresolved	code-ref-weak; 1 exact slots; 1 code ref(s); promote only with reconstructed source
+0x1c98c8	0x4	__rom1_vtable_1c98c8	unresolved	code-ref-weak; 1 exact slots; 1 code ref(s); promote only with reconstructed source
+0x1c98cc	0x4	__rom1_vtable_1c98cc	unresolved	code-ref-weak; 1 exact slots; 2 code ref(s); promote only with reconstructed source
+0x1c98d0	0x4	__rom1_vtable_1c98d0	unresolved	code-ref-weak; 1 exact slots; 2 code ref(s); promote only with reconstructed source
+0x1c9d58	0x4	__rom1_vtable_1c9d58	unresolved	code-ref-weak; 1 exact slots; 2 code ref(s); promote only with reconstructed source
+0x1c9d5c	0x4	__rom1_vtable_1c9d5c	unresolved	code-ref-weak; 1 exact slots; 1 code ref(s); promote only with reconstructed source
+0x1c9d60	0x4	__rom1_vtable_1c9d60	unresolved	code-ref-weak; 1 exact slots; 1 code ref(s); promote only with reconstructed source
+0x1c9d64	0x4	__rom1_vtable_1c9d64	unresolved	code-ref-weak; 1 exact slots; 1 code ref(s); promote only with reconstructed source
+0x1c9d68	0x4	__rom1_vtable_1c9d68	unresolved	code-ref-weak; 1 exact slots; 1 code ref(s); promote only with reconstructed source
+0x1c9d6c	0x4	__rom1_vtable_1c9d6c	unresolved	code-ref-weak; 1 exact slots; 1 code ref(s); promote only with reconstructed source
+0x1cc078	0x4	__rom1_vtable_1cc078	unresolved	code-ref-weak; 1 exact slots; 1 code ref(s); promote only with reconstructed source
+0x1ccc58	0x4	__rom1_vtable_1ccc58	unresolved	code-ref-weak; 1 exact slots; 1 code ref(s); promote only with reconstructed source
+0x1ccc60	0x4	__rom1_vtable_1ccc60	unresolved	code-ref-weak; 1 exact slots; 1 code ref(s); promote only with reconstructed source

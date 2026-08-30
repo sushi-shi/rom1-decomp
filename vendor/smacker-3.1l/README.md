@@ -14,6 +14,9 @@ Layout:
 
 - `orig/` is the byte-exact pinned GitHub input;
 - `patches/0001-retail-version.patch` is the admitted version adjustment;
+- `patches/0002-clang-metadata.patch` replaces two unused inline-assembly
+  atomics only for Clang's `ROM1_EMIT_META` parse; the VC5 header path remains
+  exactly the pinned upstream spelling;
 - `rad.h` and `smack.h` are the materialized include tree used by RoM1, at the
   same one-directory-deep location as Gruntz's vendor headers;
 - `retail_imports.tsv` is generated directly from ALLODS.EXE.

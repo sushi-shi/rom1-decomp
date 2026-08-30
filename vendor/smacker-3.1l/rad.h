@@ -918,6 +918,10 @@ RADEXPFUNC void RADEXPLINK radfree(void PTR4* ptr);
 #ifdef __RADNT__
   #define LockedIncrement(var) __asm { lock inc [var] }
   #define LockedDecrement(var) __asm { lock dec [var] }
+#if defined(__clang__) && defined(ROM1_EMIT_META)
+  void __inline LockedIncrementFunc(void PTR4* var) { ++(*((u32*)var)); }
+  void __inline LockedDecrementFunc(void PTR4* var) { --(*((u32*)var)); }
+#else
   void __inline LockedIncrementFunc(void PTR4* var) {
     __asm {
       mov eax,[var]
@@ -931,6 +935,7 @@ RADEXPFUNC void RADEXPLINK radfree(void PTR4* ptr);
        lock dec [eax]
     }
   }
+#endif
 
 #else
   
@@ -959,4 +964,3 @@ RADEXPFUNC void RADEXPLINK radfree(void PTR4* ptr);
 #endif
 
 #endif
-

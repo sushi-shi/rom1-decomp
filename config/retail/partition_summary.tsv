@@ -1,14 +1,15 @@
 # retail_sha256=5ba821f37356d2da0e1eb907de28b2708714d6e2604b5caef3daf4284b9af7d3
 # Auditable zero/nonzero partition facts; raw padding is not code.
 category	count	bytes	evidence
-manual function census	12563		initial analyzer/FPO/structure seed; manual thereafter
+manual function census	13023		initial analyzer/FPO/structure seed; manual thereafter
 analyzer start evidence	6659		pinned radare2 -AA/aflj; starts only
 exact FPO records	4384	743484	IMAGE_DEBUG_TYPE_FPO
 EH unwind partition	4134	66448	global FuncInfo action closure
 C++ initializer helpers	147	1706	.CRT$XC entry/forwarder closure
-IAT jump thunks	2	12	exact FPO ff25 <IAT> bodies
+IAT jump thunks	474	2844	exact FPO bodies or contiguous six-byte ff25 <IAT> bands
 incremental-link ILT	0	0	no dense five-byte E9 island; maximum contiguous run=1
 virtual .text linker pad	0	0	final EH registration stub ends at PE virtual .text edge
 raw-only file alignment	1	416	outside virtual .text; not loaded code and not a function
 MFC runtime classes	117	2808	six-dword CRuntimeClass records
-GetRuntimeClass vtables	358	26984	slot-0 CRuntimeClass return witness
+GetRuntimeClass vtables	358	26940	slot-0 CRuntimeClass return witness
+executable vtable census	425	27776	RTTI/code vptr refs plus GetRuntimeClass proof

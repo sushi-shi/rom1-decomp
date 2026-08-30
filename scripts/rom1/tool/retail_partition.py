@@ -8,7 +8,7 @@ that the executable itself describes:
 * every VC5 ``/GX`` registration stub, FuncInfo and unwind/catch action;
 * the terminal EH contribution band and its exact function starts;
 * the ``.CRT$XI``/``.CRT$XC`` tables called by ``_cinit``;
-* compiler-generated C++ dynamic initializers and pure IAT jump thunks;
+* compiler-generated C++ dynamic initializers and pure IAT jump-thunk bands;
 * MFC ``CRuntimeClass`` records and vtables named by GetRuntimeClass slots.
 
 Analyzer sizes are retained as evidence only.  Exact extents are emitted to
@@ -29,7 +29,7 @@ from rom1.core.paths import REPO, RETAIL, retail_exe
 from rom1.core.pe import Pe
 from rom1.core.relocs import load as load_relocs
 from rom1.core.tsv import read as read_tsv, write as write_tsv
-from rom1.tool.retail_census import fpo_rows, import_rows
+from rom1.tool.retail_census import fpo_rows, import_rows, string_rows
 
 
 DISASM = RETAIL / "functions_disasm.tsv"
@@ -44,6 +44,7 @@ VTABLES = RETAIL / "vtables.tsv"
 DATA = RETAIL / "data.tsv"
 DATA_EXTENTS = RETAIL / "data_extents.tsv"
 DATA_VTABLES = RETAIL / "data_vtables.tsv"
+DATA_STATIC_LIBS = RETAIL / "data_static_libs.tsv"
 LINK_BANDS = RETAIL / "link_bands.tsv"
 PARTITION_SUMMARY = RETAIL / "partition_summary.tsv"
 
@@ -380,16 +381,50 @@ def recover_dyninit(pe: Pe, fpo: dict[int, int]):
 def recover_iat_thunks(pe: Pe, fpo: dict[int, int]):
     imports = {int(row["iat_rva"], 0): f"{row['dll']}!{row['name'] or '#' + row['ordinal']}"
                for row in import_rows(pe)}
-    rows = []
-    for rva, size in sorted(fpo.items()):
-        raw = pe.read(rva, size)
-        if size != 6 or raw is None or raw[:2] != b"\xff\x25":
+    text_lo, text_hi = pe.text_span()
+    raw = pe.read(text_lo, text_hi - text_lo)
+    if raw is None:
+        raise ValueError("cannot read virtual .text")
+
+    # Most import stubs have no FPO record at all.  Recover every FF 25 whose
+    # absolute operand names a retail IAT slot, then reject instructions that
+    # occur inside a larger exact FPO body.  A remaining stub is a function
+    # only when it has its own six-byte FPO extent or belongs to a contiguous
+    # six-byte import-stub band.  The latter is the non-incremental linker's
+    # exact layout witness; it also prevents arbitrary in-function FF 25
+    # instructions from becoming function starts.
+    candidates: list[tuple[int, int]] = []
+    fpo_intervals = sorted((rva, rva + size) for rva, size in fpo.items())
+    for offset in range(0, len(raw) - 5):
+        if raw[offset:offset + 2] != b"\xff\x25":
             continue
-        iat = _va_to_rva(pe, struct.unpack_from("<I", raw, 2)[0])
+        rva = text_lo + offset
+        iat = _va_to_rva(pe, struct.unpack_from("<I", raw, offset + 2)[0])
         if iat not in imports:
             continue
-        rows.append({"rva": _hex(rva), "size": "0x6", "iat_rva": _hex(iat),
-                     "import": imports[iat], "evidence": "exact FPO body ff25 <IAT>"})
+        owner = next(((lo, hi) for lo, hi in fpo_intervals if lo <= rva < hi), None)
+        if owner is not None and owner[0] != rva:
+            continue
+        candidates.append((rva, iat))
+
+    runs: list[list[tuple[int, int]]] = []
+    for candidate in candidates:
+        if runs and candidate[0] == runs[-1][-1][0] + 6:
+            runs[-1].append(candidate)
+        else:
+            runs.append([candidate])
+
+    rows = []
+    for run in runs:
+        for rva, iat in run:
+            exact_fpo = fpo.get(rva) == 6
+            if len(run) < 2 and not exact_fpo:
+                continue
+            evidence = ("exact FPO body ff25 <IAT>" if exact_fpo else
+                        f"contiguous ff25 <IAT> stub band ({len(run)} entries, "
+                        f"{_hex(run[0][0])}..{_hex(run[-1][0] + 6)})")
+            rows.append({"rva": _hex(rva), "size": "0x6", "iat_rva": _hex(iat),
+                         "import": imports[iat], "evidence": evidence})
     return rows
 
 
@@ -537,7 +572,7 @@ def _add_extent(extents: dict[int, tuple[int, str, str]], rva: int, size: int,
 
 def _build_data(pe: Pe, groups: list[EhGroup], dyninit_rows: list[dict[str, str]],
                 xi: tuple[int, int], xc: tuple[int, int], records: dict[int, dict],
-                vtables: list[dict[str, str]]):
+                scan_vtables: list[dict], reloc_sites: set[int]):
     starts: dict[int, str] = {}
     extents: dict[int, tuple[int, str, str]] = {}
     for section in pe.sections:
@@ -574,11 +609,26 @@ def _build_data(pe: Pe, groups: list[EhGroup], dyninit_rows: list[dict[str, str]
         starts[record["name_rva"]] = "string"
         _add_extent(extents, record["name_rva"], len(name), "CRuntimeClass name",
                     "NUL-terminated name referenced by CRuntimeClass")
-    for row in vtables:
-        rva, size = int(row["vtable_rva"], 0), int(row["size"], 0)
+    for row in scan_vtables:
+        rva, size = row["start"], row["size"] * 4
         starts[rva] = "vtable"
-        _add_extent(extents, rva, size, "MFC vtable",
-                    "contiguous text pointers split at GetRuntimeClass starts")
+        _add_extent(extents, rva, size, "vtable",
+                    "relocated text-pointer run split at RTTI and code vptr refs")
+    # The full string census is deliberately broad evidence. Promotion to a
+    # data start is narrower and executable-native: the candidate must begin
+    # in initialized data and an admitted DIR32 site must point to it exactly.
+    reloc_targets = {
+        _va_to_rva(pe, value)
+        for site in reloc_sites
+        if (value := _u32(pe, site)) is not None
+    }
+    for row in string_rows(pe):
+        rva = int(row["rva"], 0)
+        section = _section_for(pe, rva)
+        if (rva in reloc_targets and section is not None
+                and section["name"] in (".rdata", ".data")
+                and rva < section["va"] + section["rsize"]):
+            starts.setdefault(rva, "string")
     data_rows = [{"rva": _hex(rva), "kind": kind} for rva, kind in sorted(starts.items())]
     extent_rows = [{"rva": _hex(rva), "size": f"0x{size:x}", "source": source,
                     "evidence": evidence}
@@ -598,6 +648,39 @@ def generate(pe: Pe, disasm_source: Path):
     thunk_rows = recover_iat_thunks(pe, fpo)
     runtime_records, runtime_rows = recover_runtime_classes(pe)
     vtable_rows, vtable_providers = recover_vtables(pe, runtime_records)
+    # The runtime-class pass names primary MFC views, but a pointer run can
+    # also contain ctor-stamped secondary views whose first slot does not
+    # return a CRuntimeClass.  The complete image scanner supplies those cuts.
+    from rom1.verify.vtable_scan import real_vtables
+    scan_vtables = real_vtables()
+    scan_by_start = {row["start"]: row for row in scan_vtables}
+    for row in vtable_rows:
+        rva = int(row["vtable_rva"], 0)
+        scanned = scan_by_start.get(rva)
+        if scanned is None:
+            row["evidence"] += "; runtime proof compensates for absent relocation site"
+            continue
+        row["size"] = f"0x{scanned['size'] * 4:x}"
+        row["methods"] = str(scanned["size"])
+        row["method_rvas"] = ";".join(
+            row["method_rvas"].split(";")[:scanned["size"]])
+        row["evidence"] += "; exact end from RTTI/code-ref split census"
+    for row in vtable_providers:
+        scanned = scan_by_start.get(int(row["rva"], 0))
+        if scanned is not None:
+            row["size"] = f"0x{scanned['size'] * 4:x}"
+    partition_vtables = list(scan_vtables)
+    for row in vtable_rows:
+        rva = int(row["vtable_rva"], 0)
+        if rva not in scan_by_start:
+            methods = row["method_rvas"].split(";")
+            partition_vtables.append({
+                "start": rva, "size": int(row["methods"]), "sec": ".rdata",
+                "rtti": None, "decorated": None, "base_off": None,
+                "code_refs": 0, "head_of_run": True,
+                "first": int(methods[0], 0), "conf": "runtime-class",
+            })
+    partition_vtables.sort(key=lambda row: row["start"])
 
     starts = {int(row["rva"], 0): "" for row in disasm}
     starts.update({rva: starts.get(rva, "") for rva in fpo})
@@ -634,8 +717,9 @@ def generate(pe: Pe, disasm_source: Path):
     exact_rows = [{"rva": _hex(rva), "size": f"0x{size:x}", "source": source,
                    "evidence": evidence}
                   for rva, (size, source, evidence) in sorted(exact.items())]
-    data_rows, data_extent_rows = _build_data(pe, groups, dyninit_rows, xi, xc,
-                                               runtime_records, vtable_rows)
+    data_rows, data_extent_rows = _build_data(
+        pe, groups, dyninit_rows, xi, xc, runtime_records, partition_vtables,
+        reloc_sites)
     ordered_starts = sorted({int(row["rva"], 0) for row in manual_rows})
     e9_runs = []
     current = []
@@ -664,7 +748,7 @@ def generate(pe: Pe, disasm_source: Path):
          "bytes": str(helper_bytes), "evidence": ".CRT$XC entry/forwarder closure"},
         {"category": "IAT jump thunks", "count": str(len(thunk_rows)),
          "bytes": str(sum(int(row["size"], 0) for row in thunk_rows)),
-         "evidence": "exact FPO ff25 <IAT> bodies"},
+         "evidence": "exact FPO bodies or contiguous six-byte ff25 <IAT> bands"},
         {"category": "incremental-link ILT", "count": "0", "bytes": "0",
          "evidence": f"no dense five-byte E9 island; maximum contiguous run={max_e9_run}"},
         {"category": "virtual .text linker pad", "count": "0", "bytes": "0",
@@ -677,6 +761,9 @@ def generate(pe: Pe, disasm_source: Path):
         {"category": "GetRuntimeClass vtables", "count": str(len(vtable_rows)),
          "bytes": str(sum(int(row["size"], 0) for row in vtable_rows)),
          "evidence": "slot-0 CRuntimeClass return witness"},
+        {"category": "executable vtable census", "count": str(len(partition_vtables)),
+         "bytes": str(sum(row["size"] * 4 for row in partition_vtables)),
+         "evidence": "RTTI/code vptr refs plus GetRuntimeClass proof"},
     ]
     link_rows = [
         {"lo_rva": _hex(text_lo), "hi_rva": _hex(eh_tail), "name": "text-body",
@@ -720,6 +807,7 @@ def generate(pe: Pe, disasm_source: Path):
         "eh_actions": action_rows, "dyninit": dyninit_rows, "thunks": thunk_rows,
         "runtime_classes": runtime_rows, "vtables": vtable_rows,
         "data_vtables": vtable_providers, "data": data_rows,
+        "scan_vtables": partition_vtables,
         "data_extents": data_extent_rows, "link_bands": link_rows,
         "frame_handler": frame_handler, "eh_tail": eh_tail, "xi": xi, "xc": xc,
         "initterm": initterm,
@@ -751,6 +839,10 @@ def main(argv: list[str] | None = None) -> int:
                         help="radare2 aflj TSV used to seed/update functions_disasm.tsv")
     parser.add_argument("--bootstrap-functions", action="store_true",
                         help="one-time seed of manually maintained functions.tsv")
+    parser.add_argument("--bootstrap-data", action="store_true",
+                        help="one-time seed of manually maintained data.tsv")
+    parser.add_argument("--bootstrap-vtables", action="store_true",
+                        help="one-time seed of manually maintained data_vtables.tsv")
     parser.add_argument("--write", action="store_true")
     args = parser.parse_args(argv)
     pe = Pe(args.exe)
@@ -758,8 +850,10 @@ def main(argv: list[str] | None = None) -> int:
     if not source.is_file():
         parser.error("no analyzer-start census; pass --disasm-source for the first write")
     result = generate(pe, source)
-    if args.bootstrap_functions and not args.write:
-        parser.error("--bootstrap-functions requires --write")
+    if (args.bootstrap_functions or args.bootstrap_data
+            or args.bootstrap_vtables) and not args.write:
+        parser.error("--bootstrap-functions/--bootstrap-data/--bootstrap-vtables "
+                     "require --write")
     specs = (
         (DISASM, ["# Analyzer starts are evidence only; sizes never override FPO/structural extents."],
          ["rva", "size", "real_size", "instructions", "name", "source"], result["disasm"]),
@@ -776,7 +870,7 @@ def main(argv: list[str] | None = None) -> int:
         (DYNINIT, ["# _cinit .CRT$XI/.CRT$XC slots and exact entry/target extents."],
          ["table", "slot_rva", "entry_rva", "target_rva", "entry_size", "target_size",
           "role", "evidence"], result["dyninit"]),
-        (THUNKS, ["# Pure six-byte FPO bodies that jump through a retail IAT slot."],
+        (THUNKS, ["# Pure six-byte bodies in exact FPO records or contiguous retail IAT-stub bands."],
          ["rva", "size", "iat_rva", "import", "evidence"], result["thunks"]),
         (RUNTIME_CLASSES, ["# MFC 4.x CRuntimeClass records recovered structurally from retail."],
          ["class", "rva", "size", "name_rva", "object_size", "own_bytes", "base_class",
@@ -785,9 +879,6 @@ def main(argv: list[str] | None = None) -> int:
         (VTABLES, ["# All GetRuntimeClass-proven vtable starts; one class may own several views."],
          ["vtable_rva", "size", "methods", "class", "runtime_class_rva", "getrc_slot",
           "method_rvas", "evidence"], result["vtables"]),
-        (DATA_VTABLES, ["# One richest unambiguous primary vtable provider per runtime class."],
-         ["rva", "size", "name", "kind", "note"], result["data_vtables"]),
-        (DATA, ["# Executable-native structured data starts."], ["rva", "kind"], result["data"]),
         (DATA_EXTENTS, ["# Exact executable-native data extents; these override derived rooms."],
          ["rva", "size", "source", "evidence"], result["data_extents"]),
         (LINK_BANDS, ["# Coarse executable-native layout with the terminal EH band proven."],
@@ -820,6 +911,67 @@ def main(argv: list[str] | None = None) -> int:
               "config/retail/functions.tsv (manual census; "
               f"missing={len(missing)}, wrong-kind={len(wrong)})")
         checks.append(functions_ok)
+    data_banner = [f"# retail_sha256={result['sha']}",
+        "# Manually maintained after the initial executable-structure bootstrap.",
+        "# Generators validate required executable-native starts but never rewrite this file."]
+    if args.bootstrap_data:
+        write_tsv(DATA, data_banner, ["rva", "kind"], result["data"])
+        print("[retail-partition] bootstrapped config/retail/data.tsv; "
+              "it is manual from this point forward")
+    else:
+        required_data = {int(row["rva"], 0): row["kind"] for row in result["data"]}
+        try:
+            _banner, fields, rows = read_tsv(DATA)
+            actual = {int(row["rva"], 0): row.get("kind", "") for row in rows}
+            data_missing = sorted(rva for rva in required_data if rva not in actual)
+            data_wrong = sorted((rva, kind, actual.get(rva, ""))
+                                for rva, kind in required_data.items()
+                                if rva in actual and actual[rva] != kind)
+            data_ok = fields == ["rva", "kind"] and not data_missing and not data_wrong
+        except (OSError, ValueError):
+            data_ok, data_missing, data_wrong = False, [], []
+        print(f"[retail-partition] {'valid' if data_ok else 'INVALID'} "
+              "config/retail/data.tsv (manual census; "
+              f"missing={len(data_missing)}, wrong-kind={len(data_wrong)})")
+        checks.append(data_ok)
+    vtable_banner = [f"# retail_sha256={result['sha']}",
+        "# Manually reviewed after the initial runtime-class bootstrap.",
+        "# `rom1 verify vtable-scan --write` refreshes executable/archive proof."]
+    if args.bootstrap_vtables:
+        write_tsv(DATA_VTABLES, vtable_banner,
+                  ["rva", "size", "name", "kind", "note"],
+                  result["data_vtables"])
+        print("[retail-partition] bootstrapped config/retail/data_vtables.tsv; "
+              "it is manual from this point forward")
+    else:
+        required_vtables = {row["start"]: row["size"] * 4
+                            for row in result["scan_vtables"]}
+        actual_vtables = {}
+        vtable_schema_ok = True
+        try:
+            _banner, fields, rows = read_tsv(DATA_VTABLES)
+            vtable_schema_ok &= fields == ["rva", "size", "name", "kind", "note"]
+            actual_vtables.update({int(row["rva"], 0): int(row["size"], 0)
+                                   for row in rows})
+            _banner, fields, rows = read_tsv(DATA_STATIC_LIBS)
+            vtable_schema_ok &= fields == ["rva", "size", "name", "unit", "note"]
+            actual_vtables.update({int(row["rva"], 0): int(row["size"], 0)
+                                   for row in rows
+                                   if row["name"].startswith("??_7")})
+            vtable_missing = sorted(rva for rva in required_vtables
+                                    if rva not in actual_vtables)
+            vtable_wrong = sorted((rva, size, actual_vtables.get(rva))
+                                  for rva, size in required_vtables.items()
+                                  if rva in actual_vtables
+                                  and actual_vtables[rva] != size)
+            vtables_ok = vtable_schema_ok and not vtable_missing and not vtable_wrong
+        except (OSError, ValueError):
+            vtables_ok, vtable_missing, vtable_wrong = False, [], []
+        print(f"[retail-partition] {'valid' if vtables_ok else 'INVALID'} "
+              "config/retail/data_vtables.tsv + data_static_libs.tsv "
+              "(manual providers; "
+              f"missing={len(vtable_missing)}, wrong-size={len(vtable_wrong)})")
+        checks.append(vtables_ok)
     tail_actions = sum(row["region"] == "tail" for row in result["eh_actions"])
     helper_count = sum(row["kind"] == "helper" for row in result["functions"])
     print(f"[retail-partition] {result['manual_function_count']} manual function starts "

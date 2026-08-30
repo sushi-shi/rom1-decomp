@@ -1,6 +1,6 @@
 # retail_sha256=5ba821f37356d2da0e1eb907de28b2708714d6e2604b5caef3daf4284b9af7d3
 # archive_set_sha256=b734ff51e5a98964c3dccbb1877bb3298ab8db5ca87b475caca0c2a4c48e57aa
-# signatures=7143 manual_starts=12563 min_len=8 min_fixed=6 high_len=16 high_fixed=10
+# signatures=7143 control_signatures=0 manual_starts=13023 min_len=8 min_fixed=6 high_len=16 high_fixed=10
 # offstart_min_len=24 offstart_min_fixed=16
 rva	name	lib	confidence	extent	fixed_bytes	identity_match_count	rva_identity_count	member	archive_sha256	member_sha256	source	notes
 0x001920	??_Gfacet@locale@std@@UAEPAXI@Z	LIBCPMT.LIB	AMBIG	0x20	24	1	4	build/intel/mt_obj/locale.obj	a3eccb714492272144aa3f1b2e19449d4233eeb55ecdcb3e4fdb98e8f463443c	864bde5ab934981cf0cad21d525d89b9b1f136298cdee844f77357df6f40ba63	anchored	rva_multiidentity=4

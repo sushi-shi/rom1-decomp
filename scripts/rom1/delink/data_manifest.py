@@ -1139,7 +1139,13 @@ def section_rows(rows, base_dir=BASE_DIR):
     return secs, withheld
 
 
-def gap_rows(enrolled, secs):
+def _model_barrier(model: Model, lo: int, hi: int):
+    """First named Model datum crossing a proposed provisional gap."""
+    return next((b for b in model.data
+                 if b.channel and b.rva < hi and b.rva + b.size > lo), None)
+
+
+def gap_rows(enrolled, secs, model: Model):
     """Band-completion rows: retail bytes strictly between two claims of ONE
     unit, carved with no base counterpart so a datum src/ never models becomes
     a visible per-unit diff instead of silence. Fail-closed: single-owner
@@ -1180,6 +1186,11 @@ def gap_rows(enrolled, secs):
         if cls1 != cls2 or STORAGE.get(cls1) not in ("rdata", "data", "bss"):
             withheld.append((b1, name, "band gap outside enrollable storage "
                              f"({cls1} -> {cls2})"))
+            continue
+        barrier = _model_barrier(model, b1, a2)
+        if barrier is not None:
+            withheld.append((b1, name, "band gap crosses a label-only Model "
+                             f"claim ({barrier.name} at 0x{barrier.rva:x})"))
             continue
         strong_prev = {w["object"] for w in ends.get(b1, ())
                        if len(owners[w["name"]]) == 1}
@@ -1287,7 +1298,7 @@ def generate(model: Model, output: Path = OUTPUT,
     enrolled, withheld, overlaps, skipped = candidates(model)
     secs, sec_withheld = section_rows(enrolled)
     withheld += sec_withheld
-    gaps, gap_withheld = gap_rows(enrolled, secs)
+    gaps, gap_withheld = gap_rows(enrolled, secs, model)
     enrolled += gaps
     withheld += gap_withheld
     print(f"[data-manifest] band-completion: {len(gaps)} gap row(s), "

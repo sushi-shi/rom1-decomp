@@ -15,6 +15,7 @@ adjacent vtables and yields exact per-vtable entry counts. Confidence:
 head with no signal: EH/jump tables, NOT a vtable).
 
     python3 -m rom1.verify.vtable_scan [--new] [--holds 0xRVA] [--dump 0xRVA]
+    python3 -m rom1.verify.vtable_scan --write
 """
 
 from __future__ import annotations
@@ -156,11 +157,35 @@ def real_vtables() -> list[dict]:
     return [v for v in scan() if v["conf"] in REAL_CONF]
 
 
+def proven_vtables() -> list[dict]:
+    """Scanner tables plus GetRuntimeClass-proven starts whose first site is
+    absent from the recovered relocation stream."""
+    from rom1.core.paths import RETAIL
+    out = {v["start"]: v for v in real_vtables()}
+    _banner, fields, rows = _read_rows(RETAIL / "vtables.tsv")
+    if fields and fields != ["vtable_rva", "size", "methods", "class",
+                             "runtime_class_rva", "getrc_slot", "method_rvas",
+                             "evidence"]:
+        raise ValueError("config/retail/vtables.tsv: unexpected schema")
+    for row in rows:
+        rva = int(row["vtable_rva"], 0)
+        if rva in out:
+            continue
+        methods = row["method_rvas"].split(";")
+        out[rva] = {
+            "start": rva, "size": int(row["methods"]), "sec": ".rdata",
+            "rtti": None, "decorated": None, "base_off": None,
+            "code_refs": 0, "head_of_run": True,
+            "first": int(methods[0], 0), "conf": "runtime-class",
+        }
+    return [out[rva] for rva in sorted(out)]
+
+
 def vtable_at(start: int) -> dict | None:
     from rom1.sema.image import retail
     if start >= retail().base:
         start -= retail().base
-    return next((v for v in scan() if v["start"] == start), None)
+    return next((v for v in proven_vtables() if v["start"] == start), None)
 
 
 def iter_slots(v: dict):
@@ -191,6 +216,139 @@ def _fn_label(rva: int) -> str:
     return f"sub_{rva:06x}"
 
 
+def _read_rows(path):
+    from rom1.core.tsv import read as read_tsv
+    try:
+        banner, fields, rows = read_tsv(path)
+    except (OSError, ValueError):
+        return [], [], []
+    return banner, fields, rows
+
+
+def write_catalog() -> tuple[int, int, int]:
+    """Write the reviewed vtable/static-library catalog and census starts.
+
+    RTTI proves a primary vtable's exact MSVC symbol spelling.  It is called
+    static-library data only when the pinned SP2 archives contain one unique
+    definition of that symbol with exactly the retail table extent.  Every
+    other discovered table is deliberately `unresolved`: the executable
+    proves its shape, but source ownership/virtuality has not been earned.
+    """
+    from rom1.core.paths import RETAIL
+    from rom1.core.tsv import write as write_tsv
+    from rom1.verify import library_data_refs as ldr
+
+    vtable_path = RETAIL / "data_vtables.tsv"
+    static_path = RETAIL / "data_static_libs.tsv"
+    data_path = RETAIL / "data.tsv"
+    vb, vf, old_vtables = _read_rows(vtable_path)
+    sb, sf, old_static = _read_rows(static_path)
+    db, df, old_data = _read_rows(data_path)
+    if vf and vf != ["rva", "size", "name", "kind", "note"]:
+        raise ValueError(f"{vtable_path}: unexpected schema {vf}")
+    if sf and sf != ["rva", "size", "name", "unit", "note"]:
+        raise ValueError(f"{static_path}: unexpected schema {sf}")
+    if df != ["rva", "kind"]:
+        raise ValueError(f"{data_path}: unexpected schema {df}")
+
+    real = proven_vtables()
+    starts = {v["start"] for v in real}
+    old_vt_by_rva = {int(r["rva"], 0): r for r in old_vtables}
+    old_static_by_rva = {int(r["rva"], 0): r for r in old_static}
+
+    def candidate_names(v):
+        old = old_vt_by_rva.get(v["start"]) or old_static_by_rva.get(v["start"])
+        names = []
+        if old and old.get("name", "").startswith("??_7"):
+            names.append(old["name"])
+        if v["decorated"] and not v["base_off"]:
+            names.append(vftable_name(v["decorated"]))
+        return list(dict.fromkeys(names))
+
+    candidates_by_rva = {v["start"]: candidate_names(v) for v in real}
+    name_rvas = {}
+    for rva, names in candidates_by_rva.items():
+        for name in names:
+            name_rvas.setdefault(name, set()).add(rva)
+    ambiguous_names = {name for name, rvas in name_rvas.items() if len(rvas) > 1}
+
+    _members, by_symbol = ldr._indexes(set(ldr.LIB_FILES))
+    game_rows, static_rows = [], []
+    for v in real:
+        rva, size = v["start"], v["size"] * 4
+        old = old_vt_by_rva.get(rva) or old_static_by_rva.get(rva)
+        candidates = candidates_by_rva[rva]
+
+        definitions = []
+        for name in candidates:
+            if name in ambiguous_names:
+                continue
+            for library in sorted(ldr.LIB_FILES):
+                for definition in by_symbol.get((library, name), ()):
+                    if definition.size == size and definition.storage in ("data", "rdata"):
+                        definitions.append((name, library, definition))
+        unique = {(name, library, d.member.name): (name, library, d)
+                  for name, library, d in definitions}
+        if len(unique) == 1:
+            name, library, definition = next(iter(unique.values()))
+            static_rows.append({
+                "rva": f"0x{rva:06x}", "size": f"0x{size:x}",
+                "name": name, "unit": "library_data",
+                "note": (f"VC5 SP2 {ldr.LIB_FILES[library]} "
+                         f"{definition.member.name}: unique exact symbol+extent"),
+            })
+            continue
+
+        unique_names = [name for name in candidates if name not in ambiguous_names]
+        if old and old.get("name") and old["name"] in unique_names:
+            name = old["name"]
+        elif unique_names:
+            name = unique_names[0]
+        else:
+            name = f"__rom1_vtable_{rva:06x}"
+        facts = [v["conf"], f"{v['size']} exact slots",
+                 f"{v['code_refs']} code ref(s)"]
+        if v["rtti"]:
+            facts.append(f"RTTI {v['rtti']}")
+        if v["base_off"]:
+            facts.append(f"secondary base+0x{v['base_off']:x}")
+        if any(name in ambiguous_names for name in candidates):
+            facts.append("retail-duplicate class spelling withheld")
+        game_rows.append({
+            "rva": f"0x{rva:06x}", "size": f"0x{size:x}",
+            "name": name, "kind": "unresolved",
+            "note": "; ".join(facts) + "; promote only with reconstructed source",
+        })
+
+    # Non-scan rows are hand-owned evidence and survive a catalog refresh.
+    game_rows.extend(r for r in old_vtables if int(r["rva"], 0) not in starts)
+    static_rows.extend(r for r in old_static if int(r["rva"], 0) not in starts)
+    game_rows.sort(key=lambda r: int(r["rva"], 0))
+    static_rows.sort(key=lambda r: int(r["rva"], 0))
+
+    data = {int(r["rva"], 0): dict(r) for r in old_data}
+    for rva in starts:
+        row = data.get(rva)
+        if row is not None and row.get("kind") not in ("", "vtable"):
+            raise ValueError(f"{data_path}: 0x{rva:06x} is {row['kind']}, not vtable")
+        data[rva] = {"rva": f"0x{rva:06x}", "kind": "vtable"}
+    data_rows = [data[rva] for rva in sorted(data)]
+
+    retail_sha = next((line for line in vb if line.startswith("# retail_sha256=")),
+                      "# retail_sha256=unknown")
+    write_tsv(vtable_path,
+              [retail_sha,
+               "# Hand-owned vtable catalog refreshed only by explicit --write.",
+               "# kind=unresolved proves retail structure, not reconstructed source."],
+              ["rva", "size", "name", "kind", "note"], game_rows)
+    write_tsv(static_path,
+              ["# Statically-linked library DATA labels proven against pinned VC5 SP2.",
+               "# library_data is the deliberate non-reconstructed holding unit."],
+              ["rva", "size", "name", "unit", "note"], static_rows)
+    write_tsv(data_path, db, ["rva", "kind"], data_rows)
+    return len(real), len(game_rows), len(static_rows)
+
+
 def main(argv=None) -> int:
     import argparse
     ap = argparse.ArgumentParser(prog="rom1 verify vtable-scan",
@@ -199,7 +357,17 @@ def main(argv=None) -> int:
                     help="only starts with no admitted vtable/static-libs row")
     ap.add_argument("--holds", help="which vtable slot(s) resolve to this fn")
     ap.add_argument("--dump", help="the slots of the vtable at this start")
+    ap.add_argument("--write", action="store_true",
+                    help="refresh manual catalogs from executable/archive proof")
     a = ap.parse_args(argv)
+
+    if a.write:
+        if a.new or a.holds or a.dump:
+            ap.error("--write cannot be combined with query flags")
+        total, game, static = write_catalog()
+        print(f"vtable catalog: {total} exact retail tables; {game} unresolved/game, "
+              f"{static} unique VC5 SP2 static-library providers")
+        return 0
 
     if a.holds:
         fn = int(a.holds, 16)
@@ -231,7 +399,7 @@ def main(argv=None) -> int:
         return 0
 
     vts = scan()
-    real = [v for v in vts if v["conf"] in REAL_CONF]
+    real = proven_vtables()
     from rom1.model import resolve
     admitted = {b.rva for b in resolve().data if b.kind == "vtable"}
     show = [v for v in real if v["start"] not in admitted] if a.new else real

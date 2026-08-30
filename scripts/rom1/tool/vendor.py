@@ -118,8 +118,37 @@ def verify_headers(rows: list[dict[str, str]]) -> None:
         raise ValueError("upstream smack.h lost its 3.2f version witness")
     if (ROOT / "smack.h").read_text() != expected:
         raise ValueError("smack.h is not the exact admitted 3.1L patch")
-    if (ROOT / "rad.h").read_bytes() != (ORIG / "rad.h").read_bytes():
-        raise ValueError("rad.h drifted from its pinned upstream original")
+    rad_original = (ORIG / "rad.h").read_text()
+    rad_marker = """  void __inline LockedIncrementFunc(void PTR4* var) {
+    __asm {
+"""
+    rad_replacement = """#if defined(__clang__) && defined(ROM1_EMIT_META)
+  void __inline LockedIncrementFunc(void PTR4* var) { ++(*((u32*)var)); }
+  void __inline LockedDecrementFunc(void PTR4* var) { --(*((u32*)var)); }
+#else
+  void __inline LockedIncrementFunc(void PTR4* var) {
+    __asm {
+"""
+    rad_expected = rad_original.replace(rad_marker, rad_replacement, 1)
+    rad_tail = """       lock dec [eax]
+    }
+  }
+
+#else
+"""
+    rad_tail_replacement = """       lock dec [eax]
+    }
+  }
+#endif
+
+#else
+"""
+    rad_expected = rad_expected.replace(rad_tail, rad_tail_replacement, 1)
+    # The materialized patch normalizes the upstream file's redundant final
+    # blank line; retain one canonical POSIX newline in the include tree.
+    rad_expected = rad_expected.rstrip() + "\n"
+    if rad_expected == rad_original or (ROOT / "rad.h").read_text() != rad_expected:
+        raise ValueError("rad.h is not the exact admitted Clang metadata patch")
 
     header = expected
     for row in rows:

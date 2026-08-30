@@ -30,6 +30,17 @@ def _normalize(dec: str) -> str:
     return re.sub(r"@\d+$", "", b)
 
 
+def _decorated_export_imp(name: str) -> str | None:
+    """Exact COFF IAT spelling when the PE export name is already stdcall.
+
+    The trailing byte count is part of the retail import-table string, so this
+    path performs no ABI inference: it only adds COFF's fixed `__imp_` prefix.
+    """
+    if re.fullmatch(r"_[A-Za-z_][A-Za-z0-9_]*@\d+", name):
+        return "__imp_" + name
+    return None
+
+
 def _ar_members(path: Path):
     """Yield (member-name, body) for each member of a `!<arch>` library."""
     try:
@@ -216,7 +227,10 @@ def resolve_iat(slots, base_dir: Path | None) -> tuple[list, list]:
             dec = by_ordinal.get((dll.lower(), ordinal))
             label = f"{dll} ordinal #{ordinal}"
         else:
-            if "__imp_" + name in exact:   # vendor: the export IS the decoration
+            direct = _decorated_export_imp(name)
+            if direct is not None:          # vendor export IS the decoration
+                dec = direct
+            elif "__imp_" + name in exact:
                 dec = "__imp_" + name
             elif name in by_norm:          # win32: undecorated export -> @N
                 dec = by_norm[name]

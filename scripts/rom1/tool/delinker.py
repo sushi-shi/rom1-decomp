@@ -31,7 +31,7 @@ def delink(pdb: Path | str, exe: Path | str, out_dir: Path | str, *,
            data_section_manifest: Path | str | None = None,
            reloc_alias_manifest: Path | str | None = None,
            reloc_manifest: Path | str | None = None,
-           recover_data_relocs_from_pdb: bool = False,
+           recover_data_relocs_from_pdb: bool = True,
            timeout: float | None = 1800) -> str:
     """Run vostok-delinker; returns its output. Raises ToolError on failure."""
     pdb, exe, out_dir = Path(pdb), Path(exe), Path(out_dir)
@@ -60,8 +60,9 @@ def delink(pdb: Path | str, exe: Path | str, out_dir: Path | str, *,
                 raise ToolError(f"missing manifest: {value}")
             argv += [flag, str(value)]
     if recover_data_relocs_from_pdb:
-        # Explicit diagnostic only. Normal RoM1 delinking is fail-closed on the
-        # reviewed manifests and never invents a nearest PDB referent.
+        # Safety net only: keeps the permissive nearest-PDB-symbol recovery for
+        # any RVA the manifest does not enroll. The patched delinker still
+        # refuses every UNPROVISIONED_ game identity rather than inventing it.
         argv.append("--recover-data-relocs-from-pdb")
 
     try:
@@ -86,16 +87,13 @@ def main() -> int:
     ap.add_argument("--data-section-manifest")
     ap.add_argument("--reloc-alias-manifest")
     ap.add_argument("--reloc-manifest")
-    ap.add_argument("--recover-data-relocs-from-pdb", action="store_true",
-                    help="diagnostic permissive fallback; normal delinking is fail-closed")
     a = ap.parse_args()
     try:
         out = delink(a.pdb, a.exe, a.out,
                      data_manifest=a.data_manifest,
                      data_section_manifest=a.data_section_manifest,
                      reloc_alias_manifest=a.reloc_alias_manifest,
-                     reloc_manifest=a.reloc_manifest,
-                     recover_data_relocs_from_pdb=a.recover_data_relocs_from_pdb)
+                     reloc_manifest=a.reloc_manifest)
         if out.strip():
             print(out)
     except (ToolError, OSError) as e:

@@ -1,2 +1,5 @@
-# Reviewed identities for absolute relocation referents.
-rva	name	unit	kind	note
+# Per-site retail relocation REFERENTS whose exact spelling (symbol + addend)
+# strict data containment cannot infer. Retail evidence; consumed by Vostok.
+# No RoM1 exception is admitted yet; keep the exact Gruntz/Vostok schema even
+# while the reviewed body is empty.
+function_rva	target_rva	site_rva	owner	addend	occurrences	provenance

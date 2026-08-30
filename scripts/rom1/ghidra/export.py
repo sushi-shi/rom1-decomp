@@ -47,9 +47,16 @@ DROP_KINDS = ("pad",)
 
 def bands() -> list[dict]:
     """The coarse link-layout bands, ascending."""
-    _, _, rows = read_tsv(LINK_BANDS)
-    out = [{"lo": rint(r["lo"]), "hi": rint(r["hi"]), "band": r["band"],
-            "note": r["note"]} for r in rows]
+    _, fields, rows = read_tsv(LINK_BANDS)
+    if {"lo_rva", "hi_rva", "name", "evidence"}.issubset(fields):
+        keys = ("lo_rva", "hi_rva", "name", "evidence")
+    elif {"lo", "hi", "band", "note"}.issubset(fields):
+        keys = ("lo", "hi", "band", "note")
+    else:
+        raise ValueError(f"link_bands: unsupported fields {fields}")
+    lo_key, hi_key, name_key, note_key = keys
+    out = [{"lo": rint(r[lo_key]), "hi": rint(r[hi_key]),
+            "band": r[name_key], "note": r[note_key]} for r in rows]
     out.sort(key=lambda b: b["lo"])
     return out
 

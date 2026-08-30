@@ -28,25 +28,12 @@ from rom1.core.paths import BUILD
 from rom1.verify.srcscan import blank_comments, rel, source_files
 
 
-PLACEMENT_ALLOW = Counter({
-    ("src/Allods/BattlezMapConfig.cpp", "CString"): 1,
-    ("src/Allods/BattlezSpecialAnim.cpp", "CString"): 4,
-    ("src/Allods/GruntCombat.cpp", "CString"): 1,
-    ("src/Allods/Warlord.cpp", "CString"): 1,
-    ("src/Allods/ZDArrayDerived.cpp", "CActHandler"): 1,
-})
-
-DTOR_CALL_ALLOW = Counter({
-    ("src/Bute/ButeGlobals.cpp", "CString"): 1,
-    ("include/Bute/PTreeNode.h", "T"): 1,
-    ("src/Allods/ZDArrayDerived.cpp", "CActHandler"): 1,
-})
-
-LOW_LEVEL_ALLOW = Counter({
-    ("src/Bute/TypeKeyColl.cpp", "naked"): 2,
-    ("src/Bute/TypeKeyColl.cpp", "asm"): 2,
-    ("src/Image/ImagePolyClip.cpp", "asm"): 4,
-})
+# Target-specific closed ledgers. RoM1 starts with no reviewed exceptions;
+# Gruntz's source paths/counts are evidence for that campaign, not transferable
+# debt. New sites fail until their own retail proof is reviewed here.
+PLACEMENT_ALLOW = Counter()
+DTOR_CALL_ALLOW = Counter()
+LOW_LEVEL_ALLOW = Counter()
 
 OPERATOR_CALL_RE = re.compile(
     r"(?<![A-Za-z_])(?:::)?operator\s+(?:new|delete)(?:\s*\[\s*\])?\s*\("

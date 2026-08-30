@@ -401,6 +401,33 @@ def data_symbols(model, data_names, base_dir=BASE_DIR, log=lambda m: None):
     return rdata_syms, data_syms
 
 
+def candidate_data_names(model: Model, base_dir=BASE_DIR) -> tuple[dict[int, str], int]:
+    """Return data names the current candidate objects can actually provide.
+
+    Recovered vtable labels are retained in the Model from day one, while
+    their COMDAT definitions arrive only as the owning class TUs are rebuilt.
+    Vostok may consume a vtable spelling only after the candidate-COFF oracle
+    proves that emitter; until then the exact address keeps its synthetic
+    fence identity.
+    """
+    from rom1.delink import data_manifest
+
+    provided_vtables = {
+        (row["rva"], row["name"])
+        for row in data_manifest.vtable_rows(model, base_dir)[0]
+    }
+    names = {
+        b.rva: b.name for b in model.data if b.channel and b.name
+        and (b.channel != "data_vtables"
+             or (b.rva, b.name) in provided_vtables)
+    }
+    deferred = sum(
+        b.channel == "data_vtables" and bool(b.name)
+        and (b.rva, b.name) not in provided_vtables
+        for b in model.data)
+    return names, deferred
+
+
 # --- the unprovisioned worklist ----------------------------------------------
 
 def _oracle_extents(model) -> list[tuple[int, int]]:
@@ -514,7 +541,7 @@ def worklist(model: Model) -> list[dict]:
     return the unprovisioned rows."""
     names_map = unit_names(model)
     band = eh_band.groups(retail().pe.path, names_map)
-    data_names = {b.rva: b.name for b in model.data if b.channel and b.name}
+    data_names, _deferred = candidate_data_names(model)
     for rva, name, _unit, _size in eh_band.data_records(band):
         data_names.setdefault(rva, name)
     rdata_syms, data_syms = data_symbols(model, data_names)
@@ -743,7 +770,10 @@ def synth(model: Model, out_yaml: Path | None = None, out_pdb: Path | None = Non
     if nlib:
         log(f"applied {nlib} tracked library symbol name(s)")
 
-    data_names = {b.rva: b.name for b in model.data if b.channel and b.name}
+    data_names, deferred_vtables = candidate_data_names(model, base_dir)
+    if deferred_vtables:
+        log(f"deferred {deferred_vtables} label-only vtable name(s) until a "
+            "candidate COMDAT provides the identity")
     neh = 0
     for rva, name, _unit, _size in eh_band.data_records(band):
         if data_names.setdefault(rva, name) == name:

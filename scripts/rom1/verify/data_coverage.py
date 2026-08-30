@@ -77,7 +77,8 @@ def load_claims(path=MANIFEST):
         raise SystemExit(f"no {path} - run `rom1 build` first")
     _b, _h, rows = read_tsv(path)
     return [{"name": r["name"], "object": r["object"], "storage": r["storage"],
-             "rva": int(r["rva"], 16), "size": int(r["size"], 16)}
+             "rva": int(r["rva"], 16), "size": int(r["size"], 16),
+             "model": False, "linear": True}
             for r in rows]
 
 
@@ -158,7 +159,11 @@ def _touched(starts, ends, sites, lo, hi):
 
 
 def _name_key(claim):
-    return (claim["name"].startswith("<"), claim["name"])
+    # Prefer the Model copy of an enrolled claim: it carries the census kind,
+    # which tells us whether the boundary belongs to a linear TU contribution
+    # or to a linker-pooled compiler datum.
+    return (not claim.get("model", False), claim["name"].startswith("<"),
+            claim["name"])
 
 
 def gaps(img, claims, sections=(), touched=None):
@@ -207,6 +212,8 @@ def gaps(img, claims, sections=(), touched=None):
             "prev_name": prev[0]["name"] if prev else "-",
             "next_object": nxt[0]["object"] if nxt else "-",
             "next_name": nxt[0]["name"] if nxt else "-",
+            "prev_linear": prev[0].get("linear", True) if prev else False,
+            "next_linear": nxt[0].get("linear", True) if nxt else False,
             "first_bytes": pay[:16].hex()})
     return out
 
@@ -215,7 +222,11 @@ def model_claims(spine):
     """The Model's named data bindings in `load_claims()` shape - the claim
     authority (the manifest is only what objdiff got to compare)."""
     return [{"name": c.name, "object": c.unit, "storage": c.space,
-             "rva": c.rva, "size": c.extent} for c in spine.claims]
+             "rva": c.rva, "size": c.extent, "model": True,
+             # Strings, vtables, RTTI, FP pools, guards, and other compiler
+             # records are independently pooled/reordered. They cover their
+             # own bytes but cannot prove ownership of the gap beside them.
+             "linear": c.kind == ""} for c in spine.claims]
 
 
 def census():
@@ -251,7 +262,8 @@ def gate_rows(rows):
             if r["touched"] and r["verdict"] in ("NONZERO", "POINTER")
             and r["section"] != ".idata"
             and r["prev_object"] == r["next_object"]
-            and r["prev_object"] not in FRONTIER_UNITS]
+            and r["prev_object"] not in FRONTIER_UNITS
+            and r.get("prev_linear", True) and r.get("next_linear", True)]
 
 
 def gate_findings() -> list[str]:

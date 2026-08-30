@@ -9,8 +9,11 @@ the two scans used by Gruntz:
 Relocation operands are wildcarded on both sides.  HIGH requires a substantial
 signature, a unique archive identity, a unique retail RVA, and an exact extent
 (FPO/structural, or a signature followed only by linker padding up to the next
-manual start). Provider promotion is fail-closed unless the active toolchain's
-complete archive set matches the hash-selected compiler in ``compiler.toml``.
+manual start). Candidate archives can be classified in the collision universe
+of a control archive set, so a generic third-party wrapper cannot masquerade as
+a unique match merely because the CRT was omitted from the scan. Provider
+promotion is fail-closed unless the active toolchain's complete archive set
+matches the hash-selected compiler in ``compiler.toml``.
 """
 
 from __future__ import annotations
@@ -120,7 +123,7 @@ def anchored(pe: Pe, prepared, reloc_sites: list[int], functions: list[dict]):
         by_len[len(candidate.payload)].append((candidate, fixed))
     probes = []
     for function in functions:
-        if function["kind"] in ("eh", "pad"):
+        if function["kind"] in ("eh", "pad", "thunk"):
             continue
         rva, room = function["rva"], function["room"]
         extent = function["size"] if function["exact"] else room
@@ -145,7 +148,8 @@ def anchored(pe: Pe, prepared, reloc_sites: list[int], functions: list[dict]):
     return probes
 
 
-def _classify(probes, location_key="rva"):
+def _classify(probes, location_key="rva", include_identities=None,
+              all_matches: bool = False):
     identity_rvas = defaultdict(set)
     rva_identities = defaultdict(set)
     for function, hits in probes:
@@ -157,44 +161,61 @@ def _classify(probes, location_key="rva"):
     for function, hits in probes:
         rva = function[location_key]
 
+        eligible = [item for item in hits
+                    if include_identities is None
+                    or _identity(item[0]) in include_identities]
+        if not eligible:
+            continue
+
         def key(item):
             candidate, fixed, length = item
             unique = len(identity_rvas[_identity(candidate)]) == 1
             return (not unique, -length, -len(fixed), _identity(candidate))
 
-        candidate, fixed, length = sorted(hits, key=key)[0]
-        reverse = len(identity_rvas[_identity(candidate)])
-        names = len(rva_identities[rva])
-        substantial = length >= HIGH_LEN and len(fixed) >= HIGH_FIXED
-        ambiguous = reverse > 1 or names > 1
-        if not ambiguous and substantial:
-            confidence = "HIGH"
-        elif not ambiguous:
-            confidence = "MEDIUM"
-        elif substantial:
-            confidence = "AMBIG"
-        else:
-            confidence = "LOW"
-        notes = []
-        if reverse > 1:
-            notes.append(f"identity_multimatch={reverse}")
-        if names > 1:
-            notes.append(f"rva_multiidentity={names}")
-        if length < HIGH_LEN:
-            notes.append(f"short={length}")
-        if len(fixed) < HIGH_FIXED:
-            notes.append(f"fewfixed={len(fixed)}")
-        rows.append({
-            "rva": f"0x{rva:06x}", "name": candidate.symbol,
-            "lib": candidate.archive, "confidence": confidence,
-            "extent": f"0x{length:x}", "fixed_bytes": str(len(fixed)),
-            "identity_match_count": str(reverse), "rva_identity_count": str(names),
-            "member": candidate.member, "archive_sha256": candidate.archive_hash,
-            "member_sha256": candidate.member_hash,
-            "source": function.get("source", "anchored"),
-            "notes": ";".join(notes) if notes else "-",
-        })
-    rows.sort(key=lambda row: int(row["rva"], 0))
+        selected = sorted(eligible, key=key)
+        if not all_matches:
+            selected = selected[:1]
+        seen = set()
+        for candidate, fixed, length in selected:
+            identity = _identity(candidate)
+            if identity in seen:
+                continue
+            seen.add(identity)
+            reverse = len(identity_rvas[identity])
+            names = len(rva_identities[rva])
+            substantial = length >= HIGH_LEN and len(fixed) >= HIGH_FIXED
+            ambiguous = reverse > 1 or names > 1
+            if not ambiguous and substantial:
+                confidence = "HIGH"
+            elif not ambiguous:
+                confidence = "MEDIUM"
+            elif substantial:
+                confidence = "AMBIG"
+            else:
+                confidence = "LOW"
+            notes = []
+            if reverse > 1:
+                notes.append(f"identity_multimatch={reverse}")
+            if names > 1:
+                notes.append(f"rva_multiidentity={names}")
+            if length < HIGH_LEN:
+                notes.append(f"short={length}")
+            if len(fixed) < HIGH_FIXED:
+                notes.append(f"fewfixed={len(fixed)}")
+            rows.append({
+                "rva": f"0x{rva:06x}", "name": candidate.symbol,
+                "lib": candidate.archive, "confidence": confidence,
+                "extent": f"0x{length:x}", "fixed_bytes": str(len(fixed)),
+                "identity_match_count": str(reverse),
+                "rva_identity_count": str(names),
+                "member": candidate.member,
+                "archive_sha256": candidate.archive_hash,
+                "member_sha256": candidate.member_hash,
+                "source": function.get("source", "anchored"),
+                "notes": ";".join(notes) if notes else "-",
+            })
+    rows.sort(key=lambda row: (int(row["rva"], 0), row["lib"], row["member"],
+                               row["name"]))
     return rows
 
 
@@ -283,8 +304,12 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--toolchain", type=Path,
                         default=Path(os.environ.get("ROM1_TOOLCHAIN", "")))
     parser.add_argument("--archive", action="append", type=Path, default=[])
+    parser.add_argument("--control-archive", action="append", type=Path, default=[],
+                        help="extra archives used only to expose signature collisions")
     parser.add_argument("--output", type=Path, default=OUTPUT)
     parser.add_argument("--offstart-output", type=Path, default=OFFSTART)
+    parser.add_argument("--all-output", type=Path,
+                        help="write every candidate identity per anchored RVA")
     parser.add_argument("--write-evidence", type=Path,
                         help="also write the anchored report to a tracked evidence path")
     parser.add_argument("--write", action="store_true",
@@ -295,28 +320,38 @@ def main(argv: list[str] | None = None) -> int:
         parser.error("no archives found; set ROM1_TOOLCHAIN or pass --archive")
     pe = Pe(args.exe)
     prepared = signatures(archives)
+    controls = signatures(args.control_archive)
+    universe = prepared + controls
+    included = {_identity(candidate) for candidate, _fixed in prepared}
     reloc_sites = load_relocs()
     known_rows = _manual_rows(pe)
-    anchored_rows = _classify(anchored(pe, prepared, reloc_sites, known_rows))
-    off_rows = _classify(offstart(pe, prepared, reloc_sites, known_rows))
+    anchored_probes = anchored(pe, universe, reloc_sites, known_rows)
+    offstart_probes = offstart(pe, universe, reloc_sites, known_rows)
+    anchored_rows = _classify(anchored_probes, include_identities=included)
+    off_rows = _classify(offstart_probes, include_identities=included)
     exe_sha = hashlib.sha256(pe.data).hexdigest()
     archive_set = hashlib.sha256("".join(sorted(
         hashlib.sha256(path.read_bytes()).hexdigest() for path in archives)).encode()).hexdigest()
     banner = [
         f"# retail_sha256={exe_sha}",
         f"# archive_set_sha256={archive_set}",
-        f"# signatures={len(prepared)} manual_starts={len(known_rows)} "
+        f"# signatures={len(prepared)} control_signatures={len(controls)} "
+        f"manual_starts={len(known_rows)} "
         f"min_len={MIN_LEN} min_fixed={MIN_FIXED} high_len={HIGH_LEN} "
         f"high_fixed={HIGH_FIXED}",
         f"# offstart_min_len={OFFSTART_LEN} offstart_min_fixed={OFFSTART_FIXED}",
     ]
     write_report(args.output, anchored_rows, banner)
     write_report(args.offstart_output, off_rows, banner)
+    if args.all_output:
+        write_report(args.all_output, _classify(
+            anchored_probes, include_identities=included, all_matches=True), banner)
     if args.write_evidence:
         write_report(args.write_evidence, anchored_rows, banner)
     tiers = Counter(row["confidence"] for row in anchored_rows)
     libs = Counter(row["lib"] for row in anchored_rows if row["confidence"] == "HIGH")
-    print(f"[fid-census] {len(prepared)} usable signatures; "
+    print(f"[fid-census] {len(prepared)} usable signatures + "
+          f"{len(controls)} controls; "
           f"{len(anchored_rows)} anchored RVAs {dict(tiers)}; "
           f"{len(off_rows)} off-start RVAs; HIGH by library {dict(libs)}")
     if args.write:

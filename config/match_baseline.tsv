@@ -29,4 +29,18 @@
 #              emitter resumes from it instead of forgetting proven work).
 # Query: python3 -m rom1.verify status | check | bank
 # [units]	unit	n_functions	matched
+butemgr	3	0
+scenarioconfig	1	1
+smackerplayer	7	7
 # [functions]	unit	function	best_pct	cur_pct	tries	src_hash	rva	hist_pct	state
+butemgr	??0CButeMgr@@QAE@PBD@Z	0.9524	0.9524	1	2a805d36b8ea	0xcb140	0.9524	
+butemgr	??1CButeMgr@@QAE@XZ	6.2500	6.2500	1	37d592bdd452	0xcbf20	6.2500	
+butemgr	?GetInt@CButeMgr@@QAEHPBD0H@Z	3.4310	3.4310	1	65ea0cf0ff8c	0xccc00	3.4310	
+scenarioconfig	?GetMissionObjectCount@@YGHH@Z	100.0000	100.0000	1	a920f008b074	0x878a0	100.0000	
+smackerplayer	??0CSmackerBuffers@@QAE@XZ	100.0000	100.0000	1	95153d343e47	0xae650	100.0000	
+smackerplayer	??0CSmackerPlayer@@QAE@XZ	100.0000	100.0000	1	8d175536bb86	0xae6c0	100.0000	
+smackerplayer	??1CSmackerBuffers@@QAE@XZ	100.0000	100.0000	1	c5194a29433a	0xae670	100.0000	
+smackerplayer	?ApplyPan@CSmackerPlayer@@QAEXXZ	100.0000	100.0000	1	b4334841a281	0xaf2c0	100.0000	
+smackerplayer	?GetBufferFormat@CSmackerPlayer@@QAEKPAUIDirectDrawSurface@@@Z	100.0000	100.0000	1	87e2b78874c1	0xae7f0	100.0000	
+smackerplayer	?GetMovieSize@CSmackerPlayer@@QBE?AUSmackerSize@@XZ	100.0000	100.0000	1	dc8a04dd8976	0xaedd0	100.0000	
+smackerplayer	?SetDestinationSize@CSmackerPlayer@@QAEXHH@Z	100.0000	100.0000	1	508dfc90a7f1	0xaee00	100.0000	

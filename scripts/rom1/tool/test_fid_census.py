@@ -18,9 +18,9 @@ class FakePe:
         return self.payload[offset:offset + size]
 
 
-def candidate(symbol: str, payload: bytes, reloc_sites=()):
+def candidate(symbol: str, payload: bytes, reloc_sites=(), archive="TEST.LIB"):
     return SimpleNamespace(
-        archive="TEST.LIB", archive_hash="a" * 64, member=f"{symbol}.obj",
+        archive=archive, archive_hash="a" * 64, member=f"{symbol}.obj",
         member_hash="b" * 64, symbol=symbol, order=0, payload=payload,
         reloc_sites=frozenset(reloc_sites),
     )
@@ -51,6 +51,32 @@ class FidCensusTest(unittest.TestCase):
         ])
         self.assertEqual(rows[0]["confidence"], "AMBIG")
         self.assertEqual(rows[0]["rva_identity_count"], "2")
+
+    def test_control_archive_collision_downgrades_candidate_only_report(self):
+        body = bytes(range(24))
+        wanted = candidate("gztell", body, archive="ZLIB.LIB")
+        control = candidate("_ismbbkalnum", body, archive="LIBCMT.LIB")
+        fixed = tuple(range(len(body)))
+        rows = _classify(
+            [({"rva": 0x162940}, [(wanted, fixed, len(body)),
+                                    (control, fixed, len(body))])],
+            include_identities={(wanted.archive, wanted.member,
+                                 wanted.symbol, wanted.order)})
+        self.assertEqual([(row["name"], row["confidence"]) for row in rows],
+                         [("gztell", "AMBIG")])
+        self.assertEqual(rows[0]["rva_identity_count"], "2")
+
+    def test_all_match_report_retains_each_candidate_identity(self):
+        body = bytes(range(24))
+        first = candidate("first", body)
+        second = candidate("second", body)
+        fixed = tuple(range(len(body)))
+        rows = _classify(
+            [({"rva": 0x1000}, [(first, fixed, len(body)),
+                                  (second, fixed, len(body))])],
+            all_matches=True)
+        self.assertEqual([row["name"] for row in rows], ["first", "second"])
+        self.assertTrue(all(row["confidence"] == "AMBIG" for row in rows))
 
 
 if __name__ == "__main__":

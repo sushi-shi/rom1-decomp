@@ -1,7 +1,6 @@
 [build]
 compiler = "msvc5.0"
 platform = "win32"
-bootstrap = true
 
 # Exact Gruntz profile schema under the selected SP2 payload. These complete
 # profiles remain calibration candidates until per-TU witnesses select flags.
@@ -11,3 +10,23 @@ cpp           = ["/nologo", "/c", "/O2", "/MT", "/GX"]
 cpp-rtti      = ["/nologo", "/c", "/O2", "/MT", "/GX", "/GR"]
 cpp-rtti-noeh = ["/nologo", "/c", "/O2", "/MT", "/GR"]
 cpp-noeh      = ["/nologo", "/c", "/O2", "/MT"]
+
+[[unit]]
+unit = "smackerplayer"
+source = "src/Video/SmackerPlayer.cpp"
+flags = "cpp"
+
+[[unit]]
+unit = "scenarioconfig"
+source = "src/Scenario/ScenarioConfig.cpp"
+flags = "cpp"
+
+[[unit]]
+unit = "butemgr"
+source = "src/Bute/ButeMgr.cpp"
+flags = "cpp"
+
+[[unit]]
+unit = "ddrawglobals"
+source = "src/DDraw/DDrawGlobals.cpp"
+flags = "cpp-noeh"

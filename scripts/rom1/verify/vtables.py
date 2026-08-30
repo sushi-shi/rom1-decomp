@@ -84,7 +84,10 @@ def classify_storage(storage: str) -> str:
 def _model_rows():
     """(game {rva: class}, lib_rvas, claimed_spans, fn_syms {rva: (name, unit)})."""
     from rom1.model import resolve
+    from rom1.retail_labels import providers
     m = resolve()
+    vkinds = {claim.rva: claim.meta.get("vkind", "")
+              for claim in providers.data_vtables()}
     game: dict[int, str] = {}
     lib: set[int] = set()
     spans: list[tuple[int, int]] = []
@@ -94,11 +97,13 @@ def _model_rows():
         if b.kind != "vtable":
             continue
         if b.channel == "data_vtables":
-            mm = _PRIMARY_RE.match(b.name)
-            if mm:
-                game[b.rva] = mm.group(1)
-            else:
-                game[b.rva] = ""          # secondary/template: covered, unnamed
+            # A scanner/catalog row proves that bytes are a vtable, not that
+            # we have reconstructed its class.  Only a reviewed promotion to
+            # `primary` activates the source-virtuality and slot-wiring gates;
+            # `unresolved` remains fully covered but makes no source claim.
+            mm = _PRIMARY_RE.match(b.name) \
+                if vkinds.get(b.rva) == "primary" else None
+            game[b.rva] = mm.group(1) if mm else ""
         elif b.channel == "data_static_libs":
             lib.add(b.rva)
     syms = {b.rva: (b.name, b.unit) for b in m.functions
@@ -159,7 +164,7 @@ def analyse():
     classes = index_classes()
 
     gaps = []
-    for v in vs.real_vtables():
+    for v in vs.proven_vtables():
         rva = v["start"]
         if rva in game or rva in lib or _inside_claim(rva, spans):
             continue

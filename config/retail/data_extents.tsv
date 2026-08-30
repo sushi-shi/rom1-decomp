@@ -1,19 +1,19 @@
 # retail_sha256=5ba821f37356d2da0e1eb907de28b2708714d6e2604b5caef3daf4284b9af7d3
 # Exact executable-native data extents; these override derived rooms.
 rva	size	source	evidence
-0x197058	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x197070	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x197088	0x78	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x197100	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x197118	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x197130	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x197148	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x197160	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1971c0	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1971d8	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1971f0	0x58	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x197248	0x58	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1972a0	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x197058	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x197070	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x197088	0x78	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x197100	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x197118	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x197130	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x197148	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x197160	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1971c0	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1971d8	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1971f0	0x58	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x197248	0x58	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1972a0	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x1972b8	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x1972d0	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x1972e8	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
@@ -22,79 +22,79 @@ rva	size	source	evidence
 0x197330	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x197348	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x197360	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
-0x197378	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x197390	0x34	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1973c8	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1973e0	0x38	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x197418	0x44	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x197460	0x40	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1974a0	0x3c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1974e0	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1974f8	0x44	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x197550	0x78	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1975c8	0x78	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x197640	0x78	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1976b8	0x78	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x197730	0x88	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1977b8	0x78	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x197830	0x78	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1978a8	0x78	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x197920	0x88	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1979a8	0x78	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x197a20	0x88	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x197aa8	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x197ac0	0x78	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x197b38	0x88	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x197bc0	0x88	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x197c48	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x197c60	0x88	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x197ce8	0x88	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x197d70	0x88	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x197df8	0x88	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x197e80	0x78	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x197ef8	0x88	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x197f80	0x88	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x198008	0x88	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x198090	0x88	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x198118	0x88	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1981a0	0x88	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x198228	0x90	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1982b8	0x90	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x198348	0x90	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1983d8	0x90	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x198468	0x90	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1984f8	0x90	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x198588	0x88	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x198610	0x88	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x198698	0x8c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x198728	0x88	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1987b0	0x90	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x198840	0x88	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1988c8	0x8c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x198958	0x8c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1989e8	0x8c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x198a78	0x78	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x198af0	0x88	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x198b78	0x88	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x198c00	0x90	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x198c90	0x88	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x198d18	0x7c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x198d98	0x7c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x198e18	0x7c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x198e98	0x78	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x198f10	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x198f28	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x198f40	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x198f58	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x198f70	0x88	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x198ff8	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x199030	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x199048	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x199060	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x199078	0x88	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x199108	0x1c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x199138	0x1c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x199158	0x1c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x197378	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x197390	0x34	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1973c8	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1973e0	0x38	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x197418	0x44	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x197460	0x40	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1974a0	0x3c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1974e0	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1974f8	0x44	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x197550	0x78	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1975c8	0x78	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x197640	0x78	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1976b8	0x78	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x197730	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1977b8	0x78	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x197830	0x78	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1978a8	0x78	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x197920	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1979a8	0x78	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x197a20	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x197aa8	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x197ac0	0x78	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x197b38	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x197bc0	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x197c48	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x197c60	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x197ce8	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x197d70	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x197df8	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x197e80	0x78	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x197ef8	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x197f80	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x198008	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x198090	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x198118	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1981a0	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x198228	0x90	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1982b8	0x90	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x198348	0x90	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1983d8	0x90	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x198468	0x90	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1984f8	0x90	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x198588	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x198610	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x198698	0x8c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x198728	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1987b0	0x90	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x198840	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1988c8	0x8c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x198958	0x8c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1989e8	0x8c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x198a78	0x78	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x198af0	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x198b78	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x198c00	0x90	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x198c90	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x198d18	0x7c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x198d98	0x7c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x198e18	0x7c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x198e98	0x78	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x198f10	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x198f28	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x198f40	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x198f58	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x198f70	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x198ff8	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x199030	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x199048	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x199060	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x199078	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x199108	0x1c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x199138	0x1c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x199158	0x1c	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x199178	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x199190	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x1991a8	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
@@ -104,234 +104,263 @@ rva	size	source	evidence
 0x199208	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x199220	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x199238	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
-0x199270	0x54	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1992c8	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1992e0	0x54	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x199338	0x54	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x199390	0x58	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1993e8	0x84	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x199470	0x84	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1994f8	0x54	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x199550	0x88	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1995d8	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1995f0	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x199630	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x199648	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x199660	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x199678	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x199690	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1996a8	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1996c0	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1996d8	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1996f0	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x199708	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x199720	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x199738	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x199750	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x199768	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x199780	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x199270	0x54	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1992c8	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1992e0	0x54	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x199338	0x54	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x199390	0x58	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1993e8	0x84	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x199470	0x84	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1994f8	0x54	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x199550	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1995d8	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1995f0	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x199630	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x199648	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x199660	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x199678	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x199690	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1996a8	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1996c0	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1996d8	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1996f0	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x199708	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x199720	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x199738	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x199750	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x199768	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x199780	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x199bb8	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
-0x199d10	0xa4	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x199db8	0xfc	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x199eb8	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x199ed0	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x199ee8	0x78	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x199f60	0x78	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x199fd8	0x78	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19a050	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19a068	0x88	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19a0f0	0xac	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19a1a0	0xac	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19a250	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19a268	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19a3d0	0xa8	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19a478	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19a490	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19a4a8	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19a4c0	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19a4d8	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19a510	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19a528	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x199d10	0xa4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x199db8	0xfc	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x199eb8	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x199ed0	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x199ee8	0x78	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x199f60	0x78	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x199fd8	0x78	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19a050	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19a068	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19a0f0	0xac	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19a1a0	0xac	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19a250	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19a268	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19a3d0	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19a458	0x10	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19a468	0x10	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19a478	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19a490	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19a4a8	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19a4c0	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19a4d8	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19a4f0	0xc	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19a510	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19a528	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x19a540	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
-0x19a558	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19a570	0x88	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19a5f8	0x78	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19a670	0x78	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19a6e8	0x78	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19a760	0x84	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19a7e8	0x78	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19a860	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19a878	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19a890	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19a8a8	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19a8c0	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19a8d8	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19a8f0	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19a908	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19a928	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19a968	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19a980	0xbc	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19aa40	0xbc	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19ab00	0xbc	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19abc0	0xc0	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19ac80	0x88	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19ad08	0x7c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19ad98	0x7c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19ae18	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19ae30	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19ae48	0x78	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19af50	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19af68	0x88	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19aff0	0x88	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19b078	0x88	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19b100	0x78	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19b178	0x78	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19b1f0	0x78	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19b268	0x8c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19b2f8	0x78	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19b370	0x78	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19b3e8	0x7c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19b468	0x8c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19b4f8	0x8c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19b588	0x78	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19b600	0x78	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19b678	0x88	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19b700	0x88	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19b788	0x88	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19b810	0x78	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19b888	0x78	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19b900	0x8c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19b990	0x78	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19ba08	0x88	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19ba90	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19baa8	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19bac0	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19bad8	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19baf0	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19bb08	0x5c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19bd30	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19bd48	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19bd60	0x1c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19bd80	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19bd98	0x1c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19bfd0	0x38	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c008	0x38	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c040	0x70	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c0b0	0x70	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c120	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c138	0x70	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c1a8	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c1c0	0x3c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c200	0x3c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c240	0x3c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c280	0x3c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c2c0	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c2d8	0x58	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c330	0x58	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c388	0x3c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c3c8	0x3c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c408	0x3c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c448	0x3c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c488	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c4a0	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c4b8	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c4d0	0x58	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c528	0x58	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c580	0x58	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c5d8	0x58	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c630	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c648	0x44	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c690	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c6a8	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c6c0	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c6d8	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c6f0	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c708	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c720	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c738	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c750	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c768	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c780	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c798	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c7b0	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c7c8	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c7e0	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c7f8	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c810	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c828	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c840	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c858	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c870	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c888	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c8a0	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c8b8	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c8d0	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c8e8	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c900	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c918	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c930	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c948	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c960	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c978	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c990	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c9a8	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c9c0	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c9d8	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19c9f0	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19ca08	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19ca20	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19ca38	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19ca50	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19ca68	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19ca80	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19ca98	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19cab0	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19cac8	0x1c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19cae8	0x1c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19cb08	0x1c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19cb28	0x1c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19cb48	0x1c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19cb68	0x1c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19cb88	0x1c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19cba8	0x1c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19cbc8	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19cbe0	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19cbf8	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19cc10	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19cc28	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19cc40	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19cc58	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19cc90	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19cca8	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19ccc0	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19ccd8	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19ccf0	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19cd08	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19cd20	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19cd38	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19cd50	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19cd68	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x19a558	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19a570	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19a5f8	0x78	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19a670	0x78	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19a6e8	0x78	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19a760	0x84	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19a7e8	0x78	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19a860	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19a878	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19a890	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19a8a8	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19a8c0	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19a8d8	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19a8f0	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19a908	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19a928	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19a968	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19a980	0xbc	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19aa40	0xbc	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19ab00	0xbc	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19abc0	0xc0	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19ac80	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19ad08	0x7c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19ad98	0x7c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19ae18	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19ae30	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19ae48	0x78	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19af50	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19af68	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19aff0	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19b078	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19b100	0x78	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19b178	0x78	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19b1f0	0x78	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19b268	0x8c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19b2f8	0x78	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19b370	0x78	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19b3e8	0x7c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19b468	0x8c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19b4f8	0x8c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19b588	0x78	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19b600	0x78	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19b678	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19b700	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19b788	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19b810	0x78	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19b888	0x78	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19b900	0x8c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19b990	0x78	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19ba08	0x88	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19ba90	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19baa8	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19bac0	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19bad8	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19baf0	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19bb08	0x5c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19bd30	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19bd48	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19bd60	0x1c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19bd80	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19bd98	0x1c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19bdb8	0x8	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19bdc0	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19bdd8	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19bdf0	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19be08	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19be20	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19be38	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19be50	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19be68	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19be80	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19be98	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19beb0	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19bec8	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19bee0	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19bef8	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19bf10	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19bf28	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19bf40	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19bf58	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19bf70	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19bf88	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19bfa0	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19bfb8	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19bfd0	0x38	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c008	0x38	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c040	0x70	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c0b0	0x70	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c120	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c138	0x70	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c1a8	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c1c0	0x3c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c200	0x3c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c240	0x3c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c280	0x3c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c2c0	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c2d8	0x58	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c330	0x58	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c388	0x3c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c3c8	0x3c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c408	0x3c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c448	0x3c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c488	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c4a0	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c4b8	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c4d0	0x58	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c528	0x58	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c580	0x58	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c5d8	0x58	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c630	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c648	0x38	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c680	0x8	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c688	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c690	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c6a8	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c6c0	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c6d8	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c6f0	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c708	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c720	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c738	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c750	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c768	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c780	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c798	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c7b0	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c7c8	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c7e0	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c7f8	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c810	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c828	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c840	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c858	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c870	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c888	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c8a0	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c8b8	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c8d0	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c8e8	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c900	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c918	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c930	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c948	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c960	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c978	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c990	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c9a8	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c9c0	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c9d8	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19c9f0	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19ca08	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19ca20	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19ca38	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19ca50	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19ca68	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19ca80	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19ca98	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19cab0	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19cac8	0x1c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19cae8	0x1c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19cb08	0x1c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19cb28	0x1c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19cb48	0x1c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19cb68	0x1c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19cb88	0x1c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19cba8	0x1c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19cbc8	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19cbe0	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19cbf8	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19cc10	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19cc28	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19cc40	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19cc58	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19cc90	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19cca8	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19ccc0	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19ccd8	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19ccf0	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19cd08	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19cd20	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19cd38	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19cd50	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19cd68	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x19cda0	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x19cdb8	0x8	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
 0x19cdc0	0xd	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
-0x19cdd4	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19cdec	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x19cdd4	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19cdec	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x19ce08	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x19ce20	0xb	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
-0x19ce34	0x84	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19cec4	0x4	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x19ce34	0x84	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19cebc	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19cec4	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x19cec8	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x19cee0	0xa	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
-0x19cef4	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x19cef4	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x19cf08	0xc	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
-0x19cf1c	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x19cf1c	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x19cf30	0xb	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
-0x19cf44	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19cf5c	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19cf74	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x19cf44	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19cf5c	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19cf74	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x19cf88	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x19cfa0	0xe	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
-0x19cfb4	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x19cfb4	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x19d000	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x19d018	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x19d030	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
@@ -358,82 +387,92 @@ rva	size	source	evidence
 0x19d19c	0x4	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
 0x19d1a0	0xf	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
 0x19d1b0	0x13	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
-0x19d1cc	0x7c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19d24c	0x7c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19d2cc	0x7c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19d34c	0x7c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19d3cc	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19d3e4	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19d3fc	0x1c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19d41c	0x1c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x19d1cc	0x7c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19d24c	0x7c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19d2cc	0x7c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19d34c	0x7c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19d3cc	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19d3e4	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19d3fc	0x1c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19d41c	0x1c	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x19d478	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x19d490	0x6	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
-0x19d49c	0x5c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19d4fc	0x1c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x19d49c	0x5c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19d4fc	0x1c	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x19d578	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x19d590	0xb	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
-0x19d5a4	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x19d5a4	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x19d5b8	0x13	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
-0x19d5d4	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x19d5d4	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x19d5e8	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x19d600	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x19d618	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x19d630	0x17	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
 0x19d648	0x11	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
 0x19d65c	0xb	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
-0x19d66c	0x1c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19d68c	0x1c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19d6ac	0x1c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x19d66c	0x1c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19d68c	0x1c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19d6ac	0x1c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19d6cc	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19d6d4	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19d6dc	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19d6e4	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19d6ec	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x19db00	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x19db18	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x19db30	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x19db48	0xc	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
 0x19db54	0x6	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
 0x19db5c	0xa	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
-0x19db7c	0xfc	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x19db7c	0xfc	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x19dd28	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x19dd40	0x8	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
-0x19dd54	0xa4	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19ddfc	0x18	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x19dd4c	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19dd54	0xa4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19ddfc	0x18	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x19df30	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x19df48	0xb	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
-0x19df5c	0x58	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x19df5c	0x58	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19dfbc	0x10	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x19e0b0	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x19e0c8	0x8	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
-0x19e0dc	0xd8	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x19e0dc	0xd8	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x19e4f0	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x19e508	0x5	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
-0x19e52c	0xc0	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x19e52c	0xc0	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19e614	0x10	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x19e628	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x19e640	0xa	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
-0x19e654	0x54	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x19e654	0x54	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x19e6b8	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x19e6d0	0xf	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
 0x19e6e0	0xb	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
-0x19e6f4	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x19e6f4	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x19e708	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x19e720	0xd	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
-0x19e734	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x19e734	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x19e748	0xf	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
-0x19e75c	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x19e75c	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x19e770	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x19e788	0x9	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
-0x19e79c	0x70	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x19e79c	0x70	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x19e810	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x19e828	0xb	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
-0x19e83c	0x68	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x19e83c	0x68	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19e8ac	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x19e8c0	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x19e8d8	0x12	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
-0x19e8f4	0x1c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x19e8f4	0x1c	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x19e930	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x19e948	0x9	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
-0x19e95c	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x19e95c	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x19e970	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x19e988	0x6	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
-0x19e994	0x1c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x19e994	0x1c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19e9c4	0x18	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x19eab8	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x19ead0	0xc	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
-0x19eb44	0x110	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x19eb44	0x110	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x19ed40	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x19ed58	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x19ed70	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
@@ -462,29 +501,29 @@ rva	size	source	evidence
 0x19ef28	0xc	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
 0x19ef34	0x10	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
 0x19ef44	0xd	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
-0x19ef5c	0xec	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19f05c	0xc0	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19f134	0xc4	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19f20c	0xc4	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19f2e4	0xc0	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19f3bc	0xc0	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19f494	0xc0	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19f56c	0xc0	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19f63c	0xc4	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19f714	0xc0	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19f7ec	0xc4	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19f8c4	0xc0	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19f98c	0xc0	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19fa54	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x19ef5c	0xec	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19f05c	0xc0	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19f134	0xc4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19f20c	0xc4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19f2e4	0xc0	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19f3bc	0xc0	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19f494	0xc0	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19f56c	0xc0	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19f63c	0xc4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19f714	0xc0	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19f7ec	0xc4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19f8c4	0xc0	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19f98c	0xc0	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19fa54	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x19fad0	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x19fae8	0xd	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
-0x19fafc	0xc0	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x19fafc	0xc0	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x19fd30	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x19fd48	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x19fd60	0xa	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
 0x19fd6c	0xd	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
-0x19fd84	0x110	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x19fe9c	0x110	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x19fd84	0x110	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x19fe9c	0x110	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x19ffb0	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x19ffc8	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x19ffe0	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
@@ -497,19 +536,33 @@ rva	size	source	evidence
 0x1a0060	0x9	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
 0x1a006c	0x8	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
 0x1a0074	0x8	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
-0x1a008c	0xc0	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1a015c	0xc4	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1a022c	0xd8	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1a0314	0xd0	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1a03f4	0xc0	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1a04c4	0xc0	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x1a008c	0xc0	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1a015c	0xc4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1a022c	0xd8	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1a0314	0xd0	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1a03f4	0xc0	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1a04c4	0xc0	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1a05ac	0x38	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x1a05e8	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x1a0600	0x10	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
-0x1a0614	0x14	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x1a0614	0x14	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x1a0690	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x1a06a8	0xa	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
-0x1a06bc	0xb8	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
-0x1a0784	0x5c	MFC vtable	contiguous text pointers split at GetRuntimeClass starts
+0x1a06bc	0xb8	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1a077c	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1a0784	0x5c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1a0814	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1a1644	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1a1648	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1a1714	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1a172c	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1a173c	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1a175c	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1a1764	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1a1794	0x2c	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1a17c4	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1a17d4	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1a17e4	0x2c	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x1a3548	0x20	FuncInfo	VC5 FuncInfo fixed record
 0x1a3568	0x10	UnwindMap	maxState * sizeof(UnwindMapEntry)
 0x1a3578	0x20	FuncInfo	VC5 FuncInfo fixed record
@@ -3469,9 +3522,23 @@ rva	size	source	evidence
 0x1c5d4c	0x7	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
 0x1c5d54	0x7	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
 0x1c5d5c	0x5	CRuntimeClass name	NUL-terminated name referenced by CRuntimeClass
+0x1c8614	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1c8618	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x1c8da8	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x1c8ec8	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x1c8f00	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x1c9180	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x1c93e0	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
 0x1c9438	0x18	CRuntimeClass	MFC 4.x six-dword runtime-class record
+0x1c98c8	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1c98cc	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1c98d0	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1c9d58	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1c9d5c	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1c9d60	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1c9d64	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1c9d68	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1c9d6c	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1cc078	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1ccc58	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1ccc60	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs

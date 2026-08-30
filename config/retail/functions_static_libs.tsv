@@ -660,6 +660,7 @@ rva	name	lib	confidence	source
 0x172c26	?IsDerivedFrom@CRuntimeClass@@QBEHPBU1@@Z	NAFXCW.LIB	HIGH	fid-census:70a8d16f09bf:$NW/objcore.obj:e461dcc6fe22
 0x172c50	?AfxSetNewHandler@@YGP6AHI@ZP6AHI@Z@Z	NAFXCW.LIB	HIGH	fid-census:70a8d16f09bf:$NW/afxmem.obj:687072dc7931
 0x172c64	??2@YAPAXI@Z	NAFXCW.LIB	HIGH	fid-census:70a8d16f09bf:$NW/afxmem.obj:687072dc7931
+0x172ca0	??3@YAXPAX@Z	NAFXCW.LIB	HIGH	review:vc5-sp2-fid+1242-callers+free-target
 0x172cb1	??0CString@@QAE@XZ	NAFXCW.LIB	HIGH	fid-census:70a8d16f09bf:$NW/strcore.obj:5068fe0cf5a5
 0x172cc1	??0CString@@QAE@ABV0@@Z	NAFXCW.LIB	HIGH	fid-census:70a8d16f09bf:$NW/strcore.obj:5068fe0cf5a5
 0x172cf8	?AllocBuffer@CString@@IAEXH@Z	NAFXCW.LIB	HIGH	fid-census:70a8d16f09bf:$NW/strcore.obj:5068fe0cf5a5

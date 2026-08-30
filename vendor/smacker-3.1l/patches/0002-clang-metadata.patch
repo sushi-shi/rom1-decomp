@@ -1,0 +1,18 @@
+--- a/rad.h
++++ b/rad.h
+@@ -918,6 +918,10 @@
+ #ifdef __RADNT__
+   #define LockedIncrement(var) __asm { lock inc [var] }
+   #define LockedDecrement(var) __asm { lock dec [var] }
++#if defined(__clang__) && defined(ROM1_EMIT_META)
++  void __inline LockedIncrementFunc(void PTR4* var) { ++(*((u32*)var)); }
++  void __inline LockedDecrementFunc(void PTR4* var) { --(*((u32*)var)); }
++#else
+   void __inline LockedIncrementFunc(void PTR4* var) {
+     __asm {
+       mov eax,[var]
+@@ -932,3 +936,4 @@
+       lock dec [eax]
+     }
+   }
++#endif

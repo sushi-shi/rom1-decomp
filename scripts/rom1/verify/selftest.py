@@ -741,11 +741,11 @@ class AssertRelocsControls(unittest.TestCase):
         report a WRONG row where the clean run reports none."""
         from rom1.core.paths import BUILD
         from rom1.verify import assert_relocs as ar
-        if not (BUILD / "objdiff/base/butemgr.obj").is_file():
+        if not (BUILD / "objdiff/base/scenarioconfig.obj").is_file():
             self.skipTest("base objs absent (unbuilt tree)")
-        clean, _seen = ar.audit(unit_filter="butemgr")
+        clean, _seen = ar.audit(unit_filter="scenarioconfig")
         if clean:
-            self.skipTest("butemgr not clean on this tree state - control "
+            self.skipTest("scenarioconfig not clean on this tree state - control "
                           "needs a green substrate")
         real = ar.Resolver.resolve_base
 
@@ -755,7 +755,7 @@ class AssertRelocsControls(unittest.TestCase):
                 return {v + 0x10 for v in out}     # shift every CButeMgr ref
             return out
         with mock.patch.object(ar.Resolver, "resolve_base", poisoned):
-            bad, _seen = ar.audit(unit_filter="butemgr")
+            bad, _seen = ar.audit(unit_filter="scenarioconfig")
         self.assertTrue(any("WRONG" in p for _u, _n, p in bad))
 
     def test_a_fabricated_symbol_is_fake(self):
@@ -2178,6 +2178,15 @@ class DataAccessCategoryControls(unittest.TestCase):
 
 
 class DataCoverageControls(unittest.TestCase):
+    def test_band_completion_cannot_cross_a_label_only_model_claim(self):
+        from types import SimpleNamespace
+        from rom1.delink.data_manifest import _model_barrier
+        binding = SimpleNamespace(channel="data_vtables", rva=0x1010,
+                                  size=0x10, name="??_7CFoo@@6B@")
+        model = SimpleNamespace(data=[binding])
+        self.assertIs(_model_barrier(model, 0x1000, 0x1040), binding)
+        self.assertIsNone(_model_barrier(model, 0x1020, 0x1040))
+
     def _row(self, **kw):
         row = {"rva": 0x1000, "length": 16, "section": ".data",
                "verdict": "NONZERO", "addressed": 1, "touched": 8, "sites": 2,
@@ -2202,6 +2211,12 @@ class DataCoverageControls(unittest.TestCase):
         self.assertEqual(dc.gate_rows([self._row(touched=0, sites=0)]), [])
         self.assertEqual(dc.gate_rows([self._row(verdict="ZERO-GAP",
                                                  payload_nonzero=0)]), [])
+
+    def test_linker_pooled_boundaries_do_not_claim_the_gap_between_them(self):
+        from rom1.verify import data_coverage as dc
+        self.assertEqual(dc.gate_rows([
+            self._row(prev_linear=False, next_linear=False)
+        ]), [])
 
     def test_a_folded_comdat_is_not_an_overlap_but_two_extents_are(self):
         from rom1.verify import data_coverage as dc
@@ -3773,11 +3788,10 @@ class SourceNameRewriteControls(unittest.TestCase):
             f"reported by nothing (first: {unreported[0] if unreported else ''})")
 
     def test_a_missing_rewrite_rule_fails_that_control(self):
-        """The negative control: undo two rules, the corpus control must fail.
+        """The negative control: misspell every claim, so the control fails.
 
         A gate that would pass an incomplete rewrite is not a gate."""
         import io
-        import re
         from rom1.retail_labels import fragments
 
         _base, claims = self._corpus()
@@ -3787,9 +3801,10 @@ class SourceNameRewriteControls(unittest.TestCase):
         def poisoned():
             out = []
             for c in claims:
-                name = re.sub(r"@@([0-9])P", r"@@\1Q", c.name)   # undo Q -> P
-                if name.endswith("$S"):                          # undo _x$S
-                    name = (name[1:] if name.startswith("_") else name)[:-2]
+                # A leading underscore is among _alternate_spellings, so the
+                # object's real spelling is guaranteed to be observed as the
+                # alternative even in a very small bootstrap corpus.
+                name = c.name[1:] if c.name.startswith("_") else "_" + c.name
                 out.append(c._replace(name=name))
             return out
 

@@ -128,8 +128,16 @@ def link_order_bands(path: Path | None = None) -> list[tuple[int, int, str]]:
 
 def link_bands(path: Path | None = None) -> list[tuple[int, int, str]]:
     """[(lo, hi, band)] - the coarse link-layout bands, sorted."""
-    _b, _h, raw = read_tsv(path or RETAIL / "link_bands.tsv")
-    out = [(int(r["lo"], 16), int(r["hi"], 16), r["band"]) for r in raw]
+    _b, fields, raw = read_tsv(path or RETAIL / "link_bands.tsv")
+    if {"lo_rva", "hi_rva", "name"}.issubset(fields):
+        keys = ("lo_rva", "hi_rva", "name")
+    elif {"lo", "hi", "band"}.issubset(fields):
+        # Retain compatibility with the Gruntz schema imported by this tool.
+        keys = ("lo", "hi", "band")
+    else:
+        raise ValueError(f"link_bands: unsupported fields {fields}")
+    lo_key, hi_key, name_key = keys
+    out = [(int(r[lo_key], 16), int(r[hi_key], 16), r[name_key]) for r in raw]
     out.sort()
     for (alo, ahi, an), (blo, _bh, bn) in zip(out, out[1:]):
         if ahi > blo:
