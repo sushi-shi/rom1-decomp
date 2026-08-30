@@ -3542,3 +3542,11 @@ rva	size	source	evidence
 0x1cc078	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x1ccc58	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
 0x1ccc60	0x4	vtable	relocated text-pointer run split at RTTI and code vptr refs
+0x1f2148	0x14	CStringArray	direct Data.bin CStringArray::Serialize receiver and pinned MFC object size
+0x1f2160	0x14	CStringArray	direct Data.bin CStringArray::Serialize receiver and pinned MFC object size
+0x1f2198	0x14	CStringArray	direct Data.bin CStringArray::Serialize receiver and pinned MFC object size
+0x1f21b0	0x14	CStringArray	direct Data.bin CStringArray::Serialize receiver and pinned MFC object size
+0x203b68	0x14	CStringArray	direct Data.bin CStringArray::Serialize receiver and pinned MFC object size
+0x209488	0x14	CStringArray	direct Data.bin CStringArray::Serialize receiver and pinned MFC object size
+0x209978	0x14	CStringArray	direct Data.bin CStringArray::Serialize receiver and pinned MFC object size
+0x20a730	0x14	CStringArray	direct Data.bin CStringArray::Serialize receiver and pinned MFC object size

@@ -448,9 +448,9 @@ RVA_COMPGEN(0x00117750, 0x5b, ??5CArchive@@QAEAAV0@AAG@Z)
 RVA_COMPGEN(0x00117860, 0x43, ??6CArchive@@QAEAAV0@K@Z)
 RVA_COMPGEN(0x001178b0, 0x59, ??5CArchive@@QAEAAV0@AAK@Z)
 
-RVA_COMPGEN(0x0011a490, 0x19, ??A?$CArray@UCTertiaryStateRecord@@AAU1@@@QAEAAUCTertiaryStateRecord@@H@Z)
+RVA_COMPGEN(0x0011a490, 0x19, ??A?$CArray@VCTableLineBaseOnly@@AAV1@@@QAEAAVCTableLineBaseOnly@@H@Z)
 
-RVA_COMPGEN(0x0011a830, 0x19, ??A?$CArray@UCSpellDefinition@@AAU1@@@QAEAAUCSpellDefinition@@H@Z)
+RVA_COMPGEN(0x0011a830, 0x19, ??A?$CArray@VCTableLineLabel@@AAV1@@@QAEAAVCTableLineLabel@@H@Z)
 
 RVA_COMPGEN(0x0011a990, 0x11, ?GetSize@?$CArray@PAVSpell@@PAV1@@@QBEHXZ)
 RVA_COMPGEN(0x0011a9b0, 0x21a, ?SetSize@?$CArray@PAVSpell@@PAV1@@@QAEXHH@Z)
@@ -489,6 +489,6 @@ void ResolvePlayerReference(UINT* value) {
     }
 }
 
-RVA_COMPGEN(0x00123350, 0x1b, ?ElementAt@?$CArray@UCTertiaryStateRecord@@AAU1@@@QAEAAUCTertiaryStateRecord@@H@Z)
-RVA_COMPGEN(0x001234d0, 0x1b, ?ElementAt@?$CArray@UCSpellDefinition@@AAU1@@@QAEAAUCSpellDefinition@@H@Z)
+RVA_COMPGEN(0x00123350, 0x1b, ?ElementAt@?$CArray@VCTableLineBaseOnly@@AAV1@@@QAEAAVCTableLineBaseOnly@@H@Z)
+RVA_COMPGEN(0x001234d0, 0x1b, ?ElementAt@?$CArray@VCTableLineLabel@@AAV1@@@QAEAAVCTableLineLabel@@H@Z)
 RVA_COMPGEN(0x001236c0, 0x19, ?ElementAt@?$CArray@PAVSpell@@PAV1@@@QAEAAPAVSpell@@H@Z)

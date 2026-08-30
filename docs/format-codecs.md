@@ -528,9 +528,20 @@ and three are the exact VC5 SP2 `IsStoring`, `CStringArray::operator[]`, and
 `CStringArray::ElementAt` COMDATs emitted by the source forms. The reviewed
 runtime-class record fixes TableLine's identity and 28-byte size. Retail
 constructors and serializers then independently fix a CString at `+0x04`, a
-nested polymorphic object at `+0x08`, five raw WORDs, fixed two- and ten-entry
+nested integer array at `+0x08`, five raw WORDs, fixed two- and ten-entry
 CStringArray loops, a raw 72-byte record, and CString extensions. Names that
 did not survive remain evidence-neutral rather than guessed.
+
+The game-owned Data.bin owner at `0x0dbd14` serializes twelve arrays of those
+same recovered TableLine subtypes, with the material, shape, and magic tables
+zero-based and the equipment, unit, human, building, and spell tables
+one-based. Its store and load arms preserve all counts, resizes, global name
+tables, and virtual slot-2 dispatches. The reconstructed body has retail's
+`0x943`-byte extent, 752 instructions, 127 calls, 68 branches, and 121 ordered
+referents. Its 99.8976% report is score bookkeeping only: semantic comparison
+has zero divergences and the near-exact relocation audit is clean. Constructor
+and vtable evidence also corrects the older opaque-array model to the already
+reconstructed TableLine subclasses; no vendor implementation is reproduced.
 
 The game-owned spell/object cluster now contributes another 11 exact wall
 candidates. Eight are typed `IMPLEMENT_SERIAL` readers for `Token`,

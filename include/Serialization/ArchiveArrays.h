@@ -3,50 +3,26 @@
 
 #include <MfcNoInline.h>
 
+#include <Serialization/ArchiveObjects.h>
+
 #include <afxtempl.h>
 
-// This family is serialized only through MFC collection templates.  Retail
-// therefore preserves each complete element size and which collections share
-// an element type, but not the original game-owned source names.  Keep one
-// canonical declaration for every distinct recovered identity until stronger
-// field-use evidence supplies semantic names.
-// @identity-TODO: recover the original record names and fields.
+// The Data.bin constructor band and the eight array vtables prove that these
+// collection roles use the already recovered TableLine subtype family.  Keep
+// role aliases for their otherwise anonymous source identities while sharing
+// the canonical polymorphic class definitions and virtual Serialize slots.
 struct CSharedCollectionValue {
     BYTE m_bytes[4];
 };
 
-struct CLargeCollectionRecord {
-    BYTE m_bytes[0x68];
-};
-
-struct CNamedCollectionRecord {
-    BYTE m_bytes[0x3c];
-};
-
-struct CFixedCollectionRecord {
-    BYTE m_bytes[0x40];
-};
-
-struct CCompactCollectionRecord {
-    BYTE m_bytes[0x1c];
-};
-
-// Unit and Human both replace the same runtime-state pointer from distinct
-// 48-byte definition arrays. Human's post-load CString query proves the
-// shared prefix and its field at +0x04.
-struct CUnitStateRecord {
-    UINT m_value00;
-    CString m_marker04;
-    BYTE m_reserved08[0x28];
-};
-
-struct CPrimaryStateRecord : public CUnitStateRecord {};
-
-struct CSecondaryStateRecord : public CUnitStateRecord {};
-
-struct CTertiaryStateRecord {
-    BYTE m_bytes[0x1c];
-};
+typedef CTableLineRawBlock CLargeCollectionRecord;
+typedef CTableLineWordBlock CNamedCollectionRecord;
+typedef CTableLineWordBlockLabel CFixedCollectionRecord;
+typedef TableLine CCompactCollectionRecord;
+typedef CTableLineStringPair CPrimaryStateRecord;
+typedef CTableLineStringDecade CSecondaryStateRecord;
+typedef CTableLineBaseOnly CTertiaryStateRecord;
+typedef CTableLineLabel CSpellDefinition;
 
 struct CCollectionHandle {
     BYTE m_bytes[4];
@@ -126,7 +102,6 @@ class CScenarioBuildingCaster;
 class CScenarioBuildingRecord;
 class CScenarioUnitRecord;
 class CMultiShopInstance;
-struct CSpellDefinition;
 
 // The parser allocates 0x1c-byte polymorphic entries and stores their pointers
 // in the same list used for the Humans, Outposts, and Items sections.  No

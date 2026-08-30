@@ -29,8 +29,6 @@ class CWordListRecordCompact;
 class CPlayerArchiveBlock;
 class CPlayerUnitGroup;
 class CPlayerUnitGroupCollection;
-struct CPrimaryStateRecord;
-struct CTertiaryStateRecord;
 
 void ResolveEffectReference(UINT* value);
 void ResolveTokenReference(UINT* value);
@@ -73,27 +71,39 @@ private:
     BYTE m_bytes[0x16];
 };
 
-// The element stride and CArray accessors prove a contiguous 32-byte spell
-// definition record. Its original record name and fields remain unknown.
-struct CSpellDefinition {
-    BYTE m_bytes[0x20];
-};
-
 typedef CArray<CSpellDefinition, CSpellDefinition&> CSpellDefinitionArray;
 
-// Three equipment-definition tables share one 60-byte element identity; the
-// base Item table uses a distinct 64-byte record. Their indexing helpers and
-// all five global-array call sites prove these extents.
-struct CEquipmentDefinitionRecord {
-    BYTE m_bytes[0x3c];
+// The three equipment tables and the base-item table are alternate uses of
+// the same TableLine-derived array identities recovered from Data.bin.
+typedef CNamedCollectionRecordArray CEquipmentDefinitionArray;
+typedef CFixedCollectionRecordArray CItemDefinitionArray;
+
+// The Data.bin load/save wrappers and the .csv bootstrap path prove this
+// complete non-polymorphic owner layout.  The executable retains the table
+// roles and element extents but not the original owner identifier, so keep a
+// role name rather than inventing a historical class name.  Element zero is
+// a live entry only for the material/shape/magic tables; the remaining
+// definition arrays retain their one-based indexing from the retail loops.
+class CStaticDataTables {
+public:
+    void Serialize(CArchive& archive);
+
+private:
+    CLargeCollectionRecordArray m_materials;
+    CLargeCollectionRecordArray m_shapes;
+    CNamedCollectionRecordArray m_shields;
+    CNamedCollectionRecordArray m_armors;
+    CNamedCollectionRecordArray m_weapons;
+    CFixedCollectionRecordArray m_magicItems;
+    CCompactCollectionRecordArray m_magic;
+    CPrimaryStateRecordArray m_units;
+    CSecondaryStateRecordArray m_humans;
+    CSecondaryStateRecordArray m_auxiliaryStates;
+    CTertiaryStateRecordArray m_buildings;
+    CSpellDefinitionRecordArray m_spells;
+    BOOL m_loaded;
 };
 
-struct CItemDefinitionRecord {
-    BYTE m_bytes[0x40];
-};
-
-typedef CArray<CEquipmentDefinitionRecord, CEquipmentDefinitionRecord&> CEquipmentDefinitionArray;
-typedef CArray<CItemDefinitionRecord, CItemDefinitionRecord&> CItemDefinitionArray;
 // Typed archive readers prove the element identities for both four-byte list
 // instantiations in the retail container band.
 typedef CList<Effect*, Effect*> CEffectPointerList;
@@ -208,7 +218,7 @@ public:
     friend class CPlayerUnitGroup;
 
 protected:
-    CUnitStateRecord* m_state3c;
+    TableLine* m_state3c;
     UINT m_reference40;
     UINT m_reference44;
     char m_value48;

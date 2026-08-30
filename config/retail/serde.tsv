@@ -214,6 +214,7 @@ archive-array	0x126770	building-record reference element serializer	exact	100%; 
 archive-array	0x126a60	unit-record reference element serializer	exact	100%; exact pinned-header instantiation selected by parent 0x11ead0
 archive-array	0x126d50	CMultiShopInstance-pointer element serializer	exact	100%; exact pinned-header instantiation selected by parent 0x11ed20
 archive-array	0x126f70	SpellEffect-pointer element serializer	exact	100%; exact pinned-header instantiation selected by parent 0x11edf0
+archive-container	0x0dbd14	Data.bin TableLine collection serializer	reconstructed	99.8976%; source-complete 12-array save/load topology, byte semantics and 121 ordered referents identical
 archive-object	0x0de85b	TableLine typed object reader	exact	100%; reviewed runtime-class record + CArchive::ReadObject
 archive-array	0x1274b0	parsed-scenario-entry pointer element serializer	exact	100%; exact pinned-header instantiation selected by parent 0x11f5d0
 archive-array	0x128570	BYTE element serializer	exact	100%; exact pinned-header key instantiation selected by parent 0x120870

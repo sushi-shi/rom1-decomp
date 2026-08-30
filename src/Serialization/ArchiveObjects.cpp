@@ -25,7 +25,7 @@ void TableLine::Serialize(CArchive& archive) {
     } else {
         archive >> m_name;
     }
-    m_value.Serialize(archive);
+    m_values.Serialize(archive);
 }
 
 RVA(0x000df2c6, 0x5c)

@@ -20,11 +20,173 @@ DATA(0x00209aac) extern CEquipmentDefinitionArray g_armorDefinitions;
 DATA(0x00209ac0) extern CEquipmentDefinitionArray g_weaponDefinitions;
 DATA(0x00209ad4) extern CItemDefinitionArray g_itemDefinitions;
 DATA(0x00209b10) extern CSecondaryStateRecordArray g_humanStates;
+
+// CStringArray::Serialize is the pinned MFC provider.  These are game-owned
+// tables passed to it by the Data.bin serializer; their category identities
+// are fixed by the adjacent .csv bootstrap paths.
+DATA(0x001f21b0) extern CStringArray g_materialShapeNames;
+DATA(0x00209978) extern CStringArray g_magicNames;
+DATA(0x00209488) extern CStringArray g_equipmentNames;
+DATA(0x00203b68) extern CStringArray g_magicItemNames;
+DATA(0x0020a730) extern CStringArray g_unitNames;
+DATA(0x001f2148) extern CStringArray g_humanNames;
+DATA(0x001f2198) extern CStringArray g_buildingNames;
+DATA(0x001f2160) extern CStringArray g_spellNames;
 // clang-format on
 
 RVA(0x000d9f67, 0x3f)
 static void MarkTokenIdSeen(WORD value) {
     g_seenTokenIds[value >> 5] |= 1 << (value & 31);
+}
+
+// Source-complete Data.bin serializer.  Every element loop dispatches the
+// canonical TableLine subtype's proven virtual Serialize slot.
+RVA(0x000dbd14, 0x943)
+void CStaticDataTables::Serialize(CArchive& archive) {
+    if (archive.IsStoring()) {
+        int i;
+        g_materialShapeNames.Serialize(archive);
+
+        archive << static_cast<UINT>(m_shapes.GetSize());
+        for (i = 0; i < m_shapes.GetSize(); i++) {
+            m_shapes[i].Serialize(archive);
+        }
+
+        archive << static_cast<UINT>(m_materials.GetSize());
+        for (i = 0; i < m_materials.GetSize(); i++) {
+            m_materials[i].Serialize(archive);
+        }
+
+        g_magicNames.Serialize(archive);
+        archive << static_cast<UINT>(m_magic.GetSize());
+        for (i = 0; i < m_magic.GetSize(); i++) {
+            m_magic[i].Serialize(archive);
+        }
+
+        g_equipmentNames.Serialize(archive);
+        archive << static_cast<UINT>(m_armors.GetSize());
+        for (i = 1; i < m_armors.GetSize(); i++) {
+            m_armors[i].Serialize(archive);
+        }
+
+        archive << static_cast<UINT>(m_shields.GetSize());
+        for (i = 1; i < m_shields.GetSize(); i++) {
+            m_shields[i].Serialize(archive);
+        }
+
+        archive << static_cast<UINT>(m_weapons.GetSize());
+        for (i = 1; i < m_weapons.GetSize(); i++) {
+            m_weapons[i].Serialize(archive);
+        }
+
+        g_magicItemNames.Serialize(archive);
+        archive << static_cast<UINT>(m_magicItems.GetSize());
+        for (i = 1; i < m_magicItems.GetSize(); i++) {
+            m_magicItems[i].Serialize(archive);
+        }
+
+        g_unitNames.Serialize(archive);
+        archive << static_cast<UINT>(m_units.GetSize());
+        for (i = 1; i < m_units.GetSize(); i++) {
+            m_units[i].Serialize(archive);
+        }
+
+        g_humanNames.Serialize(archive);
+        archive << static_cast<UINT>(m_humans.GetSize());
+        for (i = 1; i < m_humans.GetSize(); i++) {
+            m_humans[i].Serialize(archive);
+        }
+
+        g_buildingNames.Serialize(archive);
+        archive << static_cast<UINT>(m_buildings.GetSize());
+        for (i = 1; i < m_buildings.GetSize(); i++) {
+            m_buildings[i].Serialize(archive);
+        }
+
+        g_spellNames.Serialize(archive);
+        archive << static_cast<UINT>(m_spells.GetSize());
+        for (i = 1; i < m_spells.GetSize(); i++) {
+            m_spells[i].Serialize(archive);
+        }
+        return;
+    }
+
+    int i;
+    UINT count;
+    g_materialShapeNames.Serialize(archive);
+
+    archive >> count;
+    m_shapes.SetSize(count);
+    for (i = 0; i < m_shapes.GetSize(); i++) {
+        m_shapes[i].Serialize(archive);
+    }
+
+    archive >> count;
+    m_materials.SetSize(count);
+    for (i = 0; i < m_materials.GetSize(); i++) {
+        m_materials[i].Serialize(archive);
+    }
+
+    g_magicNames.Serialize(archive);
+    archive >> count;
+    m_magic.SetSize(count);
+    for (i = 0; i < m_magic.GetSize(); i++) {
+        m_magic[i].Serialize(archive);
+    }
+
+    g_equipmentNames.Serialize(archive);
+    archive >> count;
+    m_armors.SetSize(count);
+    for (i = 1; i < m_armors.GetSize(); i++) {
+        m_armors[i].Serialize(archive);
+    }
+
+    archive >> count;
+    m_shields.SetSize(count);
+    for (i = 1; i < m_shields.GetSize(); i++) {
+        m_shields[i].Serialize(archive);
+    }
+
+    archive >> count;
+    m_weapons.SetSize(count);
+    for (i = 1; i < m_weapons.GetSize(); i++) {
+        m_weapons[i].Serialize(archive);
+    }
+
+    g_magicItemNames.Serialize(archive);
+    archive >> count;
+    m_magicItems.SetSize(count);
+    for (i = 1; i < m_magicItems.GetSize(); i++) {
+        m_magicItems[i].Serialize(archive);
+    }
+
+    g_unitNames.Serialize(archive);
+    archive >> count;
+    m_units.SetSize(count);
+    for (i = 1; i < m_units.GetSize(); i++) {
+        m_units[i].Serialize(archive);
+    }
+
+    g_humanNames.Serialize(archive);
+    archive >> count;
+    m_humans.SetSize(count);
+    for (i = 1; i < m_humans.GetSize(); i++) {
+        m_humans[i].Serialize(archive);
+    }
+
+    g_buildingNames.Serialize(archive);
+    archive >> count;
+    m_buildings.SetSize(count);
+    for (i = 1; i < m_buildings.GetSize(); i++) {
+        m_buildings[i].Serialize(archive);
+    }
+
+    g_spellNames.Serialize(archive);
+    archive >> count;
+    m_spells.SetSize(count);
+    for (i = 1; i < m_spells.GetSize(); i++) {
+        m_spells[i].Serialize(archive);
+    }
 }
 
 // The compact record constructor clears its recovered 0x50-byte state,
@@ -508,7 +670,7 @@ void Human::Serialize(CArchive& archive) {
 
     if (m_value14c != 0) {
         if (m_state3c != 0) {
-            if (m_state3c->m_marker04.Find("NPC") == -1) {
+            if (m_state3c->m_name.Find("NPC") == -1) {
                 m_value14c = 0;
             }
         } else {
@@ -620,12 +782,21 @@ template void CArchivePointerList<Effect*>::Serialize(CArchive& archive);
 RVA_COMPGEN(0x00118990, 0xb0, ?Serialize@?$CArchivePointerList@PAVItem@@@@QAEXAAVCArchive@@@Z)
 template void CArchivePointerList<Item*>::Serialize(CArchive& archive);
 
-RVA_COMPGEN(0x00119210, 0x20, ??A?$CArray@UCEquipmentDefinitionRecord@@AAU1@@@QAEAAUCEquipmentDefinitionRecord@@H@Z)
-RVA_COMPGEN(0x00119370, 0x20, ?GetSize@?$CArray@UCItemDefinitionRecord@@AAU1@@@QBEHXZ)
-RVA_COMPGEN(0x001195b0, 0x20, ??A?$CArray@UCItemDefinitionRecord@@AAU1@@@QAEAAUCItemDefinitionRecord@@H@Z)
-RVA_COMPGEN(0x00119d10, 0x20, ??A?$CArray@UCPrimaryStateRecord@@AAU1@@@QAEAAUCPrimaryStateRecord@@H@Z)
-RVA_COMPGEN(0x0011a0d0, 0x20, ??A?$CArray@UCSecondaryStateRecord@@AAU1@@@QAEAAUCSecondaryStateRecord@@H@Z)
+RVA_COMPGEN(0x00118c10, 0x20, ?GetSize@?$CArray@VCTableLineRawBlock@@AAV1@@@QBEHXZ)
+RVA_COMPGEN(0x00118e50, 0x20, ??A?$CArray@VCTableLineRawBlock@@AAV1@@@QAEAAVCTableLineRawBlock@@H@Z)
+RVA_COMPGEN(0x00118fb0, 0x20, ?GetSize@?$CArray@VCTableLineWordBlock@@AAV1@@@QBEHXZ)
+RVA_COMPGEN(0x00119210, 0x20, ??A?$CArray@VCTableLineWordBlock@@AAV1@@@QAEAAVCTableLineWordBlock@@H@Z)
+RVA_COMPGEN(0x00119370, 0x20, ?GetSize@?$CArray@VCTableLineWordBlockLabel@@AAV1@@@QBEHXZ)
+RVA_COMPGEN(0x001195b0, 0x20, ??A?$CArray@VCTableLineWordBlockLabel@@AAV1@@@QAEAAVCTableLineWordBlockLabel@@H@Z)
+RVA_COMPGEN(0x00119710, 0x20, ?GetSize@?$CArray@VTableLine@@AAV1@@@QBEHXZ)
+RVA_COMPGEN(0x00119970, 0x20, ??A?$CArray@VTableLine@@AAV1@@@QAEAAVTableLine@@H@Z)
+RVA_COMPGEN(0x00119ad0, 0x20, ?GetSize@?$CArray@VCTableLineStringPair@@AAV1@@@QBEHXZ)
+RVA_COMPGEN(0x00119d10, 0x20, ??A?$CArray@VCTableLineStringPair@@AAV1@@@QAEAAVCTableLineStringPair@@H@Z)
+RVA_COMPGEN(0x00119e70, 0x20, ?GetSize@?$CArray@VCTableLineStringDecade@@AAV1@@@QBEHXZ)
+RVA_COMPGEN(0x0011a0d0, 0x20, ??A?$CArray@VCTableLineStringDecade@@AAV1@@@QAEAAVCTableLineStringDecade@@H@Z)
+RVA_COMPGEN(0x0011a230, 0x20, ?GetSize@?$CArray@VCTableLineBaseOnly@@AAV1@@@QBEHXZ)
+RVA_COMPGEN(0x0011a5f0, 0x20, ?GetSize@?$CArray@VCTableLineLabel@@AAV1@@@QBEHXZ)
 
-RVA_COMPGEN(0x00122960, 0x20, ?ElementAt@?$CArray@UCEquipmentDefinitionRecord@@AAU1@@@QAEAAUCEquipmentDefinitionRecord@@H@Z)
-RVA_COMPGEN(0x00122b70, 0x20, ?ElementAt@?$CArray@UCItemDefinitionRecord@@AAU1@@@QAEAAUCItemDefinitionRecord@@H@Z)
-RVA_COMPGEN(0x00123150, 0x20, ?ElementAt@?$CArray@UCSecondaryStateRecord@@AAU1@@@QAEAAUCSecondaryStateRecord@@H@Z)
+RVA_COMPGEN(0x00122960, 0x20, ?ElementAt@?$CArray@VCTableLineWordBlock@@AAV1@@@QAEAAVCTableLineWordBlock@@H@Z)
+RVA_COMPGEN(0x00122b70, 0x20, ?ElementAt@?$CArray@VCTableLineWordBlockLabel@@AAV1@@@QAEAAVCTableLineWordBlockLabel@@H@Z)
+RVA_COMPGEN(0x00123150, 0x20, ?ElementAt@?$CArray@VCTableLineStringDecade@@AAV1@@@QAEAAVCTableLineStringDecade@@H@Z)

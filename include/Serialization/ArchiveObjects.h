@@ -3,6 +3,8 @@
 
 #include <MfcNoInline.h>
 
+#include <afxtempl.h>
+
 // The retail vtable at 0x19c630 inherits CObject's runtime-class entry but has
 // its own Serialize slot.  No surviving class name is available, so this name
 // records only the proven layout: a CObject-derived owner containing another
@@ -25,10 +27,11 @@ public:
 
     friend CArchive& AFXAPI operator>>(CArchive& archive, TableLine*& value);
 
-protected:
+    // Direct game-owned table consumers read the name field at +0x04.
     CString m_name;
-    CObject m_value;
-    BYTE m_reserved[16];
+
+protected:
+    CArray<int, int> m_values;
 };
 
 // The anonymous retail subtypes below all return TableLine's runtime-class
