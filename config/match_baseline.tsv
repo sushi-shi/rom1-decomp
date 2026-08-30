@@ -41,6 +41,7 @@ bytehuffmannode	1	1
 characterslots	2	1
 dib	15	12
 directxexception	1	0
+gamebitmap	2	2
 itemnames	11	3
 pixmap	9	6
 playerreference	1	1
@@ -268,6 +269,8 @@ dib	?Read@CDib@@QAEHPAVCFile@@@Z	100.0000	100.0000	1	bb0139b1b93c	0x4b710	100.00
 dib	?Serialize@CDib@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	ea5a9eb7ea23	0x4b950	100.0000	
 dib	?Write@CDib@@QAEHPAVCFile@@@Z	95.8518	95.8518	2	f265d2a72d1b	0x4b860	95.8518	
 directxexception	??0CDirectXException@@QAE@PBD@Z	99.7727	99.7727	1	990ce6d30b3f	0x54860	99.7727	
+gamebitmap	?ConvertBitmap16To24@@YAXPBGPAEH@Z	100.0000	100.0000	1	112ed6833913	0x29260	100.0000	
+gamebitmap	?WriteBmp@CBmp64k@@QAEXPBDPAVCGameBitmap@@@Z	100.0000	100.0000	1	2eb5f672bb56	0x296f0	100.0000	
 itemnames	??0CTextBlock@@QAE@XZ	99.2857	99.2857	1	1ad7b9faaa1e	0x68640	99.2857	
 itemnames	??0CTextPointerVector@@QAE@XZ	99.3750	99.3750	1	b5dff990f87a	0x69310	99.3750	
 itemnames	??1CTextBlock@@UAE@XZ	99.4444	99.4444	1	a06c7abfbab2	0x38850	99.4444	

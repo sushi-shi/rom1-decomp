@@ -12,7 +12,7 @@ rva	signals	status	note
 0x0256f0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x025be0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x0260a0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x0296f0	file-write	target	initial retail call/vtable census
+0x0296f0	file-write	reconstructed	exact game-owned CBmp64k BMP writer and exact packed-16-to-24-bit support conversion; 100%
 0x036a70	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x03a2a7	stdio-read	target	initial retail call/vtable census
 0x03af3e	stdio-read	target	initial retail call/vtable census

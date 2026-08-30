@@ -69,6 +69,11 @@ source = "src/Graphics/RadialOffsetTable.cpp"
 flags = "cpp"
 
 [[unit]]
+unit = "gamebitmap"
+source = "src/Graphics/GameBitmap.cpp"
+flags = "cpp"
+
+[[unit]]
 unit = "characterslots"
 source = "src/Serialization/CharacterSlots.cpp"
 flags = "cpp"

@@ -221,6 +221,19 @@ streams align with retail, while pooled-string, throw-metadata, and generic CRT
 referent identities keep the object comparison below 100%. The required
 `CDirectXException` constructor is 99.77% for the same referent-only reason.
 
+The separate game-owned `CBmp64k` writer at `0x0296f0` is byte-exact. It opens
+the requested path, writes raw 14-byte `BITMAPFILEHEADER` and 40-byte
+`BITMAPINFOHEADER` records, then expands the bitmap's packed 16-bit pixels to
+BGR bytes through the exact helper at `0x029260`. Expansion uses the active
+display channel shifts and widths and streams through a `0x16800`-byte global
+scratch buffer. If supplied, a second game bitmap contributes one trailing
+byte per pixel after the BGR plane.
+
+Retail assigns only `biWidth` and `biHeight` before writing those two stack
+header records; their other bytes are uninitialized. The reconstruction
+preserves that observable behavior rather than silently turning it into a
+standards-compliant general BMP encoder.
+
 The mapped-retail oracle redirects only allocation and stdio call edges into
 the harness, then executes both parser bodies on 512 P3 and 512 P6 files. It
 reports zero disagreements over 9,216 result/field comparisons and 56,156
