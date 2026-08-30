@@ -44,6 +44,10 @@ public:
 
     i32 GetInt(const char* tag, const char* key, i32 defaultValue);
 
+    // The retail resource archive reuses this record-tree layout and these
+    // path walkers for its 32-byte index records.
+    void* FindResourceRecord(char* path);
+
 private:
     struct Record {
         u32 signature;
@@ -77,6 +81,7 @@ private:
 
     Record* FindRecord(Record* parent, const char* name);
     Record* FindPathComponent(Record* parent, char** path);
+    Record* FindPath(char* path);
     void Read(CFile* file, u32 offset);
     void FinalizeRecord(Record* record);
     CButeMgr* ResetCurrentRecord();

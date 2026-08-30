@@ -30,14 +30,14 @@
 # Query: python3 -m rom1.verify status | check | bank
 # [units]	unit	n_functions	matched
 archiveobjects	12	12
-butemgr	12	9
+butemgr	14	11
 bytehuffman	16	15
 bytehuffmannode	1	1
 dib	8	6
 directxexception	1	0
 itemnames	10	3
 pixmap	9	6
-resourcefile	4	1
+resourcefile	6	3
 scenarioconfig	1	1
 smackerplayer	7	7
 spellobjects	34	30
@@ -64,8 +64,10 @@ butemgr	??1CButeMgr@@QAE@XZ	100.0000	100.0000	2	b4d30bc9868d	0xcbf20	100.0000
 butemgr	?CompareRecordIndices@CButeMgr@@CAHPBX0@Z	100.0000	100.0000	1	097e11b9ab64	0xcea90	100.0000	
 butemgr	?CompareRecordNames@CButeMgr@@CAHPBX0@Z	100.0000	100.0000	1	afac6f100392	0xcead0	100.0000	
 butemgr	?FinalizeRecord@CButeMgr@@AAEXPAURecord@1@@Z	100.0000	100.0000	1	9eb103bb1176	0xcea00	100.0000	
+butemgr	?FindPath@CButeMgr@@AAEPAURecord@1@PAD@Z	100.0000	100.0000	1	aeaa8ec73d8b	0xce7e0	100.0000	
 butemgr	?FindPathComponent@CButeMgr@@AAEPAURecord@1@PAU21@PAPAD@Z	100.0000	100.0000	1	a3a2a77b0c97	0xce9c0	100.0000	
-butemgr	?FindRecord@CButeMgr@@AAEPAURecord@1@PAU21@PBD@Z	97.8505	97.8505	1	6e284e9e5c59	0xce8c0	97.8505	
+butemgr	?FindRecord@CButeMgr@@AAEPAURecord@1@PAU21@PBD@Z	97.8505	97.8505	2	7bad7b26fd5b	0xce8c0	97.8505	
+butemgr	?FindResourceRecord@CButeMgr@@QAEPAXPAD@Z	100.0000	100.0000	1	cd330f03d733	0xce8a0	100.0000	
 butemgr	?GetInt@CButeMgr@@QAEHPBD0H@Z	100.0000	100.0000	2	7b2dcd76e701	0xccc00	100.0000	
 butemgr	?Read@CButeMgr@@AAEXPAVCFile@@I@Z	99.6689	99.6689	1	ed53b175f198	0xcae40	99.6689	
 butemgr	?ResetCurrentRecord@CButeMgr@@AAEPAV1@XZ	100.0000	100.0000	1	dd63d88ef962	0xce390	100.0000	
@@ -113,10 +115,12 @@ pixmap	?FindFileType@CPixMap@@AAEXAAVCString@@@Z	99.3243	99.3243	1	701650f5e99f	
 pixmap	?Load@CPixMap@@QAEXAAVCString@@@Z	99.8684	99.8684	1	94f3886c1272	0x8d330	99.8684	
 pixmap	?LoadBMP@CPixMap@@AAEHAAVCString@@@Z	100.0000	100.0000	1	797728b01c2a	0x8d5e0	100.0000	
 pixmap	?LoadPCX@CPixMap@@AAEHAAVCString@@@Z	100.0000	100.0000	1	b0615ba4f70b	0x8d5d0	100.0000	
-pixmap	?LoadPPM@CPixMap@@AAEHAAVCString@@@Z	99.8288	99.8288	1	b7f5d538c120	0x8d430	99.8288	
+pixmap	?LoadPPM@CPixMap@@AAEHAAVCString@@@Z	99.8630	99.8630	1	b7f5d538c120	0x8d430	99.8630	
 resourcefile	??0CResourceFile@@QAE@XZ	99.3750	99.3750	1	a22371826197	0xc9dd0	99.3750	
 resourcefile	??1CResourceFile@@UAE@XZ	99.7500	99.7500	1	843865048dfa	0xc9e80	99.7500	
 resourcefile	?Close@CResourceFile@@UAEXXZ	100.0000	100.0000	1	49b9c5d60f50	0xca1d0	100.0000	
+resourcefile	?DisableResource@CResourceManager@@QAEXPAD@Z	100.0000	100.0000	1	02e1ed422537	0xc9aa0	100.0000	
+resourcefile	?ReadUpdateList@@YAXPBD@Z	100.0000	100.0000	1	dd1440e618b6	0xc99f0	100.0000	
 resourcefile	?Release@CResourceManager@@QAEXPAVCObject@@@Z	98.1579	98.1579	1	286b758a1453	0xc9d80	98.1579	
 scenarioconfig	?GetMissionObjectCount@@YGHH@Z	100.0000	100.0000	2	611c81017e31	0x878a0	100.0000	
 smackerplayer	??0CSmackerBuffers@@QAE@XZ	100.0000	100.0000	1	95153d343e47	0xae650	100.0000	
@@ -126,12 +130,12 @@ smackerplayer	?ApplyPan@CSmackerPlayer@@QAEXXZ	100.0000	100.0000	1	b4334841a281	
 smackerplayer	?GetBufferFormat@CSmackerPlayer@@QAEKPAUIDirectDrawSurface@@@Z	100.0000	100.0000	2	c38d404f6192	0xae7f0	100.0000	
 smackerplayer	?GetMovieSize@CSmackerPlayer@@QBE?AUSmackerSize@@XZ	100.0000	100.0000	1	dc8a04dd8976	0xaedd0	100.0000	
 smackerplayer	?SetDestinationSize@CSmackerPlayer@@QAEXHH@Z	100.0000	100.0000	1	508dfc90a7f1	0xaee00	100.0000	
-spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVAreaEffect@@@Z	100.0000	100.0000	1	2bce6ebd09a3	0xfc8d7	100.0000	
-spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVEffect@@@Z	100.0000	100.0000	1	2bce6ebd09a3	0x101148	100.0000	
-spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVPointEffect@@@Z	100.0000	100.0000	1	2bce6ebd09a3	0xfc59a	100.0000	
-spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVSpell@@@Z	100.0000	100.0000	1	2bce6ebd09a3	0xfdda2	100.0000	
-spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVSpellEffect@@@Z	100.0000	100.0000	1	2bce6ebd09a3	0xfc448	100.0000	
-spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVSpellTransport@@@Z	100.0000	100.0000	1	2bce6ebd09a3	0xfda57	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVAreaEffect@@@Z	100.0000	100.0000	2	6cf72cae200c	0xfc8d7	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVEffect@@@Z	100.0000	100.0000	2	6cf72cae200c	0x101148	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVPointEffect@@@Z	100.0000	100.0000	2	6cf72cae200c	0xfc59a	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVSpell@@@Z	100.0000	100.0000	2	6cf72cae200c	0xfdda2	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVSpellEffect@@@Z	100.0000	100.0000	2	6cf72cae200c	0xfc448	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVSpellTransport@@@Z	100.0000	100.0000	2	6cf72cae200c	0xfda57	100.0000	
 spellobjects	??5CArchive@@QAEAAV0@AAE@Z	98.1818	98.1818	1	cpp:bdc9cc63cdd1	0x1147c0	98.1818	
 spellobjects	??5CArchive@@QAEAAV0@AAF@Z	100.0000	100.0000	1	cpp:bdc9cc63cdd1	0x117730	100.0000	
 spellobjects	??5CArchive@@QAEAAV0@AAG@Z	100.0000	100.0000	1	cpp:bdc9cc63cdd1	0x117750	100.0000	
@@ -147,8 +151,8 @@ spellobjects	??A?$CArray@PAVSpell@@PAV1@@@QAEAAPAVSpell@@H@Z	100.0000	100.0000	1
 spellobjects	?ElementAt@?$CArray@PAVSpell@@PAV1@@@QAEAAPAVSpell@@H@Z	100.0000	100.0000	1	cpp:bdc9cc63cdd1	0x1236c0	100.0000	
 spellobjects	?GetSize@?$CArray@PAVSpell@@PAV1@@@QBEHXZ	100.0000	100.0000	1	cpp:bdc9cc63cdd1	0x11a990	100.0000	
 spellobjects	?MarkTokenIdSeen@@YAXG@Z	100.0000	100.0000	1	2f6888bc142d	0xd9f67	100.0000	
-spellobjects	?ResolveEffectReference@@YAXPAI@Z	100.0000	100.0000	1	0c1b802cd3aa	0x120eb0	100.0000	
-spellobjects	?ResolveTokenReference@@YAXPAI@Z	100.0000	100.0000	1	86c288eb632e	0x121440	100.0000	
+spellobjects	?ResolveEffectReference@@YAXPAI@Z	100.0000	100.0000	2	28536a4395f8	0x120eb0	100.0000	
+spellobjects	?ResolveTokenReference@@YAXPAI@Z	100.0000	100.0000	2	29b0544ed466	0x121440	100.0000	
 spellobjects	?Serialize@AreaEffect@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	2180cbe88794	0x100fa5	100.0000	
 spellobjects	?Serialize@CDirectDamagePayload@@QAEXAAVCArchive@@@Z	100.0000	100.0000	1	1c7254b5e9aa	0xfa9f5	100.0000	
 spellobjects	?Serialize@Effect@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	81bd60bc1333	0x100d05	100.0000	
@@ -157,7 +161,7 @@ spellobjects	?Serialize@PointEffect@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	793
 spellobjects	?Serialize@SpellEffect@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	af653de1175b	0x100dcc	100.0000	
 spellobjects	?Serialize@SpellTransport@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	a9ffee3cd700	0x100e2f	100.0000	
 spellobjects	?Serialize@Spellbook@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	d92e7e7159aa	0x100c1d	100.0000	
-spellobjects	?Serialize@Token@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	03e88090ad70	0x110ebb	100.0000	
+spellobjects	?Serialize@Token@@UAEXAAVCArchive@@@Z	100.0000	100.0000	2	73b4128adc42	0x110ebb	100.0000	
 spellobjects	?SetAt@CMapPtrToPtr@@QAEXPAX0@Z	95.3846	95.3846	1	cpp:bdc9cc63cdd1	0x1176a0	95.3846	
 spellobjects	?SetSize@?$CArray@PAVSpell@@PAV1@@@QAEXHH@Z	99.8611	99.8611	1	cpp:bdc9cc63cdd1	0x11a9b0	99.8611	
 tokenpayload	?Serialize@CTokenPayload@@QAEXAAVCArchive@@@Z	100.0000	100.0000	1	f8ba19affff0	0x144a70	100.0000	

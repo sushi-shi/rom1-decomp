@@ -135,6 +135,7 @@ rva	name	lib	confidence	source
 0x155150	_fseek	LIBCMT.LIB	HIGH	fid-census:1f18290e7cc8:build/intel/mt_obj/fseek.obj:aa67e7da30db
 0x155190	__fseek_lk	LIBCMT.LIB	HIGH	fid-census:1f18290e7cc8:build/intel/mt_obj/fseek.obj:aa67e7da30db
 0x155270	__fread_lk	LIBCMT.LIB	HIGH	fid-census:1f18290e7cc8:build/intel/mt_obj/fread.obj:82145c04d816
+0x1553f0	_fopen	LIBCMT.LIB	HIGH	fid-census:1f18290e7cc8:build/intel/mt_obj/fopen.obj:04142ab0f893; c99f0 char-pointer callsite excludes identical __wfopen body
 0x155410	_sscanf	LIBCMT.LIB	HIGH	fid-census:1f18290e7cc8:build/intel/mt_obj/sscanf.obj:8704b39c06f6
 0x1557b0	_isalpha	LIBCMT.LIB	HIGH	fid-census:1f18290e7cc8:build/intel/mt_obj/_ctype.obj:299fc1d7f5e4
 0x1557e0	_isupper	LIBCMT.LIB	HIGH	fid-census:1f18290e7cc8:build/intel/mt_obj/_ctype.obj:299fc1d7f5e4

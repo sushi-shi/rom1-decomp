@@ -52,13 +52,13 @@ resource-archive	0x0c9070	read .res header and 32-byte tail index	codec-validate
 resource-archive	0x0c92f0	resolve record to owner/offset/length	codec-validated	hierarchical lookup call + disabled sentinel + exact three-dword result
 resource-archive	0x0c95b0	open and admit mounted archive	located	archive allocation/read + mounted-array append
 resource-archive	0x0c98e0	normalize and mount archive path	located	direct startup xrefs from every mounted .res string
-resource-archive	0x0c99f0	parse update.lst paths	codec-validated	fgets 255 + printable first byte + CR/LF stripping + record marker call
-resource-archive	0x0c9aa0	mark first mounted matching record disabled	codec-validated	hierarchical lookup + flags OR 0x20000000
+resource-archive	0x0c99f0	parse update.lst paths	exact	100%; fgets 255 + printable first byte + CR/LF stripping + record marker call
+resource-archive	0x0c9aa0	mark first mounted matching record disabled	exact	100%; hierarchical lookup + flags OR 0x20000000
 resource-archive	0x0c9ae0	resolve archive or filesystem resource	located	mounted-order lookup + disabled stop + search-path CFile fallback
 resource-archive	0x0c9ed0	open resource-backed CFile view	located	exact owner/offset/length/position field writes
 resource-archive	0x0ca100	bounded resource-backed read	located	owner seek to base+position + length clamp + owner read
-resource-archive	0x0ce7e0	walk archive-root-prefixed record path	codec-validated	root prefix + slash/backslash components + container traversal
-resource-archive	0x0ce8a0	filter final archive record	codec-validated	path walk + exact flags mask 0x40000010
+resource-archive	0x0ce7e0	walk archive-root-prefixed record path	exact	100%; root prefix + slash/backslash components + container traversal
+resource-archive	0x0ce8a0	filter final archive record	exact	100%; path walk + exact flags mask 0x40000010
 item-name-ids	0x068490	load raw little-endian item IDs	near-exact	98.77%; itemname.bin string + text/map xrefs + mapped oracle
 archive-pointer-words	0x069390	bidirectional CArchive raw pointer vector	near-exact	81.44%; exact 0x188 extent + WriteCount/ReadCount and raw Write/Read xrefs + mapped oracle
 archive-primitive	0x049770	CArchive IsStoring predicate	exact	100%; exact VC5 SP2 AFX.INL COMDAT instruction extent

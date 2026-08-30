@@ -73,7 +73,7 @@ rva	signals	status	note
 0x0c8a40	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x0c8ee0	archive-read,archive-write	target	initial retail call/vtable census
 0x0c8fe0	archive-read,archive-write	target	initial retail call/vtable census
-0x0c99f0	stdio-read	target	initial retail call/vtable census
+0x0c99f0	stdio-read	reconstructed	exact update.lst line reader; char-pointer fopen callsite also resolves the CRT provider
 0x0ca430	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x0ca690	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x0ca870	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject

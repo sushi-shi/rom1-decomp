@@ -214,7 +214,8 @@ inferred from file extensions. The game `CWinApp::InitInstance` override at
 `video4.res`, `video8.res`, `sfx.res`, `movies.res`, `scenario.res`, and
 `speech.res`, in that order, through the mount wrapper at `0x0c98e0`. It then
 passes `update.lst` to the line reader at `0x0c99f0` before opening typed
-resources such as `main\\text\\itemname.bin`.
+resources such as `main\\text\\itemname.bin`. The line reader, disabled-record
+marker, shared path walker, and final-record filter are all byte-exact.
 
 This `.res` is the game's own tree container and is unrelated to a Win32
 compiled-resource file:

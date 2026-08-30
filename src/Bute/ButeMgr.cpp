@@ -165,6 +165,41 @@ CButeMgr* CButeMgr::ResetCurrentRecord() {
     return result;
 }
 
+RVA(0x000ce7e0, 0x75)
+CButeMgr::Record* CButeMgr::FindPath(char* path) {
+    char value = *path;
+    char* name = m_root.name;
+    while (value != '\\' && value != '/' && value != 0 && *name != 0) {
+        if (value != *name) {
+            return 0;
+        }
+        ++name;
+        ++path;
+        value = *path;
+    }
+    if (*path != 0) {
+        ++path;
+    }
+
+    Record* record = &m_root;
+    while (*path != 0 && record != 0) {
+        if ((record->flags & BUTE_RECORD_FINALIZE_MASK) != BUTE_RECORD_CONTAINER) {
+            return 0;
+        }
+        record = FindPathComponent(record, &path);
+    }
+    return record;
+}
+
+RVA(0x000ce8a0, 0x1c)
+void* CButeMgr::FindResourceRecord(char* path) {
+    Record* record = FindPath(path);
+    if (record != 0 && (record->flags & 0x40000010) != 0) {
+        record = 0;
+    }
+    return record;
+}
+
 RVA(0x000ce8c0, 0xf6)
 CButeMgr::Record* CButeMgr::FindRecord(Record* parent, const char* name) {
     if (parent == 0) {
@@ -177,7 +212,8 @@ CButeMgr::Record* CButeMgr::FindRecord(Record* parent, const char* name) {
         probe.SetName(name);
 
         RecordPointer result;
-        result.opaque = bsearch(&probe, first, parent->childCount, sizeof(Record), CompareRecordNames);
+        result.opaque =
+            bsearch(&probe, first, parent->childCount, sizeof(Record), CompareRecordNames);
         return result.record;
     }
 

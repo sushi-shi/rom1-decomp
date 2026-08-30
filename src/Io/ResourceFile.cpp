@@ -2,7 +2,42 @@
 
 #include <Io/ResourceFile.h>
 
+#include <Bute/ButeMgr.h>
+
+#include <ctype.h>
+#include <stdio.h>
 #include <string.h>
+
+RVA(0x000c99f0, 0xaf)
+void ReadUpdateList(const char* filename) {
+    FILE* file = fopen(filename, DATA_COMPGEN(0x001c1ce0, "r"));
+    if (file != 0) {
+        char line[256];
+        while (fgets(line, 255, file) != 0 && isprint(line[0])) {
+            char* end = strchr(line, '\n');
+            if (end != 0) {
+                *end = 0;
+            }
+            end = strchr(line, '\r');
+            if (end != 0) {
+                *end = 0;
+            }
+            g_resourceManager.DisableResource(line);
+        }
+        fclose(file);
+    }
+}
+
+RVA(0x000c9aa0, 0x3d)
+void CResourceManager::DisableResource(char* path) {
+    for (i32 index = 0; index < m_archiveCount; ++index) {
+        u32* record = static_cast<u32*>(m_archives[index]->FindResourceRecord(path));
+        if (record != 0) {
+            record[3] |= RESOURCE_RECORD_DISABLED;
+            return;
+        }
+    }
+}
 
 RVA(0x000c9d80, 0x4f)
 void CResourceManager::Release(CObject* resource) {
