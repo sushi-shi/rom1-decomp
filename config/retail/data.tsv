@@ -2255,6 +2255,9 @@ rva	kind
 0x1adaa0	ehtable
 0x1adaa8	ehtable
 0x1adac8	ehtable
+0x1adad0	ehtable
+0x1adaf0	ehtable
+0x1adaf8	ehtable
 0x1adb08	ehtable
 0x1adb28	ehtable
 0x1adb50	ehtable
@@ -5040,6 +5043,7 @@ rva	kind
 0x1c1ee8	string
 0x1c1f0c	string
 0x1c1f2c	string
+0x1c1f48	rtti
 0x1c1f64	string
 0x1c1f74	string
 0x1c1f98	string
@@ -5772,5 +5776,7 @@ rva	kind
 0x1ccc58	vtable
 0x1ccc60	vtable
 0x1ccc6c	string
+0x1e3f90	
 0x1e4244	
+0x1f20d8	
 0x232000	

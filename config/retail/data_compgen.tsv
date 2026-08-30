@@ -1,2 +1,8 @@
-# Compiler-generated data with no source spelling.
+# Compiler-generated data with no source spelling. `ehtable` and `rtti` rows
+# are source-owned /GX metadata proven by the candidate COFF graph and retail
+# relocations; `common` and `copy` retain the Gruntz meanings.
 rva	size	name	owner	class
+0x001adad0	0x1c	__CT??_R0?AVCRegException@@@84	butemgr	ehtable
+0x001adaf0	0x8	__CTA1?AVCRegException@@	butemgr	ehtable
+0x001adaf8	0x10	__TI1?AVCRegException@@	butemgr	ehtable
+0x001c1f48	0x1c	??_R0?AVCRegException@@@8	butemgr	rtti

@@ -825,8 +825,9 @@ def injection_plans(spine, accesses):
     claim set only; src/ is never touched."""
     layout = spine.layout
     claims, starts = spine.claims, spine.starts
-    per, fpu, scale, wrote = (defaultdict(Counter), defaultdict(Counter),
-                              defaultdict(Counter), defaultdict(set))
+    per, width_eligible, fpu, scale, wrote = (
+        defaultdict(Counter), defaultdict(Counter), defaultdict(Counter),
+        defaultdict(Counter), defaultdict(set))
     for a in accesses:
         if a.form not in TOUCH:
             continue
@@ -835,6 +836,8 @@ def injection_plans(spine, accesses):
             continue
         c = claims[k]
         per[c.rva][(a.target_rva - c.rva, a.width)] += 1
+        if a.mnemonic.split()[-1].rstrip("bwd") not in STRING_OPS:
+            width_eligible[c.rva][(a.target_rva - c.rva, a.width)] += 1
         if a.fpu:
             fpu[c.rva][(a.target_rva - c.rva, a.fpu)] += 1
         if a.form == "indexed" and a.scale and a.target_rva == c.rva:
@@ -859,8 +862,12 @@ def injection_plans(spine, accesses):
     if c:
         plans.append(("narrow", "width", c,
                       lambda c: [clone(c, node=prim("u8", 1), extent=1)]))
-    c = pick(lambda c: per[c.rva]
-             and all(o == 0 and w == 1 for (o, w) in per[c.rva]))
+    # Use only accesses the real width sieve adjudicates. A newly reconstructed
+    # string literal can otherwise become the first byte-wide victim even
+    # though every one of its accesses is an inlined `scas`/`movs` block op,
+    # which the verifier intentionally excludes as a field-width witness.
+    c = pick(lambda c: width_eligible[c.rva]
+             and all(o == 0 and w == 1 for (o, w) in width_eligible[c.rva]))
     if c:
         plans.append(("widen", "width", c,
                       lambda c: [clone(c, node=prim("double", 8), extent=8)]))

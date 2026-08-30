@@ -24,10 +24,10 @@ clangd.py):
     case-sensitive Linux cannot find them otherwise; `/imsvc <mirror>` first,
     the real dirs after, DX before MSVC (VC5's own DDRAW.H is DirectX 3-era
     and would shadow the SDK's);
-  * ONE shared flag set for every unit. The manifest's [flags] profiles differ
-    only in /GX and /GR, which alter cl's EH tables and RTTI emission, not
-    clang's parse/navigation - the frozen generator never mapped them and that
-    uniform set is the proven state every fragment was extracted under;
+  * one shared BASE flag set, plus the manifest profile's /GX bit per unit.
+    Clang rejects a literal `throw` while exceptions are disabled, so /GX is
+    parse-significant once a reconstructed body contains the retail throw.
+    /GR still changes emitted RTTI rather than this parser's source model;
   * write-if-changed: the labels edges depend on this file, so an unchanged
     payload must not bump its mtime (restat then stops the cascade anyway,
     but only after re-running 300 edges).
@@ -156,19 +156,32 @@ def base_flags(msvc_inc: Path, dx_inc: Path,
     ]
 
 
+def profile_parse_flags(profile: list[str]) -> list[str]:
+    """The manifest switches that change whether a TU can be parsed.
+
+    Keep this deliberately narrower than the real CL command line: the compdb
+    is a parse database, while Ninja's CL edge remains the single authority
+    for code-generation flags.  In particular, /GX is required for a source
+    spelling of `throw`; /GR does not affect parsing the current source model.
+    """
+    return ["/GX"] if any(flag.upper() == "/GX" for flag in profile) else []
+
+
 def generate(quiet: bool = False) -> bool:
     """(Re)write the compdb from config/units.toml. Returns True if changed."""
-    from rom1.manifest import units
+    from rom1.manifest import flag_profiles, units
     msvc_inc, dx_inc, provenance = resolve_include_dirs()
     msvc_low = build_lowercase_mirror(msvc_inc, MIRROR_DIR / "msvc")
     dx_low = build_lowercase_mirror(dx_inc, MIRROR_DIR / "dx")
     shared = base_flags(msvc_inc, dx_inc, msvc_low, dx_low)
+    profiles = flag_profiles()
 
     entries = [{
         "directory": str(REPO),
         "file": u["source"],
         # clang-cl driver form; clangd/clang parse it internally.
-        "arguments": ["clang-cl", "/c", u["source"], *shared],
+        "arguments": ["clang-cl", "/c", u["source"], *shared,
+                      *profile_parse_flags(profiles[u["flags"]])],
     } for u in units()]
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -185,8 +198,9 @@ def generate(quiet: bool = False) -> bool:
         print(f"    MSVC/MFC : {msvc_inc}")
         print(f"    DirectX  : {dx_inc}")
         print(f"    lowercase mirrors -> {MIRROR_DIR}")
-        print("[compdb] clang-cl flags per unit:")
+        print("[compdb] clang-cl base flags:")
         print("    clang-cl /c <src> " + " ".join(shared))
+        print("[compdb] per-unit parse flags: /GX follows the manifest profile")
     return changed
 
 

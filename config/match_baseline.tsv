@@ -29,18 +29,27 @@
 #              emitter resumes from it instead of forgetting proven work).
 # Query: python3 -m rom1.verify status | check | bank
 # [units]	unit	n_functions	matched
-butemgr	3	0
+butemgr	12	9
 scenarioconfig	1	1
 smackerplayer	7	7
 # [functions]	unit	function	best_pct	cur_pct	tries	src_hash	rva	hist_pct	state
-butemgr	??0CButeMgr@@QAE@PBD@Z	0.9524	0.9524	1	2a805d36b8ea	0xcb140	0.9524	
-butemgr	??1CButeMgr@@QAE@XZ	6.2500	6.2500	1	37d592bdd452	0xcbf20	6.2500	
-butemgr	?GetInt@CButeMgr@@QAEHPBD0H@Z	3.4310	3.4310	1	65ea0cf0ff8c	0xccc00	3.4310	
-scenarioconfig	?GetMissionObjectCount@@YGHH@Z	100.0000	100.0000	1	a920f008b074	0x878a0	100.0000	
+butemgr	??0CButeMgr@@QAE@PAVCFile@@I@Z	100.0000	100.0000	1	abd47d72fb21	0xcb050	100.0000	
+butemgr	??0CButeMgr@@QAE@PBD@Z	0.9524	0.9524	2	abd47d72fb21	0xcb140	0.9524	
+butemgr	??0CButeMgr@@QAE@XZ	100.0000	100.0000	1	abd47d72fb21	0xcb080	100.0000	
+butemgr	??1CButeMgr@@QAE@XZ	100.0000	100.0000	2	b4d30bc9868d	0xcbf20	100.0000	
+butemgr	?CompareRecordIndices@CButeMgr@@CAHPBX0@Z	100.0000	100.0000	1	097e11b9ab64	0xcea90	100.0000	
+butemgr	?CompareRecordNames@CButeMgr@@CAHPBX0@Z	100.0000	100.0000	1	afac6f100392	0xcead0	100.0000	
+butemgr	?FinalizeRecord@CButeMgr@@AAEXPAURecord@1@@Z	100.0000	100.0000	1	9eb103bb1176	0xcea00	100.0000	
+butemgr	?FindPathComponent@CButeMgr@@AAEPAURecord@1@PAU21@PAPAD@Z	100.0000	100.0000	1	a3a2a77b0c97	0xce9c0	100.0000	
+butemgr	?FindRecord@CButeMgr@@AAEPAURecord@1@PAU21@PBD@Z	97.8505	97.8505	1	6e284e9e5c59	0xce8c0	97.8505	
+butemgr	?GetInt@CButeMgr@@QAEHPBD0H@Z	100.0000	100.0000	2	7b2dcd76e701	0xccc00	100.0000	
+butemgr	?Read@CButeMgr@@AAEXPAVCFile@@I@Z	99.6689	99.6689	1	ed53b175f198	0xcae40	99.6689	
+butemgr	?ResetCurrentRecord@CButeMgr@@AAEPAV1@XZ	100.0000	100.0000	1	dd63d88ef962	0xce390	100.0000	
+scenarioconfig	?GetMissionObjectCount@@YGHH@Z	100.0000	100.0000	2	611c81017e31	0x878a0	100.0000	
 smackerplayer	??0CSmackerBuffers@@QAE@XZ	100.0000	100.0000	1	95153d343e47	0xae650	100.0000	
 smackerplayer	??0CSmackerPlayer@@QAE@XZ	100.0000	100.0000	1	8d175536bb86	0xae6c0	100.0000	
 smackerplayer	??1CSmackerBuffers@@QAE@XZ	100.0000	100.0000	1	c5194a29433a	0xae670	100.0000	
 smackerplayer	?ApplyPan@CSmackerPlayer@@QAEXXZ	100.0000	100.0000	1	b4334841a281	0xaf2c0	100.0000	
-smackerplayer	?GetBufferFormat@CSmackerPlayer@@QAEKPAUIDirectDrawSurface@@@Z	100.0000	100.0000	1	87e2b78874c1	0xae7f0	100.0000	
+smackerplayer	?GetBufferFormat@CSmackerPlayer@@QAEKPAUIDirectDrawSurface@@@Z	100.0000	100.0000	2	c38d404f6192	0xae7f0	100.0000	
 smackerplayer	?GetMovieSize@CSmackerPlayer@@QBE?AUSmackerSize@@XZ	100.0000	100.0000	1	dc8a04dd8976	0xaedd0	100.0000	
 smackerplayer	?SetDestinationSize@CSmackerPlayer@@QAEXHH@Z	100.0000	100.0000	1	508dfc90a7f1	0xaee00	100.0000	

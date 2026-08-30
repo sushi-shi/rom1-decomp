@@ -4360,6 +4360,12 @@ class CompdbStalenessControls(unittest.TestCase):
         from rom1.graph import compdb
         self.assertEqual(compdb.dead_include_dirs({"x": ["/imsvc"]}), [])
 
+    def test_exception_parse_mode_follows_the_manifest_profile(self):
+        from rom1.graph import compdb
+        self.assertEqual(compdb.profile_parse_flags(["/O2", "/GX"]), ["/GX"])
+        self.assertEqual(compdb.profile_parse_flags(["/O2", "/GR"]), [])
+        self.assertEqual(compdb.profile_parse_flags(["/O2"]), [])
+
 
 class DecodeNormalizationControls(unittest.TestCase):
     """`semdiff._decode` is the substrate under every paired sieve, and it owns

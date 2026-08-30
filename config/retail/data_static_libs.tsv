@@ -75,3 +75,4 @@ rva	size	name	unit	note
 0x1a175c	0x4	??_7ios@@6B@	library_data	VC5 SP2 LIBCIMT.LIB /285: unique exact symbol+extent
 0x1a1794	0x2c	??_7filebuf@@6B@	library_data	VC5 SP2 LIBCIMT.LIB /159: unique exact symbol+extent
 0x1a17e4	0x2c	??_7streambuf@@6B@	library_data	VC5 SP2 LIBCIMT.LIB /1325: unique exact symbol+extent
+0x1e3f90	0x1	?afxChNil@@3DA	library_data	manual-context: MFC empty-string sentinel selected by Bute root initialization and CString users

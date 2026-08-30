@@ -603,6 +603,7 @@ rva	name	lib	confidence	source
 0x16fa69	?HashKey@@YGIPBD@Z	NAFXCW.LIB	HIGH	fid-census:70a8d16f09bf:$NW/strex.obj:327cb6936b11
 0x16fa8d	?InitString@CSimpleException@@QAEXXZ	NAFXCW.LIB	HIGH	fid-census:70a8d16f09bf:$NW/except.obj:fe91f2dfee2c
 0x16fab6	?GetErrorMessage@CSimpleException@@UAEHPADIPAI@Z	NAFXCW.LIB	HIGH	fid-census:70a8d16f09bf:$NW/except.obj:fe91f2dfee2c
+0x16faf9	?AfxThrowMemoryException@@YGXXZ	NAFXCW.LIB	HIGH	manual-context:malloc-null callers select SP2 $NW/except.obj candidate
 0x16fb2f	??0CTime@@QAE@HHHHHHH@Z	NAFXCW.LIB	HIGH	fid-census:70a8d16f09bf:$NW/timecore.obj:410edb874826
 0x16fb7b	??0CTime@@QAE@GGH@Z	NAFXCW.LIB	HIGH	fid-census:70a8d16f09bf:$NW/timecore.obj:410edb874826
 0x16fbe4	??0CTime@@QAE@ABU_SYSTEMTIME@@H@Z	NAFXCW.LIB	HIGH	fid-census:70a8d16f09bf:$NW/timecore.obj:410edb874826
