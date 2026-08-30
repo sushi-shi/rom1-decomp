@@ -29,6 +29,7 @@
 #              emitter resumes from it instead of forgetting proven work).
 # Query: python3 -m rom1.verify status | check | bank
 # [units]	unit	n_functions	matched
+archiveobjects	4	4
 butemgr	12	9
 bytehuffman	16	15
 bytehuffmannode	1	1
@@ -42,6 +43,10 @@ smackerplayer	7	7
 wordrle	2	2
 wordrletokens	4	4
 # [functions]	unit	function	best_pct	cur_pct	tries	src_hash	rva	hist_pct	state
+archiveobjects	?IsStoring@CArchive@@QBEHXZ	100.0000	100.0000	1	cpp:0fc8afb2c768	0x49770	100.0000	
+archiveobjects	?Serialize@CSerializableObjectHolder@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	599aaa498a08	0x111b15	100.0000	
+archiveobjects	?Serialize@CTableLineBaseOnly@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	9d01509b5e63	0xdffcd	100.0000	
+archiveobjects	?Serialize@TableLine@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	be3c88723f3c	0xdf278	100.0000	
 butemgr	??0CButeMgr@@QAE@PAVCFile@@I@Z	100.0000	100.0000	1	abd47d72fb21	0xcb050	100.0000	
 butemgr	??0CButeMgr@@QAE@PBD@Z	0.9524	0.9524	2	abd47d72fb21	0xcb140	0.9524	
 butemgr	??0CButeMgr@@QAE@XZ	100.0000	100.0000	1	abd47d72fb21	0xcb080	100.0000	

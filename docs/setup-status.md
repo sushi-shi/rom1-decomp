@@ -20,6 +20,7 @@ The retail foundation is reproducible from the pinned executable:
 | Imports | 472 across 14 DLLs | `config/retail/imports.tsv` |
 | PE sections | 5 | `config/retail/sections.tsv` |
 | Debug directory records | 3 | `config/retail/debug.tsv` |
+| Serde candidate wall | 284 | `config/retail/serde_candidates.tsv` |
 
 `functions.tsv`, `data.tsv`, and `data_vtables.tsv` were seeded once and are
 manually maintained thereafter, as in Gruntz. The 4,384 FPO records are the
@@ -76,8 +77,16 @@ independent `no_std` Rust implementations, and mapped-retail oracles. The PPM
 slice contributes six exact `CPixMap` methods and three instruction-aligned
 near-exact methods, plus its required near-exact DirectX exception constructor.
 The three Bute callee bodies are deliberately located stubs and remain work,
-not claimed matches. The ported verification harness passes all 434 controls
+not claimed matches. The ported verification harness passes all 440 controls
 in the pinned shell (five environment-dependent controls skip).
+
+The serialization campaign now has a closed first-pass wall: 151 proven
+CObject slot-2 overrides plus effective callers of reviewed CArchive, file,
+and stdio primitives yield 284 distinct RVAs. The generator writes scratch
+only; the admitted wall is manually maintained and exact-set gated. Its first
+census-driven unit is 4/4 exact, covering `CArchive::IsStoring`, the named
+TableLine serializer, a base-only derived override, and an embedded-object
+virtual serializer.
 
 The vtable catalog joins two independent executable witnesses: 417 tables from
 relocated text-pointer runs split by RTTI/code vptr references, plus eight

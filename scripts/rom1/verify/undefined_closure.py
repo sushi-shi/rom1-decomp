@@ -181,11 +181,17 @@ def lib_symbols() -> set[str]:
 
 def _class_of_method(sym: str) -> str | None:
     """?Method@CClass@@<member-code>... -> CClass (methods only, not data)."""
+    # Global operators carry a return/call-convention token after the first
+    # @ (for example ??6@YGAAVCArchive...); that token is not a class scope.
+    if re.match(r"^\?\?[0-9A-Z]@", sym):
+        return None
     m = re.match(r"\?[^@]+((?:@[A-Za-z_]\w*)+)@@([A-Za-z])", sym)
     return m.group(1).split("@")[1] if m else None
 
 
 def _sym_class(sym: str) -> str | None:
+    if re.match(r"^\?\?[0-9A-Z]@", sym):
+        return None
     m = re.match(r"\?\?(?:_?[0-9A-Z])([A-Za-z_]\w*)?@@", sym)
     if m:
         return m.group(1)

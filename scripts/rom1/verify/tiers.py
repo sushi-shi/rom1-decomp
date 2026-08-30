@@ -141,6 +141,11 @@ def _data_coverage():
     return data_coverage.gate_findings()
 
 
+def _serde_coverage():
+    from rom1.verify import serde_coverage
+    return serde_coverage.gate_findings()
+
+
 def _link_tier():
     from rom1.verify import link_tier
     return link_tier.gate_findings()
@@ -176,6 +181,7 @@ TIERS: dict[str, list[tuple[str, object]]] = {
         ("alloc-size", _alloc_size),
         ("assert-relocs", _assert_relocs),
         ("caller-callee", _caller_callee),
+        ("serde-coverage", _serde_coverage),
     ],
     "link": [
         ("link-tier", _link_tier),

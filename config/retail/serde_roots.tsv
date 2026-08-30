@@ -1,0 +1,39 @@
+# retail_sha256=5ba821f37356d2da0e1eb907de28b2708714d6e2604b5caef3daf4284b9af7d3
+# Manually maintained primitive roots for the serialization candidate wall.
+# Adding/removing a root changes evidence policy and requires review; the wall
+# never rewrites this table or config/retail/serde_candidates.tsv.
+signal	rva	role	direction	evidence
+archive-write	0x17b96d	CArchive CString insertion	write	VC5 SP2 NAFXCW arccore.obj exact FID
+archive-read	0x17b9e7	CArchive CString extraction	read	VC5 SP2 NAFXCW arccore.obj exact FID
+archive-read	0x17bd63	CArchive raw Read	read	VC5 SP2 NAFXCW arccore.obj exact FID
+archive-write	0x17be71	CArchive raw Write	write	VC5 SP2 NAFXCW arccore.obj exact FID
+archive-write	0x17c03d	CArchive WriteCount	write	VC5 SP2 NAFXCW arccore.obj exact FID
+archive-read	0x17c06b	CArchive ReadCount	read	VC5 SP2 NAFXCW arccore.obj exact FID
+archive-write	0x17c09b	CArchive WriteString	write	VC5 SP2 NAFXCW arccore.obj exact FID
+archive-read	0x17c0b8	CArchive ReadString(char*)	read	VC5 SP2 NAFXCW arccore.obj exact FID
+archive-read	0x17c16f	CArchive ReadString(CString&)	read	VC5 SP2 NAFXCW arccore.obj exact FID
+archive-write	0x17d85a	CArchive WriteObject	write	VC5 SP2 NAFXCW arcobj.obj exact FID
+archive-read	0x17d8d9	CArchive ReadObject	read	VC5 SP2 NAFXCW arcobj.obj exact FID
+archive-write	0x17da88	CArchive WriteClass	write	VC5 SP2 NAFXCW arcobj.obj exact FID
+archive-read	0x17db19	CArchive ReadClass	read	VC5 SP2 NAFXCW arcobj.obj exact FID
+archive-container	0x17dcd9	CArchive SerializeClass	both	VC5 SP2 NAFXCW arcobj.obj exact FID
+archive-container	0x17048a	CStringArray Serialize	both	VC5 SP2 NAFXCW array_s.obj exact FID
+archive-container	0x170bd9	CDWordArray Serialize	both	VC5 SP2 NAFXCW array_d.obj exact FID
+archive-container	0x170f93	CWordArray Serialize	both	VC5 SP2 NAFXCW array_w.obj exact FID
+archive-container	0x1716ad	CByteArray Serialize	both	VC5 SP2 NAFXCW array_b.obj exact FID
+archive-container	0x172015	CMapStringToString Serialize	both	VC5 SP2 NAFXCW map_ss.obj exact FID
+archive-container	0x172739	CMapStringToOb Serialize	both	VC5 SP2 NAFXCW map_so.obj exact FID
+file-read	0x1741f5	CFile Read	read	VC5 SP2 NAFXCW filecore.obj exact FID
+file-write	0x17422f	CFile Write	write	VC5 SP2 NAFXCW filecore.obj exact FID
+file-read	0x17a2c3	CStdioFile Read	read	VC5 SP2 NAFXCW filetxt.obj exact FID
+file-write	0x17a32f	CStdioFile Write	write	VC5 SP2 NAFXCW filetxt.obj exact FID
+file-write	0x17a362	CStdioFile WriteString	write	VC5 SP2 NAFXCW filetxt.obj exact FID
+file-read	0x17a38d	CStdioFile ReadString(char*, UINT)	read	VC5 SP2 NAFXCW filetxt.obj exact FID
+file-read	0x17a3d2	CStdioFile ReadString(CString&)	read	VC5 SP2 NAFXCW filetxt.obj exact FID
+file-read	0x180c6a	CMemFile Read	read	VC5 SP2 NAFXCW filemem.obj exact FID
+file-write	0x180cab	CMemFile Write	write	VC5 SP2 NAFXCW filemem.obj exact FID
+stdio-read	0x155230	fread wrapper	read	one-hop exact body into VC5 SP2 __fread_lk
+stdio-read	0x156490	fgets	read	VC5 SP2 LIBCMT exact FID
+stdio-read	0x155410	sscanf	read	VC5 SP2 LIBCMT exact FID
+stdio-write	0x158db0	fwrite wrapper	write	one-hop exact body into VC5 SP2 __fwrite_lk
+stdio-write	0x158f40	fputs	write	VC5 SP2 LIBCMT exact FID

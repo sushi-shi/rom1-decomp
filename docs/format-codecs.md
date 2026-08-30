@@ -259,10 +259,33 @@ zero disagreements over 38,399 call/state checks and 4,094 raw-word checks.
 The Rust parser additionally rejects truncated count prefixes, truncated word
 arrays, size overflow, and undersized writer output.
 
-## Located next families
+## Complete first-pass candidate wall
 
-The campaign roster in `config/retail/serde.tsv` records high-confidence
-callers without promoting guesses into source claims. The next large serde
-body is the bidirectional `CArchive` scenario/save serializer at `0x0d0c97`.
-The remaining DIB/BMP paths are the mapped-file wrapper at `0x04afd0` and VFW
-compression at `0x04b4e0`.
+The first-pass retail census is reproducible from two stronger signals than
+names or strings. MFC's five-entry `CObject` virtual prefix fixes `Serialize`
+at slot 2, so the recovered vtable catalog proves 151 non-default overrides.
+The call graph then walks through incremental-link thunks to the reviewed
+archive/file/stdio roots in `config/retail/serde_roots.tsv`. The union is 284
+distinct exact RVAs: 223 reach archive reads, 189 archive writes, one a
+container serializer, 11 binary-file reads, nine binary-file writes, and ten
+stdio readers; categories overlap.
+
+The initial result was admitted once to
+`config/retail/serde_candidates.tsv`. That table is manually maintained from
+this point, like `functions.tsv`. `rom1 sema serde --write-report` writes only
+the derived `build/gen/serde_candidates.tsv`, while
+`rom1 verify serde-coverage` compares every RVA and evidence signal against
+the manual wall. New, disappearing, reclassified, and signal-changed rows all
+fail until reviewed.
+
+The first source unit selected from that wall is exact for all four bodies:
+`CArchive::IsStoring` at `0x049770`, `TableLine::Serialize` at `0x0df278`, a
+base-only TableLine-derived override at `0x0dffcd`, and an embedded-CObject
+virtual serializer at `0x111b15`. The runtime class fixes TableLine's 28-byte
+size; the serializer independently fixes its CString at `+0x04` and nested
+polymorphic object at `+0x08`. Opaque tail bytes and classes whose names did
+not survive remain explicitly neutral rather than guessed.
+
+The next large serde body is the bidirectional CArchive scenario/save
+serializer at `0x0d0c97`. The remaining DIB/BMP paths are the mapped-file
+wrapper at `0x04afd0` and VFW compression at `0x04b4e0`.

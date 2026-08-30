@@ -1,0 +1,289 @@
+# retail_sha256=5ba821f37356d2da0e1eb907de28b2708714d6e2604b5caef3daf4284b9af7d3
+# Initial discovery generated from exact vtable topology and effective root callers.
+# Manually maintained after bootstrap. Never replace this wall from generated output;
+# review additions/removals and their source/static-library disposition explicitly.
+rva	signals	status	note
+0x0019f0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x023930	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x023d40	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x024150	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x0245c0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x024fb0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x0256f0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x025be0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x0260a0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x0296f0	file-write	target	initial retail call/vtable census
+0x036a70	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x03a2a7	stdio-read	target	initial retail call/vtable census
+0x03af3e	stdio-read	target	initial retail call/vtable census
+0x03d2d2	stdio-read	target	initial retail call/vtable census
+0x049700	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x0498d0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x049ba0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x049ca0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x04a2c0	archive-read,archive-write	target	initial retail call/vtable census
+0x04a5b0	archive-read,archive-write	target	initial retail call/vtable census
+0x04a950	archive-read,archive-write	target	initial retail call/vtable census
+0x04ac10	archive-read,archive-write	target	initial retail call/vtable census
+0x04add0	archive-read	target	initial retail call/vtable census
+0x04b950	archive-vslot2	target	initial retail call/vtable census; slot-2 class=CDib
+0x062b20	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x066f70	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x0671b0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x069390	archive-read,archive-vslot2,archive-write	reconstructed	initial retail call/vtable census; slot-2 class=CObject; CTextPointerVector::Serialize
+0x06f6a0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x06f8b0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x06fac0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x06fcd0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x06fee0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x0700f0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x070300	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x078af0	file-write	target	initial retail call/vtable census
+0x07a800	file-read,stdio-read	target	initial retail call/vtable census
+0x07abc0	file-read,stdio-read	target	initial retail call/vtable census
+0x07ada0	file-read	target	initial retail call/vtable census
+0x07b250	file-write	target	initial retail call/vtable census
+0x07b760	file-write	target	initial retail call/vtable census
+0x07cc60	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x0814b0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x0855d0	file-write	target	initial retail call/vtable census
+0x085690	file-read	target	initial retail call/vtable census
+0x08aaf0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x08ad90	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x08b1c0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x08b6a0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x08bbb0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x08cef0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x08d430	stdio-read	reconstructed	initial retail call/vtable census; CPixMap::LoadPPM
+0x098aa0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x098cd0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x098ee0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x0990d0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x099370	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x099620	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x0998c0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x099c20	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x09e710	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x0ae2e0	archive-read,archive-write	target	initial retail call/vtable census
+0x0ae3b0	archive-read,archive-write	target	initial retail call/vtable census
+0x0b0010	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x0b39b0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x0c6047	stdio-read	target	initial retail call/vtable census
+0x0c8600	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x0c8a40	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x0c8ee0	archive-read,archive-write	target	initial retail call/vtable census
+0x0c8fe0	archive-read,archive-write	target	initial retail call/vtable census
+0x0c99f0	stdio-read	target	initial retail call/vtable census
+0x0ca430	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x0ca690	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x0ca870	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x0cb320	file-read	target	initial retail call/vtable census
+0x0cee6f	file-write	target	initial retail call/vtable census
+0x0cf1ee	file-read	target	initial retail call/vtable census
+0x0cf4f0	file-write	target	initial retail call/vtable census
+0x0d0c97	archive-read,archive-write	target	initial retail call/vtable census
+0x0d15e2	file-write	target	initial retail call/vtable census
+0x0d1783	file-read	target	initial retail call/vtable census
+0x0d5dd2	file-read	target	initial retail call/vtable census
+0x0d933a	file-write	target	initial retail call/vtable census
+0x0da34b	file-read	target	initial retail call/vtable census
+0x0dbd14	archive-container	target	initial retail call/vtable census
+0x0de85b	archive-read	target	initial retail call/vtable census
+0x0df278	archive-read,archive-vslot2,archive-write	reconstructed	initial retail call/vtable census; slot-2 class=TableLine
+0x0df2c6	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=TableLine
+0x0df322	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=TableLine
+0x0df42a	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=TableLine
+0x0df63a	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=TableLine
+0x0dfe42	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=TableLine
+0x0dffcd	archive-vslot2	reconstructed	initial retail call/vtable census; slot-2 class=TableLine
+0x0e03d2	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=TableLine
+0x0e0b06	file-read	target	initial retail call/vtable census
+0x0eba39	stdio-read	target	initial retail call/vtable census
+0x0f2461	archive-read	target	initial retail call/vtable census
+0x0f2a24	archive-read	target	initial retail call/vtable census
+0x0f2bf7	archive-read	target	initial retail call/vtable census
+0x0f562c	archive-read,archive-write	target	initial retail call/vtable census
+0x0f6d82	archive-read	target	initial retail call/vtable census
+0x0f8a4f	archive-read	target	initial retail call/vtable census
+0x0f8e4e	archive-read	target	initial retail call/vtable census
+0x0fa69a	archive-read,archive-write	target	initial retail call/vtable census
+0x0fa9f5	archive-read,archive-write	target	initial retail call/vtable census
+0x0faac4	archive-read	target	initial retail call/vtable census
+0x0fc448	archive-read	target	initial retail call/vtable census
+0x0fc59a	archive-read	target	initial retail call/vtable census
+0x0fc8d7	archive-read	target	initial retail call/vtable census
+0x0fda57	archive-read	target	initial retail call/vtable census
+0x0fdda2	archive-read	target	initial retail call/vtable census
+0x100742	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Spell
+0x1008ba	archive-read	target	initial retail call/vtable census
+0x100c1d	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Spellbook
+0x100d05	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Effect
+0x100da4	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Effect_DirectDamage
+0x100dcc	archive-vslot2	target	initial retail call/vtable census; slot-2 class=SpellEffect
+0x100e2f	archive-vslot2	target	initial retail call/vtable census; slot-2 class=SpellTransport
+0x100efc	archive-vslot2	target	initial retail call/vtable census; slot-2 class=PointEffect
+0x100fa5	archive-vslot2	target	initial retail call/vtable census; slot-2 class=AreaEffect
+0x101148	archive-read	target	initial retail call/vtable census
+0x102b3e	archive-read	target	initial retail call/vtable census
+0x10385d	stdio-read	target	initial retail call/vtable census
+0x10418a	archive-read	target	initial retail call/vtable census
+0x104825	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Building
+0x104a3f	archive-read	target	initial retail call/vtable census
+0x105131	archive-read	target	initial retail call/vtable census
+0x105ae4	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Tavern
+0x105bc6	archive-read	target	initial retail call/vtable census
+0x10602b	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Shop
+0x106108	archive-read	target	initial retail call/vtable census
+0x1061bf	archive-read	target	initial retail call/vtable census
+0x106276	archive-read	target	initial retail call/vtable census
+0x107f85	archive-read	target	initial retail call/vtable census
+0x10c2c1	archive-read	target	initial retail call/vtable census
+0x10ccb0	archive-read	target	initial retail call/vtable census
+0x10d617	archive-read	target	initial retail call/vtable census
+0x10f275	archive-read	target	initial retail call/vtable census
+0x1104d6	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Weapon
+0x110577	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=Unit
+0x110ebb	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Token
+0x11103f	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Shield
+0x1110e8	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=Player
+0x111486	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Diary
+0x11158b	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Outpost
+0x111653	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Item
+0x1117bf	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=Humanoid
+0x111898	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Human
+0x111943	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Sack
+0x111b15	archive-vslot2	reconstructed	initial retail call/vtable census; slot-2 class=CObject
+0x111b35	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Armor
+0x111ba2	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=VirtualCaster
+0x114520	archive-write	target	initial retail call/vtable census
+0x118360	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x118810	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x118b50	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x118ef0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x1192b0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x119650	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x119a10	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x119db0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x11a170	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x11a530	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x11a8d0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x11ac70	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x11ae60	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x11b090	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x11b240	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x11b570	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x11b890	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x11bdb0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x11c130	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x11c440	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x11c690	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x11cc30	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x11cfd0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x11d0a0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x11d640	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x11d710	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x11d8e0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x11dc60	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x11df80	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x11e390	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x11e560	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x11e730	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x11e900	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x11ead0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x11ed20	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x11edf0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x11f5d0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x11fb70	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x11fdc0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x120010	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x120260	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x120540	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x120870	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x121350	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x121f20	archive-read,archive-write	target	initial retail call/vtable census
+0x122020	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x1222e0	archive-read,archive-write	target	initial retail call/vtable census
+0x122670	archive-read,archive-write	target	initial retail call/vtable census
+0x1227a0	archive-read,archive-write	target	initial retail call/vtable census
+0x122920	archive-read,archive-write	target	initial retail call/vtable census
+0x122b30	archive-read,archive-write	target	initial retail call/vtable census
+0x122d90	archive-read,archive-write	target	initial retail call/vtable census
+0x122f10	archive-read,archive-write	target	initial retail call/vtable census
+0x123110	archive-read,archive-write	target	initial retail call/vtable census
+0x123310	archive-read,archive-write	target	initial retail call/vtable census
+0x123490	archive-read,archive-write	target	initial retail call/vtable census
+0x123680	archive-read,archive-write	target	initial retail call/vtable census
+0x123760	archive-read,archive-write	target	initial retail call/vtable census
+0x123a50	archive-read,archive-write	target	initial retail call/vtable census
+0x123ba0	archive-read,archive-write	target	initial retail call/vtable census
+0x123e00	archive-read,archive-write	target	initial retail call/vtable census
+0x1240e0	archive-read,archive-write	target	initial retail call/vtable census
+0x124440	archive-read,archive-write	target	initial retail call/vtable census
+0x1245e0	archive-read,archive-write	target	initial retail call/vtable census
+0x1247a0	archive-read,archive-write	target	initial retail call/vtable census
+0x124bc0	archive-read,archive-write	target	initial retail call/vtable census
+0x124c00	archive-read,archive-write	target	initial retail call/vtable census
+0x1250a0	archive-read,archive-write	target	initial retail call/vtable census
+0x125230	archive-read,archive-write	target	initial retail call/vtable census
+0x125400	archive-read,archive-write	target	initial retail call/vtable census
+0x125770	archive-read,archive-write	target	initial retail call/vtable census
+0x125b10	archive-read,archive-write	target	initial retail call/vtable census
+0x125bc0	archive-read,archive-write	target	initial retail call/vtable census
+0x125db0	archive-read,archive-write	target	initial retail call/vtable census
+0x125e90	archive-read,archive-write	target	initial retail call/vtable census
+0x126190	archive-read,archive-write	target	initial retail call/vtable census
+0x126480	archive-read,archive-write	target	initial retail call/vtable census
+0x126770	archive-read,archive-write	target	initial retail call/vtable census
+0x126a60	archive-read,archive-write	target	initial retail call/vtable census
+0x126d50	archive-read,archive-write	target	initial retail call/vtable census
+0x126f70	archive-read,archive-write	target	initial retail call/vtable census
+0x1274b0	archive-read,archive-write	target	initial retail call/vtable census
+0x128570	archive-read,archive-write	target	initial retail call/vtable census
+0x1289d0	archive-read,archive-write	target	initial retail call/vtable census
+0x139100	archive-read,archive-write	target	initial retail call/vtable census
+0x139210	archive-read,archive-write	target	initial retail call/vtable census
+0x139310	archive-read,archive-write	target	initial retail call/vtable census
+0x139350	archive-read,archive-write	target	initial retail call/vtable census
+0x13db00	archive-read,archive-write	target	initial retail call/vtable census
+0x13dbc0	archive-read,archive-write	target	initial retail call/vtable census
+0x13dc80	archive-read,archive-write	target	initial retail call/vtable census
+0x13dcc0	archive-read,archive-write	target	initial retail call/vtable census
+0x13e840	archive-read,archive-write	target	initial retail call/vtable census
+0x13ec20	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x13eec0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x13f160	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x13f450	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x13f6c0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x13f850	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x13fb60	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x13fda0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x13ff30	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x1400e0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x140270	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x1403f0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x1405e0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x141c90	file-read	target	initial retail call/vtable census
+0x144a70	archive-read,archive-write	target	initial retail call/vtable census
+0x144aa0	archive-read,archive-write	target	initial retail call/vtable census
+0x14d500	archive-read,archive-write	target	initial retail call/vtable census
+0x14fa40	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x14ffb0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x1501d0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x1503e0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x1536b5	archive-read	static-library	initial retail call/vtable census; CArchiveStream::Read
+0x15370d	archive-write	static-library	initial retail call/vtable census; CArchiveStream::Write
+0x17048a	archive-vslot2	static-library	initial retail call/vtable census; slot-2 class=CStringArray; CStringArray::Serialize
+0x170bd9	archive-vslot2	static-library	initial retail call/vtable census; slot-2 class=CDWordArray; CDWordArray::Serialize
+0x170f93	archive-vslot2	static-library	initial retail call/vtable census; slot-2 class=CWordArray; CWordArray::Serialize
+0x1716ad	archive-vslot2	static-library	initial retail call/vtable census; slot-2 class=CByteArray; CByteArray::Serialize
+0x172015	archive-vslot2	static-library	initial retail call/vtable census; slot-2 class=CMapStringToString; CMapStringToString::Serialize
+0x172739	archive-vslot2	static-library	initial retail call/vtable census; slot-2 class=CMapStringToOb; CMapStringToOb::Serialize
+0x17badb	archive-read,archive-write	static-library	initial retail call/vtable census; SerializeElements
+0x17bb29	archive-read	static-library	initial retail call/vtable census; CRuntimeClass::Load
+0x17bbb9	archive-write	static-library	initial retail call/vtable census; CRuntimeClass::Store
+0x184413	archive-read	target	initial retail call/vtable census
+0x18461e	archive-read	target	initial retail call/vtable census
+0x184686	archive-read	target	initial retail call/vtable census
+0x184800	archive-read	target	initial retail call/vtable census
+0x185563	archive-read	target	initial retail call/vtable census
+0x1855d3	archive-read	target	initial retail call/vtable census

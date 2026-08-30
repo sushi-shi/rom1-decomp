@@ -49,3 +49,7 @@ pixmap-ppm	0x08d5d0	PCX loader success stub	exact	retail body + dispatcher arm
 pixmap-ppm	0x08d5e0	BMP loader success stub	exact	retail body + dispatcher arm
 item-name-ids	0x068490	load raw little-endian item IDs	near-exact	98.77%; itemname.bin string + text/map xrefs + mapped oracle
 archive-pointer-words	0x069390	bidirectional CArchive raw pointer vector	near-exact	81.44%; exact 0x188 extent + WriteCount/ReadCount and raw Write/Read xrefs + mapped oracle
+archive-primitive	0x049770	CArchive IsStoring predicate	exact	100%; exact VC5 SP2 AFX.INL COMDAT instruction extent
+archive-object	0x0df278	TableLine CString and nested-object serializer	exact	100%; runtime class + vtable slot 2 + exact archive operator call topology
+archive-object	0x0dffcd	TableLine-derived base-only serializer	exact	100%; vtable slot 2 + sole direct call to TableLine::Serialize
+archive-object	0x111b15	embedded CObject virtual serializer	exact	100%; vtable slot 2 + exact indirect nested Serialize dispatch

@@ -77,3 +77,8 @@ flags = "cpp"
 unit = "resourcefile"
 source = "src/Io/ResourceFile.cpp"
 flags = "cpp"
+
+[[unit]]
+unit = "archiveobjects"
+source = "src/Serialization/ArchiveObjects.cpp"
+flags = "cpp-od"

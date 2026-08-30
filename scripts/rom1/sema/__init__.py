@@ -6,6 +6,7 @@
     rom1 sema dump    <rva|name>        raw bytes + relocation targets + asm
     rom1 sema xref    <rva|name>        callers, callees and referent sites
     rom1 sema strings [<rva>|--find s]  string literals a function reaches
+    rom1 sema serde   [--all|--rva R]   exact-RVA serialization candidate wall
     rom1 sema vtable  <rva>             a vtable's slots / who holds a fn
     rom1 sema class   <Class|fn>        a class's vtables, slot by slot
     rom1 sema gaps    [options]         unclaimed same-file .text gaps
@@ -49,6 +50,7 @@ SUBCOMMANDS = {
     "gaps": "rom1.sema.gaps",
     "map": "rom1.sema.map",
     "match": "rom1.sema.match",
+    "serde": "rom1.sema.serde",
 }
 
 

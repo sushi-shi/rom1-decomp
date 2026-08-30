@@ -84,6 +84,7 @@ _GATES = {"board": "rom1.verify.board", "bans": "rom1.verify.bans",
           "caller-callee": "rom1.verify.caller_callee",
           "data-access": "rom1.verify.data_access",
           "data-coverage": "rom1.verify.data_coverage",
+          "serde-coverage": "rom1.verify.serde_coverage",
           "library-data-refs": "rom1.verify.library_data_refs",
           "layout": "rom1.verify.layout",
           "link-tier": "rom1.verify.link_tier"}

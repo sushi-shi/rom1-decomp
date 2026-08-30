@@ -27,6 +27,50 @@ from unittest import mock
 
 
 # --------------------------------------------------------------------------- #
+# serialization candidate wall                                                #
+# --------------------------------------------------------------------------- #
+class SerdeCoverageControls(unittest.TestCase):
+    @staticmethod
+    def _candidate(channel=""):
+        from rom1.sema.serde import Candidate
+        return Candidate(rva=0x1234, size=0x40,
+                         signals={"archive-read", "archive-vslot2"},
+                         channel=channel)
+
+    @staticmethod
+    def _row(**changes):
+        row = {
+            "rva": "0x001234",
+            "signals": "archive-read,archive-vslot2",
+            "status": "target",
+            "note": "selftest",
+        }
+        row.update(changes)
+        return row
+
+    def test_new_candidate_fails_until_manually_admitted(self):
+        from rom1.verify.serde_coverage import compare
+        findings = compare({0x1234: self._candidate()}, [])
+        self.assertTrue(any("NEW candidate" in row for row in findings))
+
+    def test_disappearing_candidate_is_not_silently_dropped(self):
+        from rom1.verify.serde_coverage import compare
+        findings = compare({}, [self._row()])
+        self.assertTrue(any("disappeared" in row for row in findings))
+
+    def test_signal_and_disposition_drift_fail(self):
+        from rom1.verify.serde_coverage import compare
+        candidate = self._candidate(channel="src")
+        findings = compare({0x1234: candidate}, [self._row(signals="archive-read")])
+        self.assertTrue(any("signals changed" in row for row in findings))
+        self.assertTrue(any("should be reconstructed" in row for row in findings))
+
+    def test_exact_manual_wall_passes(self):
+        from rom1.verify.serde_coverage import compare
+        self.assertEqual(compare({0x1234: self._candidate()}, [self._row()]), [])
+
+
+# --------------------------------------------------------------------------- #
 # fast tier                                                                   #
 # --------------------------------------------------------------------------- #
 class BoardControls(unittest.TestCase):
@@ -689,6 +733,16 @@ class UndefinedClosureControls(unittest.TestCase):
             bdef=set(), bund={"?Check4_2ce8@@YGHH@Z"},
             tnames={"?Check4_2ce8@@YGHH@Z"})   # retail namespace has it
         self.assertEqual(declared, set())
+
+    def test_global_archive_operators_do_not_fabricate_a_class(self):
+        from rom1.verify import undefined_closure as uc
+        insertion = "??6@YGAAVCArchive@@AAV0@ABVCString@@@Z"
+        extraction = "??5@YGAAVCArchive@@AAV0@AAVCString@@@Z"
+        self.assertIsNone(uc._class_of_method(insertion))
+        self.assertIsNone(uc._sym_class(insertion))
+        phantom, _shadows, _declared = self._run(
+            bdef=set(), bund={insertion, extraction}, tnames=set())
+        self.assertEqual(dict(phantom), {})
 
 
 # --------------------------------------------------------------------------- #
