@@ -20,7 +20,10 @@ private:
 // remains opaque until another method gives it semantic names.
 class TableLine : public CObject {
 public:
+    static AFX_DATA CRuntimeClass classTableLine;
     virtual void Serialize(CArchive& archive);
+
+    friend CArchive& AFXAPI operator>>(CArchive& archive, TableLine*& value);
 
 protected:
     CString m_name;

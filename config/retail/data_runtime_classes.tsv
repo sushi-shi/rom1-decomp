@@ -3,6 +3,7 @@
 # runtime_classes.tsv; the decorated name follows IMPLEMENT_SERIAL exactly.
 rva	size	name	evidence
 0x1ba688	0x18	?classCDib@CDib@@2UCRuntimeClass@@A	runtime_classes.tsv CDib record; IMPLEMENT_SERIAL schema 1
+0x1c2368	0x18	?classTableLine@TableLine@@2UCRuntimeClass@@A	runtime_classes.tsv TableLine record; IMPLEMENT_SERIAL schema 1
 0x1c2440	0x18	?classToken@Token@@2UCRuntimeClass@@A	runtime_classes.tsv Token record; IMPLEMENT_SERIAL schema 1
 0x1c2458	0x18	?classVirtualCaster@VirtualCaster@@2UCRuntimeClass@@A	runtime_classes.tsv VirtualCaster record; IMPLEMENT_SERIAL schema 1
 0x1c2470	0x18	?classUnit@Unit@@2UCRuntimeClass@@A	runtime_classes.tsv Unit record; IMPLEMENT_SERIAL schema 1

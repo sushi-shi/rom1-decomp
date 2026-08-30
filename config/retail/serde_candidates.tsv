@@ -88,7 +88,7 @@ rva	signals	status	note
 0x0d933a	file-write	target	initial retail call/vtable census
 0x0da34b	file-read	target	initial retail call/vtable census
 0x0dbd14	archive-container	target	initial retail call/vtable census
-0x0de85b	archive-read	target	initial retail call/vtable census
+0x0de85b	archive-read	reconstructed	exact TableLine typed object reader; reviewed CRuntimeClass record; 100%
 0x0df278	archive-read,archive-vslot2,archive-write	reconstructed	initial retail call/vtable census; slot-2 class=TableLine
 0x0df2c6	archive-read,archive-vslot2,archive-write	reconstructed	TableLine-derived five-WORD block + nested CStringArray serializer
 0x0df322	archive-read,archive-vslot2,archive-write	reconstructed	TableLine-named CString + raw 72-byte block serializer

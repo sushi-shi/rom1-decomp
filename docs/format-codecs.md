@@ -443,12 +443,13 @@ the derived `build/gen/serde_candidates.tsv`, while
 the manual wall. New, disappearing, reclassified, and signal-changed rows all
 fail until reviewed.
 
-The first source unit selected from that wall is now exact for all 12 admitted
-bodies and all 857 instruction bytes. Eight are the complete recovered
-TableLine slot-2 cluster at `0x0df278`–`0x0e03d2`; one is the embedded-CObject
-serializer at `0x111b15`; and three are the exact VC5 SP2 `IsStoring`,
-`CStringArray::operator[]`, and `CStringArray::ElementAt` COMDATs emitted by
-the source forms. The runtime class fixes TableLine's 28-byte size. Retail
+The first source unit selected from that wall is now exact for all 13 admitted
+bodies and all 885 instruction bytes. One is the typed TableLine reader at
+`0x0de85b`; eight are the complete recovered TableLine slot-2 cluster at
+`0x0df278`–`0x0e03d2`; one is the embedded-CObject serializer at `0x111b15`;
+and three are the exact VC5 SP2 `IsStoring`, `CStringArray::operator[]`, and
+`CStringArray::ElementAt` COMDATs emitted by the source forms. The reviewed
+runtime-class record fixes TableLine's identity and 28-byte size. Retail
 constructors and serializers then independently fix a CString at `+0x04`, a
 nested polymorphic object at `+0x08`, five raw WORDs, fixed two- and ten-entry
 CStringArray loops, a raw 72-byte record, and CString extensions. Names that

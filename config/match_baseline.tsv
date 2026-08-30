@@ -34,7 +34,7 @@
 # [units]	unit	n_functions	matched
 archivearrays	112	77
 archiveelements	8	6
-archiveobjects	12	12
+archiveobjects	13	13
 butemgr	14	11
 bytehuffman	16	15
 bytehuffmannode	1	1
@@ -178,6 +178,7 @@ archiveelements	?SerializeElements@@YGXAAVCArchive@@PAUCResourceIndexedObjectHan
 archiveelements	?SerializeElements@@YGXAAVCArchive@@PAUCResourceOwnedObjectHandle@@H@Z	100.0000	100.0000	1	cpp:8f8beaf1a12b	0xc8ee0	100.0000	
 archiveelements	?SetSize@?$CArray@UCResourceIndexedObjectHandle@@U1@@@QAEXHH@Z	99.8611	99.8611	1	cpp:8f8beaf1a12b	0xc8720	99.8611	
 archiveelements	?SetSize@?$CArray@UCResourceOwnedObjectHandle@@U1@@@QAEXHH@Z	99.8611	99.8611	1	cpp:8f8beaf1a12b	0xc8c30	99.8611	
+archiveobjects	??5@YGAAVCArchive@@AAV0@AAPAVTableLine@@@Z	100.0000	100.0000	1	1a82c7190f45	0xde85b	100.0000	
 archiveobjects	??ACStringArray@@QAEAAVCString@@H@Z	100.0000	100.0000	1	cpp:2746b765bc49	0x47a80	100.0000	
 archiveobjects	?ElementAt@CStringArray@@QAEAAVCString@@H@Z	100.0000	100.0000	1	cpp:2746b765bc49	0x47aa0	100.0000	
 archiveobjects	?IsStoring@CArchive@@QBEHXZ	100.0000	100.0000	1	cpp:0fc8afb2c768	0x49770	100.0000	

@@ -10,6 +10,14 @@ RVA_COMPGEN(0x00047aa0, 0x19, ?ElementAt@CStringArray@@QAEAAVCString@@H@Z)
 // AFX.INL provides this COMDAT when the /Od serializers call IsStoring.
 RVA_COMPGEN(0x00049770, 0x19, ?IsStoring@CArchive@@QBEHXZ)
 
+// @dead-code
+// Zero-ref: no direct callers, relocated references, or live ILT forwarders in retail.
+RVA(0x000de85b, 0x1c)
+CArchive& AFXAPI operator>>(CArchive& archive, TableLine*& value) {
+    value = static_cast<TableLine*>(archive.ReadObject(&TableLine::classTableLine));
+    return archive;
+}
+
 RVA(0x000df278, 0x4e)
 void TableLine::Serialize(CArchive& archive) {
     if (archive.IsStoring()) {

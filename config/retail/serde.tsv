@@ -176,6 +176,7 @@ archive-array	0x126770	building-record reference element serializer	exact	100%; 
 archive-array	0x126a60	unit-record reference element serializer	exact	100%; exact pinned-header instantiation selected by parent 0x11ead0
 archive-array	0x126d50	CMultiShopInstance-pointer element serializer	exact	100%; exact pinned-header instantiation selected by parent 0x11ed20
 archive-array	0x126f70	SpellEffect-pointer element serializer	exact	100%; exact pinned-header instantiation selected by parent 0x11edf0
+archive-object	0x0de85b	TableLine typed object reader	exact	100%; reviewed runtime-class record + CArchive::ReadObject
 archive-object	0x0df278	TableLine CString and nested-object serializer	exact	100%; runtime class + vtable slot 2 + exact archive operator call topology
 archive-object	0x0df2c6	TableLine five-WORD block and nested CStringArray serializer	exact	100%; constructor offsets + raw 10-byte archive calls + nested virtual dispatch
 archive-object	0x0df322	TableLine-named raw 72-byte block serializer	exact	100%; CString at +0x04 + exact 0x48-byte archive extent at +0x20
