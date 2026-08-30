@@ -4172,7 +4172,9 @@ class LabelGraphDependencyControls(unittest.TestCase):
                 mock.patch.object(emit, "write_toolchain_id",
                                   return_value=False), \
                 mock.patch.object(emit, "Scanner", return_value=OneHeader()), \
-                mock.patch.object(emit, "era_rc_available", return_value=False):
+                mock.patch.object(emit, "era_rc_available", return_value=False), \
+                mock.patch.object(emit, "retail_exe", return_value=Path(
+                                  "/nix/store/probe-ALLODS.EXE")):
             out = Path(td) / "build.ninja"
             emit.emit(out)
             graph_text = out.read_text()
@@ -4184,8 +4186,11 @@ class LabelGraphDependencyControls(unittest.TestCase):
 
         compile_edge = edge("build build/objdiff/base/owner.obj: cl")
         label_edge = edge("build build/gen/claims/owner.tsv: labels")
+        delink_edge = edge("build build/objdiff/.delink.stamp: delink")
         self.assertIn("include/Test/InlineClaim.h", compile_edge)
         self.assertIn("include/Test/InlineClaim.h", label_edge)
+        self.assertIn("/nix/store/probe-ALLODS.EXE", delink_edge)
+        self.assertNotIn("build/exe/ALLODS.EXE", delink_edge)
 
 
 class LinkVerbTargetControls(unittest.TestCase):

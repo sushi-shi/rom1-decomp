@@ -59,13 +59,12 @@ import sys
 from pathlib import Path
 
 from rom1 import graph
-from rom1.core.paths import REPO
+from rom1.core.paths import REPO, retail_exe
 from rom1.graph import ninja_syntax
 from rom1.graph.scan import Scanner
 
 SCRIPTS = "scripts/rom1"
 MANIFEST = "config/units.toml"
-RETAIL_EXE = "build/exe/ALLODS.EXE"
 COMPDB = "build/clangd/compile_commands.json"
 RELOC_REFERENTS = "config/retail/reloc_referents.tsv"
 
@@ -468,8 +467,12 @@ def emit(out: Path | None = None) -> tuple[int, int]:
                command=(f"$py -m rom1.delink.run --target-dir {graph.TARGET_DIR} "
                         f"--delink-dir {graph.DELINK_RAW} && touch $out"),
                description="delink ALLODS.EXE -> target objs")
+        # Declare the image the delinker ACTUALLY reads. In the reproducible
+        # shell this is the hash-pinned Nix-store $ROM1_EXE; using the old
+        # build/exe staging pathname made a fresh clone fail before delinking
+        # and, worse, did not describe the subprocess's real input.
         w.build(graph.DELINK_STAMP, "delink",
-                inputs=[graph.BINDINGS, RETAIL_EXE],
+                inputs=[graph.BINDINGS, str(retail_exe())],
                 implicit=[RELOC_REFERENTS, *DELINK_MODS, graph.TOOLCHAIN_ID])
         w.newline()
 
