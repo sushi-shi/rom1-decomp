@@ -97,6 +97,12 @@ branch counts, ordered relocation count, and all relocation-masked bytes. Its
 `CObject::operator new` target, which is deliberately not promoted as vendor
 code without archive authority. `Humanoid::Serialize` remains exact.
 
+The adjacent nine slot-2 serializer candidates are drained: seven are exact,
+while `Player` (99.74%) and `Human` (99.91%) are source-complete classified
+residuals. Player has identical call/control-flow/relocation topology with a
+local-slot scheduling difference; Human is relocation-masked identical and
+retains only an unclaimed literal plus an archive-ambiguous MFC call identity.
+
 The vtable catalog joins two independent executable witnesses: 417 tables from
 relocated text-pointer runs split by RTTI/code vptr references, plus eight
 `GetRuntimeClass` tables whose first relocation site was absent from the

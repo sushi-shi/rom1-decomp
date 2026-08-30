@@ -114,6 +114,11 @@ source = "src/Serialization/ScenarioSupport.cpp"
 flags = "cpp-od"
 
 [[unit]]
+unit = "playerreference"
+source = "src/Serialization/PlayerReference.cpp"
+flags = "cpp-od"
+
+[[unit]]
 unit = "referenceworld"
 source = "src/Serialization/ReferenceWorld.cpp"
 flags = "cpp-od"

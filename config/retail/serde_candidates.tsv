@@ -141,19 +141,19 @@ rva	signals	status	note
 0x10ccb0	archive-read	reconstructed	exact IMPLEMENT_SERIAL Shield typed reader
 0x10d617	archive-read	reconstructed	exact IMPLEMENT_SERIAL Weapon typed reader
 0x10f275	archive-read	reconstructed	exact IMPLEMENT_SERIAL Sack typed reader
-0x1104d6	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Weapon
+0x1104d6	archive-vslot2	reconstructed	exact Weapon serializer; Item base, raw damage/shared records, BYTE/Spell fields, and 60-byte definition lookup
 0x110577	archive-read,archive-vslot2,archive-write	reconstructed	source-complete Unit serializer; 99.99% with normalized bytes identical and sole referent residual at unclaimed CObject::operator new target 0x231d0
 0x110ebb	archive-vslot2	reconstructed	exact base Token payload/scalar/reference serializer; slot-2 class=Token
-0x11103f	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Shield
-0x1110e8	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=Player
-0x111486	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Diary
-0x11158b	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Outpost
-0x111653	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Item
+0x11103f	archive-vslot2	reconstructed	exact Shield serializer; Item base, shared record, and load-time 60-byte definition lookup
+0x1110e8	archive-read,archive-vslot2,archive-write	reconstructed	source-complete Player serializer; 99.74%, identical extent/instruction/call/branch/relocation topology, classified local-slot scheduling residual
+0x111486	archive-vslot2	reconstructed	exact Diary serializer; two CObArray streams plus deferred Token reference resolution
+0x11158b	archive-vslot2	reconstructed	exact Outpost serializer; Building base, four UINT fields, and placement-array stream
+0x111653	archive-vslot2	reconstructed	exact Item serializer; Token base, effect list, eight scalar fields, and guarded 64-byte definition lookup
 0x1117bf	archive-read,archive-vslot2,archive-write	reconstructed	exact Humanoid serializer; Unit base, raw block, typed Item array, and Diary pointer; 100%
-0x111898	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Human
-0x111943	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Sack
+0x111898	archive-vslot2	reconstructed	source-complete Human serializer; 99.91%, masked bytes identical, residuals are the unclaimed NPC literal datum and withheld ambiguous MFC CString::Find provider
+0x111943	archive-vslot2	reconstructed	exact Sack serializer; Token base, UINT field, and owned item-list stream
 0x111b15	archive-vslot2	reconstructed	initial retail call/vtable census; slot-2 class=CObject
-0x111b35	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Armor
+0x111b35	archive-vslot2	reconstructed	exact Armor serializer; Item base, shared record, BYTE field, and 60-byte definition lookup
 0x111ba2	archive-read,archive-vslot2,archive-write	reconstructed	exact VirtualCaster serializer; Token base, BYTE field, and six-byte pointed buffer; 100%
 0x114520	archive-write	reconstructed	exact VC5 SP2 CArchive const-CObject insertion COMDAT emitted by Spell serializer TU
 0x118360	archive-read,archive-vslot2,archive-write	reconstructed	exact CList<Effect*, Effect*> serializer; Token+0x20 owner and typed Effect archive reader; 100%

@@ -11,6 +11,7 @@
 
 class CWorldItem;
 class CWorldObjectRegistry;
+class Player;
 
 GZ_ENUM_CONST_BEGIN(ReferenceWorldConstants)
     REFERENCE_WORLD_ITEM_TRANSIENT = 0x08,
@@ -44,7 +45,9 @@ typedef CList<CWorldObject*, CWorldObject*> CWorldObjectList;
 
 class CWorldItem {
 public:
-    BYTE m_reserved00[0x40];
+    BYTE m_reserved00[0x14];
+    Player* m_owner14;
+    BYTE m_reserved18[0x28];
     UINT m_value40;
     UINT m_value44;
     BYTE m_reserved48[4];

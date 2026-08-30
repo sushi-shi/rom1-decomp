@@ -25,11 +25,17 @@ class Player;
 class Item;
 class CUnitRawArchiveRecord;
 class CWordListRecordLarge;
+class CWordListRecordCompact;
+class CPlayerArchiveBlock;
+class CPlayerUnitGroup;
+class CPlayerUnitGroupCollection;
 struct CPrimaryStateRecord;
 struct CTertiaryStateRecord;
 
 void ResolveEffectReference(UINT* value);
 void ResolveTokenReference(UINT* value);
+void ResolvePlayerReference(UINT* value);
+UINT TransformPlayerReference(UINT value);
 
 // The pointed-to object at Token+0x10 serializes exactly twelve raw bytes.
 // Its original type name has not survived, so retain a layout-only name.
@@ -74,6 +80,20 @@ struct CSpellDefinition {
 };
 
 typedef CArray<CSpellDefinition, CSpellDefinition&> CSpellDefinitionArray;
+
+// Three equipment-definition tables share one 60-byte element identity; the
+// base Item table uses a distinct 64-byte record. Their indexing helpers and
+// all five global-array call sites prove these extents.
+struct CEquipmentDefinitionRecord {
+    BYTE m_bytes[0x3c];
+};
+
+struct CItemDefinitionRecord {
+    BYTE m_bytes[0x40];
+};
+
+typedef CArray<CEquipmentDefinitionRecord, CEquipmentDefinitionRecord&> CEquipmentDefinitionArray;
+typedef CArray<CItemDefinitionRecord, CItemDefinitionRecord&> CItemDefinitionArray;
 // Typed archive readers prove the element identities for both four-byte list
 // instantiations in the retail container band.
 typedef CList<Effect*, Effect*> CEffectPointerList;
@@ -166,7 +186,16 @@ public:
     friend CArchive& AFXAPI operator>>(CArchive& archive, Item*& value);
 
 protected:
-    BYTE m_state3c[0x14];
+    void* m_definition3c;
+    WORD m_value40;
+    WORD m_value42;
+    BYTE m_value44;
+    BYTE m_value45;
+    BYTE m_value46;
+    BYTE m_value47;
+    short m_value48;
+    short m_value4a;
+    BYTE m_reserved4c[4];
 };
 
 class Unit : public Token {
@@ -176,9 +205,10 @@ public:
     virtual BOOL TokenVirtual12();
 
     friend CArchive& AFXAPI operator>>(CArchive& archive, Unit*& value);
+    friend class CPlayerUnitGroup;
 
 protected:
-    CPrimaryStateRecord* m_state3c;
+    CUnitStateRecord* m_state3c;
     UINT m_reference40;
     UINT m_reference44;
     char m_value48;
@@ -195,7 +225,7 @@ protected:
     Item* m_item68;
     char m_value6c;
     BYTE m_reserved6d[3];
-    UINT m_value70;
+    CPlayerUnitGroup* m_group70;
     Item* m_item74;
     Item* m_item78;
     CUnitItemList* m_itemList7c;
@@ -266,7 +296,9 @@ public:
     friend CArchive& AFXAPI operator>>(CArchive& archive, Diary*& value);
 
 private:
-    BYTE m_state04[0x2c];
+    CObArray m_entries04;
+    CObArray m_entries18;
+    UINT m_reference2c;
 };
 
 class Human : public Humanoid {
@@ -285,7 +317,82 @@ public:
     friend CArchive& AFXAPI operator>>(CArchive& archive, Player*& value);
 
 private:
-    BYTE m_state04[0x6c];
+    short m_value04;
+    WORD m_reserved06;
+    UINT m_value08;
+    BYTE m_reserved0c[4];
+    BYTE m_raw10[8];
+    CString m_name18;
+    UINT m_value1c;
+    CWorldItemManager* m_itemManager20;
+    CPlayerUnitGroupCollection* m_groups24;
+    UINT m_value28;
+    WORD m_value2c;
+    WORD m_reserved2e;
+    CPlayerArchiveBlock* m_archive30;
+    UINT m_reference34;
+    UINT m_reference38;
+    BYTE m_value3c;
+    BYTE m_value3d;
+    WORD m_reserved3e;
+    CObject* m_object40;
+    BYTE m_value44;
+    BYTE m_reserved45[3];
+    UINT m_reference48;
+    int m_value4c;
+    UINT m_value50;
+    int m_value54;
+    UINT m_value58;
+    BYTE m_reserved5c[0x14];
+};
+
+// A Player group begins with the Unit* list consumed through the recovered
+// world-list iterator, followed by its archive identity, WORD list, compact
+// state record, and two recovered references. Construction and Add/Remove
+// sites prove the back-pointer at Unit+0x70 and the complete 0x48-byte extent.
+class CPlayerUnitGroup : public CWorldItemList {
+public:
+    CPlayerUnitGroup();
+    void Serialize(CArchive& archive);
+    void AddUnit(Unit* unit);
+    void RemoveUnit(Unit* unit);
+
+private:
+    CList<Unit*, Unit*> m_units;
+    UINT m_reference1c;
+    CList<WORD, WORD> m_values20;
+    CWordListRecordCompact* m_archive3c;
+    UINT m_reference40;
+    UINT m_reference44;
+};
+
+// Player+0x24 owns this separately allocated collection. The serializer,
+// count/add wrappers, and iterator helpers prove a CList of group pointers.
+class CPlayerUnitGroupCollection {
+public:
+    void Serialize(CArchive& archive);
+
+private:
+    int GetCount() const;
+    void Add(CPlayerUnitGroup* group);
+
+    CList<CPlayerUnitGroup*, CPlayerUnitGroup*> m_groups;
+
+    friend class CPlayerUnitGroupIterator;
+};
+
+// The two-word iterator shape and its First/Next call sites are exact. The
+// collection's element identity is a CWorldItemList consumed immediately by
+// the already recovered CWorldItemIterator.
+class CPlayerUnitGroupIterator {
+public:
+    CPlayerUnitGroupIterator();
+    CWorldItemList* First(CPlayerUnitGroupCollection* groups);
+    CWorldItemList* Next();
+
+private:
+    const CPlayerUnitGroupCollection* m_groups;
+    POSITION m_position;
 };
 
 class SpellEffect : public Token {
@@ -476,7 +583,9 @@ public:
     friend CArchive& AFXAPI operator>>(CArchive& archive, Armor*& value);
 
 private:
-    BYTE m_state50[0x18];
+    BYTE m_value50;
+    BYTE m_reserved51;
+    CSharedArchiveBlock m_shared52;
 };
 
 class Shield : public Item {
@@ -487,7 +596,8 @@ public:
     friend CArchive& AFXAPI operator>>(CArchive& archive, Shield*& value);
 
 private:
-    BYTE m_state50[0x18];
+    CSharedArchiveBlock m_shared50;
+    WORD m_reserved66;
 };
 
 class Weapon : public Item {
@@ -498,7 +608,11 @@ public:
     friend CArchive& AFXAPI operator>>(CArchive& archive, Weapon*& value);
 
 private:
-    BYTE m_state50[0x34];
+    BYTE m_value50;
+    BYTE m_reserved51;
+    CDirectDamagePayload m_damage52;
+    CSharedArchiveBlock m_shared6a;
+    Spell* m_spell80;
 };
 
 class Sack : public Token {
@@ -509,7 +623,8 @@ public:
     friend CArchive& AFXAPI operator>>(CArchive& archive, Sack*& value);
 
 private:
-    BYTE m_state3c[0x08];
+    UINT m_value3c;
+    CUnitItemList* m_itemList40;
 };
 
 class Spell : public CObject {

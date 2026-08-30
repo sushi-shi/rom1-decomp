@@ -255,9 +255,18 @@ spell-effect	0x10c2c1	Armor typed object reader	exact	100%; runtime-class record
 spell-effect	0x10ccb0	Shield typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
 spell-effect	0x10d617	Weapon typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
 spell-effect	0x10f275	Sack typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
+spell-effect	0x1104d6	Weapon serializer	exact	100%; Item base, damage/shared records, BYTE/Spell fields, and definition-array resolution
 spell-effect	0x110577	Unit serializer	reconstructed	99.99%; source-complete 0x8a8-byte body, masked bytes identical, sole residual is the unclaimed CObject::operator new referent at 0x231d0
 spell-effect	0x110ebb	Token base serializer	exact	100%; raw payload, scalar fields, ID bitset, and reference map
+spell-effect	0x11103f	Shield serializer	exact	100%; Item base, shared record, and load-time definition-array resolution
+spell-effect	0x1110e8	Player serializer	reconstructed	99.74%; source-complete body with identical extent/instruction/call/branch/relocation topology; classified local-slot scheduling residual
+spell-effect	0x111486	Diary serializer	exact	100%; two CObArray streams plus deferred Token reference resolution
+spell-effect	0x11158b	Outpost serializer	exact	100%; Building base, four UINT fields, and placement-array stream
+spell-effect	0x111653	Item serializer	exact	100%; Token base, effect list, eight scalar fields, and guarded definition lookup
 spell-effect	0x1117bf	Humanoid serializer	exact	100%; Unit base, 24-byte raw block, twelve typed Item pointers, and Diary pointer
+spell-effect	0x111898	Human serializer	reconstructed	99.91%; relocation-masked bytes identical; NPC datum remains unclaimed and ambiguous MFC CString::Find provider is deliberately withheld
+spell-effect	0x111943	Sack serializer	exact	100%; Token base, UINT field, and owned item-list stream
+spell-effect	0x111b35	Armor serializer	exact	100%; Item base, shared record, BYTE field, and definition-array resolution
 spell-effect	0x111ba2	VirtualCaster serializer	exact	100%; Token base, BYTE field, and six-byte pointed buffer
 spell-effect	0x144a70	Token raw payload	exact	100%; exact 12-byte CArchive Read/Write branches
 spell-effect	0x14d500	Unit-owned raw record serializer	exact	100%; exact 0xb4-byte CArchive Read/Write branches and sole Unit owner

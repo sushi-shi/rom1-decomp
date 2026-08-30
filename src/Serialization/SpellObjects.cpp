@@ -478,6 +478,17 @@ void ResolveTokenReference(UINT* value) {
     }
 }
 
+RVA(0x00121480, 0x3a)
+void ResolvePlayerReference(UINT* value) {
+    void* result;
+    if (g_referenceWorld->m_references
+            .Lookup(reinterpret_cast<void*>(*value), result)) { // proven raw pointer identity
+        *value = reinterpret_cast<UINT>(result);                // proven raw pointer identity
+    } else {
+        *value = 0;
+    }
+}
+
 RVA_COMPGEN(0x00123350, 0x1b, ?ElementAt@?$CArray@UCTertiaryStateRecord@@AAU1@@@QAEAAUCTertiaryStateRecord@@H@Z)
 RVA_COMPGEN(0x001234d0, 0x1b, ?ElementAt@?$CArray@UCSpellDefinition@@AAU1@@@QAEAAUCSpellDefinition@@H@Z)
 RVA_COMPGEN(0x001236c0, 0x19, ?ElementAt@?$CArray@PAVSpell@@PAV1@@@QAEAAPAVSpell@@H@Z)

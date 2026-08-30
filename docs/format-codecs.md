@@ -546,6 +546,21 @@ pointer at `+0x40`; the runtime-class record independently fixes the complete
 `Item*` array, and one typed `Diary*`. Runtime classes and the typed archive
 readers independently prove the inheritance edge and both pointee identities.
 
+The nine neighboring game-owned slot-2 serializers are drained as a typed
+cluster. `Weapon`, `Shield`, `Diary`, `Outpost`, `Item`, `Sack`, and `Armor`
+are byte-exact. Their bodies recover the equipment/item definition tables,
+embedded raw records and archive lists, scalar field order, typed object
+pointers, and load-time reference resolution. `Player::Serialize` is
+source-complete at 99.74%: its 0x39e-byte extent, 301 instructions, 53 calls,
+11 branches, and 53 ordered relocations all agree with retail; diagnosis
+isolates the residue to VC5 local-slot scheduling. `Human::Serialize` is
+source-complete at 99.91%, with relocation-masked bytes identical. Its only
+differences are the now-proven `NPC\0` literal's still-unclaimed datum identity
+and an MFC `CString::Find` body whose archive collision remains ambiguous, so
+neither is promoted as vendor code. Player's exact XOR/reference helpers and
+the naturally selected const `CList` iterator accessors are reconstructed from
+game source and the pinned headers rather than copied from a library.
+
 The four raw-record serializers at `0x13db00`, `0x13dbc0`, `0x13dc80`, and
 `0x13dcc0` are also exact. The first three apply the same bidirectional
 complete-object archive operation to 0x50-, 0x48-, and 0x0c-byte records. The

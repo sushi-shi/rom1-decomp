@@ -31,13 +31,18 @@ struct CCompactCollectionRecord {
     BYTE m_bytes[0x1c];
 };
 
-struct CPrimaryStateRecord {
-    BYTE m_bytes[0x30];
+// Unit and Human both replace the same runtime-state pointer from distinct
+// 48-byte definition arrays. Human's post-load CString query proves the
+// shared prefix and its field at +0x04.
+struct CUnitStateRecord {
+    UINT m_value00;
+    CString m_marker04;
+    BYTE m_reserved08[0x28];
 };
 
-struct CSecondaryStateRecord {
-    BYTE m_bytes[0x30];
-};
+struct CPrimaryStateRecord : public CUnitStateRecord {};
+
+struct CSecondaryStateRecord : public CUnitStateRecord {};
 
 struct CTertiaryStateRecord {
     BYTE m_bytes[0x1c];

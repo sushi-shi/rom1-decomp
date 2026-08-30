@@ -4,15 +4,67 @@
 #include <Serialization/SpellObjects.h>
 #include <Serialization/WorldRuntimeRecords.h>
 
+#include <string.h>
+
 // The 48-byte CArray element stride and the naturally selected operator[]
 // specialization identify the table used to rebuild Unit+0x3c after load.
 // clang-format off
 DATA(0x00209afc) extern CPrimaryStateRecordArray g_unitStates;
 // clang-format on
 
+// The shared template operators establish the three 60-byte equipment tables,
+// the 64-byte base-item table, and Human's distinct 48-byte state table.
+// clang-format off
+DATA(0x00209a98) extern CEquipmentDefinitionArray g_shieldDefinitions;
+DATA(0x00209aac) extern CEquipmentDefinitionArray g_armorDefinitions;
+DATA(0x00209ac0) extern CEquipmentDefinitionArray g_weaponDefinitions;
+DATA(0x00209ad4) extern CItemDefinitionArray g_itemDefinitions;
+DATA(0x00209b10) extern CSecondaryStateRecordArray g_humanStates;
+// clang-format on
+
 RVA(0x000d9f67, 0x3f)
 static void MarkTokenIdSeen(WORD value) {
     g_seenTokenIds[value >> 5] |= 1 << (value & 31);
+}
+
+// The compact record constructor clears its recovered 0x50-byte state,
+// restores the one default flag, and owns a separately allocated WORD list.
+CWordListRecordCompact::CWordListRecordCompact() {
+    memset(this, 0, sizeof(*this));
+    m_record[8] = 0;
+    m_record[9] = 0;
+    m_record[0x20] = 0;
+    m_record[0x45] = 1;
+    m_words = new CList<WORD, WORD>;
+}
+
+CPlayerUnitGroup::CPlayerUnitGroup() : m_values20(10), m_reference40(0), m_reference44(0) {
+    m_archive3c = new CWordListRecordCompact;
+}
+
+void CPlayerUnitGroup::AddUnit(Unit* unit) {
+    if (unit->m_group70 != 0) {
+        unit->m_group70->RemoveUnit(unit);
+    }
+    m_units.AddTail(unit);
+    unit->m_group70 = this;
+    m_reference44 = unit->m_reference14;
+}
+
+void CPlayerUnitGroup::RemoveUnit(Unit* unit) {
+    POSITION position = m_units.Find(unit);
+    if (position != 0) {
+        m_units.RemoveAt(position);
+    }
+    unit->m_group70 = 0;
+}
+
+int CPlayerUnitGroupCollection::GetCount() const {
+    return m_groups.GetCount();
+}
+
+void CPlayerUnitGroupCollection::Add(CPlayerUnitGroup* group) {
+    m_groups.AddTail(group);
 }
 
 // Located support identities. Their bodies remain explicit campaign work;
@@ -31,6 +83,43 @@ CScenarioSecondary::CScenarioSecondary() {}
 RVA(0x0011033a, 0x19)
 void CScenarioPrimary::Serialize(CArchive& archive) {
     (void)archive;
+}
+
+RVA(0x00110353, 0x10d)
+void CPlayerUnitGroupCollection::Serialize(CArchive& archive) {
+    if (archive.IsStoring()) {
+        archive << static_cast<UINT>(GetCount());
+        CPlayerUnitGroupIterator iterator;
+        CPlayerUnitGroup* group = static_cast<CPlayerUnitGroup*>(iterator.First(this));
+        while (group != 0) {
+            group->Serialize(archive);
+            group = static_cast<CPlayerUnitGroup*>(iterator.Next());
+        }
+        return;
+    }
+
+    UINT count;
+    archive >> count;
+    for (int i = 1; i <= static_cast<int>(count); i++) {
+        CPlayerUnitGroup* group = new CPlayerUnitGroup;
+        group->Serialize(archive);
+        Add(group);
+    }
+}
+
+RVA(0x001104d6, 0xa1)
+void Weapon::Serialize(CArchive& archive) {
+    Item::Serialize(archive);
+    m_damage52.Serialize(archive);
+    m_shared6a.Serialize(archive);
+    if (archive.IsStoring()) {
+        archive << m_value50;
+        archive << m_spell80;
+    } else {
+        archive >> m_value50;
+        archive >> m_spell80;
+        m_definition3c = &g_weaponDefinitions[m_value0c];
+    }
 }
 
 // Source-complete: normalized bytes are identical; the sole remaining score
@@ -218,9 +307,113 @@ void Token::Serialize(CArchive& archive) {
     }
 }
 
+RVA(0x0011103f, 0x4f)
+void Shield::Serialize(CArchive& archive) {
+    Item::Serialize(archive);
+    m_shared50.Serialize(archive);
+    if (archive.IsStoring()) {
+        return;
+    }
+    m_definition3c = &g_shieldDefinitions[m_value0c];
+}
+
 RVA(0x0011108e, 0x5a)
 void CWorldObjectRegistry::Serialize(CArchive& archive) {
     (void)archive;
+}
+
+RVA(0x001110e8, 0x39e)
+void Player::Serialize(CArchive& archive) {
+    CObject::Serialize(archive);
+    if (archive.IsStoring()) {
+        archive << m_name18;
+        archive << m_value04;
+        archive << m_value08;
+        archive.Write(m_raw10, sizeof(m_raw10));
+        archive << m_value44;
+        archive << m_value28;
+        archive << m_value2c;
+        archive << TransformPlayerReference(m_reference38);
+        archive << m_value3c;
+        archive << m_value3d;
+        archive << TransformPlayerReference(m_reference48);
+        archive << m_value50;
+
+        short value54 = static_cast<short>(m_value54 > 0x7fff ? 0x7fff : m_value54);
+        short value4c = static_cast<short>(m_value4c > 0x7fff ? 0x7fff : m_value4c);
+        archive << value54;
+        archive << value4c;
+        archive << m_value58;
+        archive << m_reference34;
+        archive << reinterpret_cast<UINT>(this); // proven raw pointer identity
+    } else {
+        archive >> m_name18;
+        archive >> m_value04;
+        archive >> m_value08;
+        archive.Read(m_raw10, sizeof(m_raw10));
+        archive >> m_value44;
+        archive >> m_value28;
+        archive >> m_value2c;
+        archive >> m_reference38;
+        m_reference38 = TransformPlayerReference(m_reference38);
+        archive >> m_value3c;
+        archive >> m_value3d;
+        archive >> m_reference48;
+        m_reference48 = TransformPlayerReference(m_reference48);
+        archive >> m_value50;
+
+        short value54;
+        short value4c;
+        archive >> value54;
+        archive >> value4c;
+        m_value54 = value54;
+        m_value4c = value4c;
+        archive >> m_value58;
+
+        UINT reference;
+        archive >> reference;
+        m_reference34 = reference;
+        archive >> reference;
+        g_referenceWorld->m_references.SetAt(
+            reinterpret_cast<void*>(reference), // proven raw pointer identity
+            this
+        );
+    }
+
+    m_groups24->Serialize(archive);
+    m_archive30->Serialize(archive);
+    m_object40->Serialize(archive);
+
+    if (!archive.IsStoring()) {
+        ResolvePlayerReference(&m_reference34);
+
+        CPlayerUnitGroupIterator groups;
+        CWorldItemList* group = groups.First(m_groups24);
+        while (group != 0) {
+            CWorldItemIterator items;
+            CWorldItem* item = items.First(group);
+            while (item != 0) {
+                m_itemManager20->Remove(item);
+                item->m_owner14 = this;
+                item = items.Next();
+            }
+            group = groups.Next();
+        }
+    }
+}
+
+RVA(0x00111486, 0x76)
+void Diary::Serialize(CArchive& archive) {
+    m_entries04.Serialize(archive);
+    m_entries18.Serialize(archive);
+    if (archive.IsStoring()) {
+        archive << m_reference2c;
+    } else {
+        UINT reference;
+        archive >> reference;
+        m_reference2c = reference;
+        ResolveTokenReference(&m_reference2c);
+    }
 }
 
 RVA(0x001114fc, 0x19)
@@ -235,6 +428,53 @@ void CScenarioSecondary::Serialize(CArchive& archive) {
 
 RVA(0x00111531, 0x5a)
 void CScenarioSecondary::Activate() {}
+
+RVA(0x0011158b, 0xc8)
+void Outpost::Serialize(CArchive& archive) {
+    Building::Serialize(archive);
+    if (archive.IsStoring()) {
+        archive << m_value84;
+        archive << m_value88;
+        archive << m_value80;
+        archive << m_value8c;
+    } else {
+        archive >> m_value84;
+        archive >> m_value88;
+        archive >> m_value80;
+        archive >> m_value8c;
+    }
+    m_placements.Serialize(archive);
+}
+
+RVA(0x00111653, 0x16c)
+void Item::Serialize(CArchive& archive) {
+    Token::Serialize(archive);
+    m_effects.Serialize(archive);
+    if (archive.IsStoring()) {
+        archive << m_value40;
+        archive << m_value42;
+        archive << m_value44;
+        archive << m_value45;
+        archive << m_value46;
+        archive << m_value48;
+        archive << m_value4a;
+        archive << m_value47;
+    } else {
+        archive >> m_value40;
+        archive >> m_value42;
+        archive >> m_value44;
+        archive >> m_value45;
+        archive >> m_value46;
+        archive >> m_value48;
+        archive >> m_value4a;
+        archive >> m_value47;
+        if (g_itemDefinitions.GetSize() > m_value0c) {
+            m_definition3c = &g_itemDefinitions[m_value0c];
+        } else {
+            m_definition3c = 0;
+        }
+    }
+}
 
 RVA(0x001117bf, 0xd9)
 void Humanoid::Serialize(CArchive& archive) {
@@ -254,6 +494,70 @@ void Humanoid::Serialize(CArchive& archive) {
     }
 }
 
+RVA(0x00111898, 0xab)
+void Human::Serialize(CArchive& archive) {
+    Humanoid::Serialize(archive);
+    if (archive.IsStoring()) {
+        return;
+    }
+    if (m_value0e < 0x21) {
+        m_state3c = &g_humanStates[m_value0c];
+    } else {
+        m_state3c = &g_humanStates[5];
+    }
+
+    if (m_value14c != 0) {
+        if (m_state3c != 0) {
+            if (m_state3c->m_marker04.Find("NPC") == -1) {
+                m_value14c = 0;
+            }
+        } else {
+            m_value14c = 0;
+        }
+    }
+}
+
+RVA(0x00111943, 0x54)
+void Sack::Serialize(CArchive& archive) {
+    Token::Serialize(archive);
+    if (archive.IsStoring()) {
+        archive << m_value3c;
+    } else {
+        archive >> m_value3c;
+    }
+    m_itemList40->Serialize(archive);
+}
+
+void CPlayerUnitGroup::Serialize(CArchive& archive) {
+    m_values20.Serialize(archive);
+    m_archive3c->Serialize(archive);
+    if (archive.IsStoring()) {
+        m_units.Serialize(archive);
+        archive << m_reference1c;
+        archive << m_reference40;
+        archive << m_reference44;
+        return;
+    }
+
+    m_units.RemoveAll();
+    UINT count;
+    archive >> count;
+    for (int i = 1; i <= static_cast<int>(count); i++) {
+        Unit* unit;
+        archive >> unit;
+        AddUnit(unit);
+    }
+    archive >> m_reference1c;
+
+    UINT reference;
+    archive >> reference;
+    m_reference40 = reference;
+    ResolvePlayerReference(&m_reference40);
+    archive >> reference;
+    m_reference44 = reference;
+    ResolveTokenReference(&m_reference44);
+}
+
 RVA(0x00111ab2, 0x63)
 void CUnitItemList::Serialize(CArchive& archive) {
     m_items.Serialize(archive);
@@ -263,6 +567,18 @@ void CUnitItemList::Serialize(CArchive& archive) {
     } else {
         archive >> m_value1c;
         archive >> m_value20;
+    }
+}
+
+RVA(0x00111b35, 0x6d)
+void Armor::Serialize(CArchive& archive) {
+    Item::Serialize(archive);
+    m_shared52.Serialize(archive);
+    if (archive.IsStoring()) {
+        archive << m_value50;
+    } else {
+        archive >> m_value50;
+        m_definition3c = &g_armorDefinitions[m_value0c];
     }
 }
 
@@ -304,4 +620,12 @@ template void CArchivePointerList<Effect*>::Serialize(CArchive& archive);
 RVA_COMPGEN(0x00118990, 0xb0, ?Serialize@?$CArchivePointerList@PAVItem@@@@QAEXAAVCArchive@@@Z)
 template void CArchivePointerList<Item*>::Serialize(CArchive& archive);
 
+RVA_COMPGEN(0x00119210, 0x20, ??A?$CArray@UCEquipmentDefinitionRecord@@AAU1@@@QAEAAUCEquipmentDefinitionRecord@@H@Z)
+RVA_COMPGEN(0x00119370, 0x20, ?GetSize@?$CArray@UCItemDefinitionRecord@@AAU1@@@QBEHXZ)
+RVA_COMPGEN(0x001195b0, 0x20, ??A?$CArray@UCItemDefinitionRecord@@AAU1@@@QAEAAUCItemDefinitionRecord@@H@Z)
 RVA_COMPGEN(0x00119d10, 0x20, ??A?$CArray@UCPrimaryStateRecord@@AAU1@@@QAEAAUCPrimaryStateRecord@@H@Z)
+RVA_COMPGEN(0x0011a0d0, 0x20, ??A?$CArray@UCSecondaryStateRecord@@AAU1@@@QAEAAUCSecondaryStateRecord@@H@Z)
+
+RVA_COMPGEN(0x00122960, 0x20, ?ElementAt@?$CArray@UCEquipmentDefinitionRecord@@AAU1@@@QAEAAUCEquipmentDefinitionRecord@@H@Z)
+RVA_COMPGEN(0x00122b70, 0x20, ?ElementAt@?$CArray@UCItemDefinitionRecord@@AAU1@@@QAEAAUCItemDefinitionRecord@@H@Z)
+RVA_COMPGEN(0x00123150, 0x20, ?ElementAt@?$CArray@UCSecondaryStateRecord@@AAU1@@@QAEAAUCSecondaryStateRecord@@H@Z)

@@ -52,6 +52,7 @@ private:
 
 class CWordListRecordCompact {
 public:
+    CWordListRecordCompact();
     void Serialize(CArchive& archive);
 
 private:
