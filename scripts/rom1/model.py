@@ -51,7 +51,7 @@ _SIZE_AUTHORITY = {"src", "src_compgen", "src_dyninit", "src_data_compgen",
 
 #: census kinds a func claim may bind, per channel
 _FUNC_KINDS = {"src": {"", "helper"}, "src_compgen": {"", "helper"},
-               "src_dyninit": {""}, "functions_zlib": {""},
+               "src_dyninit": {"", "helper"}, "functions_zlib": {""},
                "functions_static_libs": {"", "thunk", "helper"}}
 
 #: census kind a data channel implies (None = any non-bookkeeping kind)

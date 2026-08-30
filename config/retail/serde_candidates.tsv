@@ -221,7 +221,7 @@ rva	signals	status	note
 0x124440	archive-read,archive-write	target	initial retail call/vtable census
 0x1245e0	archive-read,archive-write	target	initial retail call/vtable census
 0x1247a0	archive-read,archive-write	target	initial retail call/vtable census
-0x124bc0	archive-read,archive-write	target	initial retail call/vtable census
+0x124bc0	archive-read,archive-write	reconstructed	source-owned MFC SerializeElements<DWORD> instantiation; 40.57% compiler-context residual
 0x124c00	archive-read,archive-write	target	initial retail call/vtable census
 0x1250a0	archive-read,archive-write	target	initial retail call/vtable census
 0x125230	archive-read,archive-write	target	initial retail call/vtable census
@@ -243,7 +243,7 @@ rva	signals	status	note
 0x139100	archive-read,archive-write	target	initial retail call/vtable census
 0x139210	archive-read,archive-write	target	initial retail call/vtable census
 0x139310	archive-read,archive-write	target	initial retail call/vtable census
-0x139350	archive-read,archive-write	target	initial retail call/vtable census
+0x139350	archive-read,archive-write	reconstructed	source-owned CWorldRuntime serializer placeholder; 0.76%, implementation remains open
 0x13db00	archive-read,archive-write	reconstructed	100%; exact complete-object 0x50-byte raw archive serializer
 0x13dbc0	archive-read,archive-write	reconstructed	100%; exact complete-object 0x48-byte raw archive serializer
 0x13dc80	archive-read,archive-write	reconstructed	100%; exact complete-object 0x0c-byte raw archive serializer
@@ -264,10 +264,10 @@ rva	signals	status	note
 0x1405e0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x141c90	file-read	target	initial retail call/vtable census
 0x144a70	archive-read,archive-write	reconstructed	exact CTokenPayload raw 12-byte serializer
-0x144aa0	archive-read,archive-write	target	initial retail call/vtable census
+0x144aa0	archive-read,archive-write	reconstructed	source-complete CWorldMapData serializer; 84.81% VC5 inline/call-set residual
 0x14d500	archive-read,archive-write	target	initial retail call/vtable census
 0x14fa40	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x14ffb0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x14ffb0	archive-read,archive-vslot2,archive-write	reconstructed	source-owned CMap<WORD, WORD, CWorldMapRecord, CWorldMapRecord&> serializer; 32.40% compiler-context residual
 0x1501d0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x1503e0	archive-read,archive-vslot2,archive-write	reconstructed	exact CList<DWORD, DWORD> count and DWORD element serializer; 100%
 0x1536b5	archive-read	static-library	initial retail call/vtable census; CArchiveStream::Read

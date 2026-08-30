@@ -558,6 +558,24 @@ def _model(functions=(), data=(), violations=()):
 
 
 class UniqueNamesControls(unittest.TestCase):
+    def test_dyninit_pin_may_bind_partition_proven_helper(self):
+        from rom1 import model
+        from rom1.retail_labels import Claim
+
+        claim = Claim(0x1000, "s_runtimeClass", "func", "src_dyninit",
+                      0x10, "probe", {})
+        functions = [{"rva": 0x1000, "size": 0x10, "kind": "helper"}]
+        with mock.patch.object(model.censuses, "functions", return_value=functions), \
+             mock.patch.object(model.censuses, "data", return_value=[]), \
+             mock.patch.object(model.censuses, "link_order_bands", return_value=[]), \
+             mock.patch.object(model.providers, "all_claims", return_value=[]), \
+             mock.patch.object(model.src_claims, "all_claims", return_value=[claim]):
+            resolved = model.resolve()
+
+        self.assertEqual(resolved.violations, [])
+        self.assertEqual(resolved.functions[0].channel, "src_dyninit")
+        self.assertEqual(resolved.functions[0].kind, "helper")
+
     def test_one_name_at_two_rvas_is_fatal(self):
         from rom1.verify import unique_names
         m = _model([_binding(0x1000, "?F@@YAXXZ"),
