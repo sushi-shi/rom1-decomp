@@ -155,16 +155,18 @@ typedef CMap<WORD, WORD, CWorldMapRecord, CWorldMapRecord&> CWorldMapRecordMap;
 class CWorldMapData {
 public:
     CWorldMapData(CScenarioResource* resource, CWorldItemManager* itemManager);
+    void LoadTileTable(const char* path, UINT width, UINT height, UINT value);
     void Serialize(CArchive& archive);
     void Activate();
 
 private:
-    BYTE m_reserved00000[0x10000];
-    BYTE m_lowTileCodes[0x10000];
-    BYTE m_highTileCodes[0x10000];
-    BYTE m_reserved30000[0x240b4];
+    BYTE m_tileValues[0x500][0x100];
+    UINT m_tileTableWidth;
+    UINT m_tileTableHeight;
+    BYTE m_reserved50008[0x40ac];
     CWorldMapRecordMap m_records;
-    BYTE m_reserved540d0[0x50488];
+    BYTE m_reserved540d0[0x50484];
+    UINT m_valuea4554;
 };
 
 class CWorldRuntime {

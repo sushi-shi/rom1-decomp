@@ -262,7 +262,7 @@ rva	signals	status	note
 0x140270	archive-read,archive-vslot2,archive-write	reconstructed	exact BYTE CList template serializer; 100%
 0x1403f0	archive-read,archive-vslot2,archive-write	reconstructed	exact BYTE CArray template serializer; 100%
 0x1405e0	archive-read,archive-vslot2,archive-write	reconstructed	exact object-pointer CList template serializer; 100%
-0x141c90	file-read	target	initial retail call/vtable census
+0x141c90	file-read	reconstructed	source-complete CWorldMapData tile-digit table loader; 99.98%, sole two-load scheduling residue
 0x144a70	archive-read,archive-write	reconstructed	exact CTokenPayload raw 12-byte serializer
 0x144aa0	archive-read,archive-write	reconstructed	source-complete CWorldMapData serializer; 84.81% VC5 inline/call-set residual
 0x14d500	archive-read,archive-write	reconstructed	exact Unit-owned raw 0xb4-byte record serializer; 100%

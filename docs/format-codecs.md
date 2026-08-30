@@ -624,6 +624,14 @@ wall because VC5 expands a different pair of archive primitives; diagnosis and
 two bounded permutation campaigns identify TU inline context, rather than a
 source-semantic discrepancy, as the remaining lever.
 
+The neighboring `CWorldMapData` table loader at `0x141c90` is source-complete
+at 99.98%. It reads the complete named file through `CFile`, decodes a bounded
+rectangle of ASCII digits into the same 256-byte-stride tile planes, applies
+the retail zero-cell sentinels, and preserves the exact width, height, and
+trailing owner fields. Base and target have the same 365-byte extent, 109
+instructions, six calls, five branches, and seven ordered relocations; only
+the interchangeable scheduling of the two address-component loads remains.
+
 Three neighboring Unit-support serializers are independently byte-exact. The
 body at `0x14d500` transfers one complete 0xb4-byte Unit-owned record. The
 natural pinned-header emissions at `0x14fa40` and `0x1501d0` serialize a

@@ -3,12 +3,45 @@
 #include <Serialization/SpellObjects.h>
 #include <Serialization/WorldRuntimeRecords.h>
 
+#include <stdlib.h>
+
 RVA_COMPGEN(0x00124bc0, 0x40, ?SerializeElements@@YGXAAVCArchive@@PAKH@Z)
 
 RVA(0x00141830, 0x28f)
 CWorldMapData::CWorldMapData(CScenarioResource* resource, CWorldItemManager* itemManager) {
     (void)resource;
     (void)itemManager;
+}
+
+// @dead-code
+// Zero-ref: no direct callers, relocated references, or live ILT forwarders in retail.
+RVA(0x00141c90, 0x16d)
+void CWorldMapData::LoadTileTable(const char* path, UINT width, UINT height, UINT value) {
+    UINT offset = 0;
+    CFile file(path, 0);
+    m_tileTableWidth = width & 0xff;
+    m_tileTableHeight = height & 0xff;
+
+    DWORD length = file.GetLength();
+    BYTE* bytes = static_cast<BYTE*>(malloc(length));
+    file.Read(bytes, length);
+
+    for (WORD row = 0; row < static_cast<BYTE>(height); row++) {
+        for (WORD column = 0; column < static_cast<BYTE>(width); column++) {
+            if ((m_tileValues[static_cast<BYTE>(row + 8)][static_cast<BYTE>(column + 8)] =
+                     bytes[offset] - '0')
+                == 0) {
+                m_tileValues[static_cast<BYTE>(row + 8) + 0x100][static_cast<BYTE>(column + 8)] =
+                    0x1f;
+                m_tileValues[static_cast<BYTE>(row + 8)][static_cast<BYTE>(column + 8)] = 0xff;
+            }
+            offset++;
+        }
+        offset += 2;
+    }
+
+    free(bytes);
+    m_valuea4554 = value;
 }
 
 RVA(0x00144a70, 0x23)
@@ -25,7 +58,7 @@ void CWorldMapData::Serialize(CArchive& archive) {
     CList<DWORD, DWORD> exceptionalTiles;
 
     if (archive.IsStoring()) {
-        const BYTE* highTileCodes = m_highTileCodes;
+        const BYTE* highTileCodes = m_tileValues[0x200];
         const BYTE* highTileCode = &highTileCodes[0x807];
         for (UINT remaining = 0xe5e7; remaining != 0; remaining--, highTileCode++) {
             if (*highTileCode > 15) {
@@ -56,8 +89,8 @@ void CWorldMapData::Serialize(CArchive& archive) {
         while (position != NULL) {
             DWORD value = exceptionalTiles.GetNext(position);
             WORD index = HIWORD(value);
-            m_highTileCodes[index] = HIBYTE(LOWORD(value));
-            m_lowTileCodes[index] = LOBYTE(value);
+            m_tileValues[0x200][index] = HIBYTE(LOWORD(value));
+            m_tileValues[0x100][index] = LOBYTE(value);
         }
     }
 }
