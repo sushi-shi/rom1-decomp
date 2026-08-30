@@ -386,6 +386,16 @@ nested polymorphic object at `+0x08`, five raw WORDs, fixed two- and ten-entry
 CStringArray loops, a raw 72-byte record, and CString extensions. Names that
 did not survive remain evidence-neutral rather than guessed.
 
+The four raw-record serializers at `0x13db00`, `0x13dbc0`, `0x13dc80`, and
+`0x13dcc0` are also exact. The first three apply the same bidirectional
+complete-object archive operation to 0x50-, 0x48-, and 0x0c-byte records. The
+fourth writes or reads a 24-byte owner and then dispatches two game-owned list
+serializers. Its load arm deletes the old lists, allocates two 28-byte MFC-list
+layouts with block size ten, and overwrites the stale raw pointers before
+virtual dispatch. The list vtables and slot-2 element widths prove the class
+shapes, but no original class names survive, so the source names record only
+those evidenced roles.
+
 The ANSI CString bytes are the exact VC5 SP2 `ARCCORE.CPP` grammar that the
 retail static-library operators implement:
 

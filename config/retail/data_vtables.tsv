@@ -309,8 +309,8 @@ rva	size	name	kind	note
 0x19cc28	0x14	__rom1_vtable_19cc28	unresolved	code-ref; 5 exact slots; 5 code ref(s); promote only with reconstructed source
 0x19cc40	0x14	__rom1_vtable_19cc40	unresolved	code-ref; 5 exact slots; 5 code ref(s); promote only with reconstructed source
 0x19cc58	0x14	__rom1_vtable_19cc58	unresolved	code-ref; 5 exact slots; 5 code ref(s); promote only with reconstructed source
-0x19cc90	0x14	__rom1_vtable_19cc90	unresolved	runtime-class; 5 exact slots; 0 code ref(s); promote only with reconstructed source
-0x19cca8	0x14	__rom1_vtable_19cca8	unresolved	code-ref; 5 exact slots; 8 code ref(s); promote only with reconstructed source
+0x19cc90	0x14	??_7CArchiveDwordList@@6B@	unresolved	runtime-class; 5 exact slots; source name is evidence-neutral because the original name did not survive
+0x19cca8	0x14	??_7CArchiveTripleList@@6B@	unresolved	code-ref; 5 exact slots; source name is evidence-neutral because the original name did not survive
 0x19ccc0	0x14	__rom1_vtable_19ccc0	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source
 0x19ccd8	0x14	__rom1_vtable_19ccd8	unresolved	code-ref; 5 exact slots; 2 code ref(s); promote only with reconstructed source
 0x19ccf0	0x14	__rom1_vtable_19ccf0	unresolved	code-ref; 5 exact slots; 3 code ref(s); promote only with reconstructed source

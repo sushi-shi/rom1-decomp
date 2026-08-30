@@ -40,6 +40,7 @@ dib	8	6
 directxexception	1	0
 itemnames	11	3
 pixmap	9	6
+referencerecords	10	6
 referencesnapshot	1	1
 referenceworld	4	4
 resourcefile	6	3
@@ -127,6 +128,16 @@ pixmap	?Load@CPixMap@@QAEXAAVCString@@@Z	99.8684	99.8684	1	94f3886c1272	0x8d330	
 pixmap	?LoadBMP@CPixMap@@AAEHAAVCString@@@Z	100.0000	100.0000	1	797728b01c2a	0x8d5e0	100.0000	
 pixmap	?LoadPCX@CPixMap@@AAEHAAVCString@@@Z	100.0000	100.0000	1	b0615ba4f70b	0x8d5d0	100.0000	
 pixmap	?LoadPPM@CPixMap@@AAEHAAVCString@@@Z	99.8630	99.8630	1	b7f5d538c120	0x8d430	99.8630	
+referencerecords	??1CArchiveDwordList@@UAE@XZ	4.2424	4.2424	1	8049336762d1	0x140070	4.2424	absent
+referencerecords	??1CArchiveTripleList@@UAE@XZ	4.2424	4.2424	1	7ffda99044ae	0x140a20	4.2424	absent
+referencerecords	??_GCArchiveDwordList@@UAEPAXI@Z	100.0000	100.0000	1	cpp:e23503b320db	0x140a90	100.0000	absent
+referencerecords	??_GCArchiveTripleList@@UAEPAXI@Z	100.0000	100.0000	1	cpp:e23503b320db	0x140a00	100.0000	absent
+referencerecords	?Serialize@CArchiveDwordList@@UAEXAAVCArchive@@@Z	0.9009	0.9009	1	bbedceead0e2	0x1400e0	0.9009	absent
+referencerecords	?Serialize@CArchiveListPairRecord@@QAEXAAVCArchive@@@Z	100.0000	100.0000	1	1bd02c70ad1c	0x13dcc0	100.0000	
+referencerecords	?Serialize@CArchiveTripleList@@UAEXAAVCArchive@@@Z	1.0989	1.0989	1	c63417f1e51b	0x13ff30	1.0989	absent
+referencerecords	?Serialize@CRawArchiveRecord@@QAEXAAVCArchive@@@Z	100.0000	100.0000	1	91ef84af9ef9	0x13dc80	100.0000	
+referencerecords	?Serialize@CReferenceRecordCompact@@QAEXAAVCArchive@@@Z	100.0000	100.0000	1	88adfedf45e3	0x13dbc0	100.0000	
+referencerecords	?Serialize@CReferenceRecordLarge@@QAEXAAVCArchive@@@Z	100.0000	100.0000	1	f2656c96762c	0x13db00	100.0000	
 referencesnapshot	?Serialize@CReferenceSnapshot@@QAEXAAVCArchive@@@Z	100.0000	100.0000	1	bb18b5f7c678	0x13e840	100.0000	
 referenceworld	??BCString@@QBEPBDXZ	100.0000	100.0000	1	cpp:760d527cda0a	0x47c10	100.0000	
 referenceworld	??_GCScenarioResource@@QAEPAXI@Z	100.0000	100.0000	1	cpp:760d527cda0a	0x114880	100.0000	

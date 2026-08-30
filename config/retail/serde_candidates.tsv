@@ -244,10 +244,10 @@ rva	signals	status	note
 0x139210	archive-read,archive-write	target	initial retail call/vtable census
 0x139310	archive-read,archive-write	target	initial retail call/vtable census
 0x139350	archive-read,archive-write	target	initial retail call/vtable census
-0x13db00	archive-read,archive-write	target	initial retail call/vtable census
-0x13dbc0	archive-read,archive-write	target	initial retail call/vtable census
-0x13dc80	archive-read,archive-write	target	initial retail call/vtable census
-0x13dcc0	archive-read,archive-write	target	initial retail call/vtable census
+0x13db00	archive-read,archive-write	reconstructed	100%; exact complete-object 0x50-byte raw archive serializer
+0x13dbc0	archive-read,archive-write	reconstructed	100%; exact complete-object 0x48-byte raw archive serializer
+0x13dc80	archive-read,archive-write	reconstructed	100%; exact complete-object 0x0c-byte raw archive serializer
+0x13dcc0	archive-read,archive-write	reconstructed	100%; exact 24-byte owner, dual list allocation, and ordered virtual dispatch
 0x13e840	archive-read,archive-write	reconstructed	exact raw 0x190-byte CReferenceSnapshot serializer; 100%
 0x13ec20	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x13eec0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject

@@ -127,3 +127,8 @@ flags = "cpp"
 unit = "tokenpayload"
 source = "src/Serialization/TokenPayload.cpp"
 flags = "cpp"
+
+[[unit]]
+unit = "referencerecords"
+source = "src/Serialization/ReferenceRecords.cpp"
+flags = "cpp"

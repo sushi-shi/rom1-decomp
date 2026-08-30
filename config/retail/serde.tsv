@@ -67,6 +67,10 @@ item-name-ids	0x068490	load raw little-endian item IDs	near-exact	98.77%; itemna
 archive-pointer-words	0x069390	bidirectional CArchive raw pointer vector	near-exact	81.44%; exact 0x188 extent + WriteCount/ReadCount and raw Write/Read xrefs + mapped oracle
 scenario-map	0x144aa0	exceptional-tile/map serializer	near-exact	84.81%; source-complete store/load topology; residual VC5 inline/call-set wall tied to neighboring TU context
 archive-container	0x1503e0	CList<DWORD, DWORD> serializer	exact	100%; exact 0x118 extent + WriteCount/ReadCount and DWORD element transfer
+archive-record	0x13db00	bidirectional raw 0x50-byte record	exact	100%; complete-object Write/Read and exact FPO extent
+archive-record	0x13dbc0	bidirectional raw 0x48-byte record	exact	100%; complete-object Write/Read and exact FPO extent
+archive-record	0x13dc80	bidirectional raw 0x0c-byte record	exact	100%; complete-object Write/Read and exact FPO extent
+archive-record	0x13dcc0	bidirectional 24-byte list-pair owner	exact	100%; raw owner plus two allocation/vtable/virtual-dispatch sequences
 bute-resource	0x063760	deserialize global-map object table	located	startup xref + Scenario\\GlobalMap.reg + General/ObjectCount and MapObject%d field reads
 bute-resource	0x0878a0	read mission map-object count	exact	100%; Scenario\\GlobalMap.reg + MissionObjects/Mission%d indexed read
 bute-resource	0x08a330	read mission map picture metadata	located	Scenario\\GlobalMap.reg + MapObject%d Picture/PictureOffset field reads
