@@ -107,23 +107,23 @@ rva	signals	status	note
 0x0f8a4f	archive-read	target	initial retail call/vtable census
 0x0f8e4e	archive-read	target	initial retail call/vtable census
 0x0fa69a	archive-read,archive-write	target	initial retail call/vtable census
-0x0fa9f5	archive-read,archive-write	target	initial retail call/vtable census
+0x0fa9f5	archive-read,archive-write	reconstructed	exact CDirectDamagePayload raw 24-byte serializer
 0x0faac4	archive-read	target	initial retail call/vtable census
-0x0fc448	archive-read	target	initial retail call/vtable census
-0x0fc59a	archive-read	target	initial retail call/vtable census
-0x0fc8d7	archive-read	target	initial retail call/vtable census
-0x0fda57	archive-read	target	initial retail call/vtable census
-0x0fdda2	archive-read	target	initial retail call/vtable census
+0x0fc448	archive-read	reconstructed	exact IMPLEMENT_SERIAL SpellEffect typed reader
+0x0fc59a	archive-read	reconstructed	exact IMPLEMENT_SERIAL PointEffect typed reader
+0x0fc8d7	archive-read	reconstructed	exact IMPLEMENT_SERIAL AreaEffect typed reader
+0x0fda57	archive-read	reconstructed	exact IMPLEMENT_SERIAL SpellTransport typed reader
+0x0fdda2	archive-read	reconstructed	exact IMPLEMENT_SERIAL Spell typed reader
 0x100742	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Spell
 0x1008ba	archive-read	target	initial retail call/vtable census
-0x100c1d	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Spellbook
-0x100d05	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Effect
-0x100da4	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Effect_DirectDamage
-0x100dcc	archive-vslot2	target	initial retail call/vtable census; slot-2 class=SpellEffect
-0x100e2f	archive-vslot2	target	initial retail call/vtable census; slot-2 class=SpellTransport
-0x100efc	archive-vslot2	target	initial retail call/vtable census; slot-2 class=PointEffect
-0x100fa5	archive-vslot2	target	initial retail call/vtable census; slot-2 class=AreaEffect
-0x101148	archive-read	target	initial retail call/vtable census
+0x100c1d	archive-vslot2	reconstructed	exact Spellbook array/object serializer; slot-2 class=Spellbook
+0x100d05	archive-vslot2	reconstructed	exact Token-derived serializer; slot-2 class=Effect
+0x100da4	archive-vslot2	reconstructed	exact Effect plus raw damage payload serializer; slot-2 class=Effect_DirectDamage
+0x100dcc	archive-vslot2	reconstructed	exact Token-derived serializer; slot-2 class=SpellEffect
+0x100e2f	archive-vslot2	reconstructed	exact object/reference serializer; slot-2 class=SpellTransport
+0x100efc	archive-vslot2	reconstructed	exact object/reference serializer; slot-2 class=PointEffect
+0x100fa5	archive-vslot2	reconstructed	exact byte/WORD/object serializer; slot-2 class=AreaEffect
+0x101148	archive-read	reconstructed	exact IMPLEMENT_SERIAL Effect typed reader
 0x102b3e	archive-read	target	initial retail call/vtable census
 0x10385d	stdio-read	target	initial retail call/vtable census
 0x10418a	archive-read	target	initial retail call/vtable census
@@ -143,7 +143,7 @@ rva	signals	status	note
 0x10f275	archive-read	target	initial retail call/vtable census
 0x1104d6	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Weapon
 0x110577	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=Unit
-0x110ebb	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Token
+0x110ebb	archive-vslot2	reconstructed	exact base Token payload/scalar/reference serializer; slot-2 class=Token
 0x11103f	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Shield
 0x1110e8	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=Player
 0x111486	archive-vslot2	target	initial retail call/vtable census; slot-2 class=Diary
@@ -263,7 +263,7 @@ rva	signals	status	note
 0x1403f0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x1405e0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x141c90	file-read	target	initial retail call/vtable census
-0x144a70	archive-read,archive-write	target	initial retail call/vtable census
+0x144a70	archive-read,archive-write	reconstructed	exact CTokenPayload raw 12-byte serializer
 0x144aa0	archive-read,archive-write	target	initial retail call/vtable census
 0x14d500	archive-read,archive-write	target	initial retail call/vtable census
 0x14fa40	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject

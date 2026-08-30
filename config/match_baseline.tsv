@@ -40,6 +40,8 @@ pixmap	9	6
 resourcefile	4	1
 scenarioconfig	1	1
 smackerplayer	7	7
+spellobjects	34	30
+tokenpayload	1	1
 wordrle	2	2
 wordrletokens	4	4
 # [functions]	unit	function	best_pct	cur_pct	tries	src_hash	rva	hist_pct	state
@@ -124,6 +126,41 @@ smackerplayer	?ApplyPan@CSmackerPlayer@@QAEXXZ	100.0000	100.0000	1	b4334841a281	
 smackerplayer	?GetBufferFormat@CSmackerPlayer@@QAEKPAUIDirectDrawSurface@@@Z	100.0000	100.0000	2	c38d404f6192	0xae7f0	100.0000	
 smackerplayer	?GetMovieSize@CSmackerPlayer@@QBE?AUSmackerSize@@XZ	100.0000	100.0000	1	dc8a04dd8976	0xaedd0	100.0000	
 smackerplayer	?SetDestinationSize@CSmackerPlayer@@QAEXHH@Z	100.0000	100.0000	1	508dfc90a7f1	0xaee00	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVAreaEffect@@@Z	100.0000	100.0000	1	2bce6ebd09a3	0xfc8d7	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVEffect@@@Z	100.0000	100.0000	1	2bce6ebd09a3	0x101148	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVPointEffect@@@Z	100.0000	100.0000	1	2bce6ebd09a3	0xfc59a	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVSpell@@@Z	100.0000	100.0000	1	2bce6ebd09a3	0xfdda2	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVSpellEffect@@@Z	100.0000	100.0000	1	2bce6ebd09a3	0xfc448	100.0000	
+spellobjects	??5@YGAAVCArchive@@AAV0@AAPAVSpellTransport@@@Z	100.0000	100.0000	1	2bce6ebd09a3	0xfda57	100.0000	
+spellobjects	??5CArchive@@QAEAAV0@AAE@Z	98.1818	98.1818	1	cpp:bdc9cc63cdd1	0x1147c0	98.1818	
+spellobjects	??5CArchive@@QAEAAV0@AAF@Z	100.0000	100.0000	1	cpp:bdc9cc63cdd1	0x117730	100.0000	
+spellobjects	??5CArchive@@QAEAAV0@AAG@Z	100.0000	100.0000	1	cpp:bdc9cc63cdd1	0x117750	100.0000	
+spellobjects	??5CArchive@@QAEAAV0@AAI@Z	100.0000	100.0000	1	cpp:bdc9cc63cdd1	0x1147a0	100.0000	
+spellobjects	??5CArchive@@QAEAAV0@AAJ@Z	98.1818	98.1818	1	cpp:bdc9cc63cdd1	0x114820	98.1818	
+spellobjects	??6@YGAAVCArchive@@AAV0@PBVCObject@@@Z	100.0000	100.0000	1	cpp:bdc9cc63cdd1	0x114520	100.0000	
+spellobjects	??6CArchive@@QAEAAV0@E@Z	100.0000	100.0000	1	cpp:bdc9cc63cdd1	0x114700	100.0000	
+spellobjects	??6CArchive@@QAEAAV0@F@Z	100.0000	100.0000	1	cpp:bdc9cc63cdd1	0x1176c0	100.0000	
+spellobjects	??6CArchive@@QAEAAV0@G@Z	100.0000	100.0000	1	cpp:bdc9cc63cdd1	0x1176e0	100.0000	
+spellobjects	??6CArchive@@QAEAAV0@I@Z	100.0000	100.0000	1	cpp:bdc9cc63cdd1	0x1146e0	100.0000	
+spellobjects	??6CArchive@@QAEAAV0@J@Z	100.0000	100.0000	1	cpp:bdc9cc63cdd1	0x114750	100.0000	
+spellobjects	??A?$CArray@PAVSpell@@PAV1@@@QAEAAPAVSpell@@H@Z	100.0000	100.0000	1	cpp:bdc9cc63cdd1	0x11abd0	100.0000	
+spellobjects	?ElementAt@?$CArray@PAVSpell@@PAV1@@@QAEAAPAVSpell@@H@Z	100.0000	100.0000	1	cpp:bdc9cc63cdd1	0x1236c0	100.0000	
+spellobjects	?GetSize@?$CArray@PAVSpell@@PAV1@@@QBEHXZ	100.0000	100.0000	1	cpp:bdc9cc63cdd1	0x11a990	100.0000	
+spellobjects	?MarkTokenIdSeen@@YAXG@Z	100.0000	100.0000	1	2f6888bc142d	0xd9f67	100.0000	
+spellobjects	?ResolveEffectReference@@YAXPAI@Z	100.0000	100.0000	1	0c1b802cd3aa	0x120eb0	100.0000	
+spellobjects	?ResolveTokenReference@@YAXPAI@Z	100.0000	100.0000	1	86c288eb632e	0x121440	100.0000	
+spellobjects	?Serialize@AreaEffect@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	2180cbe88794	0x100fa5	100.0000	
+spellobjects	?Serialize@CDirectDamagePayload@@QAEXAAVCArchive@@@Z	100.0000	100.0000	1	1c7254b5e9aa	0xfa9f5	100.0000	
+spellobjects	?Serialize@Effect@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	81bd60bc1333	0x100d05	100.0000	
+spellobjects	?Serialize@Effect_DirectDamage@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	7cf20c3ca76f	0x100da4	100.0000	
+spellobjects	?Serialize@PointEffect@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	793d9f102ce7	0x100efc	100.0000	
+spellobjects	?Serialize@SpellEffect@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	af653de1175b	0x100dcc	100.0000	
+spellobjects	?Serialize@SpellTransport@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	a9ffee3cd700	0x100e2f	100.0000	
+spellobjects	?Serialize@Spellbook@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	d92e7e7159aa	0x100c1d	100.0000	
+spellobjects	?Serialize@Token@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	03e88090ad70	0x110ebb	100.0000	
+spellobjects	?SetAt@CMapPtrToPtr@@QAEXPAX0@Z	95.3846	95.3846	1	cpp:bdc9cc63cdd1	0x1176a0	95.3846	
+spellobjects	?SetSize@?$CArray@PAVSpell@@PAV1@@@QAEXHH@Z	99.8611	99.8611	1	cpp:bdc9cc63cdd1	0x11a9b0	99.8611	
+tokenpayload	?Serialize@CTokenPayload@@QAEXAAVCArchive@@@Z	100.0000	100.0000	1	f8ba19affff0	0x144a70	100.0000	
 wordrle	?DecodeWordRle@@YAXTByteIntPointer@@HPAPAGPAH@Z	100.0000	100.0000	1	7de0bd6e7163	0x11f1e0	100.0000	
 wordrle	?EncodeWordRle@@YAXPAGHPATByteIntPointer@@PAH@Z	100.0000	100.0000	1	ade872e200bc	0x11f130	100.0000	
 wordrletokens	?DecodeWordRleLiteral@@YAHPATByteWordPointer@@PAPAG@Z	100.0000	100.0000	1	17976cccb2ed	0x127290	100.0000	

@@ -1,4 +1,4 @@
-"""rom1.retail_labels.providers - the six committed claim channels, parse-only.
+"""rom1.retail_labels.providers - committed claim channels, parse-only.
 
 No policy here: LOW rows are returned (the model filters), alias multi-rows
 per rva are returned in file order (the model picks + records aliases).
@@ -45,6 +45,13 @@ def data_vtables(path: Path | None = None) -> list[Claim]:
             for r in _rows("data_vtables.tsv", path)]
 
 
+def data_runtime_classes(path: Path | None = None) -> list[Claim]:
+    return [Claim(int(r["rva"], 16), r["name"], "data",
+                  "data_runtime_classes", rint(r["size"]), "",
+                  {"evidence": r["evidence"]})
+            for r in _rows("data_runtime_classes.tsv", path)]
+
+
 def data_static_libs(path: Path | None = None) -> list[Claim]:
     return [Claim(int(r["rva"], 16), r["name"], "data", "data_static_libs",
                   rint(r["size"]), r["unit"], {"note": r["note"]})
@@ -59,4 +66,5 @@ def data_compgen(path: Path | None = None) -> list[Claim]:
 
 def all_claims() -> list[Claim]:
     return (functions_static_libs() + functions_zlib() + data_zlib()
-            + data_vtables() + data_static_libs() + data_compgen())
+            + data_vtables() + data_runtime_classes() + data_static_libs()
+            + data_compgen())

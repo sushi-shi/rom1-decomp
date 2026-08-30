@@ -59,3 +59,19 @@ archive-object	0x0dfe42	TableLine fixed ten-CString serializer	exact	100%; exact
 archive-object	0x0dffcd	TableLine-derived base-only serializer	exact	100%; vtable slot 2 + sole direct call to TableLine::Serialize
 archive-object	0x0e03d2	TableLine CString extension serializer	exact	100%; explicit base call + CString at +0x1c
 archive-object	0x111b15	embedded CObject virtual serializer	exact	100%; vtable slot 2 + exact indirect nested Serialize dispatch
+spell-effect	0x0fa9f5	direct-damage raw payload	exact	100%; exact 24-byte CArchive Read/Write branches
+spell-effect	0x0fc448	SpellEffect typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
+spell-effect	0x0fc59a	PointEffect typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
+spell-effect	0x0fc8d7	AreaEffect typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
+spell-effect	0x0fda57	SpellTransport typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
+spell-effect	0x0fdda2	Spell typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
+spell-effect	0x100c1d	Spellbook array/object serializer	exact	100%; count, SetSize, and typed object loop topology
+spell-effect	0x100d05	Effect serializer	exact	100%; Token base plus byte/UINT field order
+spell-effect	0x100da4	direct-damage serializer	exact	100%; Effect base plus exact raw payload
+spell-effect	0x100dcc	SpellEffect serializer	exact	100%; Token base plus two BYTE fields
+spell-effect	0x100e2f	SpellTransport serializer	exact	100%; typed object pair plus short field
+spell-effect	0x100efc	PointEffect serializer	exact	100%; typed object plus deferred reference resolution
+spell-effect	0x100fa5	AreaEffect serializer	exact	100%; four BYTE, WORD, and object field order
+spell-effect	0x101148	Effect typed object reader	exact	100%; runtime-class record + CArchive::ReadObject
+spell-effect	0x110ebb	Token base serializer	exact	100%; raw payload, scalar fields, ID bitset, and reference map
+spell-effect	0x144a70	Token raw payload	exact	100%; exact 12-byte CArchive Read/Write branches

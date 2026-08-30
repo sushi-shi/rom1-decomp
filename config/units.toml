@@ -82,3 +82,13 @@ flags = "cpp"
 unit = "archiveobjects"
 source = "src/Serialization/ArchiveObjects.cpp"
 flags = "cpp-od"
+
+[[unit]]
+unit = "spellobjects"
+source = "src/Serialization/SpellObjects.cpp"
+flags = "cpp-od"
+
+[[unit]]
+unit = "tokenpayload"
+source = "src/Serialization/TokenPayload.cpp"
+flags = "cpp"

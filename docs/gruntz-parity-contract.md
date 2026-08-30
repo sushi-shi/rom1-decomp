@@ -315,6 +315,7 @@ The evidence channels preserve Gruntz headers and semantics:
 | `config/functions_static_libs.tsv` | `rva name lib confidence source` |
 | `config/functions_zlib.tsv` | `rva name unit size` |
 | `config/data_vtables.tsv` | `rva size name kind note` |
+| `config/data_runtime_classes.tsv` | RoM1-only reviewed `CRuntimeClass` symbol identities; label-only, never generated source |
 | `config/data_static_libs.tsv` | `rva size name unit note` |
 | `config/data_zlib.tsv` | `rva name unit size` |
 | `config/data_compgen.tsv` | `rva size name owner class` |

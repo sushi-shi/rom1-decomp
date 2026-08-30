@@ -8,8 +8,11 @@ Generated files under `build/` are disposable. A name, function owner, static
 library provider, or relocation becomes authoritative only through a reviewed
 tracked table consumed by the same gates as the Gruntz workflow.
 
-`retail/functions.tsv`, `retail/data.tsv`, and `retail/data_vtables.tsv` are
-seeded once and manually maintained thereafter, exactly like Gruntz.
+`retail/functions.tsv`, `retail/data.tsv`, `retail/data_vtables.tsv`, and the
+RoM1-specific `retail/data_runtime_classes.tsv` identity review are seeded
+once and manually maintained thereafter. The first three retain the exact
+Gruntz lifecycle; the runtime-class table is a target evidence seam because
+RoM1 exposes named MFC serialization records in retail.
 `retail-partition` validates their required executable-native subsets and
 regenerates the companion extent, EH/initializer, thunk, runtime-class, and
 link-band evidence. `rom1 verify vtable-scan --write` is the explicit reviewed

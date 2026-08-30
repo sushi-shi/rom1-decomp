@@ -1,0 +1,13 @@
+# Reviewed MFC CRuntimeClass symbol identities. The record address, size,
+# class name, object size, base record, schema, and create function come from
+# runtime_classes.tsv; the decorated name follows IMPLEMENT_SERIAL exactly.
+rva	size	name	evidence
+0x1c2440	0x18	?classToken@Token@@2UCRuntimeClass@@A	runtime_classes.tsv Token record; IMPLEMENT_SERIAL schema 1
+0x1c2528	0x18	?classSpellEffect@SpellEffect@@2UCRuntimeClass@@A	runtime_classes.tsv SpellEffect record; IMPLEMENT_SERIAL schema 1
+0x1c2540	0x18	?classPointEffect@PointEffect@@2UCRuntimeClass@@A	runtime_classes.tsv PointEffect record; IMPLEMENT_SERIAL schema 1
+0x1c2558	0x18	?classAreaEffect@AreaEffect@@2UCRuntimeClass@@A	runtime_classes.tsv AreaEffect record; IMPLEMENT_SERIAL schema 1
+0x1c3068	0x18	?classSpellTransport@SpellTransport@@2UCRuntimeClass@@A	runtime_classes.tsv SpellTransport record; IMPLEMENT_SERIAL schema 1
+0x1c3080	0x18	?classSpell@Spell@@2UCRuntimeClass@@A	runtime_classes.tsv Spell record; IMPLEMENT_SERIAL schema 1
+0x1c3098	0x18	?classSpellbook@Spellbook@@2UCRuntimeClass@@A	runtime_classes.tsv Spellbook record; IMPLEMENT_SERIAL schema 1
+0x1c3138	0x18	?classEffect@Effect@@2UCRuntimeClass@@A	runtime_classes.tsv Effect record; IMPLEMENT_SERIAL schema 1
+0x1c3150	0x18	?classEffect_DirectDamage@Effect_DirectDamage@@2UCRuntimeClass@@A	runtime_classes.tsv Effect_DirectDamage record; IMPLEMENT_SERIAL schema 1

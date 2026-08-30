@@ -1,5 +1,6 @@
 # Selected-toolchain, globally unique masked COFF providers.
 rva	name	lib	confidence	source
+0x001950	?Serialize@CObject@@UAEXAAVCArchive@@@Z	NAFXCW.LIB	HIGH	retail-vtable: CObject slot 2 is 0x001950 across exact MFC-derived vtables; official MFC virtual signature
 0x0563d0	??0DNameNode@@IAE@XZ	LIBCMT.LIB	HIGH	fid-census:1f18290e7cc8:build/intel/mt_obj/undname.obj:898a0a702900
 0x150c86	?ExtTextOutA@CDC@@UAEHHHIPBUtagRECT@@PBDIPAH@Z	NAFXCW.LIB	HIGH	fid-census:70a8d16f09bf:$NW/wingdi.obj:e0498a2ae480
 0x150cab	?TabbedTextOutA@CDC@@UAE?AVCSize@@HHPBDHHPAHH@Z	NAFXCW.LIB	HIGH	fid-census:70a8d16f09bf:$NW/wingdi.obj:e0498a2ae480
@@ -656,6 +657,8 @@ rva	name	lib	confidence	source
 0x172015	?Serialize@CMapStringToString@@UAEXAAVCArchive@@@Z	NAFXCW.LIB	HIGH	fid-census:70a8d16f09bf:$NW/map_ss.obj:7e4aa9a53100
 0x1721e1	?NewAssoc@CMapPtrToPtr@@IAEPAUCAssoc@1@XZ	NAFXCW.LIB	HIGH	fid-census:70a8d16f09bf:$NW/map_pp.obj:7f089669ca44
 0x172276	?GetValueAt@CMapPtrToPtr@@QBEPAXPAX@Z	NAFXCW.LIB	HIGH	fid-census:70a8d16f09bf:$NW/map_pp.obj:7f089669ca44
+0x1722a9	?Lookup@CMapPtrToPtr@@QBEHPAXAAPAX@Z	NAFXCW.LIB	HIGH	retail-call-topology: exact resolver bodies 0x120eb0/0x121440 call selected-SP2 CMapPtrToPtr::Lookup body
+0x1722cb	??ACMapPtrToPtr@@QAEAAPAXPAX@Z	NAFXCW.LIB	HIGH	retail-call-topology: exact AFXCOLL.INL SetAt wrapper 0x1176a0 calls selected-SP2 CMapPtrToPtr::operator[] body
 0x17235d	?GetNextAssoc@CMapPtrToPtr@@QBEXAAPAU__POSITION@@AAPAX1@Z	NAFXCW.LIB	HIGH	fid-census:70a8d16f09bf:$NW/map_pp.obj:7f089669ca44
 0x172739	?Serialize@CMapStringToOb@@UAEXAAVCArchive@@@Z	NAFXCW.LIB	HIGH	fid-census:70a8d16f09bf:$NW/map_so.obj:26c16686414b
 0x172b6f	?IsKindOf@CObject@@QBEHPBUCRuntimeClass@@@Z	NAFXCW.LIB	HIGH	fid-census:70a8d16f09bf:$NW/objcore.obj:e461dcc6fe22
