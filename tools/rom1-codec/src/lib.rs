@@ -13,6 +13,7 @@ pub mod byte_huffman;
 pub mod character;
 pub mod item_names;
 pub mod ppm;
+pub mod resource_archive;
 pub mod save_game;
 pub mod table_line;
 pub mod word_rle;

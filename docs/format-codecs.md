@@ -206,6 +206,62 @@ grammar and successful unknown-magic no-op while rejecting truncated input,
 invalid dimensions, 32-bit allocation overflow, and undersized output that
 would make the original consume or expose unsafe memory.
 
+## Game `.res` archive namespace
+
+The game archive reader at `0x0c9070` is reached directly from startup, not
+inferred from file extensions. The game `CWinApp::InitInstance` override at
+`0x070b40` mounts `graphics.res`, `main.res`, `patch.res`, `music.res`,
+`video4.res`, `video8.res`, `sfx.res`, `movies.res`, `scenario.res`, and
+`speech.res`, in that order, through the mount wrapper at `0x0c98e0`. It then
+passes `update.lst` to the line reader at `0x0c99f0` before opening typed
+resources such as `main\\text\\itemname.bin`.
+
+This `.res` is the game's own tree container and is unrelated to a Win32
+compiled-resource file:
+
+```text
+u32 root_tag = 0x31415926
+u32 root_first_child
+u32 root_child_count
+u32 root_flags
+u32 index_offset
+u32 record_count
+u8  payload[]
+Record records[record_count]  // normally at index_offset
+
+Record = {
+    u32 tag
+    u32 value                 // child index for a directory, file offset otherwise
+    u32 child_count_or_size
+    u32 flags
+    u8  name[16]
+}
+```
+
+The shared tree walker at `0x0ce7e0` first consumes the archive base name,
+then traverses slash- or backslash-separated components. Ordinary child
+lookup compares at most 15 bytes case-insensitively. The less-common sorted
+directory path uses the retail case-sensitive record comparator. The final
+lookup at `0x0c92f0` returns the archive's `CFile`, absolute payload offset,
+and byte length. `CResourceFile::Read` at `0x0ca100` seeks that owner to
+`offset + position`, clamps reads to the recorded length, and advances the
+view position.
+
+`update.lst` is one printable resource path per line. The reader strips LF
+and CR and the marker at `0x0c9aa0` finds the first matching mounted record
+and sets flag `0x20000000`. Later lookup returns a distinct sentinel for that
+record, preventing fallback into an older archive. This is an overlay
+suppression list, not another serialized object stream.
+
+The independent `no_std` Rust parser preserves tail and inline index modes,
+the directory/leaf field duality, the two name-comparison modes, and the
+disabled-record result. It rejects malformed index, child, and payload
+extents. The `res_inspect` example lists an archive and resolves an optional
+root-prefixed path. It has been exercised against the local retail
+`PATCH.RES`, `WORLD.RES`, `MAIN.RES`, and `SCENARIO.RES`; in particular,
+`main\\text\\itemname.bin` resolves to offset `0x1ff7`, length `0x340` in the
+examined retail `MAIN.RES`. No retail bytes are stored in the repository.
+
 ## Item-name ID table
 
 `LoadItemNames` at `0x068490` opens `main\\text\\itemname.bin`. The file is a

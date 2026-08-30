@@ -82,10 +82,12 @@ The binary foundation and first matching slice are live:
 The first codec and serde anchors are live: the six-function word-RLE stream,
 the complete network byte-Huffman core and raw 1,024-byte statistics format,
 the Windows BMP/contiguous-DIB reader/writer core, `CPixMap`'s P3/P6 PPM
-parser, the raw item-name ID table, and the game-owned `CArchive` pointer-word
-vector, plus the save-game and `.chr` envelopes around word-RLE. All eight
-have independent `no_std` Rust implementations or safe
-parser/writer APIs and mapped-retail execution oracles. Word-RLE covers 32,770
+parser, the game's hierarchical `.res` archive namespace, the raw item-name
+ID table, and the game-owned `CArchive` pointer-word vector, plus the save-game
+and `.chr` envelopes around word-RLE. All nine have independent `no_std` Rust
+implementations or safe parser/writer APIs. The `.res` parser is checked
+against local retail `PATCH.RES`, `WORLD.RES`, `MAIN.RES`, and `SCENARIO.RES`;
+the other eight have mapped-retail execution oracles. Word-RLE covers 32,770
 fabricated cases per dimension; byte-Huffman covers 1,024 tied/random
 tree-and-stream cases plus 4,096 cumulative statistics updates; DIB layout
 covers 98,306 randomized comparisons; PPM covers 65,372 field and decoded-byte

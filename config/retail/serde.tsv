@@ -47,9 +47,22 @@ pixmap-ppm	0x08d330	dispatch format loader	near-exact	99.87%; instructions align
 pixmap-ppm	0x08d430	parse P3/P6 PPM pixels	near-exact	99.83%; instructions align + mapped oracle agrees
 pixmap-ppm	0x08d5d0	PCX loader success stub	exact	retail body + dispatcher arm
 pixmap-ppm	0x08d5e0	BMP loader success stub	exact	retail body + dispatcher arm
+resource-archive	0x070b40	startup mount and typed-load sequence	located	CWinApp vtable slot 22 + exact .res/update.lst string xrefs and call order
+resource-archive	0x0c9070	read .res header and 32-byte tail index	codec-validated	0x31415926 check + exact CFile read/seek topology + local retail archives
+resource-archive	0x0c92f0	resolve record to owner/offset/length	codec-validated	hierarchical lookup call + disabled sentinel + exact three-dword result
+resource-archive	0x0c95b0	open and admit mounted archive	located	archive allocation/read + mounted-array append
+resource-archive	0x0c98e0	normalize and mount archive path	located	direct startup xrefs from every mounted .res string
+resource-archive	0x0c99f0	parse update.lst paths	codec-validated	fgets 255 + printable first byte + CR/LF stripping + record marker call
+resource-archive	0x0c9aa0	mark first mounted matching record disabled	codec-validated	hierarchical lookup + flags OR 0x20000000
+resource-archive	0x0c9ae0	resolve archive or filesystem resource	located	mounted-order lookup + disabled stop + search-path CFile fallback
+resource-archive	0x0c9ed0	open resource-backed CFile view	located	exact owner/offset/length/position field writes
+resource-archive	0x0ca100	bounded resource-backed read	located	owner seek to base+position + length clamp + owner read
+resource-archive	0x0ce7e0	walk archive-root-prefixed record path	codec-validated	root prefix + slash/backslash components + container traversal
+resource-archive	0x0ce8a0	filter final archive record	codec-validated	path walk + exact flags mask 0x40000010
 item-name-ids	0x068490	load raw little-endian item IDs	near-exact	98.77%; itemname.bin string + text/map xrefs + mapped oracle
 archive-pointer-words	0x069390	bidirectional CArchive raw pointer vector	near-exact	81.44%; exact 0x188 extent + WriteCount/ReadCount and raw Write/Read xrefs + mapped oracle
 archive-primitive	0x049770	CArchive IsStoring predicate	exact	100%; exact VC5 SP2 AFX.INL COMDAT instruction extent
+archive-primitive	0x114520	CArchive const-CObject insertion operator	exact	100%; exact VC5 SP2 AFX.INL COMDAT emitted by Spell serializer TU
 archive-object	0x0df278	TableLine CString and nested-object serializer	exact	100%; runtime class + vtable slot 2 + exact archive operator call topology
 archive-object	0x0df2c6	TableLine five-WORD block and nested CStringArray serializer	exact	100%; constructor offsets + raw 10-byte archive calls + nested virtual dispatch
 archive-object	0x0df322	TableLine-named raw 72-byte block serializer	exact	100%; CString at +0x04 + exact 0x48-byte archive extent at +0x20
