@@ -265,10 +265,10 @@ rva	signals	status	note
 0x141c90	file-read	target	initial retail call/vtable census
 0x144a70	archive-read,archive-write	reconstructed	exact CTokenPayload raw 12-byte serializer
 0x144aa0	archive-read,archive-write	reconstructed	source-complete CWorldMapData serializer; 84.81% VC5 inline/call-set residual
-0x14d500	archive-read,archive-write	target	initial retail call/vtable census
-0x14fa40	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x14d500	archive-read,archive-write	reconstructed	exact Unit-owned raw 0xb4-byte record serializer; 100%
+0x14fa40	archive-read,archive-vslot2,archive-write	reconstructed	exact WORD-key/aligned four-byte-value CMap template serializer; 100%
 0x14ffb0	archive-read,archive-vslot2,archive-write	reconstructed	source-owned CMap<WORD, WORD, CWorldMapRecord, CWorldMapRecord&> serializer; 32.40% compiler-context residual
-0x1501d0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
+0x1501d0	archive-read,archive-vslot2,archive-write	reconstructed	exact four-byte-value CList template serializer; 100%
 0x1503e0	archive-read,archive-vslot2,archive-write	reconstructed	exact CList<DWORD, DWORD> count and DWORD element serializer; 100%
 0x1536b5	archive-read	static-library	initial retail call/vtable census; CArchiveStream::Read
 0x15370d	archive-write	static-library	initial retail call/vtable census; CArchiveStream::Write

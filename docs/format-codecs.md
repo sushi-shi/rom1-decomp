@@ -562,5 +562,12 @@ wall because VC5 expands a different pair of archive primitives; diagnosis and
 two bounded permutation campaigns identify TU inline context, rather than a
 source-semantic discrepancy, as the remaining lever.
 
+Three neighboring Unit-support serializers are independently byte-exact. The
+body at `0x14d500` transfers one complete 0xb4-byte Unit-owned record. The
+natural pinned-header emissions at `0x14fa40` and `0x1501d0` serialize a
+WORD-keyed map with a four-byte-aligned mapped value and a list with a
+four-byte value, respectively. Retail node offsets prove the map value's
+four-byte alignment; no MFC or other vendor implementation is reconstructed.
+
 The remaining DIB/BMP paths are the mapped-file wrapper at `0x04afd0` and VFW
 compression at `0x04b4e0`.

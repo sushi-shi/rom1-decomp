@@ -51,7 +51,7 @@ scenarioobjectmap	1	0
 scenariosupport	17	4
 smackerplayer	7	7
 spellobjects	64	61
-tokenpayload	13	6
+tokenpayload	16	9
 wordrle	2	2
 wordrletokens	4	4
 worlditemiterator	3	0
@@ -346,8 +346,11 @@ tokenpayload	?Activate@CWorldMapData@@QAEXXZ	0.8475	0.8475	2	9d30eff0cf8d	0x14d5
 tokenpayload	?AddTail@?$CList@KK@@QAEPAU__POSITION@@K@Z	100.0000	100.0000	1	cpp:1a394f34b136	0x1502f0	100.0000	
 tokenpayload	?NewNode@?$CList@KK@@IAEPAUCNode@1@PAU21@0@Z	100.0000	100.0000	1	cpp:1a394f34b136	0x150780	100.0000	
 tokenpayload	?Serialize@?$CList@KK@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:1a394f34b136	0x1503e0	100.0000	
+tokenpayload	?Serialize@?$CList@UCUnitListValue@@U1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:d9b66891dd42	0x1501d0	100.0000	
+tokenpayload	?Serialize@?$CMap@GGUCUnitMapValue@@U1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:d9b66891dd42	0x14fa40	100.0000	
 tokenpayload	?Serialize@?$CMap@GGUCWorldMapRecord@@AAU1@@@UAEXAAVCArchive@@@Z	32.3986	32.3986	1	cpp:1a394f34b136	0x14ffb0	32.3986	
 tokenpayload	?Serialize@CTokenPayload@@QAEXAAVCArchive@@@Z	100.0000	100.0000	1	f8ba19affff0	0x144a70	100.0000	
+tokenpayload	?Serialize@CUnitRawArchiveRecord@@QAEXAAVCArchive@@@Z	100.0000	100.0000	1	6b7645e67ad9	0x14d500	100.0000	
 tokenpayload	?Serialize@CWorldMapData@@QAEXAAVCArchive@@@Z	84.8128	84.8128	2	d7259a762d92	0x144aa0	84.8128	
 tokenpayload	?SerializeElements@@YGXAAVCArchive@@PAKH@Z	40.5714	40.5714	1	cpp:1a394f34b136	0x124bc0	40.5714	
 wordrle	?DecodeWordRle@@YAXTByteIntPointer@@HPAPAGPAH@Z	100.0000	100.0000	1	7de0bd6e7163	0x11f1e0	100.0000	

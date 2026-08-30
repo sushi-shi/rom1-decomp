@@ -1,6 +1,7 @@
 #include <rva.h>
 
 #include <Serialization/SpellObjects.h>
+#include <Serialization/WorldRuntimeRecords.h>
 
 RVA_COMPGEN(0x00124bc0, 0x40, ?SerializeElements@@YGXAAVCArchive@@PAKH@Z)
 
@@ -61,11 +62,26 @@ void CWorldMapData::Serialize(CArchive& archive) {
     }
 }
 
+RVA(0x0014d500, 0x26)
+void CUnitRawArchiveRecord::Serialize(CArchive& archive) {
+    if (archive.IsStoring()) {
+        archive.Write(this, sizeof(*this));
+    } else {
+        archive.Read(this, sizeof(*this));
+    }
+}
+
 RVA(0x0014d530, 0x14d)
 void CWorldMapData::Activate() {}
 
+RVA_COMPGEN(0x0014fa40, 0x20e, ?Serialize@?$CMap@GGUCUnitMapValue@@U1@@@UAEXAAVCArchive@@@Z)
+template void CUnitValueMap::Serialize(CArchive& archive);
+
 RVA_COMPGEN(0x0014ff20, 0x84, ??1?$CMap@GGUCWorldMapRecord@@AAU1@@@UAE@XZ)
 RVA_COMPGEN(0x0014ffb0, 0x1a8, ?Serialize@?$CMap@GGUCWorldMapRecord@@AAU1@@@UAEXAAVCArchive@@@Z)
+RVA_COMPGEN(0x001501d0, 0x118, ?Serialize@?$CList@UCUnitListValue@@U1@@@UAEXAAVCArchive@@@Z)
+template void CUnitValueList::Serialize(CArchive& archive);
+
 RVA_COMPGEN(0x001502f0, 0x7d, ?AddTail@?$CList@KK@@QAEPAU__POSITION@@K@Z)
 RVA_COMPGEN(0x00150370, 0x65, ??1?$CList@KK@@UAE@XZ)
 RVA_COMPGEN(0x001503e0, 0x118, ?Serialize@?$CList@KK@@UAEXAAVCArchive@@@Z)
