@@ -2,6 +2,29 @@
 
 #include <Graphics/Dib.h>
 
+RVA_COMPGEN(0x0004ad40, 0x57, ?CreateObject@CDib@@SGPAVCObject@@XZ)
+RVA_COMPGEN(0x0004ada0, 0x6, ?GetRuntimeClass@CDib@@UBEPAUCRuntimeClass@@XZ)
+RVA_DYNINIT(0x0004adb0, 0x5, _init_CDib)
+RVA_DYNINIT(0x0004adc0, 0x10, _init_CDib)
+RVA_COMPGEN(0x0004add0, 0x1d, ??5@YGAAVCArchive@@AAV0@AAPAVCDib@@@Z)
+IMPLEMENT_SERIAL(CDib, CObject, 1)
+
+RVA(0x0004adf0, 0x4f)
+CDib::CDib() {
+    m_hFile = 0;
+    m_hBitmap = 0;
+    m_hPalette = 0;
+    m_nBmihAlloc = m_nImageAlloc = DIB_ALLOC_NONE;
+    Empty();
+}
+
+RVA_COMPGEN(0x0004ae40, 0x1e, ??_GCDib@@UAEPAXI@Z)
+
+RVA(0x0004af50, 0x46)
+CDib::~CDib() {
+    Empty();
+}
+
 // @dead-code
 // Zero-ref: the retail accessor has no direct call, data, or vtable reference.
 RVA(0x0004afa0, 0x2d)
@@ -97,6 +120,16 @@ BOOL CDib::Write(CFile* file) {
     }
     END_CATCH
     return TRUE;
+}
+
+RVA(0x0004b950, 0x38)
+void CDib::Serialize(CArchive& archive) {
+    archive.Flush();
+    if (archive.IsStoring()) {
+        Write(archive.GetFile());
+    } else {
+        Read(archive.GetFile());
+    }
 }
 
 RVA(0x0004b990, 0x88)

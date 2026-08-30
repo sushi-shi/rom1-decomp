@@ -17,16 +17,16 @@ rva	signals	status	note
 0x03a2a7	stdio-read	target	initial retail call/vtable census
 0x03af3e	stdio-read	target	initial retail call/vtable census
 0x03d2d2	stdio-read	target	initial retail call/vtable census
-0x049700	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x0498d0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x049ba0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x049ca0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
-0x04a2c0	archive-read,archive-write	target	initial retail call/vtable census
-0x04a5b0	archive-read,archive-write	target	initial retail call/vtable census
-0x04a950	archive-read,archive-write	target	initial retail call/vtable census
-0x04ac10	archive-read,archive-write	target	initial retail call/vtable census
-0x04add0	archive-read	target	initial retail call/vtable census
-0x04b950	archive-vslot2	target	initial retail call/vtable census; slot-2 class=CDib
+0x049700	archive-read,archive-vslot2,archive-write	reconstructed	exact CArray<CStringArray*, CStringArray*> count plus raw-pointer elements
+0x0498d0	archive-read,archive-vslot2,archive-write	reconstructed	exact CArray<CStringTriple*, CStringTriple*> count plus raw-pointer elements
+0x049ba0	archive-read,archive-vslot2,archive-write	reconstructed	exact CArray<WIN32_FIND_DATA, WIN32_FIND_DATA> count plus raw records
+0x049ca0	archive-read,archive-vslot2,archive-write	reconstructed	exact CArray<void*, void*> count plus raw-pointer elements
+0x04a2c0	archive-read,archive-write	reconstructed	exact CStringArray-pointer SerializeElements instantiation
+0x04a5b0	archive-read,archive-write	reconstructed	exact CStringTriple-pointer SerializeElements instantiation
+0x04a950	archive-read,archive-write	reconstructed	exact WIN32_FIND_DATA SerializeElements instantiation
+0x04ac10	archive-read,archive-write	reconstructed	exact opaque-pointer SerializeElements instantiation
+0x04add0	archive-read	reconstructed	exact IMPLEMENT_SERIAL CDib typed reader
+0x04b950	archive-vslot2	reconstructed	exact CDib archive/file bridge; slot-2 class=CDib
 0x062b20	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x066f70	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject
 0x0671b0	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=CObject

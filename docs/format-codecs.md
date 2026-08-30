@@ -149,13 +149,19 @@ models `CFile::Read` and honors `bfOffBits`, retaining any safe pre-pixel gap.
 palette, ignoring `bfOffBits`. Both preserve the recorded `biSize` without
 using it as a layout offset, matching retail.
 
-Six of eight admitted `CDib` bodies are byte-exact: dimensions, logical
+Six of eight codec-facing `CDib` bodies are byte-exact: dimensions, logical
 palette construction, the `CFile` reader, metrics, ownership cleanup, and map
 detachment. The writer at `0x04b860` is 95.85% with identical referents and
 serialized field values. `ComputePaletteSize` at `0x04b990` is
 instruction-for-instruction identical; its 93.85% score is the comparison
 artifact from eight candidate COMDAT tail-padding bytes outside the exact FPO
 extent.
+
+The MFC archive glue is independently exact. `CDib` uses
+`IMPLEMENT_SERIAL(CDib, CObject, 1)`: the factory and runtime-class accessor,
+the typed `CArchive::ReadObject` operator at `0x04add0`, and the slot-2 bridge
+at `0x04b950` all match retail. The bridge flushes the archive and dispatches
+to `Write` or `Read` using the archive's underlying `CFile`.
 
 The mapped-retail oracle runs 98,306 comparisons over null/random dimensions,
 palette depth and `biClrUsed` combinations, explicit/computed image sizes, and
@@ -355,6 +361,24 @@ scheduling for the inlined resize routine. The mapped-retail oracle exercises
 zero disagreements over 38,399 call/state checks and 4,094 raw-word checks.
 The Rust parser additionally rejects truncated count prefixes, truncated word
 arrays, size overflow, and undersized writer output.
+
+## MFC archive arrays
+
+The four slot-2 bodies at `0x049700`, `0x0498d0`, `0x049ba0`, and `0x049ca0`
+are exact VC5 SP2 `CArray<TYPE, ARG_TYPE>::Serialize` instantiations. They use
+MFC's variable-width `WriteCount`/`ReadCount` prefix, resize on load, and pass
+the contiguous elements to the corresponding `SerializeElements` body at
+`0x04a2c0`, `0x04a5b0`, `0x04a950`, or `0x04ac10`.
+
+Callers and element strides identify the four element domains as
+`CStringArray*`, pointers to a three-`CString` record whose original class name
+did not survive, `WIN32_FIND_DATA` records of `0x140` bytes, and otherwise
+opaque pointers. MFC's default element serializer copies the element storage
+bit-for-bit. The two typed-pointer arrays and the opaque-pointer array therefore
+persist 32-bit process addresses rather than pointed-to objects; the find-data
+array persists complete records. All 21 emitted bodies in the recovered array
+unit, including resize, construction, destruction, and placement-`new`
+support, are byte-exact.
 
 ## Complete first-pass candidate wall
 

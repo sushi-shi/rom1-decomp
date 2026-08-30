@@ -32,11 +32,12 @@
 #              emitter resumes from it instead of forgetting proven work).
 # Query: python3 -m rom1.verify status | check | bank
 # [units]	unit	n_functions	matched
+archivearrays	21	21
 archiveobjects	12	12
 butemgr	14	11
 bytehuffman	16	15
 bytehuffmannode	1	1
-dib	8	6
+dib	15	12
 directxexception	1	0
 itemnames	11	3
 pixmap	9	6
@@ -56,6 +57,27 @@ worlditemiterator	3	0
 worldobjectiterator	3	0
 worldruntime	3	0
 # [functions]	unit	function	best_pct	cur_pct	tries	src_hash	rva	hist_pct	state
+archivearrays	??2@YAPAXIPAX@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4a2b0	100.0000	
+archivearrays	?ConstructElements@@YGXPAPAVCStringArray@@H@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4a260	100.0000	
+archivearrays	?ConstructElements@@YGXPAPAVCStringTriple@@H@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4ac50	100.0000	
+archivearrays	?ConstructElements@@YGXPAPAXH@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4acf0	100.0000	
+archivearrays	?ConstructElements@@YGXPAU_WIN32_FIND_DATAA@@H@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4aca0	100.0000	
+archivearrays	?DestructElements@@YGXPAPAVCStringArray@@H@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4a230	100.0000	
+archivearrays	?DestructElements@@YGXPAPAVCStringTriple@@H@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4a580	100.0000	
+archivearrays	?DestructElements@@YGXPAPAXH@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4abe0	100.0000	
+archivearrays	?DestructElements@@YGXPAU_WIN32_FIND_DATAA@@H@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4a920	100.0000	
+archivearrays	?Serialize@?$CArray@PAVCStringArray@@PAV1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:1de664a95104	0x49700	100.0000	
+archivearrays	?Serialize@?$CArray@PAVCStringTriple@@PAV1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:1de664a95104	0x498d0	100.0000	
+archivearrays	?Serialize@?$CArray@PAXPAX@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:1de664a95104	0x49ca0	100.0000	
+archivearrays	?Serialize@?$CArray@U_WIN32_FIND_DATAA@@U1@@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	cpp:1de664a95104	0x49ba0	100.0000	
+archivearrays	?SerializeElements@@YGXAAVCArchive@@PAPAVCStringArray@@H@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4a2c0	100.0000	
+archivearrays	?SerializeElements@@YGXAAVCArchive@@PAPAVCStringTriple@@H@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4a5b0	100.0000	
+archivearrays	?SerializeElements@@YGXAAVCArchive@@PAPAXH@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4ac10	100.0000	
+archivearrays	?SerializeElements@@YGXAAVCArchive@@PAU_WIN32_FIND_DATAA@@H@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4a950	100.0000	
+archivearrays	?SetSize@?$CArray@PAVCStringArray@@PAV1@@@QAEXHH@Z	100.0000	100.0000	1	cpp:1de664a95104	0x49420	100.0000	
+archivearrays	?SetSize@?$CArray@PAVCStringTriple@@PAV1@@@QAEXHH@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4a300	100.0000	
+archivearrays	?SetSize@?$CArray@PAXPAX@@QAEXHH@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4a9a0	100.0000	
+archivearrays	?SetSize@?$CArray@U_WIN32_FIND_DATAA@@U1@@@QAEXHH@Z	100.0000	100.0000	1	cpp:1de664a95104	0x4a670	100.0000	
 archiveobjects	??ACStringArray@@QAEAAVCString@@H@Z	100.0000	100.0000	1	cpp:2746b765bc49	0x47a80	100.0000	
 archiveobjects	?ElementAt@CStringArray@@QAEAAVCString@@H@Z	100.0000	100.0000	1	cpp:2746b765bc49	0x47aa0	100.0000	
 archiveobjects	?IsStoring@CArchive@@QBEHXZ	100.0000	100.0000	1	cpp:0fc8afb2c768	0x49770	100.0000	
@@ -99,13 +121,20 @@ bytehuffman	?RebuildTree@ByteHuffmanPacker@@QAEXXZ	100.0000	100.0000	1	57d2bc2b2
 bytehuffman	?SaveStatistics@ByteHuffmanPacker@@QAEXPAVCFile@@@Z	100.0000	100.0000	1	ce94d5a1dbf9	0xef433	100.0000	
 bytehuffman	?Unpack@ByteHuffmanPacker@@QAEHPAIHPAEH@Z	100.0000	100.0000	2	b08f2cdc13d7	0xefa04	100.0000	
 bytehuffmannode	??0ByteHuffmanNode@@QAE@XZ	100.0000	100.0000	1	4c7484212058	0x1160d0	100.0000	
+dib	??0CDib@@QAE@XZ	100.0000	100.0000	1	e2a1d93fa919	0x4adf0	100.0000	
+dib	??1CDib@@UAE@XZ	99.7222	99.7222	1	ccf6e743bd5e	0x4af50	99.7222	
+dib	??5@YGAAVCArchive@@AAV0@AAPAVCDib@@@Z	100.0000	100.0000	1	2f7b2c3caa17	0x4add0	100.0000	
+dib	??_GCDib@@UAEPAXI@Z	100.0000	100.0000	1	cpp:04d3dea783f5	0x4ae40	100.0000	
 dib	?ComputeMetrics@CDib@@AAEXXZ	100.0000	100.0000	2	cf3e48ee2798	0x4ba20	100.0000	
 dib	?ComputePaletteSize@CDib@@AAEXH@Z	93.8461	93.8461	2	475e8d2beb99	0x4b990	93.8461	
+dib	?CreateObject@CDib@@SGPAVCObject@@XZ	100.0000	100.0000	1	2f7b2c3caa17	0x4ad40	100.0000	
 dib	?DetachMapFile@CDib@@AAEXXZ	100.0000	100.0000	1	dcce8f1331da	0x4bb00	100.0000	
 dib	?Empty@CDib@@QAEXXZ	100.0000	100.0000	1	b2bafe315cbf	0x4ba60	100.0000	
 dib	?GetDimensions@CDib@@QAE?AVCSize@@XZ	100.0000	100.0000	1	d4352e7ac020	0x4afa0	100.0000	
+dib	?GetRuntimeClass@CDib@@UBEPAUCRuntimeClass@@XZ	100.0000	100.0000	1	2f7b2c3caa17	0x4ada0	100.0000	
 dib	?MakePalette@CDib@@QAEHXZ	100.0000	100.0000	2	bf0f647813a0	0x4b360	100.0000	
 dib	?Read@CDib@@QAEHPAVCFile@@@Z	100.0000	100.0000	1	bb0139b1b93c	0x4b710	100.0000	
+dib	?Serialize@CDib@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	ea5a9eb7ea23	0x4b950	100.0000	
 dib	?Write@CDib@@QAEHPAVCFile@@@Z	95.8518	95.8518	2	f265d2a72d1b	0x4b860	95.8518	
 directxexception	??0CDirectXException@@QAE@PBD@Z	99.7727	99.7727	1	990ce6d30b3f	0x54860	99.7727	
 itemnames	??0CTextBlock@@QAE@XZ	99.2857	99.2857	1	1ad7b9faaa1e	0x68640	99.2857	

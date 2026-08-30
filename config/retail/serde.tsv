@@ -28,12 +28,14 @@ character	0x0cf4f0	write .chr wrapper	located	chr path strings + 16-byte metadat
 character	0x0cf8b8	read .chr wrapper	located	packet/file caller xrefs + exact metadata/RLE extents + mapped oracle + safe Rust parser
 scenario	0x0d0c97	bidirectional CArchive serializer	exact	100%; exact 0x94b extent + 112 ordered relocations + save/load wrapper calls
 scenario	0x13e840	raw 0x190-byte snapshot serializer	exact	100%; exact CArchive Read/Write branches reached by the scenario serializer tail
+dib-bmp	0x04add0	typed CDib archive reader	exact	100%; IMPLEMENT_SERIAL runtime-class record + CArchive::ReadObject
 dib-bmp	0x04afa0	report DIB dimensions	exact	retail body + mapped oracle
 dib-bmp	0x04afd0	read mapped BMP file	located	BM signature + Invalid/Empty bitmap strings
 dib-bmp	0x04b360	build logical palette	exact	retail body + RGBQUAD-to-PALETTEENTRY conversion
 dib-bmp	0x04b4e0	compress DIB	located	ICCompress calls + compression error strings
 dib-bmp	0x04b710	read BMP through CFile	exact	14-byte header + bfOffBits split + DIB/pixel reads
 dib-bmp	0x04b860	write BMP through CFile	near-exact	95.85%; referents and serialized bytes align
+dib-bmp	0x04b950	archive/file bridge	exact	100%; Flush + IsStoring + exact Read/Write CFile dispatch
 dib-bmp	0x04b990	derive palette entry count	near-exact	93.85%; instructions exact, section-tail padding residue; mapped oracle
 dib-bmp	0x04ba20	derive image size and palette offset	exact	retail body + mapped oracle
 dib-bmp	0x04ba60	release DIB ownership	exact	retail body + allocation/Win32 ownership states
@@ -76,6 +78,14 @@ bute-resource	0x0878a0	read mission map-object count	exact	100%; Scenario\\Globa
 bute-resource	0x08a330	read mission map picture metadata	located	Scenario\\GlobalMap.reg + MapObject%d Picture/PictureOffset field reads
 archive-primitive	0x049770	CArchive IsStoring predicate	exact	100%; exact VC5 SP2 AFX.INL COMDAT instruction extent
 archive-primitive	0x114520	CArchive const-CObject insertion operator	exact	100%; exact VC5 SP2 AFX.INL COMDAT emitted by Spell serializer TU
+archive-array	0x049700	CStringArray-pointer CArray serializer	exact	100%; WriteCount/ReadCount + SetSize + raw pointer words
+archive-array	0x0498d0	three-CString-record-pointer CArray serializer	exact	100%; WriteCount/ReadCount + SetSize + raw pointer words
+archive-array	0x049ba0	WIN32_FIND_DATA CArray serializer	exact	100%; WriteCount/ReadCount + SetSize + raw 0x140-byte records
+archive-array	0x049ca0	opaque-pointer CArray serializer	exact	100%; WriteCount/ReadCount + SetSize + raw pointer words
+archive-array	0x04a2c0	CStringArray-pointer element serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation
+archive-array	0x04a5b0	three-CString-record-pointer element serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation
+archive-array	0x04a950	WIN32_FIND_DATA element serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation
+archive-array	0x04ac10	opaque-pointer element serializer	exact	100%; exact VC5 SP2 AFXTEMPL.H instantiation
 archive-object	0x0df278	TableLine CString and nested-object serializer	exact	100%; runtime class + vtable slot 2 + exact archive operator call topology
 archive-object	0x0df2c6	TableLine five-WORD block and nested CStringArray serializer	exact	100%; constructor offsets + raw 10-byte archive calls + nested virtual dispatch
 archive-object	0x0df322	TableLine-named raw 72-byte block serializer	exact	100%; CString at +0x04 + exact 0x48-byte archive extent at +0x20

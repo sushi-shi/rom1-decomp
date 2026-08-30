@@ -31,7 +31,13 @@ class CDib : public CObject {
     friend struct CDibOracleAccess;
 #endif
 
+    DECLARE_SERIAL(CDib)
+
 public:
+    CDib();
+    virtual ~CDib();
+
+    virtual void Serialize(CArchive& archive);
     CSize GetDimensions();
     BOOL Read(CFile* file);
     BOOL Write(CFile* file);

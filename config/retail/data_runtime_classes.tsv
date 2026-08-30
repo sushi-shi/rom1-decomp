@@ -2,6 +2,7 @@
 # class name, object size, base record, schema, and create function come from
 # runtime_classes.tsv; the decorated name follows IMPLEMENT_SERIAL exactly.
 rva	size	name	evidence
+0x1ba688	0x18	?classCDib@CDib@@2UCRuntimeClass@@A	runtime_classes.tsv CDib record; IMPLEMENT_SERIAL schema 1
 0x1c2440	0x18	?classToken@Token@@2UCRuntimeClass@@A	runtime_classes.tsv Token record; IMPLEMENT_SERIAL schema 1
 0x1c2528	0x18	?classSpellEffect@SpellEffect@@2UCRuntimeClass@@A	runtime_classes.tsv SpellEffect record; IMPLEMENT_SERIAL schema 1
 0x1c2540	0x18	?classPointEffect@PointEffect@@2UCRuntimeClass@@A	runtime_classes.tsv PointEffect record; IMPLEMENT_SERIAL schema 1
