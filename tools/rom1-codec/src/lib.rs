@@ -14,6 +14,7 @@ pub mod character;
 pub mod item_names;
 pub mod ppm;
 pub mod save_game;
+pub mod table_line;
 pub mod word_rle;
 
 pub(crate) enum Sink<'a> {

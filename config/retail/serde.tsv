@@ -51,5 +51,11 @@ item-name-ids	0x068490	load raw little-endian item IDs	near-exact	98.77%; itemna
 archive-pointer-words	0x069390	bidirectional CArchive raw pointer vector	near-exact	81.44%; exact 0x188 extent + WriteCount/ReadCount and raw Write/Read xrefs + mapped oracle
 archive-primitive	0x049770	CArchive IsStoring predicate	exact	100%; exact VC5 SP2 AFX.INL COMDAT instruction extent
 archive-object	0x0df278	TableLine CString and nested-object serializer	exact	100%; runtime class + vtable slot 2 + exact archive operator call topology
+archive-object	0x0df2c6	TableLine five-WORD block and nested CStringArray serializer	exact	100%; constructor offsets + raw 10-byte archive calls + nested virtual dispatch
+archive-object	0x0df322	TableLine-named raw 72-byte block serializer	exact	100%; CString at +0x04 + exact 0x48-byte archive extent at +0x20
+archive-object	0x0df42a	TableLine first-WORD-byte and CString extension serializer	exact	100%; explicit TableLine base call + exact +0x1c/+0x3c field topology
+archive-object	0x0df63a	TableLine fixed two-CString serializer	exact	100%; exact two-iteration CStringArray/operator topology
+archive-object	0x0dfe42	TableLine fixed ten-CString serializer	exact	100%; exact ten-iteration CStringArray/operator topology
 archive-object	0x0dffcd	TableLine-derived base-only serializer	exact	100%; vtable slot 2 + sole direct call to TableLine::Serialize
+archive-object	0x0e03d2	TableLine CString extension serializer	exact	100%; explicit base call + CString at +0x1c
 archive-object	0x111b15	embedded CObject virtual serializer	exact	100%; vtable slot 2 + exact indirect nested Serialize dispatch

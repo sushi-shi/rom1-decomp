@@ -69,6 +69,14 @@ class SerdeCoverageControls(unittest.TestCase):
         from rom1.verify.serde_coverage import compare
         self.assertEqual(compare({0x1234: self._candidate()}, [self._row()]), [])
 
+    def test_compiler_generated_source_claim_is_reconstructed(self):
+        from rom1.verify.serde_coverage import compare
+        candidate = self._candidate(channel="src_compgen")
+        self.assertEqual(
+            compare({0x1234: candidate}, [self._row(status="reconstructed")]),
+            [],
+        )
+
 
 # --------------------------------------------------------------------------- #
 # fast tier                                                                   #

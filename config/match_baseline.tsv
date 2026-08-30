@@ -29,7 +29,7 @@
 #              emitter resumes from it instead of forgetting proven work).
 # Query: python3 -m rom1.verify status | check | bank
 # [units]	unit	n_functions	matched
-archiveobjects	4	4
+archiveobjects	12	12
 butemgr	12	9
 bytehuffman	16	15
 bytehuffmannode	1	1
@@ -43,9 +43,17 @@ smackerplayer	7	7
 wordrle	2	2
 wordrletokens	4	4
 # [functions]	unit	function	best_pct	cur_pct	tries	src_hash	rva	hist_pct	state
+archiveobjects	??ACStringArray@@QAEAAVCString@@H@Z	100.0000	100.0000	1	cpp:2746b765bc49	0x47a80	100.0000	
+archiveobjects	?ElementAt@CStringArray@@QAEAAVCString@@H@Z	100.0000	100.0000	1	cpp:2746b765bc49	0x47aa0	100.0000	
 archiveobjects	?IsStoring@CArchive@@QBEHXZ	100.0000	100.0000	1	cpp:0fc8afb2c768	0x49770	100.0000	
 archiveobjects	?Serialize@CSerializableObjectHolder@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	599aaa498a08	0x111b15	100.0000	
 archiveobjects	?Serialize@CTableLineBaseOnly@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	9d01509b5e63	0xdffcd	100.0000	
+archiveobjects	?Serialize@CTableLineLabel@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	b240a55d4d81	0xe03d2	100.0000	
+archiveobjects	?Serialize@CTableLineRawBlock@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	6f8b64ef9062	0xdf322	100.0000	
+archiveobjects	?Serialize@CTableLineStringDecade@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	2b97e7d31170	0xdfe42	100.0000	
+archiveobjects	?Serialize@CTableLineStringPair@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	8d36063a3f3a	0xdf63a	100.0000	
+archiveobjects	?Serialize@CTableLineWordBlock@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	6fc98b2e7a6a	0xdf2c6	100.0000	
+archiveobjects	?Serialize@CTableLineWordBlockLabel@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	2d5bc41efaeb	0xdf42a	100.0000	
 archiveobjects	?Serialize@TableLine@@UAEXAAVCArchive@@@Z	100.0000	100.0000	1	be3c88723f3c	0xdf278	100.0000	
 butemgr	??0CButeMgr@@QAE@PAVCFile@@I@Z	100.0000	100.0000	1	abd47d72fb21	0xcb050	100.0000	
 butemgr	??0CButeMgr@@QAE@PBD@Z	0.9524	0.9524	2	abd47d72fb21	0xcb140	0.9524	

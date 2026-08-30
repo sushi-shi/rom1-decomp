@@ -77,16 +77,18 @@ independent `no_std` Rust implementations, and mapped-retail oracles. The PPM
 slice contributes six exact `CPixMap` methods and three instruction-aligned
 near-exact methods, plus its required near-exact DirectX exception constructor.
 The three Bute callee bodies are deliberately located stubs and remain work,
-not claimed matches. The ported verification harness passes all 440 controls
+not claimed matches. The ported verification harness passes all 441 controls
 in the pinned shell (five environment-dependent controls skip).
 
 The serialization campaign now has a closed first-pass wall: 151 proven
 CObject slot-2 overrides plus effective callers of reviewed CArchive, file,
 and stdio primitives yield 284 distinct RVAs. The generator writes scratch
 only; the admitted wall is manually maintained and exact-set gated. Its first
-census-driven unit is 4/4 exact, covering `CArchive::IsStoring`, the named
-TableLine serializer, a base-only derived override, and an embedded-object
-virtual serializer.
+census-driven unit is 12/12 exact over 857 bytes. It covers the complete
+eight-body TableLine slot-2 cluster, an embedded-object serializer, and the
+three VC5 archive/array COMDAT seams required by those source forms. A mapped
+retail oracle validates all six distinct derived layouts in both archive modes,
+and an independent `no_std` Rust codec preserves the bounded field grammar.
 
 The vtable catalog joins two independent executable witnesses: 417 tables from
 relocated text-pointer runs split by RTTI/code vptr references, plus eight

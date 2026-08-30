@@ -76,6 +76,17 @@ recomp/harness/build.sh archiveptrrun
 wine recomp/harness/archiveptrrun.exe "$ROM1_EXE" config/retail/relocs.tsv
 ```
 
+The TableLine harness executes all eight recovered slot-2 bodies in their
+store/load paths, with six distinct derived layouts. Retail's actual VC5 SP2
+CString archive operators remain in the call path; only their primitive byte
+I/O and allocation seams are redirected. The sweep includes all three ANSI
+length prefixes and the 254/255 and 65,533/65,534 boundaries:
+
+```sh
+recomp/harness/build.sh tablelinerun
+wine recomp/harness/tablelinerun.exe "$ROM1_EXE" config/retail/relocs.tsv
+```
+
 The envelope harness executes the retail save reader and character packet
 reader with only allocator, I/O, and downstream object-graph edges replaced.
 It checks save magic/version acceptance, ignored declared lengths, exact read

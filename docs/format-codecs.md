@@ -278,13 +278,36 @@ the derived `build/gen/serde_candidates.tsv`, while
 the manual wall. New, disappearing, reclassified, and signal-changed rows all
 fail until reviewed.
 
-The first source unit selected from that wall is exact for all four bodies:
-`CArchive::IsStoring` at `0x049770`, `TableLine::Serialize` at `0x0df278`, a
-base-only TableLine-derived override at `0x0dffcd`, and an embedded-CObject
-virtual serializer at `0x111b15`. The runtime class fixes TableLine's 28-byte
-size; the serializer independently fixes its CString at `+0x04` and nested
-polymorphic object at `+0x08`. Opaque tail bytes and classes whose names did
-not survive remain explicitly neutral rather than guessed.
+The first source unit selected from that wall is now exact for all 12 admitted
+bodies and all 857 instruction bytes. Eight are the complete recovered
+TableLine slot-2 cluster at `0x0df278`–`0x0e03d2`; one is the embedded-CObject
+serializer at `0x111b15`; and three are the exact VC5 SP2 `IsStoring`,
+`CStringArray::operator[]`, and `CStringArray::ElementAt` COMDATs emitted by
+the source forms. The runtime class fixes TableLine's 28-byte size. Retail
+constructors and serializers then independently fix a CString at `+0x04`, a
+nested polymorphic object at `+0x08`, five raw WORDs, fixed two- and ten-entry
+CStringArray loops, a raw 72-byte record, and CString extensions. Names that
+did not survive remain evidence-neutral rather than guessed.
+
+The ANSI CString bytes are the exact VC5 SP2 `ARCCORE.CPP` grammar that the
+retail static-library operators implement:
+
+```text
+length < 0xff:   u8 length
+length < 0xfffe: u8 0xff, u16 length
+otherwise:       u8 0xff, u16 0xffff, u32 length
+u8 bytes[length]
+```
+
+The mapped-retail harness executes the actual retail CString length
+encoder/decoder and all eight slot-2 bodies in both archive modes. Over 2,048
+fabricated layout cases it reports zero disagreements for 6,144 store-byte,
+18,176 load/state, and 4,096 nested-dispatch checks. It deliberately redirects
+only primitive archive I/O, CString output allocation, and polymorphic nested
+objects. The independent `no_std` Rust module implements the same three
+length prefixes and all six distinct compositional layouts; nested-object byte
+slices remain caller-supplied because retail stores no artificial boundary
+around a virtual serializer.
 
 The next large serde body is the bidirectional CArchive scenario/save
 serializer at `0x0d0c97`. The remaining DIB/BMP paths are the mapped-file

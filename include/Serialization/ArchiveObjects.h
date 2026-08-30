@@ -22,10 +22,64 @@ class TableLine : public CObject {
 public:
     virtual void Serialize(CArchive& archive);
 
-private:
+protected:
     CString m_name;
     CObject m_value;
     BYTE m_reserved[16];
+};
+
+// The anonymous retail subtypes below all return TableLine's runtime-class
+// record. Their original C++ names therefore did not survive. The placeholder
+// names state only the layouts and byte operations proven by their
+// constructors and Serialize bodies.
+class CTableLineWordBlock : public TableLine {
+public:
+    virtual void Serialize(CArchive& archive);
+
+protected:
+    WORD m_words[5];
+    CStringArray m_strings;
+};
+
+class CTableLineRawBlock : public TableLine {
+public:
+    virtual void Serialize(CArchive& archive);
+
+private:
+    DWORD m_reserved2;
+    BYTE m_bytes[0x48];
+};
+
+class CTableLineWordBlockLabel : public CTableLineWordBlock {
+public:
+    virtual void Serialize(CArchive& archive);
+
+private:
+    CString m_label;
+};
+
+class CTableLineStringPair : public TableLine {
+public:
+    virtual void Serialize(CArchive& archive);
+
+private:
+    CStringArray m_strings;
+};
+
+class CTableLineStringDecade : public TableLine {
+public:
+    virtual void Serialize(CArchive& archive);
+
+private:
+    CStringArray m_strings;
+};
+
+class CTableLineLabel : public TableLine {
+public:
+    virtual void Serialize(CArchive& archive);
+
+private:
+    CString m_label;
 };
 
 // One retail subtype overrides Serialize only to delegate to TableLine. Its

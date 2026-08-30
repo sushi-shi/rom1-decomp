@@ -90,13 +90,13 @@ rva	signals	status	note
 0x0dbd14	archive-container	target	initial retail call/vtable census
 0x0de85b	archive-read	target	initial retail call/vtable census
 0x0df278	archive-read,archive-vslot2,archive-write	reconstructed	initial retail call/vtable census; slot-2 class=TableLine
-0x0df2c6	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=TableLine
-0x0df322	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=TableLine
-0x0df42a	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=TableLine
-0x0df63a	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=TableLine
-0x0dfe42	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=TableLine
+0x0df2c6	archive-read,archive-vslot2,archive-write	reconstructed	TableLine-derived five-WORD block + nested CStringArray serializer
+0x0df322	archive-read,archive-vslot2,archive-write	reconstructed	TableLine-named CString + raw 72-byte block serializer
+0x0df42a	archive-read,archive-vslot2,archive-write	reconstructed	TableLine-derived first-WORD-byte + CString serializer
+0x0df63a	archive-read,archive-vslot2,archive-write	reconstructed	TableLine-derived fixed two-CString serializer
+0x0dfe42	archive-read,archive-vslot2,archive-write	reconstructed	TableLine-derived fixed ten-CString serializer
 0x0dffcd	archive-vslot2	reconstructed	initial retail call/vtable census; slot-2 class=TableLine
-0x0e03d2	archive-read,archive-vslot2,archive-write	target	initial retail call/vtable census; slot-2 class=TableLine
+0x0e03d2	archive-read,archive-vslot2,archive-write	reconstructed	TableLine-derived CString extension serializer
 0x0e0b06	file-read	target	initial retail call/vtable census
 0x0eba39	stdio-read	target	initial retail call/vtable census
 0x0f2461	archive-read	target	initial retail call/vtable census

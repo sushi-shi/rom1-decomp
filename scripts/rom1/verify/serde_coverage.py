@@ -22,7 +22,7 @@ def load_wall(path: Path = WALL) -> list[dict[str, str]]:
 
 
 def expected_status(candidate: Candidate) -> str:
-    if candidate.channel == "src":
+    if candidate.channel in {"src", "src_compgen"}:
         return "reconstructed"
     if candidate.channel in {"functions_static_libs", "functions_zlib"}:
         return "static-library"
